@@ -1,0 +1,52 @@
+{
+  "id": "eu_de_3zimmer_dusseldorf_dachgeschoss",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Dusseldorf",
+    "size_label": "3zimmer",
+    "total_area_sqm": 77,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Dusseldorf Dachgeschoss converted attic with chamfered mansard corners",
+    "description": "A converted top-floor attic Drei-Zimmer in a Pempelfort or Bilk Altbau — 4 chamfered corners reflect the steep mansard roof slope. Open Wohnkueche under south dormer windows, two bedrooms with their own dormer windows on the chamfered north wall, full bath. Distinct octagonal boundary you don't see in any other typology.",
+    "suitable_for": ["young creative", "designer", "expat"],
+    "tags": ["dusseldorf", "dachgeschoss", "attic", "3zimmer", "mansard", "octagonal", "chamfered", "dormer", "pempelfort"]
+  },
+  "boundary": {
+    "polygon": [[1,0],[9,0],[10,1.5],[10,6.5],[9,8],[1,8],[0,6.5],[0,1.5]],
+    "wall_thickness_mm": 220,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
+      "polygon": [[1,0],[9,0],[10,1.5],[10,4],[0,4],[0,1.5]], "area_sqm": 38.5,
+      "notes": "Open-plan under south dormer, follows the chamfered SW + SE corners" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,4],[10,4],[10,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,5],[5,5],[5,8],[1,8],[0,6.5]], "area_sqm": 14.25,
+      "notes": "Follows NW chamfered mansard slope" },
+    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[8,5],[10,5],[10,6.5],[9,8],[8,8]], "area_sqm": 5.25,
+      "notes": "Follows NE chamfered mansard slope" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 4.5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnkueche", "position": [5, 4], "width_mm": 1200 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 5], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_kinderzimmer", "position": [6.5, 5], "width_mm": 800 },
+    { "from": "r_diele", "to": "r_bad", "position": [9, 5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnkueche", "position": [5, 0], "width_mm": 2400 },
+    { "room": "r_wohnkueche", "position": [0, 2.75], "width_mm": 1200 },
+    { "room": "r_wohnkueche", "position": [10, 2.75], "width_mm": 1200 },
+    { "room": "r_schlafzimmer", "position": [3, 8], "width_mm": 1200 },
+    { "room": "r_kinderzimmer", "position": [6.5, 8], "width_mm": 1200 },
+    { "room": "r_bad", "position": [8.5, 8], "width_mm": 800 }
+  ]
+}

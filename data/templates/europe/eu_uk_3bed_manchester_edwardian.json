@@ -1,0 +1,67 @@
+{
+  "id": "eu_uk_3bed_manchester_edwardian",
+  "metadata": {
+    "region": "europe",
+    "country": "UK",
+    "city_inspiration": "Manchester",
+    "size_label": "3bed",
+    "total_area_sqm": 112,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Manchester Edwardian semi-detached",
+    "description": "An Edwardian semi-detached Manchester house — front lounge with bay window, separate dining room, central hallway, kitchen at the rear with WC, three upstairs bedrooms (master plus two singles) and family bathroom. Modelled as a single floor for the demo.",
+    "suitable_for": ["young family", "couple with two children", "first-time buyer with budget"],
+    "tags": ["manchester", "edwardian", "semi-detached", "bay_window", "3bed", "uk", "northern"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,14],[0,14]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_lounge", "name": "Front Lounge", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4.5],[0,4.5]], "area_sqm": 22.5,
+      "notes": "Bay window facing the street" },
+    { "id": "r_dining", "name": "Dining Room", "type": "dining",
+      "polygon": [[5,0],[8,0],[8,4.5],[5,4.5]], "area_sqm": 13.5 },
+    { "id": "r_hallway", "name": "Hallway", "type": "corridor",
+      "polygon": [[0,4.5],[3,4.5],[3,7.5],[0,7.5]], "area_sqm": 9 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[3,4.5],[8,4.5],[8,9],[3,9]], "area_sqm": 22.5 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,7.5],[3,7.5],[3,9],[0,9]], "area_sqm": 4.5 },
+    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,9],[5,9],[5,12],[0,12]], "area_sqm": 15 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,9],[8,9],[8,12],[5,12]], "area_sqm": 9 },
+    { "id": "r_bath", "name": "Family Bath", "type": "bathroom",
+      "polygon": [[0,12],[4,12],[4,14],[0,14]], "area_sqm": 8 },
+    { "id": "r_bedroom3", "name": "Bedroom 3", "type": "bedroom",
+      "polygon": [[4,12],[8,12],[8,14],[4,14]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0, 6],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_lounge", "position": [1.5, 4.5], "width_mm": 800 },
+    { "from": "r_lounge", "to": "r_dining", "position": [5, 2.25], "width_mm": 1100 },
+    { "from": "r_dining", "to": "r_kitchen", "position": [6.5, 4.5], "width_mm": 1000 },
+    { "from": "r_hallway", "to": "r_kitchen", "position": [3, 6], "width_mm": 800 },
+    { "from": "r_hallway", "to": "r_wc", "position": [1.5, 7.5], "width_mm": 700 },
+    { "from": "r_kitchen", "to": "r_bedroom1", "position": [4, 9], "width_mm": 800 },
+    { "from": "r_bedroom1", "to": "r_bedroom2", "position": [5, 10.5], "width_mm": 800 },
+    { "from": "r_bedroom1", "to": "r_bath", "position": [2, 12], "width_mm": 800 },
+    { "from": "r_bedroom2", "to": "r_bedroom3", "position": [6.5, 12], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_lounge", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_dining", "position": [6.5, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 6.75], "width_mm": 1500 },
+    { "room": "r_wc", "position": [0, 8.25], "width_mm": 600 },
+    { "room": "r_bedroom1", "position": [0, 10.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8, 10.5], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0, 13], "width_mm": 900 },
+    { "room": "r_bath", "position": [2, 14], "width_mm": 900 },
+    { "room": "r_bedroom3", "position": [8, 13], "width_mm": 1200 },
+    { "room": "r_bedroom3", "position": [6, 14], "width_mm": 1200 }
+  ]
+}

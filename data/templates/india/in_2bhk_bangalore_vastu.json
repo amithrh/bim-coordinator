@@ -1,0 +1,59 @@
+{
+  "id": "in_2bhk_bangalore_vastu",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Bangalore",
+    "size_label": "2bhk",
+    "total_area_sqm": 92,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Vastu-compliant modern apartment",
+    "description": "A 2BHK Vastu-compliant apartment with kitchen in the southeast, master bedroom in the southwest, and entry from the south. Balcony off the kitchen. Bedroom 2 forms a master suite with the attached bath.",
+    "suitable_for": ["small family", "parents", "young couple"],
+    "tags": ["vastu", "modern", "balcony", "master_attached", "bangalore"],
+    "vastu_compliant": true,
+    "kitchen_facing": "SE"
+  },
+  "boundary": {
+    "polygon": [[0,0],[11.5,0],[11.5,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2700,
+    "orientation_north_deg": 0
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "living",
+      "polygon": [[0,0],[8.5,0],[8.5,4.5],[0,4.5]], "area_sqm": 38.25 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[8.5,0],[11.5,0],[11.5,4.5],[8.5,4.5]], "area_sqm": 13.5,
+      "notes": "Southeast corner per Vastu" },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,4.5],[5,4.5],[5,8],[0,8]], "area_sqm": 17.5,
+      "notes": "Southwest corner per Vastu" },
+    { "id": "r_master_bath", "name": "Master Bath", "type": "bathroom",
+      "polygon": [[5,4.5],[7,4.5],[7,6.5],[5,6.5]], "area_sqm": 4 },
+    { "id": "r_common_bath", "name": "Common Bath", "type": "bathroom",
+      "polygon": [[7,4.5],[8.5,4.5],[8.5,6.5],[7,6.5]], "area_sqm": 3 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,6.5],[8.5,6.5],[8.5,8],[5,8]], "area_sqm": 5.25 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[8.5,4.5],[11.5,4.5],[11.5,8],[8.5,8]], "area_sqm": 10.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_kitchen", "position": [8.5, 2.25], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_master", "position": [2.5, 4.5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_master_bath", "position": [5, 5.5], "width_mm": 750 },
+    { "from": "r_hall", "to": "r_common_bath", "position": [7.5, 4.5], "width_mm": 750 },
+    { "from": "r_master_bath", "to": "r_bedroom2", "position": [6, 6.5], "width_mm": 750 },
+    { "from": "r_kitchen", "to": "r_balcony", "position": [10, 4.5], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_kitchen", "position": [11.5, 2.25], "width_mm": 1200 },
+    { "room": "r_hall", "position": [0, 2.25], "width_mm": 1500 },
+    { "room": "r_master", "position": [0, 6.25], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [6.75, 8], "width_mm": 1200 },
+    { "room": "r_balcony", "position": [11.5, 6.25], "width_mm": 2400 }
+  ]
+}

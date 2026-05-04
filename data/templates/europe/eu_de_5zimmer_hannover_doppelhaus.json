@@ -1,0 +1,68 @@
+{
+  "id": "eu_de_5zimmer_hannover_doppelhaus",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Hannover",
+    "size_label": "5zimmer",
+    "total_area_sqm": 132,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Hannover Doppelhaushaelfte ground floor with garden room extension",
+    "description": "A Hannover Doppelhaushaelfte (semi-detached half-house) — party wall on the east side (no east windows), single-storey with the bedroom wing pushed back behind the main living block, leaving an L-shape footprint with garden access from the back. Distinct from the Stuttgart variant by orientation and the rear setback creating a south-facing terrace.",
+    "suitable_for": ["family with two children", "downsizing retirees"],
+    "tags": ["hannover", "doppelhaus", "semi_detached", "5zimmer", "l_shape", "garden_room", "linden_mitte", "party_wall_east"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[14,0],[14,6],[8,6],[8,11],[0,11]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[8,0],[8,5],[0,5]], "area_sqm": 40 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_essen", "name": "Esszimmer", "type": "dining",
+      "polygon": [[11,0],[14,0],[14,3],[11,3]], "area_sqm": 9 },
+    { "id": "r_garten_zimmer", "name": "Garten-Zimmer", "type": "study",
+      "polygon": [[8,3],[14,3],[14,6],[8,6]], "area_sqm": 18,
+      "notes": "Garden room extension at the rear, south-facing terrace beyond" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,5],[8,5],[8,6],[0,6]], "area_sqm": 8 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,6],[4,6],[4,11],[0,11]], "area_sqm": 20 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[4,6],[8,6],[8,9],[4,9]], "area_sqm": 12 },
+    { "id": "r_kinderzimmer1", "name": "Kinderzimmer 1", "type": "bedroom",
+      "polygon": [[4,9],[6,9],[6,11],[4,11]], "area_sqm": 4 },
+    { "id": "r_kinderzimmer2", "name": "Kinderzimmer 2", "type": "bedroom",
+      "polygon": [[6,9],[8,9],[8,11],[6,11]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 5.5],
+      "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_wohnzimmer", "to": "r_kuche", "position": [8, 1.5], "width_mm": 1000 },
+    { "from": "r_kuche", "to": "r_essen", "position": [11, 1.5], "width_mm": 1000 },
+    { "from": "r_essen", "to": "r_garten_zimmer", "position": [12.5, 3], "width_mm": 1100 },
+    { "from": "r_kuche", "to": "r_garten_zimmer", "position": [9.5, 3], "width_mm": 900 },
+    { "from": "r_wohnzimmer", "to": "r_diele", "position": [4, 5], "width_mm": 1200 },
+    { "from": "r_diele", "to": "r_garten_zimmer", "position": [8, 5.5], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2, 6], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_bad", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_kinderzimmer1", "position": [5, 9], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_kinderzimmer2", "position": [7, 9], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_wohnzimmer", "position": [0, 2.5], "width_mm": 1800 },
+    { "room": "r_kuche", "position": [9.5, 0], "width_mm": 1500 },
+    { "room": "r_essen", "position": [12.5, 0], "width_mm": 1500 },
+    { "room": "r_garten_zimmer", "position": [11, 6], "width_mm": 2400 },
+    { "room": "r_garten_zimmer", "position": [9, 6], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [0, 8.5], "width_mm": 1800 },
+    { "room": "r_schlafzimmer", "position": [2, 11], "width_mm": 1500 },
+    { "room": "r_kinderzimmer1", "position": [5, 11], "width_mm": 1200 },
+    { "room": "r_kinderzimmer2", "position": [7, 11], "width_mm": 1200 }
+  ]
+}

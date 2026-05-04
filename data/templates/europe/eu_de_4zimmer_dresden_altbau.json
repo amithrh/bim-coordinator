@@ -1,0 +1,61 @@
+{
+  "id": "eu_de_4zimmer_dresden_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Dresden",
+    "size_label": "4zimmer",
+    "total_area_sqm": 120,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Dresden Altbau Vier-Zimmer with Berliner Zimmer transition room",
+    "description": "A grand Dresden Altbau Vier-Zimmerwohnung in the Wilhelminian style — long deep plan (8 m × 15 m) with the distinctive Berliner Zimmer (a full-depth transition room between street-side Salon and the back of the apartment), three bedrooms, eat-in kitchen, full bath. High ceilings (3.3 m) and thick exterior walls. Typical Neustadt or Striesen.",
+    "suitable_for": ["family with two children", "WG (shared flat)", "expat with dog and kids"],
+    "tags": ["dresden", "altbau", "wilhelminian", "berliner_zimmer", "4zimmer", "neustadt", "striesen", "high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,15],[0,15]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer (Salon)", "type": "living",
+      "polygon": [[0,12],[8,12],[8,15],[0,15]], "area_sqm": 24,
+      "notes": "Grand street-facing Salon" },
+    { "id": "r_berliner_zimmer", "name": "Berliner Zimmer", "type": "study",
+      "polygon": [[0,8],[8,8],[8,12],[0,12]], "area_sqm": 32,
+      "notes": "Full-depth transition room, distinctive Wilhelminian feature" },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,5],[2,5],[2,8],[0,8]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[8,5],[8,8],[2,8]], "area_sqm": 18 },
+    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[2,2],[8,2],[8,5],[2,5]], "area_sqm": 18 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_kuche", "name": "Eat-in Kueche", "type": "kitchen",
+      "polygon": [[2,0],[8,0],[8,2],[2,2]], "area_sqm": 12,
+      "notes": "Wohnkueche with eating area at the back" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_korridor", "position": [0, 6.5],
+      "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_korridor", "to": "r_berliner_zimmer", "position": [1, 8], "width_mm": 1000 },
+    { "from": "r_berliner_zimmer", "to": "r_wohnzimmer", "position": [4, 12], "width_mm": 1200 },
+    { "from": "r_korridor", "to": "r_schlafzimmer", "position": [2, 6.5], "width_mm": 900 },
+    { "from": "r_schlafzimmer", "to": "r_kinderzimmer", "position": [5, 5], "width_mm": 900 },
+    { "from": "r_kinderzimmer", "to": "r_kuche", "position": [5, 2], "width_mm": 900 },
+    { "from": "r_korridor", "to": "r_bad", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_kuche", "position": [2, 1], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [3, 15], "width_mm": 1800 },
+    { "room": "r_wohnzimmer", "position": [6, 15], "width_mm": 1800 },
+    { "room": "r_berliner_zimmer", "position": [0, 10], "width_mm": 1500 },
+    { "room": "r_berliner_zimmer", "position": [8, 10], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_kinderzimmer", "position": [8, 3.5], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [4, 0], "width_mm": 1800 },
+    { "room": "r_bad", "position": [0, 2.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "eu_de_4zimmer_frankfurt_familie",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Frankfurt",
+    "size_label": "4zimmer",
+    "total_area_sqm": 108,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Frankfurt Vierzimmer family apartment",
+    "description": "A practical Frankfurt Vierzimmerwohnung for a young family. Separate Wohnzimmer and Kueche, a generous balcony off the kitchen, central Diele, master bedroom plus two children's rooms, and a full bath.",
+    "suitable_for": ["young family", "two children", "professional couple"],
+    "tags": ["frankfurt", "familie", "4zimmer", "balcony", "central", "modern"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,9],[0,9]],
+    "wall_thickness_mm": 220,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[6,0],[6,5],[0,5]], "area_sqm": 30 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[6,0],[9,0],[9,5],[6,5]], "area_sqm": 15 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[9,0],[12,0],[12,5],[9,5]], "area_sqm": 15 },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,5],[12,5],[12,6],[0,6]], "area_sqm": 12 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,6],[5,6],[5,9],[0,9]], "area_sqm": 15 },
+    { "id": "r_kinderzimmer1", "name": "Kinderzimmer 1", "type": "bedroom",
+      "polygon": [[5,6],[8,6],[8,9],[5,9]], "area_sqm": 9 },
+    { "id": "r_kinderzimmer2", "name": "Kinderzimmer 2", "type": "bedroom",
+      "polygon": [[8,6],[10,6],[10,9],[8,9]], "area_sqm": 6 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[10,6],[12,6],[12,9],[10,9]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 5.5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_wohnzimmer", "to": "r_kuche", "position": [6, 2.5], "width_mm": 1000 },
+    { "from": "r_kuche", "to": "r_balkon", "position": [9, 2.5],
+      "width_mm": 1500, "swing": "slide" },
+    { "from": "r_diele", "to": "r_wohnzimmer", "position": [3, 5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 6], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_kinderzimmer1", "position": [6.5, 6], "width_mm": 800 },
+    { "from": "r_diele", "to": "r_kinderzimmer2", "position": [9, 6], "width_mm": 800 },
+    { "from": "r_diele", "to": "r_bad", "position": [11, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [3, 0], "width_mm": 1800 },
+    { "room": "r_wohnzimmer", "position": [0, 2.5], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [7.5, 0], "width_mm": 1200 },
+    { "room": "r_schlafzimmer", "position": [0, 7.5], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [2.5, 9], "width_mm": 1200 },
+    { "room": "r_kinderzimmer1", "position": [6.5, 9], "width_mm": 1200 },
+    { "room": "r_kinderzimmer2", "position": [9, 9], "width_mm": 900 },
+    { "room": "r_bad", "position": [12, 7.5], "width_mm": 800 },
+    { "room": "r_balkon", "position": [12, 2.5], "width_mm": 2400 }
+  ]
+}

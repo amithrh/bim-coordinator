@@ -1,0 +1,54 @@
+{
+  "id": "eu_uk_2bed_glasgow_tenement",
+  "metadata": {
+    "region": "europe",
+    "country": "UK",
+    "city_inspiration": "Glasgow",
+    "size_label": "2bed",
+    "total_area_sqm": 76,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Glasgow stone tenement upper-floor flat",
+    "description": "A typical Glasgow tenement upper-floor flat with a long central hallway off which sit a generous front living room, separate kitchen, two bedrooms and a bathroom. High ceilings and bay windows characteristic of West End and Southside tenements.",
+    "suitable_for": ["young couple", "writer", "academic"],
+    "tags": ["glasgow", "tenement", "scottish", "2bed", "high_ceilings", "bay_window", "uk"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9.5],[0,9.5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20,
+      "notes": "Front room with bay window" },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[5,0],[8,0],[8,4],[5,4]], "area_sqm": 12 },
+    { "id": "r_hall", "name": "Hallway", "type": "corridor",
+      "polygon": [[0,4],[8,4],[8,5],[0,5]], "area_sqm": 8,
+      "notes": "Long central tenement hall" },
+    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5],[4,5],[4,9.5],[0,9.5]], "area_sqm": 18 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[4,5],[6,5],[6,9.5],[4,9.5]], "area_sqm": 9 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[6,5],[8,5],[8,9.5],[6,9.5]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0, 4.5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living", "position": [2.5, 4], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_kitchen", "position": [6.5, 4], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_bedroom1", "position": [2, 5], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_bedroom2", "position": [5, 5], "width_mm": 800 },
+    { "from": "r_hall", "to": "r_bath", "position": [7, 5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [6.5, 0], "width_mm": 1500 },
+    { "room": "r_bedroom1", "position": [0, 7.25], "width_mm": 1500 },
+    { "room": "r_bedroom1", "position": [2, 9.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [5, 9.5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [7, 9.5], "width_mm": 800 }
+  ]
+}

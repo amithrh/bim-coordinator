@@ -1,0 +1,58 @@
+{
+  "id": "eu_de_2zimmer_leipzig_grunderzeit",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Leipzig",
+    "size_label": "2zimmer",
+    "total_area_sqm": 75,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Leipzig Gründerzeit railroad with separate Stube (sitting room)",
+    "description": "A classic Leipzig Gründerzeit (1870-1914) Zwei-Zimmerwohnung in the Sudvorstadt or Plagwitz — long deep plan (5 m × 15 m) with the distinctive Stube (a small second sitting room used for receiving visitors) tucked behind the front Wohnzimmer. Long Korridor leads to the bedroom, kitchen and bath at the back. High ceilings (3.3 m).",
+    "suitable_for": ["young professional", "couple", "writer"],
+    "tags": ["leipzig", "gruenderzeit", "stube", "railroad", "high_ceilings", "2zimmer", "altbau_era", "sudvorstadt"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,15],[0,15]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,12],[5,12],[5,15],[0,15]], "area_sqm": 15,
+      "notes": "Front street-facing Salon" },
+    { "id": "r_stube", "name": "Stube", "type": "study",
+      "polygon": [[0,9],[5,9],[5,12],[0,12]], "area_sqm": 15,
+      "notes": "Small Gründerzeit sitting room behind the Wohnzimmer" },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,5],[2,5],[2,9],[0,9]], "area_sqm": 8 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,9],[2,9]], "area_sqm": 12 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[0,2],[5,2],[5,5],[0,5]], "area_sqm": 15 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[0,0],[3,0],[3,2],[0,2]], "area_sqm": 6 },
+    { "id": "r_abstellraum", "name": "Abstellraum", "type": "abstellraum",
+      "polygon": [[3,0],[5,0],[5,2],[3,2]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_korridor", "position": [0, 7],
+      "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_korridor", "to": "r_stube", "position": [1, 9], "width_mm": 1000 },
+    { "from": "r_stube", "to": "r_wohnzimmer", "position": [2.5, 12], "width_mm": 1100 },
+    { "from": "r_korridor", "to": "r_schlafzimmer", "position": [2, 7], "width_mm": 900 },
+    { "from": "r_korridor", "to": "r_kuche", "position": [1, 5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_bad", "position": [1.5, 2], "width_mm": 800 },
+    { "from": "r_kuche", "to": "r_abstellraum", "position": [4, 2], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [1.5, 15], "width_mm": 1500 },
+    { "room": "r_wohnzimmer", "position": [3.5, 15], "width_mm": 1500 },
+    { "room": "r_stube", "position": [5, 10.5], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [5, 7], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [5, 3.5], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [0, 3.5], "width_mm": 1200 },
+    { "room": "r_bad", "position": [0, 1], "width_mm": 600 }
+  ]
+}

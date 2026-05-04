@@ -1,0 +1,96 @@
+{
+  "id": "eu_uk_3bed_london_duplex_townhouse",
+  "metadata": {
+    "region": "europe",
+    "country": "UK",
+    "city_inspiration": "London",
+    "size_label": "3bed",
+    "total_area_sqm": 122,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "London 3-bed duplex townhouse, two floors",
+    "description": "A modern London duplex townhouse over two floors. Ground floor: front lounge, kitchen-diner, downstairs WC, hallway with stairs. First floor: master bedroom with en-suite, two more bedrooms, family bath. Modelled with full multi-floor IFC structure (two IfcBuildingStorey entities).",
+    "suitable_for": ["family with two children", "multi-generational"],
+    "tags": ["london", "duplex", "townhouse", "multi_floor", "two_storey", "3bed", "uk"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "Ground Floor",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 2700,
+      "rooms": [
+        { "id": "r_lounge", "name": "Front Lounge", "type": "living",
+          "polygon": [[0,0],[7,0],[7,4],[0,4]], "area_sqm": 28 },
+        { "id": "r_hall", "name": "Hallway", "type": "corridor",
+          "polygon": [[0,4],[3,4],[3,8],[0,8]], "area_sqm": 12,
+          "notes": "Includes stairs to first floor" },
+        { "id": "r_wc", "name": "Downstairs WC", "type": "wc",
+          "polygon": [[3,4],[5,4],[5,5.5],[3,5.5]], "area_sqm": 3 },
+        { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
+          "polygon": [[3,5.5],[7,5.5],[7,8],[3,8]], "area_sqm": 10,
+          "notes": "Open-plan with garden access" },
+        { "id": "r_utility", "name": "Utility", "type": "utility",
+          "polygon": [[5,4],[7,4],[7,5.5],[5,5.5]], "area_sqm": 3 }
+      ],
+      "doors": [
+        { "from": "outside", "to": "r_hall", "position": [0, 6],
+          "width_mm": 900, "is_main_entry": true },
+        { "from": "r_hall", "to": "r_lounge", "position": [1.5, 4], "width_mm": 800 },
+        { "from": "r_hall", "to": "r_wc", "position": [3, 4.75], "width_mm": 700 },
+        { "from": "r_hall", "to": "r_kitchen", "position": [3, 6.75], "width_mm": 900 },
+        { "from": "r_kitchen", "to": "r_utility", "position": [6, 5.5], "width_mm": 800 },
+        { "from": "r_kitchen", "to": "outside", "position": [5, 8],
+          "width_mm": 1500, "swing": "slide" }
+      ],
+      "windows": [
+        { "room": "r_lounge", "position": [3.5, 0], "width_mm": 2400 },
+        { "room": "r_lounge", "position": [0, 2], "width_mm": 1200 },
+        { "room": "r_kitchen", "position": [7, 6.75], "width_mm": 1500 },
+        { "room": "r_utility", "position": [7, 4.75], "width_mm": 800 }
+      ]
+    },
+    {
+      "name": "First Floor",
+      "elevation_mm": 2700,
+      "ceiling_height_mm": 2500,
+      "rooms": [
+        { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+          "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20 },
+        { "id": "r_master_bath", "name": "En-suite", "type": "bathroom",
+          "polygon": [[5,0],[7,0],[7,4],[5,4]], "area_sqm": 8 },
+        { "id": "r_landing", "name": "Landing", "type": "corridor",
+          "polygon": [[0,4],[3,4],[3,8],[0,8]], "area_sqm": 12,
+          "notes": "Top of stairs" },
+        { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+          "polygon": [[3,4],[7,4],[7,6.5],[3,6.5]], "area_sqm": 10 },
+        { "id": "r_bath", "name": "Family Bath", "type": "bathroom",
+          "polygon": [[3,6.5],[5,6.5],[5,8],[3,8]], "area_sqm": 3 },
+        { "id": "r_bedroom3", "name": "Bedroom 3", "type": "bedroom",
+          "polygon": [[5,6.5],[7,6.5],[7,8],[5,8]], "area_sqm": 3 }
+      ],
+      "doors": [
+        { "from": "r_landing", "to": "r_master", "position": [2.5, 4], "width_mm": 800 },
+        { "from": "r_master", "to": "r_master_bath", "position": [5, 2], "width_mm": 700 },
+        { "from": "r_landing", "to": "r_bedroom2", "position": [3, 5], "width_mm": 800 },
+        { "from": "r_landing", "to": "r_bath", "position": [3, 7], "width_mm": 700 },
+        { "from": "r_bath", "to": "r_bedroom3", "position": [5, 7.25], "width_mm": 700 }
+      ],
+      "windows": [
+        { "room": "r_master", "position": [2.5, 0], "width_mm": 1800 },
+        { "room": "r_master", "position": [0, 2], "width_mm": 1200 },
+        { "room": "r_master_bath", "position": [7, 2], "width_mm": 800 },
+        { "room": "r_bedroom2", "position": [7, 5.25], "width_mm": 1500 },
+        { "room": "r_bath", "position": [3, 8], "width_mm": 600 },
+        { "room": "r_bedroom3", "position": [6, 8], "width_mm": 900 }
+      ]
+    }
+  ]
+}

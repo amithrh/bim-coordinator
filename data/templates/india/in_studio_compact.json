@@ -1,0 +1,42 @@
+{
+  "id": "in_studio_compact",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Mumbai",
+    "size_label": "studio",
+    "total_area_sqm": 30,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Compact urban studio",
+    "description": "A compact urban studio for a single occupant or working professional in dense Mumbai neighborhoods. Living area with kitchenette plus a tucked bathroom.",
+    "suitable_for": ["bachelor", "single professional", "student"],
+    "tags": ["compact", "studio", "mumbai", "urban", "bachelor"],
+    "vastu_compliant": false
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,5],[0,5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living + Kitchenette", "type": "living",
+      "polygon": [[0,0],[6,0],[6,3.5],[0,3.5]], "area_sqm": 21,
+      "notes": "Combined living and kitchenette" },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[4,3.5],[6,3.5],[6,5],[4,5]], "area_sqm": 3 },
+    { "id": "r_sleep", "name": "Sleep Nook", "type": "bedroom",
+      "polygon": [[0,3.5],[4,3.5],[4,5],[0,5]], "area_sqm": 6,
+      "notes": "Murphy bed area" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_living", "to": "r_bath", "position": [5, 3.5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_sleep", "position": [2, 3.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [3, 0], "width_mm": 1500 },
+    { "room": "r_sleep", "position": [0, 4.25], "width_mm": 900 }
+  ]
+}

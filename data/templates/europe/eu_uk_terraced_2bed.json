@@ -1,0 +1,58 @@
+{
+  "id": "eu_uk_terraced_2bed",
+  "metadata": {
+    "region": "europe",
+    "country": "UK",
+    "city_inspiration": "London",
+    "size_label": "2bed",
+    "total_area_sqm": 76,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Victorian terraced house, ground floor",
+    "description": "A classic London Victorian terraced house with the kitchen-diner in a rear extension. Front lounge facing the street, central hallway with under-stair WC, two bedrooms over the rear of the main range. Ground floor of a two-floor house, modelled as a single floor for the demo.",
+    "suitable_for": ["young couple", "small family", "first-time buyer"],
+    "tags": ["terraced", "victorian", "london", "kitchen_diner", "extension", "uk"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,4],[8,4],[8,11],[0,11]],
+    "wall_thickness_mm": 215,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_lounge", "name": "Front Lounge", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20,
+      "notes": "Bay window facing the street" },
+    { "id": "r_hall", "name": "Hallway", "type": "corridor",
+      "polygon": [[0,4],[2,4],[2,8],[0,8]], "area_sqm": 8 },
+    { "id": "r_dining", "name": "Dining Room", "type": "dining",
+      "polygon": [[2,4],[5,4],[5,7],[2,7]], "area_sqm": 9 },
+    { "id": "r_wc", "name": "Under-stair WC", "type": "wc",
+      "polygon": [[2,7],[5,7],[5,8],[2,8]], "area_sqm": 3 },
+    { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
+      "polygon": [[5,4],[8,4],[8,11],[5,11]], "area_sqm": 21,
+      "notes": "Rear extension with garden access" },
+    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,8],[3,8],[3,11],[0,11]], "area_sqm": 9 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[3,8],[5,8],[5,11],[3,11]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_lounge", "position": [1, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_lounge", "to": "r_hall", "position": [1, 4], "width_mm": 800 },
+    { "from": "r_lounge", "to": "r_dining", "position": [3.5, 4], "width_mm": 1200 },
+    { "from": "r_dining", "to": "r_kitchen", "position": [5, 5.5], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_hall", "to": "r_wc", "position": [2, 7.5], "width_mm": 700 },
+    { "from": "r_hall", "to": "r_bedroom1", "position": [1, 8], "width_mm": 800 },
+    { "from": "r_bedroom1", "to": "r_bedroom2", "position": [3, 9.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_lounge", "position": [2.5, 0], "width_mm": 2000 },
+    { "room": "r_bedroom1", "position": [0, 9.5], "width_mm": 1200 },
+    { "room": "r_bedroom1", "position": [1.5, 11], "width_mm": 900 },
+    { "room": "r_bedroom2", "position": [4, 11], "width_mm": 900 },
+    { "room": "r_kitchen", "position": [8, 7.5], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [6.5, 11], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [6.5, 4], "width_mm": 1200 }
+  ]
+}

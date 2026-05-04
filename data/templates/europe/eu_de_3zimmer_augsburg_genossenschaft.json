@@ -1,0 +1,61 @@
+{
+  "id": "eu_de_3zimmer_augsburg_genossenschaft",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Augsburg",
+    "size_label": "3zimmer",
+    "total_area_sqm": 78,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Augsburg Wohnungsbaugenossenschaft three-room with central kitchen and Loggia",
+    "description": "A practical Augsburg Drei-Zimmerwohnung in a Wohnungsbaugenossenschaft (housing cooperative) building from the 1970s renovation era. Distinctively, the kitchen is in the centre of the apartment (interior, no exterior walls — light from a small Hof) with the living area, bedrooms and Loggia wrapping around it. Cooperative ownership keeps costs predictable.",
+    "suitable_for": ["family", "long-term cooperative member"],
+    "tags": ["augsburg", "genossenschaft", "cooperative", "3zimmer", "central_kitchen", "loggia", "1970s"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 240,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[7,0],[7,4],[0,4]], "area_sqm": 28 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12,
+      "notes": "Recessed Loggia (covered balcony) typical of 1970s cooperative buildings" },
+    { "id": "r_kuche", "name": "Kueche (central)", "type": "kitchen",
+      "polygon": [[3,4],[7,4],[7,6],[3,6]], "area_sqm": 8,
+      "notes": "Interior kitchen — light from Hof / corridor windows" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,4],[3,4],[3,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[7,4],[10,4],[10,6],[7,6]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,6],[5,6],[5,8],[0,8]], "area_sqm": 10 },
+    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[5,6],[10,6],[10,8],[5,8]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnzimmer", "position": [1.5, 4], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_kuche", "position": [3, 5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_wohnzimmer", "position": [5, 4], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_bad", "position": [7, 5], "width_mm": 800 },
+    { "from": "r_wohnzimmer", "to": "r_loggia", "position": [7, 2],
+      "width_mm": 1500, "swing": "slide" },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [1.5, 6], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_kinderzimmer", "position": [5.5, 6], "width_mm": 900 },
+    { "from": "r_bad", "to": "r_kinderzimmer", "position": [8.5, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [3.5, 0], "width_mm": 2400 },
+    { "room": "r_wohnzimmer", "position": [0, 2], "width_mm": 1500 },
+    { "room": "r_loggia", "position": [10, 2], "width_mm": 2100 },
+    { "room": "r_schlafzimmer", "position": [0, 7], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [2.5, 8], "width_mm": 1500 },
+    { "room": "r_kinderzimmer", "position": [7.5, 8], "width_mm": 1500 },
+    { "room": "r_kinderzimmer", "position": [10, 7], "width_mm": 1500 }
+  ]
+}

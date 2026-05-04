@@ -1,0 +1,53 @@
+{
+  "id": "eu_uk_2bed_liverpool_waterfront",
+  "metadata": {
+    "region": "europe",
+    "country": "UK",
+    "city_inspiration": "Liverpool",
+    "size_label": "2bed",
+    "total_area_sqm": 71.5,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Liverpool Albert Dock warehouse conversion",
+    "description": "A 2-bed Liverpool waterfront flat in a converted Victorian dock warehouse. Open living-kitchen with exposed brick and full-width balcony, two bedrooms and a bath off a central hallway. Albert Dock or Princes Dock typology.",
+    "suitable_for": ["young couple", "city worker", "investor"],
+    "tags": ["liverpool", "waterfront", "warehouse", "conversion", "2bed", "exposed_brick", "loft", "uk"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,6.5],[0,6.5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living + Kitchen", "type": "living",
+      "polygon": [[0,0],[7,0],[7,4],[0,4]], "area_sqm": 28,
+      "notes": "Exposed brick walls, dock view" },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[7,0],[11,0],[11,4],[7,4]], "area_sqm": 16 },
+    { "id": "r_hall", "name": "Hallway", "type": "corridor",
+      "polygon": [[0,4],[11,4],[11,5],[0,5]], "area_sqm": 11 },
+    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5],[5,5],[5,6.5],[0,6.5]], "area_sqm": 7.5 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,6.5],[5,6.5]], "area_sqm": 4.5 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[8,5],[11,5],[11,6.5],[8,6.5]], "area_sqm": 4.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0, 4.5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living", "position": [3.5, 4], "width_mm": 1100 },
+    { "from": "r_living", "to": "r_balcony", "position": [7, 2],
+      "width_mm": 1800, "swing": "slide" },
+    { "from": "r_hall", "to": "r_bedroom1", "position": [2.5, 5], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_bedroom2", "position": [6.5, 5], "width_mm": 800 },
+    { "from": "r_hall", "to": "r_bath", "position": [9.5, 5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [3.5, 0], "width_mm": 2400 },
+    { "room": "r_bedroom1", "position": [2.5, 6.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [6.5, 6.5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [11, 5.75], "width_mm": 600 },
+    { "room": "r_balcony", "position": [11, 2], "width_mm": 2400 }
+  ]
+}

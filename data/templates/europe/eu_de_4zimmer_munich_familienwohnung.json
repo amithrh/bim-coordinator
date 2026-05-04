@@ -1,0 +1,65 @@
+{
+  "id": "eu_de_4zimmer_munich_familienwohnung",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Munich",
+    "size_label": "4zimmer",
+    "total_area_sqm": 110,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Munich Bogenhausen Vier-Zimmer with central kitchen island",
+    "description": "A premium Munich Vier-Zimmerwohnung in Bogenhausen / Neuhausen — square plan (10.5 m × 10.5 m), central peninsula kitchen with island opening into the Wohn-Esszimmer (combined living-dining), bay-window Erker on the south facade, three bedrooms and full bath wrap around the perimeter. Distinct from open-plan Neubau by having centre-of-the-plan circulation through the kitchen.",
+    "suitable_for": ["family with two children", "professional couple plus home office"],
+    "tags": ["munich", "bogenhausen", "familienwohnung", "4zimmer", "central_kitchen", "kitchen_island", "erker", "premium"]
+  },
+  "boundary": {
+    "polygon": [[0,0.5],[3,0.5],[3,0],[7.5,0],[7.5,0.5],[10.5,0.5],[10.5,10.5],[0,10.5]],
+    "wall_thickness_mm": 240,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_wohn_ess", "name": "Wohn-Esszimmer (with Erker)", "type": "living",
+      "polygon": [[0,0.5],[3,0.5],[3,0],[7.5,0],[7.5,0.5],[10.5,0.5],[10.5,5],[0,5]],
+      "area_sqm": 49.25,
+      "notes": "Combined living-dining with projecting Erker bay on south facade" },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[3,5],[7.5,5],[7.5,7],[3,7]], "area_sqm": 9,
+      "notes": "Central peninsula kitchen with island, accessible from both sides" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,5],[3,5],[3,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[7.5,5],[10.5,5],[10.5,7],[7.5,7]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,7],[5,7],[5,10.5],[0,10.5]], "area_sqm": 17.5 },
+    { "id": "r_kinderzimmer1", "name": "Kinderzimmer 1", "type": "bedroom",
+      "polygon": [[5,7],[8,7],[8,10.5],[5,10.5]], "area_sqm": 10.5 },
+    { "id": "r_kinderzimmer2", "name": "Kinderzimmer 2", "type": "bedroom",
+      "polygon": [[8,7],[10.5,7],[10.5,10.5],[8,10.5]], "area_sqm": 8.75 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 6],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohn_ess", "position": [1.5, 5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_kuche", "position": [3, 6], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_wohn_ess", "position": [5.25, 5], "width_mm": 1500 },
+    { "from": "r_kuche", "to": "r_bad", "position": [7.5, 6], "width_mm": 800 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [1.5, 7], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_kinderzimmer1", "position": [6, 7], "width_mm": 900 },
+    { "from": "r_bad", "to": "r_kinderzimmer2", "position": [9, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohn_ess", "position": [5.25, 0], "width_mm": 1500 },
+    { "room": "r_wohn_ess", "position": [1.5, 0.5], "width_mm": 1500 },
+    { "room": "r_wohn_ess", "position": [9, 0.5], "width_mm": 1500 },
+    { "room": "r_wohn_ess", "position": [0, 2.5], "width_mm": 1800 },
+    { "room": "r_wohn_ess", "position": [10.5, 2.5], "width_mm": 1800 },
+    { "room": "r_diele", "position": [0, 6], "width_mm": 800 },
+    { "room": "r_bad", "position": [10.5, 6], "width_mm": 600 },
+    { "room": "r_schlafzimmer", "position": [0, 8.75], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [2.5, 10.5], "width_mm": 1500 },
+    { "room": "r_kinderzimmer1", "position": [6.5, 10.5], "width_mm": 1200 },
+    { "room": "r_kinderzimmer2", "position": [9.25, 10.5], "width_mm": 1200 },
+    { "room": "r_kinderzimmer2", "position": [10.5, 8.75], "width_mm": 1200 }
+  ]
+}

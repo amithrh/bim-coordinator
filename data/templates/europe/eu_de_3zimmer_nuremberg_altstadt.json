@@ -1,0 +1,57 @@
+{
+  "id": "eu_de_3zimmer_nuremberg_altstadt",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Nuremberg",
+    "size_label": "3zimmer",
+    "total_area_sqm": 66.5,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Nuremberg Altstadt with internal Hof (light well courtyard)",
+    "description": "A Nuremberg Altstadt Drei-Zimmerwohnung in a building with an internal Hof — the apartment U-shapes around a small light-well courtyard. Wohnzimmer along the street, kitchen and bath share one wing across the Hof, two bedrooms on the other wing. The Hof brings daylight to interior rooms. Distinctive medieval-Altstadt typology.",
+    "suitable_for": ["young couple with one child", "creative professional"],
+    "tags": ["nuremberg", "altstadt", "3zimmer", "hof", "courtyard", "u_shape", "medieval", "lightwell"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[6.5,8],[6.5,3.5],[3.5,3.5],[3.5,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[10,0],[10,2.5],[0,2.5]], "area_sqm": 25,
+      "notes": "Long street-facing room across the south" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,2.5],[10,2.5],[10,3.5],[0,3.5]], "area_sqm": 10 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[0,3.5],[3.5,3.5],[3.5,6],[0,6]], "area_sqm": 8.75 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[0,6],[3.5,6],[3.5,8],[0,8]], "area_sqm": 7 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[6.5,3.5],[10,3.5],[10,6],[6.5,6]], "area_sqm": 8.75 },
+    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[6.5,6],[10,6],[10,8],[6.5,8]], "area_sqm": 7 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 3],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnzimmer", "position": [5, 2.5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_kuche", "position": [1.5, 3.5], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [8, 3.5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_bad", "position": [1.5, 6], "width_mm": 800 },
+    { "from": "r_schlafzimmer", "to": "r_kinderzimmer", "position": [8, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [3, 0], "width_mm": 2400 },
+    { "room": "r_wohnzimmer", "position": [7, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [0, 4.75], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [3.5, 4.75], "width_mm": 1200 },
+    { "room": "r_bad", "position": [0, 7], "width_mm": 600 },
+    { "room": "r_bad", "position": [3.5, 7], "width_mm": 800 },
+    { "room": "r_schlafzimmer", "position": [10, 4.75], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [6.5, 4.75], "width_mm": 1200 },
+    { "room": "r_kinderzimmer", "position": [10, 7], "width_mm": 1500 },
+    { "room": "r_kinderzimmer", "position": [6.5, 7], "width_mm": 1200 }
+  ]
+}

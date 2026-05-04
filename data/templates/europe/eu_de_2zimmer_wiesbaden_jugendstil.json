@@ -1,0 +1,52 @@
+{
+  "id": "eu_de_2zimmer_wiesbaden_jugendstil",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Wiesbaden",
+    "size_label": "2zimmer",
+    "total_area_sqm": 61.2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Wiesbaden Jugendstil with projecting Erker bay window",
+    "description": "A characterful Wiesbaden Jugendstil (German Art Nouveau, 1900-1914) Zwei-Zimmerwohnung with the signature feature of the era — a projecting Erker bay window on the street facade. Generous Wohnzimmer wraps around the bay (giving 3 outward-facing windows), kitchen and bedroom at the back, full bath. Typical Bergkirchenviertel or Rheingauviertel building.",
+    "suitable_for": ["young couple", "professional", "art-history enthusiast"],
+    "tags": ["wiesbaden", "jugendstil", "art_nouveau", "erker", "bay_window", "2zimmer", "altbau_era", "bergkirchenviertel"]
+  },
+  "boundary": {
+    "polygon": [[0,0.8],[3,0.8],[3,0],[4.5,0],[4.5,0.8],[8,0.8],[8,8.3],[0,8.3]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer (with Erker)", "type": "living",
+      "polygon": [[0,0.8],[3,0.8],[3,0],[4.5,0],[4.5,0.8],[8,0.8],[8,4.5],[0,4.5]],
+      "area_sqm": 30.8,
+      "notes": "Wohnzimmer wraps around the projecting Erker bay" },
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,4.5],[8,4.5],[8,5.5],[0,5.5]], "area_sqm": 8 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[0,5.5],[3,5.5],[3,8.3],[0,8.3]], "area_sqm": 8.4 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[3,5.5],[5.5,5.5],[5.5,8.3],[3,8.3]], "area_sqm": 7 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[5.5,5.5],[8,5.5],[8,8.3],[5.5,8.3]], "area_sqm": 7 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 5],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnzimmer", "position": [4, 4.5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_kuche", "position": [1.5, 5.5], "width_mm": 800 },
+    { "from": "r_diele", "to": "r_schlafzimmer", "position": [4.25, 5.5], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_bad", "position": [6.75, 5.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [3.75, 0], "width_mm": 1200 },
+    { "room": "r_wohnzimmer", "position": [1.5, 0.8], "width_mm": 1500 },
+    { "room": "r_wohnzimmer", "position": [6, 0.8], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [1.5, 8.3], "width_mm": 1200 },
+    { "room": "r_schlafzimmer", "position": [4.25, 8.3], "width_mm": 1500 },
+    { "room": "r_bad", "position": [6.75, 8.3], "width_mm": 800 },
+    { "room": "r_bad", "position": [8, 7], "width_mm": 600 }
+  ]
+}

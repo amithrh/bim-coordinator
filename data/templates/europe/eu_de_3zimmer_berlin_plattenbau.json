@@ -1,0 +1,57 @@
+{
+  "id": "eu_de_3zimmer_berlin_plattenbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "3zimmer",
+    "total_area_sqm": 64,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Berlin WBS-70 Plattenbau East-German prefab three-room",
+    "description": "A standardized Berlin Plattenbau Drei-Zimmerwohnung from the WBS-70 series — narrow rectangular footprint (4 m × 16 m, the panelized module width), separate Wohnzimmer at the front with small balcony, central Bad and Kueche on a single line, two narrow bedrooms at the back. Marzahn or Hellersdorf classic. Note the very different proportions from Altbau and Neubau.",
+    "suitable_for": ["young couple", "single parent", "budget conscious"],
+    "tags": ["berlin", "plattenbau", "wbs70", "ddr", "prefab", "narrow", "panelized", "marzahn", "3zimmer"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[4,0],[4,16],[0,16]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[4,0],[4,4],[0,4]], "area_sqm": 16,
+      "notes": "Narrow front-facing living room" },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,4],[4,4],[4,5.5],[0,5.5]], "area_sqm": 6,
+      "notes": "Small Loggia-style balcony" },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[0,5.5],[2.5,5.5],[2.5,8.5],[0,8.5]], "area_sqm": 7.5 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[2.5,5.5],[4,5.5],[4,8.5],[2.5,8.5]], "area_sqm": 4.5 },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,8.5],[4,8.5],[4,9.5],[0,9.5]], "area_sqm": 4 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,9.5],[4,9.5],[4,13],[0,13]], "area_sqm": 14 },
+    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[0,13],[4,13],[4,16],[0,16]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_korridor", "position": [0, 9],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_korridor", "to": "r_kuche", "position": [1.25, 8.5], "width_mm": 800 },
+    { "from": "r_korridor", "to": "r_bad", "position": [3.25, 8.5], "width_mm": 700 },
+    { "from": "r_korridor", "to": "r_schlafzimmer", "position": [2, 9.5], "width_mm": 800 },
+    { "from": "r_kuche", "to": "r_balkon", "position": [1.25, 5.5], "width_mm": 800 },
+    { "from": "r_balkon", "to": "r_wohnzimmer", "position": [2, 4], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_schlafzimmer", "to": "r_kinderzimmer", "position": [2, 13], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [2, 0], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [0, 7], "width_mm": 1200 },
+    { "room": "r_bad", "position": [4, 7], "width_mm": 600 },
+    { "room": "r_schlafzimmer", "position": [4, 11.25], "width_mm": 1200 },
+    { "room": "r_kinderzimmer", "position": [2, 16], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [4, 4.75], "width_mm": 1200 }
+  ]
+}

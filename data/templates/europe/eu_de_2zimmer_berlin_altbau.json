@@ -1,0 +1,51 @@
+{
+  "id": "eu_de_2zimmer_berlin_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "2zimmer",
+    "total_area_sqm": 65,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Berlin Wilhelminian Altbau railroad layout (Eisenbahnwohnung)",
+    "description": "A classic Berlin Altbau Zwei-Zimmerwohnung in the Wilhelminian Eisenbahnwohnung style — long narrow plan (5 m wide × 13 m deep), grand street-facing Salon at the front, separate bedroom along the long Berliner Korridor, kitchen and bath at the back near the Hinterhaus stairwell. High ceilings (3.2 m), thick exterior walls. Typical Prenzlauer Berg or Kreuzberg.",
+    "suitable_for": ["young couple", "creative", "academic"],
+    "tags": ["berlin", "altbau", "wilhelminian", "railroad", "eisenbahnwohnung", "berliner_korridor", "high_ceilings", "2zimmer", "prenzlauerberg"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,13],[0,13]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[5,0],[5,5],[0,5]], "area_sqm": 25,
+      "notes": "Grand street-facing Salon — typical Wilhelminian front room" },
+    { "id": "r_korridor", "name": "Berliner Korridor", "type": "corridor",
+      "polygon": [[0,5],[2,5],[2,11],[0,11]], "area_sqm": 12,
+      "notes": "Long Berliner Korridor running the depth of the apartment" },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,11],[2,11]], "area_sqm": 18,
+      "notes": "Bedroom along the corridor, courtyard view" },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[0,11],[2,11],[2,13],[0,13]], "area_sqm": 4 },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[2,11],[5,11],[5,13],[2,13]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_korridor", "position": [0, 8],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_korridor", "to": "r_wohnzimmer", "position": [1, 5], "width_mm": 1000 },
+    { "from": "r_korridor", "to": "r_schlafzimmer", "position": [2, 8], "width_mm": 900 },
+    { "from": "r_korridor", "to": "r_bad", "position": [1, 11], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_kuche", "position": [2, 12], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [1.5, 0], "width_mm": 1500 },
+    { "room": "r_wohnzimmer", "position": [3.5, 0], "width_mm": 1500 },
+    { "room": "r_schlafzimmer", "position": [5, 8], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [3.5, 13], "width_mm": 1200 },
+    { "room": "r_bad", "position": [1, 13], "width_mm": 600 }
+  ]
+}
