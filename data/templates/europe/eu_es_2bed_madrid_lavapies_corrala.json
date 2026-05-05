@@ -1,0 +1,60 @@
+{
+  "id": "eu_es_2bed_madrid_lavapies_corrala",
+  "metadata": {
+    "region": "europe",
+    "country": "Spain",
+    "city_inspiration": "Madrid",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 64,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Madrid Lavapiés Corrala (apartments around inner patio)",
+    "description": "A Madrid Lavapiés-Embajadores Corrala apartment — typical 60 m² narrow rectangular flat accessed by external corredor balconies around inner patio. Salón-comedor, Cocina semi-independiente, two Dormitorios, Baño, Distribuidor, Galería balcón corredor. 19th-c working-class Casticismo typology. Source: idealista.com Plaza la Corrala Madrid.",
+    "suitable_for": ["couple", "creative_artist", "single_professional"],
+    "tags": ["spain", "madrid", "corrala", "2bed", "vintage_traditional", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_distribuidor", "name": "Distribuidor", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_salon", "name": "Salón-comedor", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,4.5],[1.5,4.5]], "area_sqm": 20.25 },
+    { "id": "r_cocina", "name": "Cocina", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4.5],[6,4.5]], "area_sqm": 9 },
+    { "id": "r_bano", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_galeria", "name": "Galería corredor", "type": "balcony",
+      "polygon": [[0,5],[1.5,5],[1.5,8],[0,8]], "area_sqm": 4.5,
+      "notes": "External corredor balcony around inner patio" },
+    { "id": "r_dorm1", "name": "Dormitorio principal", "type": "master_bedroom",
+      "polygon": [[1.5,4.5],[5,4.5],[5,8],[1.5,8]], "area_sqm": 12.25 },
+    { "id": "r_dorm2", "name": "Dormitorio 2", "type": "bedroom",
+      "polygon": [[5,4.5],[8,4.5],[8,8],[5,8]], "area_sqm": 10.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_distribuidor", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_distribuidor", "to": "r_salon", "position": [1.5, 1], "width_mm": 1000 },
+    { "from": "r_distribuidor", "to": "r_bano", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_bano", "to": "r_galeria", "position": [0.75, 5], "width_mm": 700, "swing": "slide" },
+    { "from": "r_salon", "to": "r_cocina", "position": [6, 2.25], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_dorm1", "position": [3.25, 4.5], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_dorm2", "position": [5.5, 4.5], "width_mm": 900 },
+    { "from": "r_dorm1", "to": "r_dorm2", "position": [5, 6.25], "width_mm": 800 },
+    { "from": "r_dorm1", "to": "r_galeria", "position": [1.5, 6.5], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [3.75, 0], "width_mm": 2000 },
+    { "room": "r_cocina", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_cocina", "position": [8, 2.25], "width_mm": 1200 },
+    { "room": "r_dorm1", "position": [3.25, 8], "width_mm": 1500 },
+    { "room": "r_dorm2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_dorm2", "position": [8, 6.25], "width_mm": 1500 },
+    { "room": "r_bano", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_galeria", "position": [0, 6.5], "width_mm": 1500 }
+  ]
+}

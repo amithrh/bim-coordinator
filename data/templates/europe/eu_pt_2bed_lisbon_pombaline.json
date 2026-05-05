@@ -1,0 +1,66 @@
+{
+  "id": "eu_pt_2bed_lisbon_pombaline",
+  "metadata": {
+    "region": "europe",
+    "country": "Portugal",
+    "city_inspiration": "Lisbon",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Lisbon Pombalino apartment (Baixa/Alfama, post-1755 reconstruction)",
+    "description": "A Lisbon Pombalino-style apartment — Baixa/Alfama post-earthquake reconstruction typology, ~80 m². Hall, Sala (with azulejos), Cozinha, Master + Camera, Casa de banho, Marquise enclosed balcony. Original wood floors, blue azulejo tiles, Pombalino timber-frame structure. Source: idealista.pt Lisbon Baixa.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["portugal", "lisbon", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20,
+      "notes": "Sala with original azulejo tiles" },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_casa_banho", "name": "Casa de banho", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_master", "name": "Quarto principal", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,8],[2,8]], "area_sqm": 9 },
+    { "id": "r_camera", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_marquise", "name": "Marquise", "type": "balcony",
+      "polygon": [[2,8],[8,8],[8,9],[2,9]], "area_sqm": 6,
+      "notes": "Enclosed glazed balcony — Lisbon signature" },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,9],[0,9]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_sala", "position": [2, 2], "width_mm": 1200 },
+    { "from": "r_hall", "to": "r_casa_banho", "position": [1, 4], "width_mm": 800 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_sala", "to": "r_master", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_camera", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_casa_banho", "to": "r_hall_back", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_master", "to": "r_camera", "position": [5, 6.5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_marquise", "position": [3.5, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_camera", "to": "r_marquise", "position": [6.5, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_hall_back", "to": "r_marquise", "position": [2, 8.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [4, 0], "width_mm": 2000 },
+    { "room": "r_cozinha", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_cozinha", "position": [8, 2.5], "width_mm": 1200 },
+    { "room": "r_master", "position": [3.5, 8], "width_mm": 1500 },
+    { "room": "r_camera", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_camera", "position": [8, 6.5], "width_mm": 1200 },
+    { "room": "r_marquise", "position": [5, 9], "width_mm": 2400 },
+    { "room": "r_casa_banho", "position": [0, 5.5], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 2], "width_mm": 800 }
+  ]
+}

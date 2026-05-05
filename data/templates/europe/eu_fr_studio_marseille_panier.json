@@ -1,0 +1,51 @@
+{
+  "id": "eu_fr_studio_marseille_panier",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Marseille",
+    "size_label": "studio",
+    "size_band": "1bed",
+    "total_area_sqm": 48,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Marseille Le Panier compact (top floor with terrasse)",
+    "description": "A Marseille Le Panier compact apartment — smallest historic core typology, 47 m². Open Sejour-cuisine, Chambre, SDB, with prized top-floor terrasse overlooking Vieux Port. Pastel render, tomettes tile floors, volutes facade detail. Source: petitspriximmo.com Le Panier listings.",
+    "suitable_for": ["single_professional", "creative_artist", "couple"],
+    "tags": ["france", "marseille", "trois_fenetres", "1bed", "vintage_traditional", "balkon", "single_floor", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_sejour_cuisine", "name": "Séjour-Cuisine", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4.5],[0,4.5]], "area_sqm": 22.5,
+      "notes": "Open séjour-cuisine with tomettes floor" },
+    { "id": "r_terrasse", "name": "Terrasse", "type": "balcony",
+      "polygon": [[5,0],[6,0],[6,8],[5,8]], "area_sqm": 8,
+      "notes": "Top-floor terrasse — Vieux Port view" },
+    { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_chambre", "name": "Chambre", "type": "master_bedroom",
+      "polygon": [[2,4.5],[5,4.5],[5,8],[2,8]], "area_sqm": 10.5 },
+    { "id": "r_closet", "name": "Closet", "type": "store",
+      "polygon": [[0,7],[2,7],[2,8],[0,8]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_sejour_cuisine", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_sejour_cuisine", "to": "r_terrasse", "position": [5, 2.25], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_sejour_cuisine", "to": "r_sdb", "position": [1, 4.5], "width_mm": 800 },
+    { "from": "r_sejour_cuisine", "to": "r_chambre", "position": [3.5, 4.5], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_closet", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_chambre", "to": "r_terrasse", "position": [5, 6], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_sejour_cuisine", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_sejour_cuisine", "position": [0, 2.25], "width_mm": 1500 },
+    { "room": "r_chambre", "position": [3.5, 8], "width_mm": 1500 },
+    { "room": "r_terrasse", "position": [6, 4], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [0, 5.75], "width_mm": 600 }
+  ]
+}

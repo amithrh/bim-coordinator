@@ -1,0 +1,63 @@
+{
+  "id": "eu_it_1bed_milano_compact",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Milano",
+    "size_label": "bilocale",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Milano bilocale compatto (Navigli area)",
+    "description": "A Milano Navigli/Porta Romana bilocale compact — typical 50 m². Ingresso, Soggiorno-Cucina, Camera matrimoniale, Bagno, Balconcino. Modern Milanese starter unit. Source: immobiliare.it Milano bilocale.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["italy", "milano", "neubau", "1bed", "current_2020plus", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_soggiorno_cucina", "name": "Soggiorno-Cucina", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_balconcino", "name": "Balconcino", "type": "balcony",
+      "polygon": [[5,0],[7,0],[7,2],[5,2]], "area_sqm": 4 },
+    { "id": "r_kitchenette_strip", "name": "Kitchen strip", "type": "kitchen",
+      "polygon": [[5,2],[7,2],[7,4],[5,4]], "area_sqm": 4 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_camera", "name": "Camera matrimoniale", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno_cucina", "position": [1.5, 1], "width_mm": 1000 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_soggiorno_cucina", "to": "r_balconcino", "position": [5, 1], "width_mm": 800, "swing": "slide" },
+    { "from": "r_soggiorno_cucina", "to": "r_kitchenette_strip", "position": [5, 3], "width_mm": 1100 },
+    { "from": "r_balconcino", "to": "r_kitchenette_strip", "position": [6, 2], "width_mm": 700 },
+    { "from": "r_soggiorno_cucina", "to": "r_camera", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_kitchenette_strip", "to": "r_storage", "position": [6, 4], "width_mm": 700 },
+    { "from": "r_camera", "to": "r_storage", "position": [5, 5.5], "width_mm": 700 },
+    { "from": "r_bagno", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_camera", "to": "r_hall_back", "position": [1.5, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno_cucina", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_soggiorno_cucina", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_balconcino", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kitchenette_strip", "position": [7, 3], "width_mm": 1200 },
+    { "room": "r_camera", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 5.5], "width_mm": 1000 },
+    { "room": "r_bagno", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_hall_back", "position": [0, 6], "width_mm": 800 }
+  ]
+}

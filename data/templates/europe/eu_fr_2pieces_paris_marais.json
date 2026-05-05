@@ -1,0 +1,63 @@
+{
+  "id": "eu_fr_2pieces_paris_marais",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Paris",
+    "size_label": "2pieces",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Paris Marais (3e/4e arr.) 2-pièces ancien",
+    "description": "A Paris Marais 3e/4e arr. 2-pièces ancien — typical 50 m² historic district. Entrée, Séjour with old beams, Cuisine américaine, Chambre, SDB, WC. Pierre apparente walls, parquet ancien. Source: SeLoger Marais.",
+    "suitable_for": ["single_professional", "couple", "creative_artist"],
+    "tags": ["france", "paris", "vintage_traditional", "1bed", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14,
+      "notes": "Séjour with exposed beams + parquet ancien" },
+    { "id": "r_cuisine", "name": "Cuisine américaine", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[5,3],[7,3],[7,4],[5,4]], "area_sqm": 2 },
+    { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_chambre", "name": "Chambre", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [1.5, 1], "width_mm": 1000 },
+    { "from": "r_entree", "to": "r_sdb", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [5, 1.5], "width_mm": 1100 },
+    { "from": "r_cuisine", "to": "r_wc", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_wc", "position": [5, 3.5], "width_mm": 700 },
+    { "from": "r_sdb", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_chambre", "to": "r_storage", "position": [5, 5.5], "width_mm": 800 },
+    { "from": "r_chambre", "to": "r_hall_back", "position": [1.5, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_sejour", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_cuisine", "position": [6, 0], "width_mm": 1200 },
+    { "room": "r_cuisine", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_chambre", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 5.5], "width_mm": 1200 },
+    { "room": "r_sdb", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_hall_back", "position": [0, 6], "width_mm": 800 }
+  ]
+}

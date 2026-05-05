@@ -1,0 +1,47 @@
+{
+  "id": "eu_de_1zimmer_berlin_wedding_studio",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 25,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Berlin Wedding minimal studio (Plattenbau-era)",
+    "description": "A compact Berlin Wedding studio apartment — typical 25 m² Wohnen-Schlafen combined, with built-in Küchenzeile, internal Duschbad and a tiny Diele. 1.OG with Aufzug, integrated EBK + Waschtrockner. Source: crocodilian.de Wedding 25 m² listing.",
+    "suitable_for": ["single_professional", "student_share"],
+    "tags": ["germany", "berlin", "plattenbau", "studio", "modernist_1970s", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,5],[0,5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2,
+      "notes": "Tiny Diele entry" },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[1,0],[3,0],[3,2],[1,2]], "area_sqm": 4,
+      "notes": "Internal Duschbad" },
+    { "id": "r_kuche", "name": "Küchenzeile", "type": "kochnische",
+      "polygon": [[3,0],[5,0],[5,2],[3,2]], "area_sqm": 4,
+      "notes": "Built-in Küchenzeile" },
+    { "id": "r_wohnen", "name": "Wohnen-Schlafen", "type": "living",
+      "polygon": [[0,2],[5,2],[5,5],[0,5]], "area_sqm": 15,
+      "notes": "Combined Wohn-Schlafraum" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnen", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_wohnen", "to": "r_bad", "position": [2, 2], "width_mm": 700 },
+    { "from": "r_wohnen", "to": "r_kuche", "position": [4, 2], "width_mm": 1200 }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [2.5, 5], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [5, 1], "width_mm": 600 }
+  ]
+}

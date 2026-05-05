@@ -1,0 +1,97 @@
+{
+  "id": "eu_nl_2bed_amsterdam_jordaan_trapgevel",
+  "metadata": {
+    "region": "europe",
+    "country": "Netherlands",
+    "city_inspiration": "Amsterdam",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 95,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Amsterdam Jordaan Trapgevel-pand (compact 17c stepped-gable, 2 floors)",
+    "description": "An Amsterdam Jordaan trapgevel-pand compact apartment — typical 90 m² 17th-c stepped-gable building, very narrow ~5m plot. BG: Woonk + open keuken + Hal + WC + back Plaatsje. R+1: Master + Slaapk + Badk + Hal + Balkon. Steep Dutch stair, exposed beams. Source: funda.nl Amsterdam Jordaan listings.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["netherlands", "amsterdam", "trapgevel", "grachtenhuis", "2bed", "vintage_traditional", "narrow_lot", "two_floor_duplex", "balkon"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,11],[0,11]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "Begane Grond",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 3000,
+      "rooms": [
+        { "id": "r_hal", "name": "Hal", "type": "entry",
+          "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+        { "id": "r_open_keuken", "name": "Open Keuken", "type": "kitchen",
+          "polygon": [[1.5,0],[5,0],[5,3],[1.5,3]], "area_sqm": 10.5 },
+        { "id": "r_wc", "name": "WC", "type": "wc",
+          "polygon": [[0,3],[1.5,3],[1.5,4.5],[0,4.5]], "area_sqm": 2.25 },
+        { "id": "r_storage", "name": "Storage", "type": "store",
+          "polygon": [[1.5,3],[5,3],[5,4.5],[1.5,4.5]], "area_sqm": 5.25 },
+        { "id": "r_woonkamer", "name": "Woonkamer", "type": "living",
+          "polygon": [[0,4.5],[5,4.5],[5,8],[0,8]], "area_sqm": 17.5 },
+        { "id": "r_plaatsje", "name": "Plaatsje (binnenplaats)", "type": "balcony",
+          "polygon": [[0,8],[5,8],[5,11],[0,11]], "area_sqm": 15,
+          "notes": "Inner courtyard plaatsje" }
+      ],
+      "doors": [
+        { "from": "outside", "to": "r_hal", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+        { "from": "r_hal", "to": "r_open_keuken", "position": [1.5, 1.5], "width_mm": 1100 },
+        { "from": "r_hal", "to": "r_wc", "position": [0.75, 3], "width_mm": 700 },
+        { "from": "r_open_keuken", "to": "r_storage", "position": [3, 3], "width_mm": 800 },
+        { "from": "r_wc", "to": "r_woonkamer", "position": [0.75, 4.5], "width_mm": 700 },
+        { "from": "r_storage", "to": "r_woonkamer", "position": [3, 4.5], "width_mm": 1100 },
+        { "from": "r_woonkamer", "to": "r_plaatsje", "position": [2.5, 8], "width_mm": 1500, "swing": "slide" }
+      ],
+      "windows": [
+        { "room": "r_open_keuken", "position": [3, 0], "width_mm": 2000 },
+        { "room": "r_woonkamer", "position": [2.5, 8], "width_mm": 2400 },
+        { "room": "r_woonkamer", "position": [0, 6.25], "width_mm": 1500 },
+        { "room": "r_woonkamer", "position": [5, 6.25], "width_mm": 1500 },
+        { "room": "r_plaatsje", "position": [2.5, 11], "width_mm": 2000 },
+        { "room": "r_hal", "position": [0, 1.5], "width_mm": 800 }
+      ]
+    },
+    {
+      "name": "Eerste Verdieping",
+      "elevation_mm": 3000,
+      "ceiling_height_mm": 3000,
+      "boundary_polygon": [[0,0],[5,0],[5,8],[0,8]],
+      "rooms": [
+        { "id": "r_hal2", "name": "Hal", "type": "entry",
+          "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+        { "id": "r_master", "name": "Master Slaapkamer", "type": "master_bedroom",
+          "polygon": [[2,0],[5,0],[5,4.5],[2,4.5]], "area_sqm": 13.5 },
+        { "id": "r_badkamer", "name": "Badkamer", "type": "bathroom",
+          "polygon": [[0,3],[2,3],[2,5.5],[0,5.5]], "area_sqm": 5 },
+        { "id": "r_slaapkamer", "name": "Slaapkamer 2", "type": "bedroom",
+          "polygon": [[2,4.5],[5,4.5],[5,8],[2,8]], "area_sqm": 10.5 },
+        { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+          "polygon": [[0,5.5],[2,5.5],[2,8],[0,8]], "area_sqm": 5 }
+      ],
+      "doors": [
+        { "from": "r_hal2", "to": "r_master", "position": [2, 1.5], "width_mm": 900 },
+        { "from": "r_hal2", "to": "r_badkamer", "position": [1, 3], "width_mm": 800 },
+        { "from": "r_master", "to": "r_slaapkamer", "position": [3.5, 4.5], "width_mm": 800 },
+        { "from": "r_badkamer", "to": "r_balkon", "position": [1, 5.5], "width_mm": 800, "swing": "slide" },
+        { "from": "r_slaapkamer", "to": "r_balkon", "position": [2, 6.75], "width_mm": 800, "swing": "slide" }
+      ],
+      "windows": [
+        { "room": "r_master", "position": [3.5, 0], "width_mm": 2000 },
+        { "room": "r_slaapkamer", "position": [3.5, 8], "width_mm": 1800 },
+        { "room": "r_slaapkamer", "position": [5, 6.25], "width_mm": 1500 },
+        { "room": "r_balkon", "position": [1, 8], "width_mm": 1500 },
+        { "room": "r_badkamer", "position": [0, 4.25], "width_mm": 600 },
+        { "room": "r_hal2", "position": [0, 1.5], "width_mm": 800 }
+      ]
+    }
+  ]
+}

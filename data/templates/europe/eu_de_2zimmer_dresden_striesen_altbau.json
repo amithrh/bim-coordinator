@@ -1,0 +1,59 @@
+{
+  "id": "eu_de_2zimmer_dresden_striesen_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Dresden",
+    "size_label": "2zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 90,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Dresden Striesen Altbau 2-Zimmer with Elbblick",
+    "description": "A Dresden Striesen Altbau-Perle 2-Zimmer — typical 80 m² Gründerzeit Altbau with Elbblick (Elbe view) Balkon. Wohnz, Schlafz, separate Küche, Bad, generous Flur with stair landing, Hall extension to back. Original Dielenboden + Stuck. Source: nuroa.de Dresden Striesen 2-Zi listings.",
+    "suitable_for": ["couple", "young_family", "academic"],
+    "tags": ["germany", "dresden", "altbau", "1bed", "gruenderzeit", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Wohnzimmer with Elbblick" },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[7,4],[10,4],[10,7],[7,7]], "area_sqm": 9 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[7,5],[7,9],[2,9]], "area_sqm": 20 },
+    { "id": "r_balkon", "name": "Balkon (Elbblick)", "type": "balcony",
+      "polygon": [[7,7],[10,7],[10,9],[7,9]], "area_sqm": 6 },
+    { "id": "r_hall_ext", "name": "Flur (back)", "type": "corridor",
+      "polygon": [[0,5],[2,5],[2,9],[0,9]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0, 2.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnz", "position": [2, 2.5], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_hall_ext", "position": [1, 5], "width_mm": 900 },
+    { "from": "r_hall_ext", "to": "r_schlafz", "position": [2, 7], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [7, 2], "width_mm": 1100 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [4.5, 5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_bad", "position": [8.5, 4], "width_mm": 800 },
+    { "from": "r_schlafz", "to": "r_bad", "position": [7, 6], "width_mm": 800 },
+    { "from": "r_schlafz", "to": "r_balkon", "position": [7, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 3000 },
+    { "room": "r_kuche", "position": [8.5, 0], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [10, 2], "width_mm": 1200 },
+    { "room": "r_bad", "position": [10, 5.5], "width_mm": 800 },
+    { "room": "r_schlafz", "position": [4.5, 9], "width_mm": 2400 },
+    { "room": "r_balkon", "position": [10, 8], "width_mm": 1500 },
+    { "room": "r_flur", "position": [0, 2.5], "width_mm": 600 }
+  ]
+}

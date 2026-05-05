@@ -10,51 +10,355 @@
     "bathrooms": 1,
     "style": "Munich Neubau canonical 3-Zimmer with recessed Loggia",
     "description": "A canonical modern Munich Neubau Drei-Zimmerwohnung in Sendling or Westend — the recessed Loggia (set into the building face, not protruding) distinguishes it from the cantilevered Hamburg HafenCity and the chamfered-corner Berlin Neubau. Open Wohnkueche, two bedrooms with shared bath off a central Diele.",
-    "suitable_for": ["young family", "professional couple"],
-    "tags": ["munich", "neubau", "3zimmer", "wohnkueche", "loggia", "recessed_balcony", "sendling", "westend"]
+    "suitable_for": [
+      "young family",
+      "professional couple"
+    ],
+    "tags": [
+      "munich",
+      "neubau",
+      "3zimmer",
+      "wohnkueche",
+      "loggia",
+      "recessed_balcony",
+      "sendling",
+      "westend",
+      "current_2020plus"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        0,
+        8
+      ]
+    ],
     "wall_thickness_mm": 240,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
-      "polygon": [[0,0],[6,0],[6,5],[0,5]], "area_sqm": 30 },
-    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
-      "polygon": [[6,0],[10,0],[10,2.5],[6,2.5]], "area_sqm": 10,
-      "notes": "Recessed Loggia — set into the building face" },
-    { "id": "r_essen", "name": "Esszimmer", "type": "dining",
-      "polygon": [[6,2.5],[10,2.5],[10,5],[6,5]], "area_sqm": 10 },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[0,5],[10,5],[10,6],[0,6]], "area_sqm": 10 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,6],[5,6],[5,8],[0,8]], "area_sqm": 10 },
-    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
-      "polygon": [[5,6],[8,6],[8,8],[5,8]], "area_sqm": 6 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[8,6],[10,6],[10,8],[8,8]], "area_sqm": 4 }
+    {
+      "id": "r_wohnkueche",
+      "name": "Wohnkueche",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 30
+    },
+    {
+      "id": "r_loggia",
+      "name": "Loggia",
+      "type": "balcony",
+      "polygon": [
+        [
+          6,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          10,
+          2.5
+        ],
+        [
+          6,
+          2.5
+        ]
+      ],
+      "area_sqm": 10,
+      "notes": "Recessed Loggia — set into the building face"
+    },
+    {
+      "id": "r_essen",
+      "name": "Esszimmer",
+      "type": "dining",
+      "polygon": [
+        [
+          6,
+          2.5
+        ],
+        [
+          10,
+          2.5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          6,
+          5
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_kinderzimmer",
+      "name": "Kinderzimmer",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          8,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "area_sqm": 4
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_diele", "position": [0, 5.5],
-      "width_mm": 1000, "is_main_entry": true },
-    { "from": "r_wohnkueche", "to": "r_loggia", "position": [6, 1.25],
-      "width_mm": 1500, "swing": "slide" },
-    { "from": "r_wohnkueche", "to": "r_essen", "position": [6, 3.75], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_wohnkueche", "position": [3, 5], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_essen", "position": [8, 5], "width_mm": 1000 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 6], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_kinderzimmer", "position": [6.5, 6], "width_mm": 800 },
-    { "from": "r_diele", "to": "r_bad", "position": [9, 6], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_diele",
+      "position": [
+        0,
+        5.5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_loggia",
+      "position": [
+        6,
+        1.25
+      ],
+      "width_mm": 1500,
+      "swing": "slide"
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_essen",
+      "position": [
+        6,
+        3.75
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnkueche",
+      "position": [
+        3,
+        5
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_essen",
+      "position": [
+        8,
+        5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        2.5,
+        6
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer",
+      "position": [
+        6.5,
+        6
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        9,
+        6
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnkueche", "position": [3, 0], "width_mm": 2400 },
-    { "room": "r_wohnkueche", "position": [0, 2.5], "width_mm": 1500 },
-    { "room": "r_essen", "position": [10, 3.75], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 7], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [2.5, 8], "width_mm": 1500 },
-    { "room": "r_kinderzimmer", "position": [6.5, 8], "width_mm": 1200 },
-    { "room": "r_bad", "position": [10, 7], "width_mm": 600 },
-    { "room": "r_bad", "position": [9, 8], "width_mm": 800 }
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        0,
+        2.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        10,
+        3.75
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        7
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        8
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer",
+      "position": [
+        6.5,
+        8
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        10,
+        7
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        9,
+        8
+      ],
+      "width_mm": 800
+    }
   ]
 }

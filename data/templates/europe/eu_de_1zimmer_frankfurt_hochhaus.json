@@ -1,0 +1,199 @@
+{
+  "id": "eu_de_1zimmer_frankfurt_hochhaus",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Frankfurt",
+    "size_label": "1zimmer",
+    "total_area_sqm": 36,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Frankfurt high-rise tower Einzimmer with skyline view",
+    "description": "A compact Frankfurt high-rise (Hochhaus) tower Einzimmer studio with a square 6 m × 6 m footprint — typical of MainTower-area apartment buildings. Floor-to-ceiling windows on the south face for skyline view. Open living, small Kochnische, full bath. Pied-a-terre for banking professionals.",
+    "suitable_for": [
+      "banking professional",
+      "executive pied-a-terre",
+      "expat"
+    ],
+    "tags": [
+      "frankfurt",
+      "hochhaus",
+      "tower",
+      "1zimmer",
+      "studio",
+      "square",
+      "skyline",
+      "modern",
+      "contemporary_2000_2020"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        0,
+        6
+      ]
+    ],
+    "wall_thickness_mm": 240,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    {
+      "id": "r_living",
+      "name": "Wohn-Schlafraum",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 24,
+      "notes": "South-facing for skyline view"
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kochnische",
+      "type": "kochnische",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "area_sqm": 6
+    }
+  ],
+  "doors": [
+    {
+      "from": "outside",
+      "to": "r_kuche",
+      "position": [
+        0,
+        5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_kuche",
+      "to": "r_living",
+      "position": [
+        1.5,
+        4
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_bad",
+      "to": "r_living",
+      "position": [
+        4.5,
+        4
+      ],
+      "width_mm": 800
+    }
+  ],
+  "windows": [
+    {
+      "room": "r_living",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 3000
+    },
+    {
+      "room": "r_living",
+      "position": [
+        0,
+        2
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_living",
+      "position": [
+        6,
+        2
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        0,
+        5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        6,
+        5
+      ],
+      "width_mm": 800
+    }
+  ]
+}

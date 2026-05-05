@@ -1,0 +1,64 @@
+{
+  "id": "eu_it_2vani_roma_trastevere",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Roma",
+    "size_label": "trilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 91,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Roma Trastevere apartment (vicoli context, cotto floors)",
+    "description": "A Rome Trastevere / Testaccio border apartment — typical 95 m² with vaulted ceilings (volte a botte), original cotto floor tiles, and inner cortile context. Ingresso, large Soggiorno, eat-in Cucina abitabile, Master + Camera, two Bagni (main + bagno servizio), Ripostiglio. Source: casa.it Trastevere listings.",
+    "suitable_for": ["couple", "young_family", "creative_artist"],
+    "tags": ["italy", "roma", "trastevere", "2bed", "vintage_traditional", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[1.5,0],[7,0],[7,5],[1.5,5]], "area_sqm": 27.5,
+      "notes": "Soggiorno with volte a botte vaulted ceilings, cotto floor" },
+    { "id": "r_cucina", "name": "Cucina abitabile", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bagno", "name": "Bagno principale", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,6],[0,6]], "area_sqm": 4.5 },
+    { "id": "r_master", "name": "Camera matrimoniale", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_camera", "name": "Camera", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,8],[6,8]], "area_sqm": 12 },
+    { "id": "r_bagno_servizio", "name": "Bagno di servizio", "type": "wc",
+      "polygon": [[6,8],[10,8],[10,9],[6,9]], "area_sqm": 4 },
+    { "id": "r_ripostiglio", "name": "Ripostiglio", "type": "store",
+      "polygon": [[0,6],[2,6],[2,9],[0,9]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [1.5, 1.5], "width_mm": 1100 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_bagno", "to": "r_ripostiglio", "position": [1, 6], "width_mm": 700 },
+    { "from": "r_ripostiglio", "to": "r_master", "position": [2, 7.5], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_soggiorno", "to": "r_master", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_camera", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_camera", "position": [6, 6.5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bagno_servizio", "position": [6, 8.5], "width_mm": 700 },
+    { "from": "r_camera", "to": "r_bagno_servizio", "position": [8, 8], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [4.25, 0], "width_mm": 2400 },
+    { "room": "r_cucina", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_cucina", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_master", "position": [4, 9], "width_mm": 1800 },
+    { "room": "r_camera", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_camera", "position": [10, 6.5], "width_mm": 1500 },
+    { "room": "r_bagno_servizio", "position": [10, 8.5], "width_mm": 600 },
+    { "room": "r_bagno", "position": [0, 4.5], "width_mm": 600 }
+  ]
+}

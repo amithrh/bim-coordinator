@@ -1,0 +1,67 @@
+{
+  "id": "eu_de_4zimmer_rostock_wbr83_plattenbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Rostock",
+    "size_label": "4zimmer",
+    "size_band": "3bed",
+    "total_area_sqm": 80,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Rostock WBR 83 4-Raum Plattenbau (Hanseatische Plattenbauten)",
+    "description": "A Rostock WBR 83 4-Raum-Wohnung — typical 78 m² Hanseatische Plattenbau type with Loggia. Wohnz, Schlafz, two Kinderz, Küche, Bad, Flur, Loggia. Distinctive WBR83 prefab series. Source: lenakotonski.de Hanseatische Plattenbauten Rostock.",
+    "suitable_for": ["young_family", "growing_family"],
+    "tags": ["germany", "rostock", "plattenbau", "3bed", "modernist_1970s", "loggia", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,10],[0,10]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "diele",
+      "polygon": [[0,0],[1.5,0],[1.5,5],[0,5]], "area_sqm": 7.5 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,5],[1.5,5]], "area_sqm": 22.5 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[6,0],[8,0],[8,2.5],[6,2.5]], "area_sqm": 5 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[6,2.5],[8,2.5],[8,6.5],[6,6.5]], "area_sqm": 8 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,5],[1.5,5],[1.5,8.5],[0,8.5]], "area_sqm": 5.25 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[1.5,5],[6,5],[6,8],[1.5,8]], "area_sqm": 13.5 },
+    { "id": "r_kind1", "name": "Kinderzimmer 1", "type": "bedroom",
+      "polygon": [[1.5,8],[6,8],[6,10],[1.5,10]], "area_sqm": 9 },
+    { "id": "r_kind2", "name": "Kinderzimmer 2", "type": "bedroom",
+      "polygon": [[6,6.5],[8,6.5],[8,10],[6,10]], "area_sqm": 7 },
+    { "id": "r_hall_ext", "name": "Flur back", "type": "corridor",
+      "polygon": [[0,8.5],[1.5,8.5],[1.5,10],[0,10]], "area_sqm": 2.25 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0, 2.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnz", "position": [1.5, 2.5], "width_mm": 1000 },
+    { "from": "r_flur", "to": "r_bad", "position": [0.75, 5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [0.75, 8.5], "width_mm": 700 },
+    { "from": "r_hall_ext", "to": "r_kind1", "position": [1.5, 9], "width_mm": 800 },
+    { "from": "r_wohnz", "to": "r_loggia", "position": [6, 1.25], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [6, 3.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [3.75, 5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_kind2", "position": [7, 6.5], "width_mm": 800 },
+    { "from": "r_schlafz", "to": "r_kind1", "position": [3.75, 8], "width_mm": 800 },
+    { "from": "r_schlafz", "to": "r_kind2", "position": [6, 6.5], "width_mm": 800 },
+    { "from": "r_kind1", "to": "r_kind2", "position": [6, 9], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [3.75, 0], "width_mm": 2400 },
+    { "room": "r_loggia", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [8, 4.5], "width_mm": 1200 },
+    { "room": "r_schlafz", "position": [3.75, 8], "width_mm": 1800 },
+    { "room": "r_kind1", "position": [3.75, 10], "width_mm": 1500 },
+    { "room": "r_kind2", "position": [7, 10], "width_mm": 1200 },
+    { "room": "r_kind2", "position": [8, 8.25], "width_mm": 1200 },
+    { "room": "r_bad", "position": [0, 6.75], "width_mm": 600 },
+    { "room": "r_flur", "position": [0, 2.5], "width_mm": 600 }
+  ]
+}

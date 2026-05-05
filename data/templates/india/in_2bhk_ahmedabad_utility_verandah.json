@@ -1,0 +1,65 @@
+{
+  "id": "in_2bhk_ahmedabad_utility_verandah",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Ahmedabad",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 64,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Ahmedabad Shantigram / SG Highway 2 BHK (Adani Aster basis)",
+    "description": "An Ahmedabad SG Highway compact 2 BHK — Adani Aster carpet 697 sqft (65 m²). Living/Dining + Kitchen with Gujarati-style utility verandah (otla) for washing/drying, Master with attached Master Bath, Bedroom 2 with shared Common Bath, north Balcony. Source: adanirealty.com Ahmedabad Aster + squareyards.com.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["india", "ahmedabad", "apartment_indian", "2bed", "current_2020plus", "modular_kitchen", "balkon", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen (modular)", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_utility_verandah", "name": "Utility Verandah", "type": "utility",
+      "polygon": [[7,0],[8,0],[8,3],[7,3]], "area_sqm": 3,
+      "notes": "Gujarati otla utility verandah for washing/drying" },
+    { "id": "r_common_bath", "name": "Common Bath", "type": "bathroom",
+      "polygon": [[5,3],[7,3],[7,5],[5,5]], "area_sqm": 4 },
+    { "id": "r_hall", "name": "Hall", "type": "corridor",
+      "polygon": [[7,3],[8,3],[8,5],[7,5]], "area_sqm": 2 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,4],[4,4],[4,7],[0,7]], "area_sqm": 12 },
+    { "id": "r_master_bath", "name": "Master Bath", "type": "bathroom",
+      "polygon": [[4,4],[5,4],[5,7],[4,7]], "area_sqm": 3 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,7],[5,7],[5,8],[0,8]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_living", "to": "r_kitchen", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility_verandah", "position": [7, 1.5], "width_mm": 800, "swing": "slide" },
+    { "from": "r_kitchen", "to": "r_common_bath", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_common_bath", "to": "r_hall", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_common_bath", "to": "r_bedroom2", "position": [6, 5], "width_mm": 800 },
+    { "from": "r_living", "to": "r_master", "position": [2, 4], "width_mm": 900 },
+    { "from": "r_master", "to": "r_master_bath", "position": [4, 5.5], "width_mm": 750 },
+    { "from": "r_master", "to": "r_balcony", "position": [2, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_hall", "to": "r_utility_verandah", "position": [7.5, 3], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.5, 0], "width_mm": 2000 },
+    { "room": "r_living", "position": [0, 2], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [6, 0], "width_mm": 1200 },
+    { "room": "r_master", "position": [0, 5.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [2.5, 8], "width_mm": 1800 },
+    { "room": "r_utility_verandah", "position": [8, 1.5], "width_mm": 600 }
+  ]
+}

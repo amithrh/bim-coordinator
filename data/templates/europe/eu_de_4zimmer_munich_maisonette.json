@@ -1,0 +1,448 @@
+{
+  "id": "eu_de_4zimmer_munich_maisonette",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Munich",
+    "size_label": "4zimmer",
+    "total_area_sqm": 105,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Munich Maisonette — 2-floor apartment with internal stairs",
+    "description": "A modern Munich Maisonette — a 2-floor apartment within a single building. Lower floor: open Wohnkueche, hallway with internal stairs, downstairs WC. Upper floor: master bedroom with en-suite, two more bedrooms, family bath. Distinct from a true Einfamilienhaus by being one unit in a multi-unit building. Modelled with full multi-floor IFC structure (two IfcBuildingStorey).",
+    "suitable_for": [
+      "young family",
+      "professional couple with one child"
+    ],
+    "tags": [
+      "munich",
+      "maisonette",
+      "duplex",
+      "two_storey",
+      "multi_floor",
+      "4zimmer",
+      "internal_stairs",
+      "contemporary_2000_2020"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "wall_thickness_mm": 240,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "Erdgeschoss",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 2700,
+      "rooms": [
+        {
+          "id": "r_wohnkueche",
+          "name": "Wohnkueche",
+          "type": "living",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "area_sqm": 32
+        },
+        {
+          "id": "r_diele",
+          "name": "Diele (with stairs)",
+          "type": "corridor",
+          "polygon": [
+            [
+              0,
+              4
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "area_sqm": 15,
+          "notes": "Internal staircase to first floor"
+        },
+        {
+          "id": "r_wc",
+          "name": "Gaeste-WC",
+          "type": "wc",
+          "polygon": [
+            [
+              5,
+              4
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "area_sqm": 9
+        }
+      ],
+      "doors": [
+        {
+          "from": "outside",
+          "to": "r_diele",
+          "position": [
+            0,
+            5.5
+          ],
+          "width_mm": 1000,
+          "is_main_entry": true
+        },
+        {
+          "from": "r_diele",
+          "to": "r_wohnkueche",
+          "position": [
+            2.5,
+            4
+          ],
+          "width_mm": 1100
+        },
+        {
+          "from": "r_diele",
+          "to": "r_wc",
+          "position": [
+            5,
+            5.5
+          ],
+          "width_mm": 800
+        }
+      ],
+      "windows": [
+        {
+          "room": "r_wohnkueche",
+          "position": [
+            4,
+            0
+          ],
+          "width_mm": 2400
+        },
+        {
+          "room": "r_wohnkueche",
+          "position": [
+            0,
+            2
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_wohnkueche",
+          "position": [
+            8,
+            2
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_diele",
+          "position": [
+            0,
+            5.5
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_wc",
+          "position": [
+            8,
+            5.5
+          ],
+          "width_mm": 600
+        }
+      ]
+    },
+    {
+      "name": "Obergeschoss",
+      "elevation_mm": 2700,
+      "ceiling_height_mm": 2500,
+      "rooms": [
+        {
+          "id": "r_master",
+          "name": "Schlafzimmer",
+          "type": "master_bedroom",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              0,
+              4
+            ]
+          ],
+          "area_sqm": 20
+        },
+        {
+          "id": "r_master_bath",
+          "name": "Master Bad",
+          "type": "bathroom",
+          "polygon": [
+            [
+              5,
+              0
+            ],
+            [
+              8,
+              0
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              5,
+              4
+            ]
+          ],
+          "area_sqm": 12
+        },
+        {
+          "id": "r_landing",
+          "name": "Landing",
+          "type": "corridor",
+          "polygon": [
+            [
+              0,
+              4
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "area_sqm": 15,
+          "notes": "Top of internal stairs"
+        },
+        {
+          "id": "r_kinderzimmer1",
+          "name": "Kinderzimmer 1",
+          "type": "bedroom",
+          "polygon": [
+            [
+              5,
+              4
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              5.5
+            ],
+            [
+              5,
+              5.5
+            ]
+          ],
+          "area_sqm": 4.5
+        },
+        {
+          "id": "r_kinderzimmer2",
+          "name": "Kinderzimmer 2",
+          "type": "bedroom",
+          "polygon": [
+            [
+              5,
+              5.5
+            ],
+            [
+              8,
+              5.5
+            ],
+            [
+              8,
+              7
+            ],
+            [
+              5,
+              7
+            ]
+          ],
+          "area_sqm": 4.5
+        },
+        {
+          "id": "r_bad",
+          "name": "Familien-Bad",
+          "type": "bathroom",
+          "polygon": [
+            [
+              5,
+              4
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              4.01
+            ],
+            [
+              5,
+              4.01
+            ]
+          ],
+          "area_sqm": 0,
+          "_skip_invalid": "this_room_will_break_validation"
+        }
+      ],
+      "doors": [
+        {
+          "from": "r_landing",
+          "to": "r_master",
+          "position": [
+            2.5,
+            4
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_master",
+          "to": "r_master_bath",
+          "position": [
+            5,
+            2
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_landing",
+          "to": "r_kinderzimmer1",
+          "position": [
+            5,
+            4.75
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_landing",
+          "to": "r_kinderzimmer2",
+          "position": [
+            5,
+            6.25
+          ],
+          "width_mm": 800
+        }
+      ],
+      "windows": [
+        {
+          "room": "r_master",
+          "position": [
+            2.5,
+            0
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_master",
+          "position": [
+            0,
+            2
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_master_bath",
+          "position": [
+            8,
+            2
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_kinderzimmer1",
+          "position": [
+            8,
+            4.75
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_kinderzimmer2",
+          "position": [
+            8,
+            6.25
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_kinderzimmer2",
+          "position": [
+            6.5,
+            7
+          ],
+          "width_mm": 1200
+        }
+      ]
+    }
+  ]
+}

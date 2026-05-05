@@ -1,0 +1,69 @@
+{
+  "id": "eu_fr_2pieces_toulouse",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Toulouse",
+    "size_label": "2pieces",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Toulouse 2-pièces brique rose (Saint-Cyprien)",
+    "description": "A Toulouse Saint-Cyprien 2-pièces brique rose typology — typical 75 m². Entrée, Séjour, Cuisine ouverte, 2 Chambres, SDB, WC, Balcon. Toulouse pink-brick architecture. Source: SeLoger Toulouse.",
+    "suitable_for": ["young_family", "couple", "academic"],
+    "tags": ["france", "toulouse", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_cuisine", "name": "Cuisine ouverte", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[6,4],[8,4],[8,5],[6,5]], "area_sqm": 2 },
+    { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,8],[0,8]], "area_sqm": 6 },
+    { "id": "r_chambre1", "name": "Chambre 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,8],[2,8]], "area_sqm": 9 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_balcon", "name": "Balcon", "type": "balcony",
+      "polygon": [[0,8],[8,8],[8,9],[0,9]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_entree", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [6, 2], "width_mm": 1500 },
+    { "from": "r_cuisine", "to": "r_storage", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_sdb", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_sejour", "to": "r_chambre1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_chambre2", "position": [5.5, 5], "width_mm": 900 },
+    { "from": "r_storage", "to": "r_chambre2", "position": [7, 5], "width_mm": 700 },
+    { "from": "r_chambre1", "to": "r_chambre2", "position": [5, 6.5], "width_mm": 800 },
+    { "from": "r_sdb", "to": "r_chambre1", "position": [2, 6.5], "width_mm": 700 },
+    { "from": "r_sdb", "to": "r_balcon", "position": [1, 8], "width_mm": 800, "swing": "slide" },
+    { "from": "r_chambre1", "to": "r_balcon", "position": [3.5, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_chambre2", "to": "r_balcon", "position": [6.5, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_cuisine", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_cuisine", "position": [8, 2], "width_mm": 1200 },
+    { "room": "r_chambre1", "position": [3.5, 8], "width_mm": 1500 },
+    { "room": "r_chambre2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_chambre2", "position": [8, 6.5], "width_mm": 1200 },
+    { "room": "r_balcon", "position": [4, 9], "width_mm": 2400 },
+    { "room": "r_sdb", "position": [0, 6.5], "width_mm": 600 },
+    { "room": "r_entree", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

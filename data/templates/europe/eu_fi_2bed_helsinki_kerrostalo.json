@@ -1,0 +1,69 @@
+{
+  "id": "eu_fi_2bed_helsinki_kerrostalo",
+  "metadata": {
+    "region": "europe",
+    "country": "Finland",
+    "city_inspiration": "Helsinki",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 63,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Helsinki kerrostalo (1950s-60s prefab apartment with sauna)",
+    "description": "A Helsinki kerrostalo apartment — typical Finnish 1950s-60s prefab with characteristic in-unit Sauna. Eteinen, Olohuone, Keittiö + Ruokakomero, Kylpyhuone, two Makuuhuone, in-unit Sauna, large Parveke (balcony). Source: oikotie.fi Helsinki kerrostalo.",
+    "suitable_for": ["young_family", "couple", "single_professional"],
+    "tags": ["finland", "helsinki", "vintage_traditional", "2bed", "modernist_1970s", "sauna", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,9],[0,9]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_eteinen", "name": "Eteinen", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_olohuone", "name": "Olohuone", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_keittio", "name": "Keittiö", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_ruokakomero", "name": "Ruokakomero", "type": "store",
+      "polygon": [[5,3],[7,3],[7,4],[5,4]], "area_sqm": 2 },
+    { "id": "r_kylpyhuone", "name": "Kylpyhuone", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_makuuhuone1", "name": "Makuuhuone 1 (Master)", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_makuuhuone2", "name": "Makuuhuone 2", "type": "bedroom",
+      "polygon": [[5,4],[7,4],[7,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_sauna", "name": "Sauna", "type": "bathroom",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3,
+      "notes": "In-unit Finnish Sauna — Helsinki kerrostalo signature" },
+    { "id": "r_parveke", "name": "Parveke (Balcony)", "type": "balcony",
+      "polygon": [[0,7],[7,7],[7,9],[0,9]], "area_sqm": 14,
+      "notes": "Large Finnish balcony — outdoor living priority" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eteinen", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_eteinen", "to": "r_olohuone", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_eteinen", "to": "r_kylpyhuone", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_olohuone", "to": "r_keittio", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_keittio", "to": "r_ruokakomero", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_olohuone", "to": "r_makuuhuone1", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_kylpyhuone", "to": "r_sauna", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_makuuhuone1", "to": "r_sauna", "position": [1.5, 6], "width_mm": 700 },
+    { "from": "r_makuuhuone1", "to": "r_makuuhuone2", "position": [5, 5.5], "width_mm": 800 },
+    { "from": "r_sauna", "to": "r_parveke", "position": [0.75, 7], "width_mm": 700 },
+    { "from": "r_makuuhuone1", "to": "r_parveke", "position": [3.25, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_makuuhuone2", "to": "r_parveke", "position": [6, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_olohuone", "position": [3.25, 0], "width_mm": 2000 },
+    { "room": "r_olohuone", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_keittio", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_keittio", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_makuuhuone1", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_makuuhuone2", "position": [6, 7], "width_mm": 1200 },
+    { "room": "r_makuuhuone2", "position": [7, 5.5], "width_mm": 1200 },
+    { "room": "r_parveke", "position": [3.5, 9], "width_mm": 3000 },
+    { "room": "r_kylpyhuone", "position": [0, 3.5], "width_mm": 600 }
+  ]
+}

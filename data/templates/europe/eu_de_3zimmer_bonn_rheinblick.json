@@ -10,52 +10,342 @@
     "bathrooms": 1,
     "style": "Bonn Rhein-front three-room with extra-deep cantilever balcony",
     "description": "A modern Bonn Drei-Zimmerwohnung facing the Rhine, with a distinctively deep (3.5 m) full-width cantilever balcony for outdoor dining and evening river views. Compact wide footprint (12 m × 7.5 m), open Wohnkueche, central Diele, two bedrooms with shared bath. Typical Beuel or Plittersdorf riverfront unit.",
-    "suitable_for": ["family", "civil servant", "expat"],
-    "tags": ["bonn", "rhein", "rheinblick", "3zimmer", "deep_balcony", "wide", "cantilever", "modern"]
+    "suitable_for": [
+      "family",
+      "civil servant",
+      "expat"
+    ],
+    "tags": [
+      "bonn",
+      "rhein",
+      "rheinblick",
+      "3zimmer",
+      "deep_balcony",
+      "wide",
+      "cantilever",
+      "modern",
+      "neubau",
+      "contemporary_2000_2020"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[12,0],[12,7.5],[0,7.5]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        12,
+        7.5
+      ],
+      [
+        0,
+        7.5
+      ]
+    ],
     "wall_thickness_mm": 220,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
-      "polygon": [[0,0],[12,0],[12,3.5],[0,3.5]], "area_sqm": 42,
-      "notes": "Extra-deep full-width cantilever balcony with Rhine view" },
-    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
-      "polygon": [[0,3.5],[7,3.5],[7,5.5],[0,5.5]], "area_sqm": 14,
-      "notes": "Compact open Wohnkueche behind the deep balcony" },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[7,3.5],[12,3.5],[12,5.5],[7,5.5]], "area_sqm": 10 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,5.5],[5,5.5],[5,7.5],[0,7.5]], "area_sqm": 10 },
-    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
-      "polygon": [[5,5.5],[9,5.5],[9,7.5],[5,7.5]], "area_sqm": 8 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[9,5.5],[12,5.5],[12,7.5],[9,7.5]], "area_sqm": 6 }
+    {
+      "id": "r_balkon",
+      "name": "Balkon",
+      "type": "balcony",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          3.5
+        ],
+        [
+          0,
+          3.5
+        ]
+      ],
+      "area_sqm": 42,
+      "notes": "Extra-deep full-width cantilever balcony with Rhine view"
+    },
+    {
+      "id": "r_wohnkueche",
+      "name": "Wohnkueche",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          3.5
+        ],
+        [
+          7,
+          3.5
+        ],
+        [
+          7,
+          5.5
+        ],
+        [
+          0,
+          5.5
+        ]
+      ],
+      "area_sqm": 14,
+      "notes": "Compact open Wohnkueche behind the deep balcony"
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          7,
+          3.5
+        ],
+        [
+          12,
+          3.5
+        ],
+        [
+          12,
+          5.5
+        ],
+        [
+          7,
+          5.5
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          5.5
+        ],
+        [
+          5,
+          5.5
+        ],
+        [
+          5,
+          7.5
+        ],
+        [
+          0,
+          7.5
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_kinderzimmer",
+      "name": "Kinderzimmer",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          5.5
+        ],
+        [
+          9,
+          5.5
+        ],
+        [
+          9,
+          7.5
+        ],
+        [
+          5,
+          7.5
+        ]
+      ],
+      "area_sqm": 8
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          9,
+          5.5
+        ],
+        [
+          12,
+          5.5
+        ],
+        [
+          12,
+          7.5
+        ],
+        [
+          9,
+          7.5
+        ]
+      ],
+      "area_sqm": 6
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_diele", "position": [12, 4.5],
-      "width_mm": 1000, "is_main_entry": true },
-    { "from": "r_wohnkueche", "to": "r_balkon", "position": [3.5, 3.5],
-      "width_mm": 2400, "swing": "slide" },
-    { "from": "r_diele", "to": "r_wohnkueche", "position": [7, 4.5], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_balkon", "position": [9.5, 3.5],
-      "width_mm": 1500, "swing": "slide" },
-    { "from": "r_wohnkueche", "to": "r_schlafzimmer", "position": [2.5, 5.5], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_kinderzimmer", "position": [8, 5.5], "width_mm": 800 },
-    { "from": "r_diele", "to": "r_bad", "position": [10.5, 5.5], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_diele",
+      "position": [
+        12,
+        4.5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_balkon",
+      "position": [
+        3.5,
+        3.5
+      ],
+      "width_mm": 2400,
+      "swing": "slide"
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnkueche",
+      "position": [
+        7,
+        4.5
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_balkon",
+      "position": [
+        9.5,
+        3.5
+      ],
+      "width_mm": 1500,
+      "swing": "slide"
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_schlafzimmer",
+      "position": [
+        2.5,
+        5.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer",
+      "position": [
+        8,
+        5.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        10.5,
+        5.5
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_balkon", "position": [4, 0], "width_mm": 2400 },
-    { "room": "r_balkon", "position": [9, 0], "width_mm": 2400 },
-    { "room": "r_balkon", "position": [0, 1.75], "width_mm": 1500 },
-    { "room": "r_balkon", "position": [12, 1.75], "width_mm": 1500 },
-    { "room": "r_wohnkueche", "position": [0, 4.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 6.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [2.5, 7.5], "width_mm": 1500 },
-    { "room": "r_kinderzimmer", "position": [7, 7.5], "width_mm": 1500 },
-    { "room": "r_bad", "position": [12, 6.5], "width_mm": 600 },
-    { "room": "r_bad", "position": [10.5, 7.5], "width_mm": 800 }
+    {
+      "room": "r_balkon",
+      "position": [
+        4,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        9,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        0,
+        1.75
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        12,
+        1.75
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        0,
+        4.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        6.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        7.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer",
+      "position": [
+        7,
+        7.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        12,
+        6.5
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        10.5,
+        7.5
+      ],
+      "width_mm": 800
+    }
   ]
 }

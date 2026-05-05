@@ -1,0 +1,68 @@
+{
+  "id": "gl_se_1bed_swedish_sommarstuga",
+  "metadata": {
+    "region": "global",
+    "country": "Sweden",
+    "city_inspiration": "Swedish Countryside",
+    "size_label": "stuga",
+    "size_band": "1bed",
+    "total_area_sqm": 56,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Swedish Sommarstuga / Roed Stuga (red summer cottage, parstuga plan)",
+    "description": "A traditional Swedish sommarstuga (summer cottage) modernized — Falu rödfärg red painted timber, white window trim, wood-shingle or sheet-metal roof. Two-room parstuga plan with farstu entry porch, Storstuga main room with kakelugn tile stove, Kök along one gable, ground-floor sovrum, ladder-accessed sovloft above, and glassed-in glasveranda facing south. 50 m² ground footprint + 15 m² loft. Inspired by Dalarna / Småland / archipelago typology.",
+    "suitable_for": ["empty_nester", "creative_artist", "young_family", "retiree"],
+    "tags": ["sweden", "scandinavian", "stuga_se", "vintage_traditional", "fireplace_kachelofen", "open_plan", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 180,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_farstu", "name": "Farstu", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3,
+      "notes": "Covered entry porch" },
+    { "id": "r_glasveranda", "name": "Glasveranda", "type": "balcony",
+      "polygon": [[1.5,0],[4.5,0],[4.5,2],[1.5,2]], "area_sqm": 6,
+      "notes": "Glassed-in south-facing porch — extends summer living" },
+    { "id": "r_kuche", "name": "Kök", "type": "kitchen",
+      "polygon": [[4.5,0],[7,0],[7,4],[4.5,4]], "area_sqm": 10,
+      "notes": "Kitchen along eastern gable — farmhouse sink" },
+    { "id": "r_storstuga", "name": "Storstuga", "type": "living",
+      "polygon": [[0,2],[4.5,2],[4.5,7],[0,7]], "area_sqm": 22.5,
+      "notes": "Main living/dining room with central kakelugn tile stove — high ceiling open to ridge" },
+    { "id": "r_sovrum", "name": "Sovrum", "type": "master_bedroom",
+      "polygon": [[4.5,4],[7,4],[7,7],[4.5,7]], "area_sqm": 7.5,
+      "notes": "Ground-floor bedroom" },
+    { "id": "r_bath", "name": "Toalett / Dusch", "type": "bathroom",
+      "polygon": [[0,7],[2,7],[2,8],[0,8]], "area_sqm": 2,
+      "notes": "Compact bath" },
+    { "id": "r_storage", "name": "Förråd", "type": "store",
+      "polygon": [[2,7],[4.5,7],[4.5,8],[2,8]], "area_sqm": 2.5,
+      "notes": "Storage" },
+    { "id": "r_sovloft", "name": "Sovloft (entry)", "type": "stairs",
+      "polygon": [[4.5,7],[7,7],[7,8],[4.5,8]], "area_sqm": 2.5,
+      "notes": "Stairs / ladder access to sleeping loft above" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_farstu", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_farstu", "to": "r_storstuga", "position": [0.75, 2], "width_mm": 800 },
+    { "from": "r_farstu", "to": "r_glasveranda", "position": [1.5, 1], "width_mm": 800 },
+    { "from": "r_glasveranda", "to": "r_storstuga", "position": [3, 2], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storstuga", "to": "r_kuche", "position": [4.5, 3], "width_mm": 1100 },
+    { "from": "r_storstuga", "to": "r_sovrum", "position": [4.5, 5.5], "width_mm": 800 },
+    { "from": "r_storstuga", "to": "r_bath", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_storstuga", "to": "r_storage", "position": [3.25, 7], "width_mm": 700 },
+    { "from": "r_sovrum", "to": "r_sovloft", "position": [5.75, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_glasveranda", "position": [3, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [7, 2], "width_mm": 1200 },
+    { "room": "r_storstuga", "position": [0, 4.5], "width_mm": 1500 },
+    { "room": "r_sovrum", "position": [7, 5.5], "width_mm": 1200 },
+    { "room": "r_sovrum", "position": [5.75, 4], "width_mm": 600 },
+    { "room": "r_bath", "position": [1, 8], "width_mm": 600 }
+  ]
+}

@@ -2,7 +2,7 @@
   "id": "eu_uk_3bed_bristol_townhouse",
   "metadata": {
     "region": "europe",
-    "country": "UK",
+    "country": "United Kingdom",
     "city_inspiration": "Bristol",
     "size_label": "3bed",
     "total_area_sqm": 102,
@@ -10,57 +10,429 @@
     "bathrooms": 1,
     "style": "Bristol modern narrow townhouse",
     "description": "A modern Bristol new-build narrow townhouse — front lounge, kitchen-diner, downstairs WC and utility, master bedroom with en-suite-style bath, plus two further bedrooms. Reflects Harbourside / Wapping Wharf typology.",
-    "suitable_for": ["young family", "downsizer from larger Bristol home"],
-    "tags": ["bristol", "townhouse", "modern", "3bed", "narrow", "harbourside", "new_build", "uk"]
+    "suitable_for": [
+      "young family",
+      "downsizer from larger Bristol home"
+    ],
+    "tags": [
+      "bristol",
+      "townhouse",
+      "modern",
+      "3bed",
+      "narrow",
+      "harbourside",
+      "new_build",
+      "uk",
+      "georgian_townhouse",
+      "georgian"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[6,0],[6,17],[0,17]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        6,
+        17
+      ],
+      [
+        0,
+        17
+      ]
+    ],
     "wall_thickness_mm": 220,
     "ceiling_height_mm": 2600
   },
   "rooms": [
-    { "id": "r_lounge", "name": "Lounge", "type": "living",
-      "polygon": [[0,0],[6,0],[6,4],[0,4]], "area_sqm": 24 },
-    { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
-      "polygon": [[0,4],[6,4],[6,8],[0,8]], "area_sqm": 24 },
-    { "id": "r_wc", "name": "WC", "type": "wc",
-      "polygon": [[0,8],[3,8],[3,9.5],[0,9.5]], "area_sqm": 4.5 },
-    { "id": "r_utility", "name": "Utility", "type": "utility",
-      "polygon": [[3,8],[6,8],[6,9.5],[3,9.5]], "area_sqm": 4.5 },
-    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
-      "polygon": [[0,9.5],[6,9.5],[6,12.5],[0,12.5]], "area_sqm": 18 },
-    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
-      "polygon": [[0,12.5],[3,12.5],[3,15],[0,15]], "area_sqm": 7.5 },
-    { "id": "r_bath", "name": "Bath", "type": "bathroom",
-      "polygon": [[3,12.5],[6,12.5],[6,15],[3,15]], "area_sqm": 7.5 },
-    { "id": "r_bedroom3", "name": "Bedroom 3", "type": "bedroom",
-      "polygon": [[0,15],[6,15],[6,17],[0,17]], "area_sqm": 12 }
+    {
+      "id": "r_lounge",
+      "name": "Lounge",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 24
+    },
+    {
+      "id": "r_kitchen",
+      "name": "Kitchen-Diner",
+      "type": "kitchen",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 24
+    },
+    {
+      "id": "r_wc",
+      "name": "WC",
+      "type": "wc",
+      "polygon": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9.5
+        ],
+        [
+          0,
+          9.5
+        ]
+      ],
+      "area_sqm": 4.5
+    },
+    {
+      "id": "r_utility",
+      "name": "Utility",
+      "type": "utility",
+      "polygon": [
+        [
+          3,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9.5
+        ],
+        [
+          3,
+          9.5
+        ]
+      ],
+      "area_sqm": 4.5
+    },
+    {
+      "id": "r_master",
+      "name": "Master Bedroom",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          9.5
+        ],
+        [
+          6,
+          9.5
+        ],
+        [
+          6,
+          12.5
+        ],
+        [
+          0,
+          12.5
+        ]
+      ],
+      "area_sqm": 18
+    },
+    {
+      "id": "r_bedroom2",
+      "name": "Bedroom 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          0,
+          12.5
+        ],
+        [
+          3,
+          12.5
+        ],
+        [
+          3,
+          15
+        ],
+        [
+          0,
+          15
+        ]
+      ],
+      "area_sqm": 7.5
+    },
+    {
+      "id": "r_bath",
+      "name": "Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          3,
+          12.5
+        ],
+        [
+          6,
+          12.5
+        ],
+        [
+          6,
+          15
+        ],
+        [
+          3,
+          15
+        ]
+      ],
+      "area_sqm": 7.5
+    },
+    {
+      "id": "r_bedroom3",
+      "name": "Bedroom 3",
+      "type": "bedroom",
+      "polygon": [
+        [
+          0,
+          15
+        ],
+        [
+          6,
+          15
+        ],
+        [
+          6,
+          17
+        ],
+        [
+          0,
+          17
+        ]
+      ],
+      "area_sqm": 12
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_lounge", "position": [0.5, 0],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_lounge", "to": "r_kitchen", "position": [3, 4], "width_mm": 1000 },
-    { "from": "r_kitchen", "to": "r_wc", "position": [1.5, 8], "width_mm": 700 },
-    { "from": "r_kitchen", "to": "r_utility", "position": [4.5, 8], "width_mm": 800 },
-    { "from": "r_wc", "to": "r_master", "position": [1.5, 9.5], "width_mm": 800 },
-    { "from": "r_utility", "to": "r_master", "position": [4.5, 9.5], "width_mm": 800 },
-    { "from": "r_master", "to": "r_bedroom2", "position": [1.5, 12.5], "width_mm": 800 },
-    { "from": "r_master", "to": "r_bath", "position": [4.5, 12.5], "width_mm": 800 },
-    { "from": "r_bedroom2", "to": "r_bath", "position": [3, 13.75], "width_mm": 700 },
-    { "from": "r_bedroom2", "to": "r_bedroom3", "position": [1.5, 15], "width_mm": 800 },
-    { "from": "r_bath", "to": "r_bedroom3", "position": [4.5, 15], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_lounge",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_lounge",
+      "to": "r_kitchen",
+      "position": [
+        3,
+        4
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_wc",
+      "position": [
+        1.5,
+        8
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_utility",
+      "position": [
+        4.5,
+        8
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_wc",
+      "to": "r_master",
+      "position": [
+        1.5,
+        9.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_utility",
+      "to": "r_master",
+      "position": [
+        4.5,
+        9.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_master",
+      "to": "r_bedroom2",
+      "position": [
+        1.5,
+        12.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_master",
+      "to": "r_bath",
+      "position": [
+        4.5,
+        12.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bedroom2",
+      "to": "r_bath",
+      "position": [
+        3,
+        13.75
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_bedroom2",
+      "to": "r_bedroom3",
+      "position": [
+        1.5,
+        15
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bath",
+      "to": "r_bedroom3",
+      "position": [
+        4.5,
+        15
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_lounge", "position": [3, 0], "width_mm": 1800 },
-    { "room": "r_kitchen", "position": [6, 6], "width_mm": 1500 },
-    { "room": "r_wc", "position": [0, 8.75], "width_mm": 600 },
-    { "room": "r_utility", "position": [6, 8.75], "width_mm": 800 },
-    { "room": "r_master", "position": [0, 11], "width_mm": 1500 },
-    { "room": "r_master", "position": [6, 11], "width_mm": 1500 },
-    { "room": "r_bedroom2", "position": [0, 13.75], "width_mm": 1200 },
-    { "room": "r_bath", "position": [6, 13.75], "width_mm": 600 },
-    { "room": "r_bedroom3", "position": [0, 16], "width_mm": 1200 },
-    { "room": "r_bedroom3", "position": [6, 16], "width_mm": 1200 },
-    { "room": "r_bedroom3", "position": [3, 17], "width_mm": 1200 }
+    {
+      "room": "r_lounge",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        6,
+        6
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_wc",
+      "position": [
+        0,
+        8.75
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_utility",
+      "position": [
+        6,
+        8.75
+      ],
+      "width_mm": 800
+    },
+    {
+      "room": "r_master",
+      "position": [
+        0,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_master",
+      "position": [
+        6,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bedroom2",
+      "position": [
+        0,
+        13.75
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        6,
+        13.75
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bedroom3",
+      "position": [
+        0,
+        16
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bedroom3",
+      "position": [
+        6,
+        16
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bedroom3",
+      "position": [
+        3,
+        17
+      ],
+      "width_mm": 1200
+    }
   ]
 }

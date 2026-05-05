@@ -1,0 +1,198 @@
+{
+  "id": "in_studio_pune_compact",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Pune",
+    "size_label": "studio",
+    "total_area_sqm": 32,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Pune Hinjewadi IT-corridor studio with kitchenette + bath wing",
+    "description": "A long narrow Pune studio in the Hinjewadi or Wakad IT corridor — 8 m × 4 m, typical for software professionals on the IT-park edge. Combined living-sleeping area at the front, kitchenette and bath in a tight east wing. Affordable for early-career engineers.",
+    "suitable_for": [
+      "IT professional",
+      "young engineer",
+      "single occupant"
+    ],
+    "tags": [
+      "pune",
+      "hinjewadi",
+      "wakad",
+      "it_corridor",
+      "studio",
+      "compact",
+      "long_narrow",
+      "apartment_indian",
+      "current_2020plus"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        0,
+        4
+      ]
+    ],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    {
+      "id": "r_living",
+      "name": "Living + Sleep",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 24
+    },
+    {
+      "id": "r_kitchen",
+      "name": "Kitchenette",
+      "type": "kochnische",
+      "polygon": [
+        [
+          6,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "area_sqm": 4
+    },
+    {
+      "id": "r_bath",
+      "name": "Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          6,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ],
+      "area_sqm": 4
+    }
+  ],
+  "doors": [
+    {
+      "from": "outside",
+      "to": "r_living",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_living",
+      "to": "r_kitchen",
+      "position": [
+        6,
+        1
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_living",
+      "to": "r_bath",
+      "position": [
+        6,
+        3
+      ],
+      "width_mm": 700
+    }
+  ],
+  "windows": [
+    {
+      "room": "r_living",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_living",
+      "position": [
+        0,
+        2
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_living",
+      "position": [
+        3,
+        4
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        8,
+        1
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        8,
+        3
+      ],
+      "width_mm": 600
+    }
+  ]
+}

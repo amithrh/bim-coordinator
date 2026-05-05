@@ -10,47 +10,322 @@
     "bathrooms": 1,
     "style": "Modern Berlin Neubau Drei-Zimmer with chamfered corner balcony",
     "description": "A modern Berlin Neubau Drei-Zimmerwohnung with a chamfered (45-degree cut) corner that becomes the balcony — a signature contemporary Mitte / Friedrichshain massing trick. Open Wohnkueche, two bedrooms accessed from a central Diele, full bath. Distinct from the long-narrow Altbau pattern.",
-    "suitable_for": ["young couple", "small family", "professionals"],
-    "tags": ["berlin", "neubau", "3zimmer", "wohnkueche", "chamfered_corner", "modern", "mitte", "balcony"]
+    "suitable_for": [
+      "young couple",
+      "small family",
+      "professionals"
+    ],
+    "tags": [
+      "berlin",
+      "neubau",
+      "3zimmer",
+      "wohnkueche",
+      "chamfered_corner",
+      "modern",
+      "mitte",
+      "balcony",
+      "contemporary_2000_2020"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[10,0],[12,2],[12,8],[0,8]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        0,
+        8
+      ]
+    ],
     "wall_thickness_mm": 220,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
-      "polygon": [[0,0],[7,0],[7,4],[0,4]], "area_sqm": 28 },
-    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
-      "polygon": [[7,0],[10,0],[12,2],[12,4],[7,4]], "area_sqm": 18,
-      "notes": "Chamfered-corner balcony — the building's signature feature" },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[0,4],[12,4],[12,5],[0,5]], "area_sqm": 12 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,5],[5,5],[5,8],[0,8]], "area_sqm": 15 },
-    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
-      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[8,5],[12,5],[12,8],[8,8]], "area_sqm": 12 }
+    {
+      "id": "r_wohnkueche",
+      "name": "Wohnkueche",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 28
+    },
+    {
+      "id": "r_balkon",
+      "name": "Balkon",
+      "type": "balcony",
+      "polygon": [
+        [
+          7,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          7,
+          4
+        ]
+      ],
+      "area_sqm": 18,
+      "notes": "Chamfered-corner balcony — the building's signature feature"
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 15
+    },
+    {
+      "id": "r_kinderzimmer",
+      "name": "Kinderzimmer",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          8,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "area_sqm": 12
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_diele", "position": [0, 4.5],
-      "width_mm": 1000, "is_main_entry": true },
-    { "from": "r_wohnkueche", "to": "r_balkon", "position": [7, 2],
-      "width_mm": 1800, "swing": "slide" },
-    { "from": "r_diele", "to": "r_wohnkueche", "position": [3.5, 4], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 5], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_kinderzimmer", "position": [6.5, 5], "width_mm": 800 },
-    { "from": "r_diele", "to": "r_bad", "position": [10, 5], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_diele",
+      "position": [
+        0,
+        4.5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_balkon",
+      "position": [
+        7,
+        2
+      ],
+      "width_mm": 1800,
+      "swing": "slide"
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnkueche",
+      "position": [
+        3.5,
+        4
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        2.5,
+        5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer",
+      "position": [
+        6.5,
+        5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        10,
+        5
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnkueche", "position": [3.5, 0], "width_mm": 2400 },
-    { "room": "r_wohnkueche", "position": [0, 2], "width_mm": 1500 },
-    { "room": "r_balkon", "position": [12, 3], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 6.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [2.5, 8], "width_mm": 1500 },
-    { "room": "r_kinderzimmer", "position": [6.5, 8], "width_mm": 1200 },
-    { "room": "r_bad", "position": [12, 6.5], "width_mm": 800 },
-    { "room": "r_bad", "position": [10, 8], "width_mm": 800 }
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        3.5,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        0,
+        2
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        12,
+        3
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        6.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        8
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer",
+      "position": [
+        6.5,
+        8
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        12,
+        6.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        10,
+        8
+      ],
+      "width_mm": 800
+    }
   ]
 }

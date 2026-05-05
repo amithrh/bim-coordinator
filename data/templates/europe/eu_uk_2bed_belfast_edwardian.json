@@ -1,0 +1,68 @@
+{
+  "id": "eu_uk_2bed_belfast_edwardian",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Belfast",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Belfast Edwardian 2-bed Terrace (BT5)",
+    "description": "A Belfast BT5 Edwardian terrace 2-bed — typical 70 m² with open-plan downstairs, original cornicing, walled rear yard. Open Living-Dining, Kitchen, Master, Bedroom 2, Bath, narrow Hall + back hall, walled yard. Source: propertypal.com Belfast 2-bed listings.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["united_kingdom", "belfast", "edwardian_semi", "2bed", "edwardian", "open_plan", "garten", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_living_dining", "name": "Living-Dining (open)", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,5],[1.5,5]], "area_sqm": 22.5,
+      "notes": "Open-plan downstairs with original cornicing" },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5.5],[0,5.5]], "area_sqm": 3.75 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[6,4],[8,4],[8,5],[6,5]], "area_sqm": 2 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[1.5,5],[5,5],[5,8],[1.5,8]], "area_sqm": 10.5 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_hall_ext", "name": "Back Hall", "type": "corridor",
+      "polygon": [[0,5.5],[1.5,5.5],[1.5,8],[0,8]], "area_sqm": 3.75 },
+    { "id": "r_yard", "name": "Walled Yard", "type": "balcony",
+      "polygon": [[0,8],[8,8],[8,9],[0,9]], "area_sqm": 8,
+      "notes": "Walled rear yard — Belfast terrace signature" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living_dining", "position": [1.5, 1.5], "width_mm": 1100 },
+    { "from": "r_hall", "to": "r_bath", "position": [0.75, 3], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_hall_ext", "position": [0.75, 5.5], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_master", "position": [1.5, 6.75], "width_mm": 900 },
+    { "from": "r_living_dining", "to": "r_kitchen", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_living_dining", "to": "r_master", "position": [3.25, 5], "width_mm": 900 },
+    { "from": "r_living_dining", "to": "r_bedroom2", "position": [5.5, 5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_storage", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_master", "to": "r_yard", "position": [3.25, 8], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bedroom2", "to": "r_yard", "position": [6.5, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_living_dining", "position": [3.75, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 2], "width_mm": 1200 },
+    { "room": "r_master", "position": [3.25, 8], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8, 6.5], "width_mm": 1200 },
+    { "room": "r_yard", "position": [4, 9], "width_mm": 2000 },
+    { "room": "r_bath", "position": [0, 4.25], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

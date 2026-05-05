@@ -1,0 +1,64 @@
+{
+  "id": "eu_uk_2bed_cardiff_radyr_terrace",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Cardiff",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 56,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Cardiff Radyr Bay-Window 2-bed Terrace (CF15)",
+    "description": "A Cardiff Radyr CF15 bay-window 2-bed terrace — typical 60 m² with French doors to garden, integrated kitchen, cloakroom. Hall, Lounge-Diner, Kitchen (galley), Cloak, Bath, Master, Bedroom 2, back hall. Source: rightmove.co.uk Cardiff Radyr.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["united_kingdom", "cardiff", "victorian_terrace", "2bed", "victorian", "bay_window", "garten", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_lounge_diner", "name": "Lounge-Diner", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,4],[1.5,4]], "area_sqm": 18,
+      "notes": "Lounge-Diner with bay window + French doors to garden" },
+    { "id": "r_kitchen", "name": "Kitchen (galley)", "type": "kitchen",
+      "polygon": [[6,0],[7,0],[7,4],[6,4]], "area_sqm": 4 },
+    { "id": "r_cloak", "name": "Cloak", "type": "wc",
+      "polygon": [[0,3],[1.5,3],[1.5,4],[0,4]], "area_sqm": 1.5 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[5,4],[5,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,4],[7,4],[7,8],[5,8]], "area_sqm": 8 },
+    { "id": "r_hall_ext", "name": "Back Hall", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_lounge_diner", "position": [1.5, 1.5], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_cloak", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_cloak", "to": "r_bath", "position": [0.75, 4], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_hall_ext", "position": [1, 6], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_master", "position": [2, 7], "width_mm": 900 },
+    { "from": "r_lounge_diner", "to": "r_kitchen", "position": [6, 2], "width_mm": 900 },
+    { "from": "r_lounge_diner", "to": "r_master", "position": [3.5, 4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [6, 4], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bed2", "position": [5, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_lounge_diner", "position": [3.75, 0], "width_mm": 2400 },
+    { "room": "r_lounge_diner", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kitchen", "position": [6.5, 0], "width_mm": 1000 },
+    { "room": "r_kitchen", "position": [7, 2], "width_mm": 1200 },
+    { "room": "r_master", "position": [3.5, 8], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [6, 8], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [7, 6], "width_mm": 1200 },
+    { "room": "r_bath", "position": [0, 5], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "eu_lt_2bed_vilnius_baroque",
+  "metadata": {
+    "region": "europe",
+    "country": "Lithuania",
+    "city_inspiration": "Vilnius",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Vilnius Baroque Old Town 2-bed (Senamiestis UNESCO)",
+    "description": "A Vilnius Senamiestis (Old Town) 2-bed apartment — UNESCO Baroque heritage typology. Prieškambaris, Svetainė, Virtuvė, two Miegamasis, Vonios, WC, courtyard Balkonas. High ceilings, exposed beams. Source: domoplius.lt Vilnius Senamiestis.",
+    "suitable_for": ["young_family", "couple", "academic", "creative_artist"],
+    "tags": ["lithuania", "vilnius", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_prieskambaris", "name": "Prieškambaris", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_svetaine", "name": "Svetainė", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_virtuve", "name": "Virtuvė", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_vonios", "name": "Vonios", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_miegamasis1", "name": "Miegamasis 1 (Master)", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_miegamasis2", "name": "Miegamasis 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_balkonas", "name": "Balkonas", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16,
+      "notes": "Courtyard balcony"
+    }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_prieskambaris", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_prieskambaris", "to": "r_svetaine", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_prieskambaris", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_vonios", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_svetaine", "to": "r_virtuve", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_svetaine", "to": "r_miegamasis1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_virtuve", "to": "r_miegamasis2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_miegamasis1", "to": "r_miegamasis2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_vonios", "to": "r_balkonas", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_miegamasis1", "to": "r_balkonas", "position": [3.5, 7], "width_mm": 1200 },
+    { "from": "r_miegamasis2", "to": "r_balkonas", "position": [6.5, 7], "width_mm": 1200 }
+  ],
+  "windows": [
+    { "room": "r_svetaine", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_virtuve", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_virtuve", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_balkonas", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_balkonas", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balkonas", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_vonios", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_prieskambaris", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

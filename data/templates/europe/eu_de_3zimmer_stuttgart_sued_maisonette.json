@@ -1,0 +1,105 @@
+{
+  "id": "eu_de_3zimmer_stuttgart_sued_maisonette",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Stuttgart",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 124,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Stuttgart-Süd Maisonette 3-Zi with Galerie + Terrasse",
+    "description": "A Stuttgart-Süd 3-Zimmer Maisonette — two-floor apartment with grand Wohnen-Essen + offene Küche on EG, then Schlafzimmer + Kinderzimmer + Galerie + Terrasse on OG. Open Galerie above living, south-facing OG terrace 11 m². Real listing data from kip.net (Stuttgart-Süd Wohnung W7394649).",
+    "suitable_for": ["young_family", "creative_artist"],
+    "tags": ["germany", "stuttgart", "maisonette", "two_floor_duplex", "contemporary_2000_2020", "open_plan", "terrasse", "voids_double_height"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7],[0,7]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "EG",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 2700,
+      "rooms": [
+        { "id": "r_diele", "name": "Diele", "type": "diele",
+          "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8,
+          "notes": "Entry hall with stair to OG" },
+        { "id": "r_wc", "name": "Gast-WC", "type": "wc",
+          "polygon": [[0,4],[2,4],[2,5.5],[0,5.5]], "area_sqm": 3 },
+        { "id": "r_stairs", "name": "Treppe", "type": "stairs",
+          "polygon": [[0,5.5],[2,5.5],[2,7],[0,7]], "area_sqm": 3,
+          "notes": "Stair up to OG" },
+        { "id": "r_wohnen", "name": "Wohnen-Essen", "type": "living",
+          "polygon": [[2,0],[7,0],[7,7],[2,7]], "area_sqm": 35,
+          "notes": "Grand open living-dining with double-height void" },
+        { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+          "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12,
+          "notes": "Open kitchen behind island" },
+        { "id": "r_pantry", "name": "Pantry", "type": "store",
+          "polygon": [[7,4],[10,4],[10,7],[7,7]], "area_sqm": 9 }
+      ],
+      "doors": [
+        { "from": "outside", "to": "r_diele", "position": [0.5, 0],
+          "width_mm": 1100, "is_main_entry": true },
+        { "from": "r_diele", "to": "r_wohnen", "position": [2, 2], "width_mm": 1200 },
+        { "from": "r_diele", "to": "r_wc", "position": [1, 4], "width_mm": 700 },
+        { "from": "r_wc", "to": "r_stairs", "position": [1, 5.5], "width_mm": 800 },
+        { "from": "r_wohnen", "to": "r_kuche", "position": [7, 2], "width_mm": 1500 },
+        { "from": "r_wohnen", "to": "r_pantry", "position": [7, 5.5], "width_mm": 900 },
+        { "from": "r_kuche", "to": "r_pantry", "position": [8.5, 4], "width_mm": 800 }
+      ],
+      "windows": [
+        { "room": "r_wohnen", "position": [4.5, 0], "width_mm": 2400 },
+        { "room": "r_wohnen", "position": [4.5, 7], "width_mm": 2400 },
+        { "room": "r_kuche", "position": [8.5, 0], "width_mm": 1500 },
+        { "room": "r_pantry", "position": [10, 5.5], "width_mm": 800 },
+        { "room": "r_diele", "position": [0, 2], "width_mm": 800 }
+      ]
+    },
+    {
+      "name": "OG",
+      "elevation_mm": 2700,
+      "ceiling_height_mm": 2700,
+      "rooms": [
+        { "id": "r_galerie", "name": "Galerie", "type": "corridor",
+          "polygon": [[2,2],[7,2],[7,5],[2,5]], "area_sqm": 15,
+          "notes": "Open galerie above EG Wohnen" },
+        { "id": "r_flur", "name": "Flur", "type": "corridor",
+          "polygon": [[0,0],[2,0],[2,7],[0,7]], "area_sqm": 14,
+          "notes": "OG hallway with stair landing" },
+        { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+          "polygon": [[2,0],[7,0],[7,2],[2,2]], "area_sqm": 10,
+          "notes": "Front master with terrace access" },
+        { "id": "r_kinderz", "name": "Kinderzimmer", "type": "bedroom",
+          "polygon": [[2,5],[7,5],[7,7],[2,7]], "area_sqm": 10,
+          "notes": "Rear children's room" },
+        { "id": "r_bad", "name": "Bad", "type": "bathroom",
+          "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9,
+          "notes": "Family bath" },
+        { "id": "r_terrasse", "name": "Terrasse", "type": "balcony",
+          "polygon": [[7,3],[10,3],[10,7],[7,7]], "area_sqm": 12,
+          "notes": "South-facing OG terrace" }
+      ],
+      "doors": [
+        { "from": "r_flur", "to": "r_galerie", "position": [2, 3.5], "width_mm": 1100 },
+        { "from": "r_flur", "to": "r_schlafz", "position": [2, 1], "width_mm": 900 },
+        { "from": "r_flur", "to": "r_kinderz", "position": [2, 6], "width_mm": 900 },
+        { "from": "r_galerie", "to": "r_bad", "position": [7, 2.5], "width_mm": 800 },
+        { "from": "r_galerie", "to": "r_terrasse", "position": [7, 4], "width_mm": 1500, "swing": "slide" }
+      ],
+      "windows": [
+        { "room": "r_schlafz", "position": [4.5, 0], "width_mm": 2400 },
+        { "room": "r_kinderz", "position": [4.5, 7], "width_mm": 2000 },
+        { "room": "r_bad", "position": [8.5, 0], "width_mm": 1200 },
+        { "room": "r_flur", "position": [0, 3.5], "width_mm": 800 }
+      ]
+    }
+  ]
+}

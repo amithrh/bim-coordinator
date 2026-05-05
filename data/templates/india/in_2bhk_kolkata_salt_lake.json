@@ -1,0 +1,69 @@
+{
+  "id": "in_2bhk_kolkata_salt_lake",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Kolkata",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 81,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Kolkata Salt Lake Sector 5 2 BHK (Merlin 5th Avenue basis)",
+    "description": "A Kolkata Salt Lake Sector 5 mid-tier 2 BHK — Merlin 5th Avenue basis 916 sqft super (~620 carpet). Living/Dining open, Master with attached bath, Bedroom 2 with shared bath, Bengali-style verandah + small service balcony for kitchen utilities. Source: squareyards.com Merlin 5th Avenue + 99acres.com Salt Lake range.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["india", "kolkata", "apartment_indian", "2bed", "current_2020plus", "modular_kitchen", "balkon", "dry_balcony"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,9],[0,9]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[5,0],[8,0],[8,3],[5,3]], "area_sqm": 9,
+      "notes": "Modular kitchen" },
+    { "id": "r_service_balcony", "name": "Service Balcony", "type": "balcony",
+      "polygon": [[8,0],[9,0],[9,3],[8,3]], "area_sqm": 3,
+      "notes": "Bengali service balcony for kitchen utilities" },
+    { "id": "r_common_bath", "name": "Common Bath", "type": "bathroom",
+      "polygon": [[7,3],[9,3],[9,5],[7,5]], "area_sqm": 4 },
+    { "id": "r_passage", "name": "Passage", "type": "corridor",
+      "polygon": [[5,3],[7,3],[7,5],[5,5]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,4],[4,4],[4,7],[0,7]], "area_sqm": 12 },
+    { "id": "r_master_bath", "name": "Master Bath", "type": "bathroom",
+      "polygon": [[4,4],[5,4],[5,7],[4,7]], "area_sqm": 3 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[9,5],[9,8],[5,8]], "area_sqm": 12 },
+    { "id": "r_verandah", "name": "Verandah", "type": "balcony",
+      "polygon": [[0,7],[5,7],[5,9],[0,9]], "area_sqm": 10,
+      "notes": "Bengali verandah" },
+    { "id": "r_balcony2", "name": "Bedroom Balcony", "type": "balcony",
+      "polygon": [[5,8],[9,8],[9,9],[5,9]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_living", "to": "r_kitchen", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_service_balcony", "position": [8, 1.5], "width_mm": 700, "swing": "slide" },
+    { "from": "r_kitchen", "to": "r_passage", "position": [6, 3], "width_mm": 800 },
+    { "from": "r_passage", "to": "r_common_bath", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_passage", "to": "r_bedroom2", "position": [6, 5], "width_mm": 900 },
+    { "from": "r_living", "to": "r_master", "position": [2, 4], "width_mm": 900 },
+    { "from": "r_master", "to": "r_master_bath", "position": [4, 5.5], "width_mm": 750 },
+    { "from": "r_master", "to": "r_verandah", "position": [2, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_bedroom2", "to": "r_balcony2", "position": [7, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_living", "position": [0, 2], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [6.5, 0], "width_mm": 1500 },
+    { "room": "r_master", "position": [0, 5.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [9, 6.5], "width_mm": 1500 },
+    { "room": "r_verandah", "position": [2.5, 9], "width_mm": 2400 },
+    { "room": "r_balcony2", "position": [7, 9], "width_mm": 1800 },
+    { "room": "r_service_balcony", "position": [9, 1.5], "width_mm": 600 }
+  ]
+}

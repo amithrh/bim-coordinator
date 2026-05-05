@@ -1,0 +1,106 @@
+{
+  "id": "eu_fr_3pieces_bordeaux_echoppe_etage",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Bordeaux",
+    "size_label": "echoppe_etage",
+    "size_band": "3bed",
+    "total_area_sqm": 120,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Bordeaux Échoppe à étage (rare two-floor variant, Caudéran)",
+    "description": "A Bordeaux Caudéran two-floor Échoppe variant — typical 110 m² with rear garden. RC: Entrée + Séjour + Cuisine ouverte + Chambre + SDD + WC + Jardin. R+1: Master + Chambre + SDB + Palier + Storage. Symmetrical pierre de taille facade. Source: agence-bordeaux.fr Echoppe typologies.",
+    "suitable_for": ["young_family", "couple", "growing_family"],
+    "tags": ["france", "bordeaux", "echoppe", "3bed", "vintage_traditional", "two_floor_duplex", "garten"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "Rez-de-chaussée",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 3000,
+      "rooms": [
+        { "id": "r_entree", "name": "Entrée", "type": "entry",
+          "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+        { "id": "r_sejour", "name": "Séjour", "type": "living",
+          "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+        { "id": "r_cuisine", "name": "Cuisine ouverte", "type": "kitchen",
+          "polygon": [[0,3],[2,3],[2,8],[0,8]], "area_sqm": 10,
+          "notes": "Open kitchen along west wall" },
+        { "id": "r_chambre", "name": "Chambre RDC", "type": "bedroom",
+          "polygon": [[2,4.5],[7,4.5],[7,8],[2,8]], "area_sqm": 17.5 },
+        { "id": "r_sdd", "name": "Salle de Douche", "type": "bathroom",
+          "polygon": [[7,0],[8,0],[8,4],[7,4]], "area_sqm": 4 },
+        { "id": "r_wc", "name": "WC", "type": "wc",
+          "polygon": [[7,4],[8,4],[8,5],[7,5]], "area_sqm": 1 },
+        { "id": "r_stair", "name": "Escalier", "type": "stairs",
+          "polygon": [[7,5],[8,5],[8,8],[7,8]], "area_sqm": 3,
+          "notes": "Stair to first floor" }
+      ],
+      "doors": [
+        { "from": "outside", "to": "r_entree", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+        { "from": "r_entree", "to": "r_sejour", "position": [2, 1.5], "width_mm": 1100 },
+        { "from": "r_entree", "to": "r_cuisine", "position": [1, 3], "width_mm": 900 },
+        { "from": "r_sejour", "to": "r_sdd", "position": [7, 2], "width_mm": 800 },
+        { "from": "r_sdd", "to": "r_wc", "position": [7.5, 4], "width_mm": 700 },
+        { "from": "r_wc", "to": "r_stair", "position": [7.5, 5], "width_mm": 800 },
+        { "from": "r_sejour", "to": "r_chambre", "position": [4, 4.5], "width_mm": 900 },
+        { "from": "r_cuisine", "to": "r_chambre", "position": [2, 6], "width_mm": 900 },
+        { "from": "r_chambre", "to": "r_stair", "position": [7, 6.5], "width_mm": 800 }
+      ],
+      "windows": [
+        { "room": "r_sejour", "position": [4.5, 0], "width_mm": 2400 },
+        { "room": "r_sdd", "position": [8, 2], "width_mm": 600 },
+        { "room": "r_cuisine", "position": [0, 5.5], "width_mm": 1500 },
+        { "room": "r_chambre", "position": [4.5, 8], "width_mm": 2000 },
+        { "room": "r_chambre", "position": [7, 8], "width_mm": 1200 },
+        { "room": "r_entree", "position": [0, 1.5], "width_mm": 800 }
+      ]
+    },
+    {
+      "name": "Premier étage",
+      "elevation_mm": 3000,
+      "ceiling_height_mm": 2800,
+      "boundary_polygon": [[0,0],[8,0],[8,7],[0,7]],
+      "rooms": [
+        { "id": "r_palier", "name": "Palier", "type": "corridor",
+          "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+        { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+          "polygon": [[2,0],[6,0],[6,4],[2,4]], "area_sqm": 16 },
+        { "id": "r_storage", "name": "Storage", "type": "store",
+          "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+        { "id": "r_palier_ext", "name": "Palier ext", "type": "corridor",
+          "polygon": [[0,3],[2,3],[2,7],[0,7]], "area_sqm": 8 },
+        { "id": "r_ch", "name": "Chambre", "type": "bedroom",
+          "polygon": [[2,4],[6,4],[6,7],[2,7]], "area_sqm": 12 },
+        { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+          "polygon": [[6,4],[8,4],[8,7],[6,7]], "area_sqm": 6 }
+      ],
+      "doors": [
+        { "from": "r_palier", "to": "r_master", "position": [2, 1.5], "width_mm": 900 },
+        { "from": "r_palier", "to": "r_palier_ext", "position": [1, 3], "width_mm": 900 },
+        { "from": "r_master", "to": "r_storage", "position": [6, 2], "width_mm": 800 },
+        { "from": "r_palier_ext", "to": "r_ch", "position": [2, 5.5], "width_mm": 900 },
+        { "from": "r_ch", "to": "r_sdb", "position": [6, 5.5], "width_mm": 800 },
+        { "from": "r_master", "to": "r_ch", "position": [4, 4], "width_mm": 800 }
+      ],
+      "windows": [
+        { "room": "r_master", "position": [4, 0], "width_mm": 2000 },
+        { "room": "r_storage", "position": [7, 0], "width_mm": 1200 },
+        { "room": "r_storage", "position": [8, 2], "width_mm": 1000 },
+        { "room": "r_ch", "position": [4, 7], "width_mm": 1800 },
+        { "room": "r_sdb", "position": [8, 5.5], "width_mm": 600 },
+        { "room": "r_palier", "position": [0, 1.5], "width_mm": 600 },
+        { "room": "r_palier_ext", "position": [0, 5], "width_mm": 1200 }
+      ]
+    }
+  ]
+}

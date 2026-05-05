@@ -1,0 +1,63 @@
+{
+  "id": "eu_de_2zimmer_leipzig_plattenbau_p2",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Leipzig",
+    "size_label": "2zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 56,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Leipzig Plattenbau P2 (DDR 2-Raum-Wohnung Grünau)",
+    "description": "A Leipzig-Grünau Plattenbau P2 2-Raum-Wohnung — classic DDR Plattenbau type with Wohnzimmer + Schlafzimmer + Küche + Bad + Flur + Balkon. Standard 51 m² Wohnfläche. Tageslichtbad rare in P2. Compact, repetitive, prefab concrete panel construction. Source: Wikipedia P2 Plattenbautyp + Plattenbauten in Leipzig.",
+    "suitable_for": ["single_professional", "couple", "retiree"],
+    "tags": ["germany", "leipzig", "plattenbau", "1bed", "modernist_1970s", "single_floor", "balkon"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20,
+      "notes": "Living room with Balkon access" },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6,
+      "notes": "Plattenbau Balkon — south-facing typical" },
+    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
+      "polygon": [[5,3],[7,3],[7,5],[5,5]], "area_sqm": 4,
+      "notes": "Standard Plattenbau Küche" },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[5,5],[7,5],[7,7],[5,7]], "area_sqm": 4,
+      "notes": "Internal Bad — Tageslicht rare in P2" },
+    { "id": "r_flur", "name": "Flur", "type": "corridor",
+      "polygon": [[0,4],[5,4],[5,5.5],[0,5.5]], "area_sqm": 7.5,
+      "notes": "Corridor connecting all rooms" },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[0,5.5],[5,5.5],[5,8],[0,8]], "area_sqm": 12.5,
+      "notes": "Bedroom with rear window" },
+    { "id": "r_storage", "name": "Abstellraum", "type": "store",
+      "polygon": [[5,7],[7,7],[7,8],[5,8]], "area_sqm": 2,
+      "notes": "Plattenbau Abstellraum" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0, 4.75],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnz", "position": [2.5, 4], "width_mm": 1000 },
+    { "from": "r_flur", "to": "r_schlafz", "position": [2.5, 5.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_balkon", "position": [5, 1.5], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [5, 3.5], "width_mm": 800 },
+    { "from": "r_schlafz", "to": "r_bad", "position": [5, 6.25], "width_mm": 700 },
+    { "from": "r_schlafz", "to": "r_storage", "position": [5, 7.5], "width_mm": 700 },
+    { "from": "r_bad", "to": "r_kuche", "position": [6, 5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_wohnz", "position": [0, 2], "width_mm": 1500 },
+    { "room": "r_schlafz", "position": [2.5, 8], "width_mm": 1800 },
+    { "room": "r_schlafz", "position": [0, 6.75], "width_mm": 1200 },
+    { "room": "r_kuche", "position": [7, 4], "width_mm": 1200 }
+  ]
+}

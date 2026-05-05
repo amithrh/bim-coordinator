@@ -1,0 +1,68 @@
+{
+  "id": "eu_dk_2bed_copenhagen_klassisk",
+  "metadata": {
+    "region": "europe",
+    "country": "Denmark",
+    "city_inspiration": "København",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 100,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "København Østerbro / Vesterbro Klassisk lejlighed (1900-1930s)",
+    "description": "A Copenhagen Østerbro / Vesterbro klassisk byejendom apartment — typical 95 m² with high ceilings, herringbone parkett, brystpaneler dado paneling, original pejs/kakkelovn fireplace. Entré, Stue, Spisestue (with dobbeltdøre to Stue), Køkken, two Soveværelse, Badeværelse, Gæste-WC, Altan, basement Storage. Source: boligsiden.dk + nybolig.dk København listings.",
+    "suitable_for": ["young_family", "couple", "executive_pied_a_terre"],
+    "tags": ["denmark", "scandinavian", "klassisk_dk", "2bed", "vintage_traditional", "altbau_high_ceilings", "fireplace_kachelofen", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,10],[0,10]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_entre", "name": "Entré", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Stue with original pejs/kakkelovn — dobbeltdøre to Spisestue" },
+    { "id": "r_spisestue", "name": "Spisestue", "type": "dining",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_kokken", "name": "Køkken", "type": "kitchen",
+      "polygon": [[0,5],[3,5],[3,8],[0,8]], "area_sqm": 9 },
+    { "id": "r_sovev1", "name": "Soveværelse 1", "type": "master_bedroom",
+      "polygon": [[3,5],[7,5],[7,9],[3,9]], "area_sqm": 16 },
+    { "id": "r_sovev2", "name": "Soveværelse 2", "type": "bedroom",
+      "polygon": [[7,5],[10,5],[10,9],[7,9]], "area_sqm": 12 },
+    { "id": "r_bad", "name": "Badeværelse", "type": "bathroom",
+      "polygon": [[0,8],[3,8],[3,10],[0,10]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "Gæste-WC", "type": "wc",
+      "polygon": [[3,9],[5,9],[5,10],[3,10]], "area_sqm": 2 },
+    { "id": "r_altan", "name": "Altan", "type": "balcony",
+      "polygon": [[5,9],[10,9],[10,10],[5,10]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entre", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_entre", "to": "r_stue", "position": [2, 2], "width_mm": 1200 },
+    { "from": "r_entre", "to": "r_kokken", "position": [1, 5], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_spisestue", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_stue", "to": "r_sovev1", "position": [5, 5], "width_mm": 900 },
+    { "from": "r_spisestue", "to": "r_sovev2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_kokken", "to": "r_sovev1", "position": [3, 6.5], "width_mm": 800 },
+    { "from": "r_kokken", "to": "r_bad", "position": [1.5, 8], "width_mm": 800 },
+    { "from": "r_sovev1", "to": "r_sovev2", "position": [7, 7], "width_mm": 800 },
+    { "from": "r_sovev1", "to": "r_wc", "position": [4, 9], "width_mm": 700 },
+    { "from": "r_bad", "to": "r_wc", "position": [3, 9.5], "width_mm": 700 },
+    { "from": "r_sovev1", "to": "r_altan", "position": [6, 9], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5, 0], "width_mm": 3000 },
+    { "room": "r_spisestue", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_spisestue", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_kokken", "position": [0, 6], "width_mm": 1500 },
+    { "room": "r_sovev1", "position": [5, 9], "width_mm": 1800 },
+    { "room": "r_sovev2", "position": [8.5, 9], "width_mm": 1500 },
+    { "room": "r_sovev2", "position": [10, 7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 9], "width_mm": 600 },
+    { "room": "r_entre", "position": [0, 2], "width_mm": 1000 }
+  ]
+}

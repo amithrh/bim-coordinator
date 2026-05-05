@@ -1,0 +1,59 @@
+{
+  "id": "eu_pl_2bed_warsaw_kamienica",
+  "metadata": {
+    "region": "europe",
+    "country": "Poland",
+    "city_inspiration": "Warsaw",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 60,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Warszawa Mokotów Kamienica (pre-war tenement)",
+    "description": "A Warsaw Mokotów / Praga / Śródmieście pre-war kamienica apartment — typical 53-60 m². Przedpokój entry, Salon facing street, separate Kuchnia, Sypialnia main + small Sypialnia (or gabinet), Łazienka, Balkon. 3+ m ceilings, original sztukateria mouldings, terrazzo klatka schodowa, courtyard podwórko. Often dwustronne (cross-through). Source: otodom.pl Warsaw kamienica listings.",
+    "suitable_for": ["couple", "young_family", "academic"],
+    "tags": ["poland", "warsaw", "kamienica", "2bed", "pre_1900", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,7.5],[0,7.5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_przedpokoj", "name": "Przedpokój", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4.5],[2,4.5]], "area_sqm": 18,
+      "notes": "Street-facing salon with original sztukateria" },
+    { "id": "r_kuchnia", "name": "Kuchnia", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_lazienka", "name": "Łazienka", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_sypialnia1", "name": "Sypialnia (master)", "type": "master_bedroom",
+      "polygon": [[2,4.5],[6,4.5],[6,7.5],[2,7.5]], "area_sqm": 12 },
+    { "id": "r_sypialnia2", "name": "Sypialnia (gabinet)", "type": "bedroom",
+      "polygon": [[6,4],[8,4],[8,7.5],[6,7.5]], "area_sqm": 7 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,5],[2,5],[2,7.5],[0,7.5]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_przedpokoj", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_przedpokoj", "to": "r_salon", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_przedpokoj", "to": "r_lazienka", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_lazienka", "to": "r_balkon", "position": [1, 5], "width_mm": 700, "swing": "slide" },
+    { "from": "r_salon", "to": "r_kuchnia", "position": [6, 2.25], "width_mm": 1000 },
+    { "from": "r_salon", "to": "r_sypialnia1", "position": [4, 4.5], "width_mm": 900 },
+    { "from": "r_kuchnia", "to": "r_sypialnia2", "position": [7, 4], "width_mm": 800 },
+    { "from": "r_sypialnia1", "to": "r_sypialnia2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_sypialnia1", "to": "r_balkon", "position": [2, 6.25], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kuchnia", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kuchnia", "position": [8, 2], "width_mm": 1200 },
+    { "room": "r_sypialnia1", "position": [4, 7.5], "width_mm": 1800 },
+    { "room": "r_sypialnia2", "position": [7, 7.5], "width_mm": 1500 },
+    { "room": "r_sypialnia2", "position": [8, 5.75], "width_mm": 1200 },
+    { "room": "r_lazienka", "position": [0, 4], "width_mm": 600 }
+  ]
+}

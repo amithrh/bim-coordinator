@@ -1,0 +1,67 @@
+{
+  "id": "eu_fr_2pieces_lyon_canut",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Lyon",
+    "size_label": "canut",
+    "size_band": "2bed",
+    "total_area_sqm": 81,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Lyon Croix-Rousse Canut (4m ceilings, jacquard loom heritage)",
+    "description": "A Lyon Croix-Rousse 1er/4e Canut apartment — distinctive 4m double-height ceilings (originally for jacquard looms) with mezzanine sleeping platform, Sejour double-haut, open Cuisine, Chambre + Chambre, SDB, separate WC, narrow Entree. Plain stone walls, large traversing windows. Source: beaux-lieux.fr + espaces-atypiques.com Croix-Rousse listings.",
+    "suitable_for": ["creative_artist", "couple", "academic"],
+    "tags": ["france", "lyon", "vintage_traditional", "2bed", "altbau_high_ceilings", "voids_double_height", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 4000
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sejour", "name": "Séjour double-haut", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Double-height séjour (4m ceiling) with mezzanine sleeping platform above" },
+    { "id": "r_cuisine", "name": "Cuisine ouverte", "type": "kitchen",
+      "polygon": [[7,0],[9,0],[9,4],[7,4]], "area_sqm": 8 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4],[0,4]], "area_sqm": 2 },
+    { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6.5],[0,6.5]], "area_sqm": 5 },
+    { "id": "r_chambre_principale", "name": "Chambre principale", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_chambre", "name": "Chambre", "type": "bedroom",
+      "polygon": [[6,5],[9,5],[9,9],[6,9]], "area_sqm": 12 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[7,4],[9,4],[9,5],[7,5]], "area_sqm": 2 },
+    { "id": "r_hall_ext", "name": "Hall ext", "type": "corridor",
+      "polygon": [[0,6.5],[2,6.5],[2,9],[0,9]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2, 1.5], "width_mm": 1200 },
+    { "from": "r_entree", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_sdb", "position": [1, 4], "width_mm": 700 },
+    { "from": "r_sdb", "to": "r_hall_ext", "position": [1, 6.5], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_chambre_principale", "position": [2, 7.75], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_sejour", "to": "r_chambre_principale", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_chambre", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_storage", "position": [8, 4], "width_mm": 700 },
+    { "from": "r_chambre_principale", "to": "r_chambre", "position": [6, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [4.5, 0], "width_mm": 3000 },
+    { "room": "r_sejour", "position": [2, 0], "width_mm": 1200 },
+    { "room": "r_cuisine", "position": [8, 0], "width_mm": 1500 },
+    { "room": "r_cuisine", "position": [9, 2], "width_mm": 1200 },
+    { "room": "r_chambre_principale", "position": [4, 9], "width_mm": 2000 },
+    { "room": "r_chambre", "position": [7.5, 9], "width_mm": 1800 },
+    { "room": "r_chambre", "position": [9, 7], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [0, 5.25], "width_mm": 600 },
+    { "room": "r_entree", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

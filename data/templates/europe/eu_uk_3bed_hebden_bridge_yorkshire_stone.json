@@ -1,0 +1,73 @@
+{
+  "id": "eu_uk_3bed_hebden_bridge_yorkshire_stone",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Hebden Bridge",
+    "size_label": "3bed",
+    "size_band": "3bed",
+    "total_area_sqm": 110,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Hebden Bridge Yorkshire Stone 3-bed Cottage (HX7)",
+    "description": "A Hebden Bridge Yorkshire stone 3-bed cottage — typical 110 m² with stone flagged floors, woodstove, attic room. Living-Diner with woodstove, Kitchen, Master, Bedroom 2, Bedroom 3, Bath, attic, Hall + back hall. Source: rightmove.co.uk Hebden Bridge listings.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["united_kingdom", "yorkshire", "cottage", "3bed", "vintage_traditional", "fireplace_kachelofen", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,11],[0,11]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living_diner", "name": "Living-Diner", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5.5],[2,5.5]], "area_sqm": 27.5,
+      "notes": "Living-Diner with woodstove + stone flagged floors" },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[7,4],[10,4],[10,5.5],[7,5.5]], "area_sqm": 4.5 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5.5],[6,5.5],[6,9],[2,9]], "area_sqm": 14 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,5.5],[10,5.5],[10,9],[6,9]], "area_sqm": 14 },
+    { "id": "r_attic", "name": "Loft Attic", "type": "bedroom",
+      "polygon": [[2,9],[7,9],[7,11],[2,11]], "area_sqm": 10 },
+    { "id": "r_bed3", "name": "Bedroom 3", "type": "bedroom",
+      "polygon": [[7,9],[10,9],[10,11],[7,11]], "area_sqm": 6 },
+    { "id": "r_hall_ext", "name": "Back Hall", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,11],[0,11]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living_diner", "position": [2, 2], "width_mm": 1100 },
+    { "from": "r_hall", "to": "r_bath", "position": [1, 4], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_hall_ext", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_master", "position": [2, 7], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_attic", "position": [2, 10], "width_mm": 800 },
+    { "from": "r_living_diner", "to": "r_kitchen", "position": [7, 2], "width_mm": 1100 },
+    { "from": "r_living_diner", "to": "r_master", "position": [4, 5.5], "width_mm": 900 },
+    { "from": "r_living_diner", "to": "r_bed2", "position": [6.5, 5.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_storage", "position": [8.5, 4], "width_mm": 800 },
+    { "from": "r_master", "to": "r_attic", "position": [4, 9], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bed2", "position": [6, 7], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bed3", "position": [8, 9], "width_mm": 800 },
+    { "from": "r_attic", "to": "r_bed3", "position": [7, 10], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living_diner", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [10, 2], "width_mm": 1500 },
+    { "room": "r_master", "position": [4, 9], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [8, 9], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [10, 7.25], "width_mm": 1500 },
+    { "room": "r_attic", "position": [4.5, 11], "width_mm": 1800 },
+    { "room": "r_bed3", "position": [8.5, 11], "width_mm": 1200 },
+    { "room": "r_bath", "position": [0, 5.5], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 2], "width_mm": 1000 }
+  ]
+}

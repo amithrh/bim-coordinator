@@ -1,0 +1,73 @@
+{
+  "id": "eu_at_3zimmer_wien_altbau_gruenderzeit",
+  "metadata": {
+    "region": "europe",
+    "country": "Austria",
+    "city_inspiration": "Wien",
+    "size_label": "3zimmer",
+    "size_band": "3bed",
+    "total_area_sqm": 102,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Wien Altbau Gründerzeit (1./4./6./8. Bezirk)",
+    "description": "A classic Vienna Gründerzeit Altbau apartment — Bel Etage / Hochparterre typology with grand Salon + Speisezimmer en enfilade. Vorraum, Salon (Wohnzimmer), Speisezimmer, separate Küche, Kabinett (small bedroom), 2 Schlafzimmer, Bad, separate WC, Loggia. 3.5-4m ceilings with Stuckdecken plaster mouldings, Kachelofen tiled stove, Flügeltüren double doors. Source: immobilienscout24.at + immosuchmaschine.at Wien Altbau listings.",
+    "suitable_for": ["young_family", "academic", "executive_pied_a_terre"],
+    "tags": ["austria", "wien", "gruenderzeit_at", "3bed", "gruenderzeit", "altbau_high_ceilings", "fireplace_kachelofen", "loggia", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 4000
+  },
+  "rooms": [
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[0,0],[6,0],[6,5],[0,5]], "area_sqm": 30,
+      "notes": "Grand Salon with Stuckdecken + Kachelofen" },
+    { "id": "r_speisez", "name": "Speisezimmer", "type": "dining",
+      "polygon": [[6,0],[10,0],[10,5],[6,5]], "area_sqm": 20,
+      "notes": "Speisezimmer en enfilade with Salon — Flügeltüren typical" },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[10,0],[12,0],[12,5],[10,5]], "area_sqm": 10 },
+    { "id": "r_vorraum", "name": "Vorraum", "type": "entry",
+      "polygon": [[0,5],[3,5],[3,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_kabinett", "name": "Kabinett", "type": "bedroom",
+      "polygon": [[0,7],[3,7],[3,9],[0,9]], "area_sqm": 6,
+      "notes": "Small Wiener Kabinett bedroom" },
+    { "id": "r_schlafz1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[3,5],[7,5],[7,9],[3,9]], "area_sqm": 16 },
+    { "id": "r_schlafz2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[7,5],[10,5],[10,9],[7,9]], "area_sqm": 12 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[10,5],[12,5],[12,7],[10,7]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[10,7],[11,7],[11,9],[10,9]], "area_sqm": 2 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[11,7],[12,7],[12,9],[11,9]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_vorraum", "position": [0, 6], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_vorraum", "to": "r_salon", "position": [1.5, 5], "width_mm": 1100 },
+    { "from": "r_vorraum", "to": "r_kabinett", "position": [1.5, 7], "width_mm": 900 },
+    { "from": "r_vorraum", "to": "r_schlafz1", "position": [3, 6], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_speisez", "position": [6, 2.5], "width_mm": 1500 },
+    { "from": "r_speisez", "to": "r_kuche", "position": [10, 2.5], "width_mm": 1100 },
+    { "from": "r_salon", "to": "r_schlafz1", "position": [4.5, 5], "width_mm": 900 },
+    { "from": "r_speisez", "to": "r_schlafz2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_schlafz1", "to": "r_schlafz2", "position": [7, 7], "width_mm": 800 },
+    { "from": "r_schlafz2", "to": "r_bad", "position": [10, 6], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_wc", "position": [10.5, 7], "width_mm": 600 },
+    { "from": "r_wc", "to": "r_loggia", "position": [11, 8], "width_mm": 700, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [3, 0], "width_mm": 3000 },
+    { "room": "r_salon", "position": [0, 2.5], "width_mm": 1800 },
+    { "room": "r_speisez", "position": [8, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [11, 0], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [12, 2.5], "width_mm": 1500 },
+    { "room": "r_kabinett", "position": [1.5, 9], "width_mm": 1500 },
+    { "room": "r_schlafz1", "position": [5, 9], "width_mm": 2000 },
+    { "room": "r_schlafz2", "position": [8.5, 9], "width_mm": 1800 },
+    { "room": "r_bad", "position": [12, 6], "width_mm": 800 },
+    { "room": "r_vorraum", "position": [0, 6], "width_mm": 600 }
+  ]
+}

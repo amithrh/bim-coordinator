@@ -1,0 +1,62 @@
+{
+  "id": "eu_de_3zimmer_berlin_prenzlauer_eisenbahnwohnung",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Berlin Prenzlauer Berg Eisenbahnwohnung Altbau (railroad-flat with Durchgang)",
+    "description": "A Berlin Prenzlauer Berg Altbau Eisenbahnwohnung — distinctive railroad apartment where Schlafzimmer 2 is a Durchgang (pass-through room). Wohnzimmer, Schlafzimmer 1, Schlafzimmer 2 (Durchgangszimmer), Küche, Bad, generous Flur, Speicher. Stuck mouldings, Dielenboden. Source: immobilienscout24.de Bornholmer Berlin listings.",
+    "suitable_for": ["couple", "young_family", "creative_artist"],
+    "tags": ["germany", "berlin", "altbau", "2bed", "wilhelminian", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,5.5],[0,5.5]], "area_sqm": 11 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[7,3],[10,3],[10,5],[7,5]], "area_sqm": 6 },
+    { "id": "r_schlafz1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_schlafz2", "name": "Schlafzimmer 2 (Durchgang)", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,8],[6,8]], "area_sqm": 12,
+      "notes": "Durchgangszimmer — railroad-style pass-through" },
+    { "id": "r_speicher", "name": "Speicher", "type": "store",
+      "polygon": [[0,5.5],[2,5.5],[2,8],[0,8]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0, 2.75], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnz", "position": [2, 2.5], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_speicher", "position": [1, 5.5], "width_mm": 800 },
+    { "from": "r_speicher", "to": "r_schlafz1", "position": [2, 7], "width_mm": 800 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [7, 1.5], "width_mm": 1000 },
+    { "from": "r_wohnz", "to": "r_bad", "position": [7, 4], "width_mm": 800 },
+    { "from": "r_kuche", "to": "r_bad", "position": [8.5, 3], "width_mm": 800 },
+    { "from": "r_wohnz", "to": "r_schlafz1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_schlafz2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_schlafz1", "to": "r_schlafz2", "position": [6, 6.5], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [8.5, 0], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [10, 1.5], "width_mm": 1200 },
+    { "room": "r_bad", "position": [10, 4], "width_mm": 800 },
+    { "room": "r_schlafz1", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_schlafz2", "position": [8, 8], "width_mm": 1800 },
+    { "room": "r_schlafz2", "position": [10, 6.5], "width_mm": 1500 },
+    { "room": "r_speicher", "position": [0, 6.75], "width_mm": 600 },
+    { "room": "r_flur", "position": [0, 2.75], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "eu_it_2bed_trullo_alberobello",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Alberobello",
+    "size_label": "trullo",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Trullo Alberobello (Puglia drystone with conical roofs)",
+    "description": "A Puglia Alberobello / Locorotondo Trullo — typical 70 m² with multiple coni (cones) drystone construction with pinnacolo. Cono 1 (Soggiorno), Cono 2 (Camera matrimoniale with Alcova niche), Cono 3 (Cameretta), Cucina-pranzo extension, Bagno, Lamia rooftop terrace. Thick limestone walls 80-150 cm. Source: en.wikipedia.org/wiki/Trullo + puglialiving.com.",
+    "suitable_for": ["young_family", "couple", "creative_artist", "retiree"],
+    "tags": ["italy", "puglia", "trullo", "2bed", "vintage_traditional", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_cono1_soggiorno", "name": "Cono 1 (Soggiorno)", "type": "living",
+      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20,
+      "notes": "Main cone — Soggiorno with conical drystone roof and pinnacolo above" },
+    { "id": "r_cono2_camera", "name": "Cono 2 (Camera matrimoniale)", "type": "master_bedroom",
+      "polygon": [[5,0],[8,0],[8,4],[5,4]], "area_sqm": 12 },
+    { "id": "r_alcova", "name": "Alcova", "type": "bedroom",
+      "polygon": [[5,4],[8,4],[8,5],[5,5]], "area_sqm": 3,
+      "notes": "Sleeping alcove niche — Trullo signature" },
+    { "id": "r_cono3_cameretta", "name": "Cono 3 (Cameretta)", "type": "bedroom",
+      "polygon": [[0,4],[3,4],[3,7],[0,7]], "area_sqm": 9 },
+    { "id": "r_cucina_pranzo", "name": "Cucina-pranzo", "type": "kitchen",
+      "polygon": [[3,4],[5,4],[5,7],[3,7]], "area_sqm": 6,
+      "notes": "Eat-in kitchen extension between coni" },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,7],[3,7],[3,9],[0,9]], "area_sqm": 6 },
+    { "id": "r_lamia", "name": "Lamia / Terrazzo", "type": "balcony",
+      "polygon": [[3,7],[8,7],[8,9],[3,9]], "area_sqm": 10,
+      "notes": "Lamia rooftop terrace — characteristic Trullo feature" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_cono1_soggiorno", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_cono1_soggiorno", "to": "r_cono2_camera", "position": [5, 2], "width_mm": 1000 },
+    { "from": "r_cono2_camera", "to": "r_alcova", "position": [6.5, 4], "width_mm": 800 },
+    { "from": "r_cono1_soggiorno", "to": "r_cono3_cameretta", "position": [1.5, 4], "width_mm": 900 },
+    { "from": "r_cono1_soggiorno", "to": "r_cucina_pranzo", "position": [4, 4], "width_mm": 1000 },
+    { "from": "r_cucina_pranzo", "to": "r_storage", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_alcova", "to": "r_storage", "position": [6.5, 5], "width_mm": 700 },
+    { "from": "r_cono3_cameretta", "to": "r_bagno", "position": [1.5, 7], "width_mm": 800 },
+    { "from": "r_cucina_pranzo", "to": "r_lamia", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_storage", "to": "r_lamia", "position": [6.5, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_cono1_soggiorno", "position": [2.5, 0], "width_mm": 1500 },
+    { "room": "r_cono1_soggiorno", "position": [0, 2], "width_mm": 1200 },
+    { "room": "r_cono2_camera", "position": [6.5, 0], "width_mm": 1200 },
+    { "room": "r_cono2_camera", "position": [8, 2], "width_mm": 1200 },
+    { "room": "r_cono3_cameretta", "position": [0, 5.5], "width_mm": 1200 },
+    { "room": "r_bagno", "position": [0, 8], "width_mm": 600 },
+    { "room": "r_lamia", "position": [5.5, 9], "width_mm": 1800 },
+    { "room": "r_lamia", "position": [8, 8], "width_mm": 1500 }
+  ]
+}

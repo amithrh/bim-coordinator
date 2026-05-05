@@ -10,69 +10,530 @@
     "bathrooms": 3,
     "style": "Premium 3BHK with dedicated pooja room",
     "description": "A premium Delhi 3BHK with a generous drawing room, separate formal dining, kitchen with utility, master bedroom with attached bath and adjacent pooja room, two more bedrooms each with attached/common bath, and a central east-west corridor connecting public and private wings.",
-    "suitable_for": ["large family", "joint family", "premium buyer"],
-    "tags": ["premium", "pooja_room", "delhi", "modern", "all_attached", "corridor", "3bhk"],
+    "suitable_for": [
+      "large family",
+      "joint family",
+      "premium buyer"
+    ],
+    "tags": [
+      "premium",
+      "pooja_room",
+      "delhi",
+      "modern",
+      "all_attached",
+      "corridor",
+      "3bhk",
+      "apartment_indian",
+      "current_2020plus"
+    ],
     "vastu_compliant": false
   },
   "boundary": {
-    "polygon": [[0,0],[14,0],[14,11],[0,11]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        14,
+        11
+      ],
+      [
+        0,
+        11
+      ]
+    ],
     "wall_thickness_mm": 230,
     "ceiling_height_mm": 3000
   },
   "rooms": [
-    { "id": "r_drawing", "name": "Drawing Room", "type": "living",
-      "polygon": [[0,0],[7,0],[7,5],[0,5]], "area_sqm": 35,
-      "notes": "Main reception room facing the entry" },
-    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
-      "polygon": [[7,0],[11,0],[11,3],[7,3]], "area_sqm": 12 },
-    { "id": "r_utility", "name": "Utility", "type": "utility",
-      "polygon": [[11,0],[14,0],[14,3],[11,3]], "area_sqm": 9 },
-    { "id": "r_dining", "name": "Formal Dining", "type": "dining",
-      "polygon": [[7,3],[14,3],[14,5],[7,5]], "area_sqm": 14 },
-    { "id": "r_corridor", "name": "Corridor", "type": "corridor",
-      "polygon": [[0,5],[14,5],[14,6],[0,6]], "area_sqm": 14,
-      "notes": "East-west corridor connecting public and private wings" },
-    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
-      "polygon": [[0,6],[5,6],[5,11],[0,11]], "area_sqm": 25 },
-    { "id": "r_master_bath", "name": "Master Bath", "type": "bathroom",
-      "polygon": [[5,6],[7,6],[7,9],[5,9]], "area_sqm": 6 },
-    { "id": "r_pooja", "name": "Pooja Room", "type": "pooja",
-      "polygon": [[5,9],[7,9],[7,11],[5,11]], "area_sqm": 4 },
-    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
-      "polygon": [[7,6],[11,6],[11,11],[7,11]], "area_sqm": 20 },
-    { "id": "r_bedroom3", "name": "Bedroom 3", "type": "bedroom",
-      "polygon": [[11,6],[14,6],[14,9],[11,9]], "area_sqm": 9 },
-    { "id": "r_common_bath", "name": "Common Bath", "type": "bathroom",
-      "polygon": [[11,9],[14,9],[14,11],[11,11]], "area_sqm": 6 }
+    {
+      "id": "r_drawing",
+      "name": "Drawing Room",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 35,
+      "notes": "Main reception room facing the entry"
+    },
+    {
+      "id": "r_kitchen",
+      "name": "Kitchen",
+      "type": "kitchen",
+      "polygon": [
+        [
+          7,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          7,
+          3
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_utility",
+      "name": "Utility",
+      "type": "utility",
+      "polygon": [
+        [
+          11,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          11,
+          3
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_dining",
+      "name": "Formal Dining",
+      "type": "dining",
+      "polygon": [
+        [
+          7,
+          3
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "area_sqm": 14
+    },
+    {
+      "id": "r_corridor",
+      "name": "Corridor",
+      "type": "corridor",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 14,
+      "notes": "East-west corridor connecting public and private wings"
+    },
+    {
+      "id": "r_master",
+      "name": "Master Bedroom",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          0,
+          11
+        ]
+      ],
+      "area_sqm": 25
+    },
+    {
+      "id": "r_master_bath",
+      "name": "Master Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_pooja",
+      "name": "Pooja Room",
+      "type": "pooja",
+      "polygon": [
+        [
+          5,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "area_sqm": 4
+    },
+    {
+      "id": "r_bedroom2",
+      "name": "Bedroom 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          7,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "area_sqm": 20
+    },
+    {
+      "id": "r_bedroom3",
+      "name": "Bedroom 3",
+      "type": "bedroom",
+      "polygon": [
+        [
+          11,
+          6
+        ],
+        [
+          14,
+          6
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          11,
+          9
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_common_bath",
+      "name": "Common Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          11,
+          9
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          14,
+          11
+        ],
+        [
+          11,
+          11
+        ]
+      ],
+      "area_sqm": 6
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_drawing", "position": [0.5, 0],
-      "width_mm": 1100, "is_main_entry": true },
-    { "from": "r_drawing", "to": "r_kitchen", "position": [7, 1.5], "width_mm": 900 },
-    { "from": "r_drawing", "to": "r_dining", "position": [7, 4], "width_mm": 1200 },
-    { "from": "r_drawing", "to": "r_corridor", "position": [3.5, 5], "width_mm": 1200 },
-    { "from": "r_kitchen", "to": "r_utility", "position": [11, 1.5], "width_mm": 800 },
-    { "from": "r_kitchen", "to": "r_dining", "position": [9, 3], "width_mm": 900 },
-    { "from": "r_dining", "to": "r_corridor", "position": [10.5, 5], "width_mm": 1000 },
-    { "from": "r_corridor", "to": "r_master", "position": [2.5, 6], "width_mm": 900 },
-    { "from": "r_corridor", "to": "r_master_bath", "position": [6, 6], "width_mm": 750 },
-    { "from": "r_corridor", "to": "r_bedroom2", "position": [9, 6], "width_mm": 900 },
-    { "from": "r_corridor", "to": "r_bedroom3", "position": [12.5, 6], "width_mm": 900 },
-    { "from": "r_master", "to": "r_pooja", "position": [5, 10], "width_mm": 750 },
-    { "from": "r_bedroom3", "to": "r_common_bath", "position": [12.5, 9], "width_mm": 750 }
+    {
+      "from": "outside",
+      "to": "r_drawing",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 1100,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_drawing",
+      "to": "r_kitchen",
+      "position": [
+        7,
+        1.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_drawing",
+      "to": "r_dining",
+      "position": [
+        7,
+        4
+      ],
+      "width_mm": 1200
+    },
+    {
+      "from": "r_drawing",
+      "to": "r_corridor",
+      "position": [
+        3.5,
+        5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_utility",
+      "position": [
+        11,
+        1.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_dining",
+      "position": [
+        9,
+        3
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_dining",
+      "to": "r_corridor",
+      "position": [
+        10.5,
+        5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_corridor",
+      "to": "r_master",
+      "position": [
+        2.5,
+        6
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_corridor",
+      "to": "r_master_bath",
+      "position": [
+        6,
+        6
+      ],
+      "width_mm": 750
+    },
+    {
+      "from": "r_corridor",
+      "to": "r_bedroom2",
+      "position": [
+        9,
+        6
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_corridor",
+      "to": "r_bedroom3",
+      "position": [
+        12.5,
+        6
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_master",
+      "to": "r_pooja",
+      "position": [
+        5,
+        10
+      ],
+      "width_mm": 750
+    },
+    {
+      "from": "r_bedroom3",
+      "to": "r_common_bath",
+      "position": [
+        12.5,
+        9
+      ],
+      "width_mm": 750
+    }
   ],
   "windows": [
-    { "room": "r_drawing", "position": [3, 0], "width_mm": 2400 },
-    { "room": "r_drawing", "position": [0, 2.5], "width_mm": 1500 },
-    { "room": "r_kitchen", "position": [9, 0], "width_mm": 1200 },
-    { "room": "r_utility", "position": [14, 1.5], "width_mm": 900 },
-    { "room": "r_dining", "position": [14, 4], "width_mm": 1500 },
-    { "room": "r_master", "position": [0, 8.5], "width_mm": 1800 },
-    { "room": "r_master", "position": [2.5, 11], "width_mm": 1500 },
-    { "room": "r_pooja", "position": [6, 11], "width_mm": 900 },
-    { "room": "r_bedroom2", "position": [9, 11], "width_mm": 1500 },
-    { "room": "r_bedroom3", "position": [14, 7.5], "width_mm": 1200 },
-    { "room": "r_common_bath", "position": [14, 10], "width_mm": 600 },
-    { "room": "r_common_bath", "position": [12.5, 11], "width_mm": 800 }
+    {
+      "room": "r_drawing",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_drawing",
+      "position": [
+        0,
+        2.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        9,
+        0
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_utility",
+      "position": [
+        14,
+        1.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_dining",
+      "position": [
+        14,
+        4
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_master",
+      "position": [
+        0,
+        8.5
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_master",
+      "position": [
+        2.5,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_pooja",
+      "position": [
+        6,
+        11
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bedroom2",
+      "position": [
+        9,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bedroom3",
+      "position": [
+        14,
+        7.5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_common_bath",
+      "position": [
+        14,
+        10
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_common_bath",
+      "position": [
+        12.5,
+        11
+      ],
+      "width_mm": 800
+    }
   ]
 }

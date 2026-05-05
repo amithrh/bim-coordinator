@@ -1,0 +1,49 @@
+{
+  "id": "eu_uk_studio_sheffield_broomhill_student",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Sheffield",
+    "size_label": "studio",
+    "size_band": "studio",
+    "total_area_sqm": 42,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Sheffield Broomhill Student 1-bed (S10, Glossop Rd)",
+    "description": "A Sheffield Broomhill student 1-bed studio — typical 450 sqft (42 m²) student grade. Living, Kitchenette, Bedroom, Shower Room, Hall. Compact student-grade kitchenette, shared bin store. Source: broomhillpropertyshop.com.",
+    "suitable_for": ["student_share", "single_professional"],
+    "tags": ["united_kingdom", "sheffield", "purpose_built_flat", "studio", "current_2020plus", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,7],[0,7]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Living", "type": "living",
+      "polygon": [[2,0],[6,0],[6,3.5],[2,3.5]], "area_sqm": 14 },
+    { "id": "r_kitchen", "name": "Kitchenette", "type": "kochnische",
+      "polygon": [[2,3.5],[6,3.5],[6,5],[2,5]], "area_sqm": 6 },
+    { "id": "r_shower", "name": "Shower Room", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5],[6,5],[6,7],[0,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living", "position": [2, 1.5], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_shower", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [4, 3.5], "width_mm": 1100 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [4, 5], "width_mm": 800 },
+    { "from": "r_shower", "to": "r_bedroom", "position": [1, 5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4, 0], "width_mm": 1800 },
+    { "room": "r_living", "position": [6, 1.75], "width_mm": 1200 },
+    { "room": "r_kitchen", "position": [6, 4.25], "width_mm": 800 },
+    { "room": "r_bedroom", "position": [3, 7], "width_mm": 1800 },
+    { "room": "r_shower", "position": [0, 4], "width_mm": 600 }
+  ]
+}

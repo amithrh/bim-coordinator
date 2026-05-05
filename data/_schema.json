@@ -6,7 +6,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^(in|eu)_[a-z0-9_]+$"
+      "pattern": "^(in|eu|gl)_[a-z0-9_]+$"
     },
     "metadata": {
       "type": "object",
@@ -14,7 +14,7 @@
                    "bedrooms", "bathrooms", "style", "description",
                    "suitable_for", "tags"],
       "properties": {
-        "region": { "enum": ["india", "europe"] },
+        "region": { "enum": ["india", "europe", "global"] },
         "country": { "type": "string" },
         "city_inspiration": { "type": "string" },
         "size_label": { "type": "string" },

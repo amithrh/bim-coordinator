@@ -1,0 +1,70 @@
+{
+  "id": "eu_no_2bed_oslo_bygaard",
+  "metadata": {
+    "region": "europe",
+    "country": "Norway",
+    "city_inspiration": "Oslo",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 101,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Oslo Grünerløkka Bygård (1899-1916 brick courtyard tenement)",
+    "description": "An Oslo Grünerløkka Bygård apartment — typical 100 m² late-19th-c brick urban courtyard tenement. Entré, Stue, Spisestue, Kjøkken, two Soverom, Bad, Gang, Bod, Balkong toward bakgård. 3+ m ceilings, ofte med kakkelovn. Source: finn.no Oslo Grünerløkka listings.",
+    "suitable_for": ["young_family", "couple", "academic"],
+    "tags": ["norway", "scandinavian", "bygaard_no", "2bed", "vintage_traditional", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,10],[0,10]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_entre", "name": "Entré", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Stue with original kakkelovn ceramic stove" },
+    { "id": "r_spisestue", "name": "Spisestue", "type": "dining",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_kjokken", "name": "Kjøkken", "type": "kitchen",
+      "polygon": [[0,4],[2,4],[2,8],[0,8]], "area_sqm": 8 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[2,5],[5,5],[5,8],[2,8]], "area_sqm": 9 },
+    { "id": "r_soverom1", "name": "Soverom 1", "type": "master_bedroom",
+      "polygon": [[5,5],[8,5],[8,9],[5,9]], "area_sqm": 12 },
+    { "id": "r_soverom2", "name": "Soverom 2", "type": "bedroom",
+      "polygon": [[8,5],[10,5],[10,9],[8,9]], "area_sqm": 8 },
+    { "id": "r_gang", "name": "Gang", "type": "corridor",
+      "polygon": [[0,8],[2,8],[2,9],[0,9]], "area_sqm": 2 },
+    { "id": "r_bod", "name": "Bod", "type": "store",
+      "polygon": [[2,8],[5,8],[5,9],[2,9]], "area_sqm": 3 },
+    { "id": "r_balkong", "name": "Balkong (bakgård)", "type": "balcony",
+      "polygon": [[0,9],[10,9],[10,10],[0,10]], "area_sqm": 10,
+      "notes": "Balcony toward bakgård (back courtyard)" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entre", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_entre", "to": "r_stue", "position": [2, 2], "width_mm": 1200 },
+    { "from": "r_entre", "to": "r_kjokken", "position": [1, 4], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_spisestue", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_stue", "to": "r_soverom1", "position": [5.5, 5], "width_mm": 900 },
+    { "from": "r_spisestue", "to": "r_soverom2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_kjokken", "to": "r_bad", "position": [2, 6.5], "width_mm": 800 },
+    { "from": "r_kjokken", "to": "r_gang", "position": [1, 8], "width_mm": 900 },
+    { "from": "r_bad", "to": "r_bod", "position": [3.5, 8], "width_mm": 700 },
+    { "from": "r_soverom1", "to": "r_soverom2", "position": [8, 7], "width_mm": 800 },
+    { "from": "r_gang", "to": "r_balkong", "position": [1.5, 9], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5, 0], "width_mm": 3000 },
+    { "room": "r_spisestue", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_spisestue", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_kjokken", "position": [0, 6], "width_mm": 1500 },
+    { "room": "r_soverom1", "position": [6.5, 9], "width_mm": 1800 },
+    { "room": "r_soverom2", "position": [9, 9], "width_mm": 1500 },
+    { "room": "r_soverom2", "position": [10, 7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [3, 8], "width_mm": 600 },
+    { "room": "r_balkong", "position": [5, 10], "width_mm": 2400 }
+  ]
+}

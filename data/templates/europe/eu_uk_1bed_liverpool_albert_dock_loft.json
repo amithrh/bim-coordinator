@@ -1,0 +1,56 @@
+{
+  "id": "eu_uk_1bed_liverpool_albert_dock_loft",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Liverpool",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 72,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Liverpool Albert Dock 1-bed Loft Conversion (Grade I warehouse, The Colonnades)",
+    "description": "A Liverpool L3 Albert Dock 1-bed loft conversion — The Colonnades typology, ~775 sqft (72 m²) Grade I-listed warehouse conversion. Open Kitchen-Living, Bedroom, Bath, Hall, with exposed brick + cast-iron columns. Source: zoopla.co.uk Albert Dock listings.",
+    "suitable_for": ["single_professional", "couple", "creative_artist"],
+    "tags": ["united_kingdom", "liverpool", "warehouse_conversion", "1bed", "contemporary_2000_2020", "open_plan", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2.5],[0,2.5]], "area_sqm": 3.75 },
+    { "id": "r_kit_liv", "name": "Open Kitchen-Living", "type": "living",
+      "polygon": [[1.5,0],[8,0],[8,5],[1.5,5]], "area_sqm": 32.5,
+      "notes": "Open Kitchen-Living with exposed brick + cast-iron columns" },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,2.5],[1.5,2.5],[1.5,5],[0,5]], "area_sqm": 3.75 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5],[5,5],[5,8],[0,8]], "area_sqm": 15 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_terrace", "name": "Dock Terrace", "type": "balcony",
+      "polygon": [[0,8],[8,8],[8,9],[0,9]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_kit_liv", "position": [1.5, 1.25], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_bath", "position": [1.5, 3.75], "width_mm": 700 },
+    { "from": "r_kit_liv", "to": "r_bedroom", "position": [2.5, 5], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_storage", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_bedroom", "to": "r_storage", "position": [5, 6.5], "width_mm": 800 },
+    { "from": "r_bedroom", "to": "r_terrace", "position": [2.5, 8], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_storage", "to": "r_terrace", "position": [6.5, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_kit_liv", "position": [4.75, 0], "width_mm": 3000 },
+    { "room": "r_kit_liv", "position": [8, 2.5], "width_mm": 2400 },
+    { "room": "r_bedroom", "position": [2.5, 8], "width_mm": 2000 },
+    { "room": "r_bedroom", "position": [0, 6.5], "width_mm": 1500 },
+    { "room": "r_storage", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_terrace", "position": [4, 9], "width_mm": 2400 },
+    { "room": "r_bath", "position": [0, 3.75], "width_mm": 600 }
+  ]
+}

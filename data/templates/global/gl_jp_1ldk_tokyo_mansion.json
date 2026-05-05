@@ -1,0 +1,55 @@
+{
+  "id": "gl_jp_1ldk_tokyo_mansion",
+  "metadata": {
+    "region": "global",
+    "country": "Japan",
+    "city_inspiration": "Tokyo",
+    "size_label": "1LDK",
+    "size_band": "1bed",
+    "total_area_sqm": 32,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Tokyo 1LDK mansion (compact urban condominium)",
+    "description": "A compact Tokyo 1LDK mansion (マンション) — typical inner-ward Shibuya/Setagaya/Shinjuku unit. Genkan entry recess, separated unit-bath / toilet / washroom, integrated LDK, and a 6-jo bedroom (~9.7 m²). Pre-fabricated waterproof unit-bath module is the Japanese signature feature. Standard 2.4 m ceiling. Sources: realestate.co.jp + e-housing.jp typology references.",
+    "suitable_for": ["single_professional", "expat", "couple"],
+    "tags": ["japan", "tokyo", "mansion", "ldk_apartment_jp", "1bed", "compact", "unit_bath", "genkan", "balkon", "current_2020plus"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,6.5],[0,6.5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_genkan", "name": "Genkan", "type": "corridor",
+      "polygon": [[0,0],[1.5,0],[1.5,1.8],[0,1.8]], "area_sqm": 2.7,
+      "notes": "Recessed shoe-removal entry — Japanese custom" },
+    { "id": "r_bath", "name": "Unit Bath", "type": "bathroom",
+      "polygon": [[1.5,0],[3,0],[3,1.8],[1.5,1.8]], "area_sqm": 2.7,
+      "notes": "Pre-fabricated waterproof unit-bath module (1418 size)" },
+    { "id": "r_toilet", "name": "Toilet", "type": "wc",
+      "polygon": [[3,0],[4,0],[4,1.8],[3,1.8]], "area_sqm": 1.8,
+      "notes": "Separate washlet toilet — distinct from bath per Japanese custom" },
+    { "id": "r_washroom", "name": "Washroom", "type": "utility",
+      "polygon": [[4,0],[5,0],[5,1.8],[4,1.8]], "area_sqm": 1.8,
+      "notes": "Vanity + washing machine zone" },
+    { "id": "r_ldk", "name": "LDK (Living-Dining-Kitchen)", "type": "living",
+      "polygon": [[0,1.8],[5,1.8],[5,4.5],[0,4.5]], "area_sqm": 13.5,
+      "notes": "Integrated LDK — 2.4m kitchen counter strip" },
+    { "id": "r_bedroom", "name": "Yoshitsu", "type": "master_bedroom",
+      "polygon": [[0,4.5],[5,4.5],[5,6.5],[0,6.5]], "area_sqm": 10,
+      "notes": "6-jo bedroom (Western flooring) — south balcony beyond" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_genkan", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_genkan", "to": "r_ldk", "position": [0.75, 1.8], "width_mm": 800 },
+    { "from": "r_ldk", "to": "r_bath", "position": [2.25, 1.8], "width_mm": 700 },
+    { "from": "r_ldk", "to": "r_toilet", "position": [3.5, 1.8], "width_mm": 600 },
+    { "from": "r_ldk", "to": "r_washroom", "position": [4.5, 1.8], "width_mm": 700 },
+    { "from": "r_ldk", "to": "r_bedroom", "position": [2.5, 4.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_ldk", "position": [5, 3], "width_mm": 1500 },
+    { "room": "r_bedroom", "position": [2.5, 6.5], "width_mm": 1800 }
+  ]
+}

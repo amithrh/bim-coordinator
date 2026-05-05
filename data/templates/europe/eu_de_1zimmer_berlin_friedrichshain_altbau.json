@@ -1,0 +1,48 @@
+{
+  "id": "eu_de_1zimmer_berlin_friedrichshain_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 30,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Berlin Friedrichshain Altbau Single (compact 1-Zi with Wannenbad)",
+    "description": "A Berlin Friedrichshain compact Altbau Einzimmerwohnung — typical pre-war 29 m² Kreativviertel apartment. Wohn-Schlafraum, separate Wannenbad (rare in this size), small EBK Küchenzeile, narrow Diele. High ceilings, original Dielenboden. Source: crocodilian.de Friedrichshain 29 m² listing.",
+    "suitable_for": ["single_professional", "creative_artist", "student_share"],
+    "tags": ["germany", "berlin", "altbau", "studio", "wilhelminian", "altbau_high_ceilings", "single_floor", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,6],[0,6]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2,
+      "notes": "Narrow entry hall" },
+    { "id": "r_kuche", "name": "Küchenzeile (EBK)", "type": "kochnische",
+      "polygon": [[1,0],[2.5,0],[2.5,2],[1,2]], "area_sqm": 3,
+      "notes": "Built-in kitchen line" },
+    { "id": "r_bad", "name": "Wannenbad", "type": "bathroom",
+      "polygon": [[2.5,0],[5,0],[5,2],[2.5,2]], "area_sqm": 5,
+      "notes": "Bath with tub — uncommon for studios" },
+    { "id": "r_wohnen", "name": "Wohn-Schlafraum", "type": "living",
+      "polygon": [[0,2],[5,2],[5,6],[0,6]], "area_sqm": 20,
+      "notes": "Combined living/sleeping with original Dielenboden" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnen", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_wohnen", "to": "r_kuche", "position": [1.75, 2], "width_mm": 1100 },
+    { "from": "r_wohnen", "to": "r_bad", "position": [3.75, 2], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [2.5, 6], "width_mm": 1800 },
+    { "room": "r_wohnen", "position": [0, 4], "width_mm": 1500 },
+    { "room": "r_bad", "position": [3.75, 0], "width_mm": 600 }
+  ]
+}

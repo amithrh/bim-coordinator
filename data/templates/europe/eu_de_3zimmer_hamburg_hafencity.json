@@ -10,48 +10,340 @@
     "bathrooms": 1,
     "style": "Hamburg HafenCity modern with L-shape cantilever balcony",
     "description": "A modern Hamburg HafenCity Drei-Zimmerwohnung with a distinctive L-shape boundary — the apartment cantilevers out over the harbour walkway on the east side, creating a wraparound balcony. Open Wohnkueche facing the water, two bedrooms accessed from a central Diele, full bath. Reflects HafenCity's signature stepped/cantilevered massing.",
-    "suitable_for": ["young professional couple", "small family", "expat"],
-    "tags": ["hamburg", "hafencity", "modern", "cantilever", "l_shape", "wohnkueche", "harbour", "3zimmer"]
+    "suitable_for": [
+      "young professional couple",
+      "small family",
+      "expat"
+    ],
+    "tags": [
+      "hamburg",
+      "hafencity",
+      "modern",
+      "cantilever",
+      "l_shape",
+      "wohnkueche",
+      "harbour",
+      "3zimmer",
+      "neubau",
+      "current_2020plus"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[10,0],[10,2],[12,2],[12,5],[10,5],[10,8],[0,8]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        12,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        0,
+        8
+      ]
+    ],
     "wall_thickness_mm": 220,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
-      "polygon": [[0,0],[7,0],[7,5],[0,5]], "area_sqm": 35,
-      "notes": "Open-plan kitchen + living facing the harbour" },
-    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
-      "polygon": [[7,0],[10,0],[10,2],[12,2],[12,5],[7,5]], "area_sqm": 21,
-      "notes": "L-shape wraparound balcony, cantilevered over the walkway" },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[0,5],[10,5],[10,6],[0,6]], "area_sqm": 10 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,6],[5,6],[5,8],[0,8]], "area_sqm": 10 },
-    { "id": "r_kinderzimmer", "name": "Kinderzimmer", "type": "bedroom",
-      "polygon": [[5,6],[8,6],[8,8],[5,8]], "area_sqm": 6 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[8,6],[10,6],[10,8],[8,8]], "area_sqm": 4 }
+    {
+      "id": "r_wohnkueche",
+      "name": "Wohnkueche",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 35,
+      "notes": "Open-plan kitchen + living facing the harbour"
+    },
+    {
+      "id": "r_balkon",
+      "name": "Balkon",
+      "type": "balcony",
+      "polygon": [
+        [
+          7,
+          0
+        ],
+        [
+          10,
+          0
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "area_sqm": 21,
+      "notes": "L-shape wraparound balcony, cantilevered over the walkway"
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          10,
+          5
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_kinderzimmer",
+      "name": "Kinderzimmer",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          8,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          8,
+          8
+        ]
+      ],
+      "area_sqm": 4
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_diele", "position": [0, 5.5],
-      "width_mm": 1000, "is_main_entry": true },
-    { "from": "r_wohnkueche", "to": "r_balkon", "position": [7, 2.5],
-      "width_mm": 2400, "swing": "slide" },
-    { "from": "r_diele", "to": "r_wohnkueche", "position": [3.5, 5], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 6], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_kinderzimmer", "position": [6.5, 6], "width_mm": 800 },
-    { "from": "r_diele", "to": "r_bad", "position": [9, 6], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_diele",
+      "position": [
+        0,
+        5.5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnkueche",
+      "to": "r_balkon",
+      "position": [
+        7,
+        2.5
+      ],
+      "width_mm": 2400,
+      "swing": "slide"
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnkueche",
+      "position": [
+        3.5,
+        5
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        2.5,
+        6
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer",
+      "position": [
+        6.5,
+        6
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        9,
+        6
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnkueche", "position": [3.5, 0], "width_mm": 2400 },
-    { "room": "r_wohnkueche", "position": [0, 2.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 7], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [2.5, 8], "width_mm": 1500 },
-    { "room": "r_kinderzimmer", "position": [6.5, 8], "width_mm": 1200 },
-    { "room": "r_bad", "position": [10, 7], "width_mm": 600 },
-    { "room": "r_balkon", "position": [12, 3.5], "width_mm": 2400 },
-    { "room": "r_balkon", "position": [10, 1], "width_mm": 1500 }
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        3.5,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        0,
+        2.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        7
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        8
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer",
+      "position": [
+        6.5,
+        8
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        10,
+        7
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        12,
+        3.5
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        10,
+        1
+      ],
+      "width_mm": 1500
+    }
   ]
 }

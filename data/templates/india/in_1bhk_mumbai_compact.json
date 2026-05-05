@@ -10,37 +10,216 @@
     "bathrooms": 1,
     "style": "Compact urban 1BHK for working professionals",
     "description": "A compact 1BHK for a working professional or young couple in Mumbai. Hall combined with kitchenette, separate bedroom with attached bath, small balcony off the hall.",
-    "suitable_for": ["young couple", "working professional", "single occupant"],
-    "tags": ["compact", "1bhk", "mumbai", "urban", "professional", "balcony"],
+    "suitable_for": [
+      "young couple",
+      "working professional",
+      "single occupant"
+    ],
+    "tags": [
+      "compact",
+      "1bhk",
+      "mumbai",
+      "urban",
+      "professional",
+      "balcony",
+      "apartment_indian",
+      "current_2020plus"
+    ],
     "vastu_compliant": false
   },
   "boundary": {
-    "polygon": [[0,0],[8,0],[8,6],[0,6]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        8,
+        6
+      ],
+      [
+        0,
+        6
+      ]
+    ],
     "wall_thickness_mm": 200,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_hall", "name": "Hall + Kitchenette", "type": "living",
-      "polygon": [[0,0],[6,0],[6,4],[0,4]], "area_sqm": 24,
-      "notes": "Combined living, dining, and kitchenette" },
-    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
-      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
-    { "id": "r_bedroom", "name": "Bedroom", "type": "bedroom",
-      "polygon": [[0,4],[5,4],[5,6],[0,6]], "area_sqm": 10 },
-    { "id": "r_bath", "name": "Bath", "type": "bathroom",
-      "polygon": [[5,4],[8,4],[8,6],[5,6]], "area_sqm": 6 }
+    {
+      "id": "r_hall",
+      "name": "Hall + Kitchenette",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 24,
+      "notes": "Combined living, dining, and kitchenette"
+    },
+    {
+      "id": "r_balcony",
+      "name": "Balcony",
+      "type": "balcony",
+      "polygon": [
+        [
+          6,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          6,
+          4
+        ]
+      ],
+      "area_sqm": 8
+    },
+    {
+      "id": "r_bedroom",
+      "name": "Bedroom",
+      "type": "bedroom",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_bath",
+      "name": "Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "area_sqm": 6
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_hall", "position": [0.5, 0],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_hall", "to": "r_balcony", "position": [6, 2], "width_mm": 1500, "swing": "slide" },
-    { "from": "r_hall", "to": "r_bedroom", "position": [2.5, 4], "width_mm": 800 },
-    { "from": "r_bedroom", "to": "r_bath", "position": [5, 5], "width_mm": 700 }
+    {
+      "from": "outside",
+      "to": "r_hall",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_hall",
+      "to": "r_balcony",
+      "position": [
+        6,
+        2
+      ],
+      "width_mm": 1500,
+      "swing": "slide"
+    },
+    {
+      "from": "r_hall",
+      "to": "r_bedroom",
+      "position": [
+        2.5,
+        4
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bedroom",
+      "to": "r_bath",
+      "position": [
+        5,
+        5
+      ],
+      "width_mm": 700
+    }
   ],
   "windows": [
-    { "room": "r_hall", "position": [3, 0], "width_mm": 1500 },
-    { "room": "r_bedroom", "position": [0, 5], "width_mm": 1200 },
-    { "room": "r_balcony", "position": [8, 2], "width_mm": 1500 },
-    { "room": "r_bath", "position": [8, 5], "width_mm": 600 }
+    {
+      "room": "r_hall",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bedroom",
+      "position": [
+        0,
+        5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_balcony",
+      "position": [
+        8,
+        2
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        8,
+        5
+      ],
+      "width_mm": 600
+    }
   ]
 }

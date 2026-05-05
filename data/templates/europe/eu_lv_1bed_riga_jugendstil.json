@@ -1,0 +1,69 @@
+{
+  "id": "eu_lv_1bed_riga_jugendstil",
+  "metadata": {
+    "region": "europe",
+    "country": "Latvia",
+    "city_inspiration": "Riga",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 60,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Riga Jugendstil 1-bed (Centra rajons, UNESCO heritage)",
+    "description": "A Riga Jugendstil 1-bed apartment — UNESCO-protected Centra rajons typology with Art Nouveau ornament. Vestibils, Dzīvojamā istaba, Virtuve, Guļamistaba, Vannas istaba, Tualete, Balkons. Original stuccatura, parquet. Source: ss.com Riga Centra.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["latvia", "riga", "vintage_traditional", "1bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_vestibils", "name": "Vestibils", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_dzivojama", "name": "Dzīvojamā istaba", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20,
+      "notes": "Living with original Jugendstil stuccatura" },
+    { "id": "r_virtuve", "name": "Virtuve", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_tualete", "name": "Tualete", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[6,4],[8,4],[8,5],[6,5]], "area_sqm": 2 },
+    { "id": "r_vannas", "name": "Vannas istaba", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_gulamistaba", "name": "Guļamistaba", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_storage2", "name": "Storage 2", "type": "store",
+      "polygon": [[6,5],[8,5],[8,7],[6,7]], "area_sqm": 4 },
+    { "id": "r_balkons", "name": "Balkons", "type": "balcony",
+      "polygon": [[6,7],[8,7],[8,8],[6,8]], "area_sqm": 2 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,8],[0,8]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_vestibils", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_vestibils", "to": "r_dzivojama", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_vestibils", "to": "r_tualete", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_tualete", "to": "r_vannas", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_dzivojama", "to": "r_virtuve", "position": [6, 2], "width_mm": 1000 },
+    { "from": "r_virtuve", "to": "r_storage", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_dzivojama", "to": "r_gulamistaba", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_storage", "to": "r_storage2", "position": [7, 5], "width_mm": 700 },
+    { "from": "r_gulamistaba", "to": "r_storage2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_storage2", "to": "r_balkons", "position": [7, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_vannas", "to": "r_hall_back", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_gulamistaba", "to": "r_hall_back", "position": [2, 7.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_dzivojama", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_virtuve", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_virtuve", "position": [8, 2], "width_mm": 1200 },
+    { "room": "r_gulamistaba", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_storage2", "position": [8, 6], "width_mm": 1000 },
+    { "room": "r_balkons", "position": [7, 8], "width_mm": 1200 },
+    { "room": "r_vannas", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_vestibils", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

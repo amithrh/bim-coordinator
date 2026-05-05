@@ -2,7 +2,7 @@
   "id": "eu_uk_2bed_cotswolds_cottage",
   "metadata": {
     "region": "europe",
-    "country": "UK",
+    "country": "United Kingdom",
     "city_inspiration": "Bourton-on-the-Water",
     "size_label": "2bed",
     "total_area_sqm": 91,
@@ -10,53 +10,381 @@
     "bathrooms": 1,
     "style": "Cotswold stone cottage with thick walls",
     "description": "A traditional Cotswold stone cottage — generous living room with inglenook fireplace, large kitchen-diner, downstairs WC and utility, master bedroom plus a single, and a small upstairs bath. Thick stone walls (300mm+) characteristic of the region.",
-    "suitable_for": ["second home owner", "rural family", "retiree downsizer"],
-    "tags": ["cotswolds", "cottage", "stone", "rural", "2bed", "inglenook", "uk", "country"]
+    "suitable_for": [
+      "second home owner",
+      "rural family",
+      "retiree downsizer"
+    ],
+    "tags": [
+      "cotswolds",
+      "cottage",
+      "stone",
+      "rural",
+      "2bed",
+      "inglenook",
+      "uk",
+      "country",
+      "vintage_traditional"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[7,0],[7,13],[0,13]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        13
+      ],
+      [
+        0,
+        13
+      ]
+    ],
     "wall_thickness_mm": 320,
     "ceiling_height_mm": 2300
   },
   "rooms": [
-    { "id": "r_lounge", "name": "Living Room", "type": "living",
-      "polygon": [[0,0],[7,0],[7,4.5],[0,4.5]], "area_sqm": 31.5,
-      "notes": "Inglenook fireplace and oak beams" },
-    { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
-      "polygon": [[0,4.5],[7,4.5],[7,8],[0,8]], "area_sqm": 24.5 },
-    { "id": "r_hall", "name": "Hallway", "type": "corridor",
-      "polygon": [[0,8],[3,8],[3,9.5],[0,9.5]], "area_sqm": 4.5 },
-    { "id": "r_wc", "name": "WC", "type": "wc",
-      "polygon": [[3,8],[7,8],[7,9.5],[3,9.5]], "area_sqm": 6 },
-    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
-      "polygon": [[0,9.5],[7,9.5],[7,11.5],[0,11.5]], "area_sqm": 14 },
-    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
-      "polygon": [[0,11.5],[4,11.5],[4,13],[0,13]], "area_sqm": 6 },
-    { "id": "r_bath", "name": "Bath", "type": "bathroom",
-      "polygon": [[4,11.5],[7,11.5],[7,13],[4,13]], "area_sqm": 4.5 }
+    {
+      "id": "r_lounge",
+      "name": "Living Room",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          4.5
+        ],
+        [
+          0,
+          4.5
+        ]
+      ],
+      "area_sqm": 31.5,
+      "notes": "Inglenook fireplace and oak beams"
+    },
+    {
+      "id": "r_kitchen",
+      "name": "Kitchen-Diner",
+      "type": "kitchen",
+      "polygon": [
+        [
+          0,
+          4.5
+        ],
+        [
+          7,
+          4.5
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 24.5
+    },
+    {
+      "id": "r_hall",
+      "name": "Hallway",
+      "type": "corridor",
+      "polygon": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9.5
+        ],
+        [
+          0,
+          9.5
+        ]
+      ],
+      "area_sqm": 4.5
+    },
+    {
+      "id": "r_wc",
+      "name": "WC",
+      "type": "wc",
+      "polygon": [
+        [
+          3,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9.5
+        ],
+        [
+          3,
+          9.5
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bedroom1",
+      "name": "Master Bedroom",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          9.5
+        ],
+        [
+          7,
+          9.5
+        ],
+        [
+          7,
+          11.5
+        ],
+        [
+          0,
+          11.5
+        ]
+      ],
+      "area_sqm": 14
+    },
+    {
+      "id": "r_bedroom2",
+      "name": "Bedroom 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          0,
+          11.5
+        ],
+        [
+          4,
+          11.5
+        ],
+        [
+          4,
+          13
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bath",
+      "name": "Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          4,
+          11.5
+        ],
+        [
+          7,
+          11.5
+        ],
+        [
+          7,
+          13
+        ],
+        [
+          4,
+          13
+        ]
+      ],
+      "area_sqm": 4.5
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_lounge", "position": [0.5, 0],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_lounge", "to": "r_kitchen", "position": [3.5, 4.5], "width_mm": 1000 },
-    { "from": "r_kitchen", "to": "r_hall", "position": [1.5, 8], "width_mm": 800 },
-    { "from": "r_kitchen", "to": "r_wc", "position": [5, 8], "width_mm": 700 },
-    { "from": "r_hall", "to": "r_wc", "position": [3, 8.75], "width_mm": 700 },
-    { "from": "r_hall", "to": "r_bedroom1", "position": [1.5, 9.5], "width_mm": 800 },
-    { "from": "r_wc", "to": "r_bedroom1", "position": [5, 9.5], "width_mm": 700 },
-    { "from": "r_bedroom1", "to": "r_bedroom2", "position": [2, 11.5], "width_mm": 800 },
-    { "from": "r_bedroom1", "to": "r_bath", "position": [5.5, 11.5], "width_mm": 700 },
-    { "from": "r_bedroom2", "to": "r_bath", "position": [4, 12.25], "width_mm": 700 }
+    {
+      "from": "outside",
+      "to": "r_lounge",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_lounge",
+      "to": "r_kitchen",
+      "position": [
+        3.5,
+        4.5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_hall",
+      "position": [
+        1.5,
+        8
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_wc",
+      "position": [
+        5,
+        8
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_hall",
+      "to": "r_wc",
+      "position": [
+        3,
+        8.75
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_hall",
+      "to": "r_bedroom1",
+      "position": [
+        1.5,
+        9.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_wc",
+      "to": "r_bedroom1",
+      "position": [
+        5,
+        9.5
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_bedroom1",
+      "to": "r_bedroom2",
+      "position": [
+        2,
+        11.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bedroom1",
+      "to": "r_bath",
+      "position": [
+        5.5,
+        11.5
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_bedroom2",
+      "to": "r_bath",
+      "position": [
+        4,
+        12.25
+      ],
+      "width_mm": 700
+    }
   ],
   "windows": [
-    { "room": "r_lounge", "position": [3.5, 0], "width_mm": 1500 },
-    { "room": "r_lounge", "position": [0, 2.25], "width_mm": 900 },
-    { "room": "r_lounge", "position": [7, 2.25], "width_mm": 900 },
-    { "room": "r_kitchen", "position": [0, 6.25], "width_mm": 900 },
-    { "room": "r_kitchen", "position": [7, 6.25], "width_mm": 900 },
-    { "room": "r_bedroom1", "position": [0, 10.5], "width_mm": 900 },
-    { "room": "r_bedroom1", "position": [7, 10.5], "width_mm": 900 },
-    { "room": "r_bedroom2", "position": [2, 13], "width_mm": 900 },
-    { "room": "r_bath", "position": [5.5, 13], "width_mm": 600 }
+    {
+      "room": "r_lounge",
+      "position": [
+        3.5,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_lounge",
+      "position": [
+        0,
+        2.25
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_lounge",
+      "position": [
+        7,
+        2.25
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        0,
+        6.25
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        7,
+        6.25
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bedroom1",
+      "position": [
+        0,
+        10.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bedroom1",
+      "position": [
+        7,
+        10.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bedroom2",
+      "position": [
+        2,
+        13
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        5.5,
+        13
+      ],
+      "width_mm": 600
+    }
   ]
 }

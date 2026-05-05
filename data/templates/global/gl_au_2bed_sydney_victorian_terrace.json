@@ -1,0 +1,70 @@
+{
+  "id": "gl_au_2bed_sydney_victorian_terrace",
+  "metadata": {
+    "region": "global",
+    "country": "Australia",
+    "city_inspiration": "Sydney",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 78,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Sydney Inner-West Single-Fronted Victorian Terrace (Newtown / Paddington / Surry Hills)",
+    "description": "A compact Sydney inner-suburbs single-fronted Victorian terrace house — narrow 4.6m frontage, ~19m deep. Cast-iron lacework verandah at street, raised projecting party walls above the roofline (Sydney Building Act 1837 signature). Long single-loaded entry corridor down one side connecting front master and Bedroom 2 to a rear-extension open-plan kitchen-dining-living and walled rear courtyard with rear lane access. Source: Wikipedia + Bloomberg + Never Too Small Sydney terrace surveys.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["australia", "sydney", "terrace_au", "victorian", "narrow_lot", "bay_window", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[4.6,0],[4.6,17],[0,17]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_verandah", "name": "Front Verandah", "type": "entry",
+      "polygon": [[0,0],[4.6,0],[4.6,1.5],[0,1.5]], "area_sqm": 6.9,
+      "notes": "Cast-iron lacework street-facing verandah" },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,1.5],[3.5,1.5],[3.5,5],[0,5]], "area_sqm": 12.25,
+      "notes": "Front bedroom with original fireplace and bay window" },
+    { "id": "r_hall", "name": "Entry Hall", "type": "corridor",
+      "polygon": [[3.5,1.5],[4.6,1.5],[4.6,9],[3.5,9]], "area_sqm": 8.25,
+      "notes": "Long single-loaded corridor down one side" },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[0,5],[3.5,5],[3.5,8],[0,8]], "area_sqm": 10.5,
+      "notes": "Middle bedroom" },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,8],[3.5,8],[3.5,10],[0,10]], "area_sqm": 7,
+      "notes": "Bath added in rear extension" },
+    { "id": "r_kitchen", "name": "Kitchen (galley)", "type": "kitchen",
+      "polygon": [[3.5,9],[4.6,9],[4.6,15],[3.5,15]], "area_sqm": 6.6,
+      "notes": "Galley along one wall in rear extension" },
+    { "id": "r_living", "name": "Open Living-Dining", "type": "living",
+      "polygon": [[0,10],[3.5,10],[3.5,15],[0,15]], "area_sqm": 17.5,
+      "notes": "Rear extension open-plan knock-through" },
+    { "id": "r_courtyard", "name": "Rear Courtyard", "type": "balcony",
+      "polygon": [[0,15],[4.6,15],[4.6,17],[0,17]], "area_sqm": 9.2,
+      "notes": "Paved rear courtyard with rear lane access" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_verandah", "position": [2.3, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_verandah", "to": "r_master", "position": [1.75, 1.5], "width_mm": 900 },
+    { "from": "r_verandah", "to": "r_hall", "position": [4, 1.5], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_bedroom2", "position": [3.5, 6.5], "width_mm": 800 },
+    { "from": "r_bedroom2", "to": "r_bath", "position": [1.75, 8], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_living", "position": [1.75, 10], "width_mm": 800 },
+    { "from": "r_hall", "to": "r_kitchen", "position": [4.05, 9], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_living", "position": [3.5, 12], "width_mm": 1500 },
+    { "from": "r_living", "to": "r_courtyard", "position": [2, 15], "width_mm": 1800, "swing": "slide" },
+    { "from": "r_kitchen", "to": "r_courtyard", "position": [4.05, 15], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_master", "position": [1.5, 1.5], "width_mm": 1500 },
+    { "room": "r_master", "position": [0, 3], "width_mm": 1200 },
+    { "room": "r_bedroom2", "position": [0, 6.5], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0, 9], "width_mm": 600 },
+    { "room": "r_living", "position": [0, 12.5], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [4.6, 12], "width_mm": 1200 },
+    { "room": "r_courtyard", "position": [2, 17], "width_mm": 1800 }
+  ]
+}

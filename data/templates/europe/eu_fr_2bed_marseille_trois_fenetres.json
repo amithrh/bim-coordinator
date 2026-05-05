@@ -1,0 +1,64 @@
+{
+  "id": "eu_fr_2bed_marseille_trois_fenetres",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Marseille",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 79,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Marseille Trois Fenêtres (1er/2e arr. through-flat)",
+    "description": "A Marseille trois fenêtres apartment — typical 75 m² with 7m wide facade rule (3 windows on the street). Through-flat from street to courtyard with grand Séjour traversant + open Cuisine, Chambre + Chambre on courtyard side, SDB, separate WC, alcove storage. Source: fr.wikipedia.org Trois fenêtres marseillais + atelier-aino.com.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["france", "marseille", "trois_fenetres", "2bed", "vintage_traditional", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,11],[0,11]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_sejour", "name": "Séjour traversant", "type": "living",
+      "polygon": [[0,0],[7,0],[7,4.5],[0,4.5]], "area_sqm": 31.5,
+      "notes": "Through-flat séjour facing both street and courtyard" },
+    { "id": "r_cuisine", "name": "Cuisine ouverte", "type": "kitchen",
+      "polygon": [[0,4.5],[3,4.5],[3,7],[0,7]], "area_sqm": 7.5 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[3,4.5],[5,4.5],[5,5.5],[3,5.5]], "area_sqm": 2 },
+    { "id": "r_sdb", "name": "Salle de Bains", "type": "bathroom",
+      "polygon": [[3,5.5],[5,5.5],[5,8],[3,8]], "area_sqm": 5 },
+    { "id": "r_alcove", "name": "Alcove rangement", "type": "store",
+      "polygon": [[5,4.5],[7,4.5],[7,8],[5,8]], "area_sqm": 7,
+      "notes": "Storage alcove" },
+    { "id": "r_chambre1", "name": "Chambre principale", "type": "master_bedroom",
+      "polygon": [[0,7],[3,7],[3,11],[0,11]], "area_sqm": 12 },
+    { "id": "r_hallway", "name": "Hallway", "type": "corridor",
+      "polygon": [[3,8],[5,8],[5,11],[3,11]], "area_sqm": 6 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[5,8],[7,8],[7,11],[5,11]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_sejour", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [1.5, 4.5], "width_mm": 1100 },
+    { "from": "r_sejour", "to": "r_wc", "position": [4, 4.5], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_alcove", "position": [6, 4.5], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_sdb", "position": [4, 5.5], "width_mm": 700 },
+    { "from": "r_cuisine", "to": "r_chambre1", "position": [1.5, 7], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_hallway", "position": [4, 8], "width_mm": 800 },
+    { "from": "r_alcove", "to": "r_chambre2", "position": [6, 8], "width_mm": 800 },
+    { "from": "r_hallway", "to": "r_chambre1", "position": [3, 9.5], "width_mm": 800 },
+    { "from": "r_hallway", "to": "r_chambre2", "position": [5, 9.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [1.5, 0], "width_mm": 1200 },
+    { "room": "r_sejour", "position": [3.5, 0], "width_mm": 1200 },
+    { "room": "r_sejour", "position": [5.5, 0], "width_mm": 1200 },
+    { "room": "r_cuisine", "position": [0, 5.75], "width_mm": 1200 },
+    { "room": "r_chambre1", "position": [1.5, 11], "width_mm": 1500 },
+    { "room": "r_chambre1", "position": [0, 9], "width_mm": 1200 },
+    { "room": "r_chambre2", "position": [6, 11], "width_mm": 1500 },
+    { "room": "r_chambre2", "position": [7, 9.5], "width_mm": 1200 }
+  ]
+}

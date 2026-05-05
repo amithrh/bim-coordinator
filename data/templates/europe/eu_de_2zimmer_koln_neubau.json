@@ -10,38 +10,235 @@
     "bathrooms": 1,
     "style": "Cologne Ehrenfeld Neubau urban infill — trapezoidal corner plot",
     "description": "A modern Cologne Zwei-Zimmerwohnung in an Ehrenfeld urban-infill development — the building plot is trapezoidal because of the angled street corner, so the south-east wall tapers outward. Open Wohnkueche, central Diele, separate Schlafzimmer and bath. Pentagon footprint reflects the irregular plot.",
-    "suitable_for": ["young couple", "single professional", "first-time buyer"],
-    "tags": ["koln", "cologne", "neubau", "2zimmer", "trapezoid", "urban_infill", "ehrenfeld", "irregular_plot"]
+    "suitable_for": [
+      "young couple",
+      "single professional",
+      "first-time buyer"
+    ],
+    "tags": [
+      "koln",
+      "cologne",
+      "neubau",
+      "2zimmer",
+      "trapezoid",
+      "urban_infill",
+      "ehrenfeld",
+      "irregular_plot",
+      "contemporary_2000_2020"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[7,0],[8,4],[8,8],[0,8]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        0,
+        8
+      ]
+    ],
     "wall_thickness_mm": 220,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_wohnkueche", "name": "Wohnkueche", "type": "living",
-      "polygon": [[0,0],[7,0],[8,4],[0,4]], "area_sqm": 30,
-      "notes": "South room follows the trapezoidal SE wall" },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[0,4],[8,4],[8,5],[0,5]], "area_sqm": 8 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,5],[5,5],[5,8],[0,8]], "area_sqm": 15 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 }
+    {
+      "id": "r_wohnkueche",
+      "name": "Wohnkueche",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 30,
+      "notes": "South room follows the trapezoidal SE wall"
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 8
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 15
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "area_sqm": 9
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_diele", "position": [0, 4.5],
-      "width_mm": 1000, "is_main_entry": true },
-    { "from": "r_diele", "to": "r_wohnkueche", "position": [4, 4], "width_mm": 1100 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2.5, 5], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_bad", "position": [6.5, 5], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_diele",
+      "position": [
+        0,
+        4.5
+      ],
+      "width_mm": 1000,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnkueche",
+      "position": [
+        4,
+        4
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        2.5,
+        5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        6.5,
+        5
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnkueche", "position": [3.5, 0], "width_mm": 2400 },
-    { "room": "r_wohnkueche", "position": [0, 2], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 6.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [2.5, 8], "width_mm": 1500 },
-    { "room": "r_bad", "position": [8, 6.5], "width_mm": 800 },
-    { "room": "r_bad", "position": [6.5, 8], "width_mm": 800 }
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        3.5,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_wohnkueche",
+      "position": [
+        0,
+        2
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        6.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        8
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        8,
+        6.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        6.5,
+        8
+      ],
+      "width_mm": 800
+    }
   ]
 }

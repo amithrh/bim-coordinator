@@ -1,0 +1,62 @@
+{
+  "id": "eu_uk_2bed_cornish_fisherman_cottage",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Mevagissey",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 56,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Cornish Fisherman's Cottage (Mevagissey, PL26)",
+    "description": "A Cornish fisherman's cottage at Mevagissey harbour — typical 700 sqft (65 m²) compact harbour-side dwelling. Living room, eat-in Kitchen-Diner, two compact bedrooms, full Bath, with steep cottage stairs to loft eaves space. Slate roof, low ceilings, traditional whitewashed walls. Source: cornwallcottages.com fisherman cottage listings.",
+    "suitable_for": ["couple", "creative_artist", "retiree"],
+    "tags": ["united_kingdom", "cottage", "2bed", "vintage_traditional", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[0,0],[3.5,0],[3.5,4],[0,4]], "area_sqm": 14 },
+    { "id": "r_kit_diner", "name": "Kitchen-Diner", "type": "kitchen",
+      "polygon": [[3.5,0],[7,0],[7,4],[3.5,4]], "area_sqm": 14,
+      "notes": "Eat-in kitchen — Cornish farmhouse sink, slate floor" },
+    { "id": "r_stairs", "name": "Stairs", "type": "stairs",
+      "polygon": [[0,4],[2,4],[2,5.5],[0,5.5]], "area_sqm": 3,
+      "notes": "Steep cottage stairs (loft eaves above)" },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[2,4],[4,4],[4,5.5],[2,5.5]], "area_sqm": 3 },
+    { "id": "r_pantry", "name": "Pantry", "type": "store",
+      "polygon": [[4,4],[7,4],[7,5.5],[4,5.5]], "area_sqm": 4.5 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5.5],[4,5.5],[4,8],[0,8]], "area_sqm": 10 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[4,5.5],[7,5.5],[7,8],[4,8]], "area_sqm": 7.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_living", "to": "r_kit_diner", "position": [3.5, 2], "width_mm": 1100 },
+    { "from": "r_living", "to": "r_stairs", "position": [1, 4], "width_mm": 800 },
+    { "from": "r_kit_diner", "to": "r_pantry", "position": [5.5, 4], "width_mm": 800 },
+    { "from": "r_stairs", "to": "r_bath", "position": [2, 4.75], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_pantry", "position": [4, 4.75], "width_mm": 700 },
+    { "from": "r_stairs", "to": "r_master", "position": [1, 5.5], "width_mm": 800 },
+    { "from": "r_pantry", "to": "r_bedroom2", "position": [5.5, 5.5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bedroom2", "position": [4, 6.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [1.5, 0], "width_mm": 1200 },
+    { "room": "r_living", "position": [0, 2], "width_mm": 1000 },
+    { "room": "r_kit_diner", "position": [5, 0], "width_mm": 1500 },
+    { "room": "r_kit_diner", "position": [7, 2], "width_mm": 1200 },
+    { "room": "r_master", "position": [2, 8], "width_mm": 1500 },
+    { "room": "r_master", "position": [0, 6.75], "width_mm": 1000 },
+    { "room": "r_bedroom2", "position": [5.5, 8], "width_mm": 1200 },
+    { "room": "r_bedroom2", "position": [7, 6.75], "width_mm": 1000 },
+    { "room": "r_bath", "position": [3, 4], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "eu_ee_1bed_tallinn_old_town",
+  "metadata": {
+    "region": "europe",
+    "country": "Estonia",
+    "city_inspiration": "Tallinn",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 60,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Tallinn Old Town 1-bed (Hanseatic medieval renovation)",
+    "description": "A Tallinn Old Town (Vanalinn) 1-bed apartment — typical 60 m² Hanseatic medieval building renovation. Esik (entry), Elutuba, Köök, Magamistuba, Vannituba, WC, hall back. Stone walls, wooden beam ceilings. Source: kv.ee Tallinn Vanalinn.",
+    "suitable_for": ["single_professional", "couple", "creative_artist"],
+    "tags": ["estonia", "tallinn", "vintage_traditional", "1bed", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_esik", "name": "Esik", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_elutuba", "name": "Elutuba", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,5],[1.5,5]], "area_sqm": 17.5,
+      "notes": "Living with original wooden beams" },
+    { "id": "r_kook", "name": "Köök", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,4],[5,4]], "area_sqm": 8 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[1.5,3],[1.5,4.5],[0,4.5]], "area_sqm": 2.25 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,5],[5,5]], "area_sqm": 2 },
+    { "id": "r_vannituba", "name": "Vannituba", "type": "bathroom",
+      "polygon": [[0,4.5],[1.5,4.5],[1.5,7],[0,7]], "area_sqm": 3.75 },
+    { "id": "r_magamistuba", "name": "Magamistuba", "type": "master_bedroom",
+      "polygon": [[1.5,5],[5,5],[5,8],[1.5,8]], "area_sqm": 10.5 },
+    { "id": "r_storage2", "name": "Storage 2", "type": "store",
+      "polygon": [[5,5],[7,5],[7,8],[5,8]], "area_sqm": 6 },
+    { "id": "r_courtyard", "name": "Inner Courtyard", "type": "balcony",
+      "polygon": [[0,8],[7,8],[7,9],[0,9]], "area_sqm": 7 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[1.5,7],[1.5,8],[0,8]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_esik", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_esik", "to": "r_elutuba", "position": [1.5, 1.5], "width_mm": 1000 },
+    { "from": "r_esik", "to": "r_wc", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_vannituba", "position": [0.75, 4.5], "width_mm": 700 },
+    { "from": "r_elutuba", "to": "r_kook", "position": [5, 2], "width_mm": 1000 },
+    { "from": "r_kook", "to": "r_storage", "position": [6, 4], "width_mm": 700 },
+    { "from": "r_elutuba", "to": "r_magamistuba", "position": [3.25, 5], "width_mm": 900 },
+    { "from": "r_storage", "to": "r_storage2", "position": [6, 5], "width_mm": 700 },
+    { "from": "r_magamistuba", "to": "r_storage2", "position": [5, 6.5], "width_mm": 800 },
+    { "from": "r_vannituba", "to": "r_hall_back", "position": [0.75, 7], "width_mm": 700 },
+    { "from": "r_magamistuba", "to": "r_courtyard", "position": [3.25, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storage2", "to": "r_courtyard", "position": [6, 8], "width_mm": 800 },
+    { "from": "r_hall_back", "to": "r_courtyard", "position": [0.75, 8], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_elutuba", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_elutuba", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kook", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kook", "position": [7, 2], "width_mm": 1200 },
+    { "room": "r_magamistuba", "position": [3.25, 8], "width_mm": 1500 },
+    { "room": "r_storage2", "position": [7, 6.5], "width_mm": 1000 },
+    { "room": "r_courtyard", "position": [3.5, 9], "width_mm": 2400 },
+    { "room": "r_vannituba", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_esik", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

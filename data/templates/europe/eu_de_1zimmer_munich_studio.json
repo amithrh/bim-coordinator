@@ -10,34 +10,191 @@
     "bathrooms": 1,
     "style": "Munich Schwabing studio with chamfered corner kitchen niche",
     "description": "A compact Munich Schwabing or Maxvorstadt Einzimmer studio with a distinctive chamfered NE corner — a small Kochnische tucked into the angled niche, leaving the main living-sleeping area uncluttered. Compact bath at the back. Pentagon footprint distinguishes it from any rectangular studio.",
-    "suitable_for": ["student", "single professional", "weekday flat"],
-    "tags": ["munich", "schwabing", "studio", "1zimmer", "chamfered_corner", "pentagon", "compact"]
+    "suitable_for": [
+      "student",
+      "single professional",
+      "weekday flat"
+    ],
+    "tags": [
+      "munich",
+      "schwabing",
+      "studio",
+      "1zimmer",
+      "chamfered_corner",
+      "pentagon",
+      "compact",
+      "neubau",
+      "current_2020plus"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[7,0],[7,4],[6,5],[0,5]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ],
     "wall_thickness_mm": 200,
     "ceiling_height_mm": 2600
   },
   "rooms": [
-    { "id": "r_living", "name": "Wohn-Schlafraum", "type": "living",
-      "polygon": [[0,0],[5,0],[5,5],[0,5]], "area_sqm": 25,
-      "notes": "Combined living and sleeping" },
-    { "id": "r_kuche", "name": "Kochnische", "type": "kochnische",
-      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[5,3],[7,3],[7,4],[6,5],[5,5]], "area_sqm": 3.5,
-      "notes": "Tucked into the chamfered NE niche" }
+    {
+      "id": "r_living",
+      "name": "Wohn-Schlafraum",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 25,
+      "notes": "Combined living and sleeping"
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kochnische",
+      "type": "kochnische",
+      "polygon": [
+        [
+          5,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "area_sqm": 3.5,
+      "notes": "Tucked into the chamfered NE niche"
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_living", "position": [0.5, 0],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_living", "to": "r_kuche", "position": [5, 1.5], "width_mm": 800 },
-    { "from": "r_living", "to": "r_bad", "position": [5, 4], "width_mm": 700 }
+    {
+      "from": "outside",
+      "to": "r_living",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_living",
+      "to": "r_kuche",
+      "position": [
+        5,
+        1.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_living",
+      "to": "r_bad",
+      "position": [
+        5,
+        4
+      ],
+      "width_mm": 700
+    }
   ],
   "windows": [
-    { "room": "r_living", "position": [2.5, 0], "width_mm": 1500 },
-    { "room": "r_living", "position": [0, 2.5], "width_mm": 1500 },
-    { "room": "r_kuche", "position": [7, 1.5], "width_mm": 900 },
-    { "room": "r_bad", "position": [6.5, 4.5], "width_mm": 600 }
+    {
+      "room": "r_living",
+      "position": [
+        2.5,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_living",
+      "position": [
+        0,
+        2.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        7,
+        1.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        6.5,
+        4.5
+      ],
+      "width_mm": 600
+    }
   ]
 }

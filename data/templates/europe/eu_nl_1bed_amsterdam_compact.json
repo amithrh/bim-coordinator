@@ -1,0 +1,58 @@
+{
+  "id": "eu_nl_1bed_amsterdam_compact",
+  "metadata": {
+    "region": "europe",
+    "country": "Netherlands",
+    "city_inspiration": "Amsterdam",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Amsterdam compact 1-bed (Pijp/Oost modern flat)",
+    "description": "An Amsterdam compact 1-bed in De Pijp / Oost — typical 50 m² modern flat. Hal, Open Woonkamer-Keuken, Slaapkamer, Badkamer, Balkon. Source: funda.nl Amsterdam compact.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["netherlands", "amsterdam", "neubau", "1bed", "current_2020plus", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hal", "name": "Hal", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_woon_keuken", "name": "Woonkamer-Keuken (open)", "type": "living",
+      "polygon": [[1.5,0],[7,0],[7,4],[1.5,4]], "area_sqm": 22 },
+    { "id": "r_badk", "name": "Badkamer", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_slaapk", "name": "Slaapkamer", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,6],[5,6]], "area_sqm": 4 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[5,6],[7,6],[7,7],[5,7]], "area_sqm": 2 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hal", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hal", "to": "r_woon_keuken", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_hal", "to": "r_badk", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_woon_keuken", "to": "r_slaapk", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_woon_keuken", "to": "r_storage", "position": [6, 4], "width_mm": 800 },
+    { "from": "r_storage", "to": "r_balkon", "position": [6, 6], "width_mm": 800, "swing": "slide" },
+    { "from": "r_slaapk", "to": "r_storage", "position": [5, 5], "width_mm": 700 },
+    { "from": "r_badk", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_slaapk", "to": "r_hall_back", "position": [1.5, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_woon_keuken", "position": [4.25, 0], "width_mm": 2400 },
+    { "room": "r_woon_keuken", "position": [7, 2], "width_mm": 1500 },
+    { "room": "r_slaapk", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 5], "width_mm": 1200 },
+    { "room": "r_balkon", "position": [6, 7], "width_mm": 1200 },
+    { "room": "r_badk", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_hal", "position": [0, 1], "width_mm": 800 }
+  ]
+}

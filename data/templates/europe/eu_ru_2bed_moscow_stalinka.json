@@ -1,0 +1,65 @@
+{
+  "id": "eu_ru_2bed_moscow_stalinka",
+  "metadata": {
+    "region": "europe",
+    "country": "Russia",
+    "city_inspiration": "Moscow",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Moscow Stalinka apartment (1930s-50s, high ceilings + thick walls)",
+    "description": "A Moscow Stalinka (Stalinist-era) apartment — typical 90 m² with 3+ m ceilings, thick walls, ornate exterior. Прихожая (Hall), Гостиная (Living), Кухня (Kitchen), two Спальня (Bedrooms), Ванная (Bath), Туалет (WC), Балкон (Balcony). Source: cian.ru Moscow Stalinka.",
+    "suitable_for": ["young_family", "couple", "academic"],
+    "tags": ["russia", "moscow", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_prikhozhaya", "name": "Прихожая (Hall)", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_gostinaya", "name": "Гостиная (Living)", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kukhnya", "name": "Кухня (Kitchen)", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_tualet", "name": "Туалет (WC)", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_vannaya", "name": "Ванная (Bath)", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_spalnya1", "name": "Спальня 1 (Master)", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,7],[2,7]], "area_sqm": 8 },
+    { "id": "r_spalnya2", "name": "Спальня 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,7],[6,7]], "area_sqm": 8 },
+    { "id": "r_balkon", "name": "Балкон", "type": "balcony",
+      "polygon": [[0,7],[10,7],[10,9],[0,9]], "area_sqm": 20,
+      "notes": "Wide Stalinka balcony" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_prikhozhaya", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_prikhozhaya", "to": "r_gostinaya", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_prikhozhaya", "to": "r_tualet", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_tualet", "to": "r_vannaya", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_gostinaya", "to": "r_kukhnya", "position": [7, 2.5], "width_mm": 1100 },
+    { "from": "r_gostinaya", "to": "r_spalnya1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_kukhnya", "to": "r_spalnya2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_spalnya1", "to": "r_spalnya2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_vannaya", "to": "r_balkon", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_spalnya1", "to": "r_balkon", "position": [4, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_spalnya2", "to": "r_balkon", "position": [8, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_gostinaya", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kukhnya", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_kukhnya", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_spalnya1", "position": [4, 7], "width_mm": 1500 },
+    { "room": "r_spalnya2", "position": [8, 7], "width_mm": 1500 },
+    { "room": "r_spalnya2", "position": [10, 6], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [5, 9], "width_mm": 3000 },
+    { "room": "r_vannaya", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_prikhozhaya", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

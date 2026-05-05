@@ -1,0 +1,44 @@
+{
+  "id": "eu_de_1zimmer_munich_schwabing_studio",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "München",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 35,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "München Schwabing Studio (Apian10 Studentenappartements)",
+    "description": "A München Schwabing Studio — typical Apian10 35 m² Studentenappartement. Wohn-Schlaf, Küchenzeile, separate Duschbad, narrow Eingang. Möbliert, Studentenviertel. Source: apian10.de Schwabing Studios.",
+    "suitable_for": ["single_professional", "student_share"],
+    "tags": ["germany", "munich", "neubau", "studio", "current_2020plus", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,7],[0,7]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_eingang", "name": "Eingang", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2 },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[1,0],[3,0],[3,2],[1,2]], "area_sqm": 4 },
+    { "id": "r_kuche", "name": "Küchenzeile", "type": "kochnische",
+      "polygon": [[3,0],[5,0],[5,2],[3,2]], "area_sqm": 4 },
+    { "id": "r_wohnen", "name": "Wohn-Schlafraum", "type": "living",
+      "polygon": [[0,2],[5,2],[5,7],[0,7]], "area_sqm": 25 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eingang", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_eingang", "to": "r_wohnen", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_wohnen", "to": "r_bad", "position": [2, 2], "width_mm": 700 },
+    { "from": "r_wohnen", "to": "r_kuche", "position": [4, 2], "width_mm": 1100 }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [2.5, 7], "width_mm": 2000 },
+    { "room": "r_wohnen", "position": [0, 4.5], "width_mm": 1500 },
+    { "room": "r_wohnen", "position": [5, 4.5], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [4, 0], "width_mm": 1200 }
+  ]
+}

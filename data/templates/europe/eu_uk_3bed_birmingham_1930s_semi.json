@@ -2,7 +2,7 @@
   "id": "eu_uk_3bed_birmingham_1930s_semi",
   "metadata": {
     "region": "europe",
-    "country": "UK",
+    "country": "United Kingdom",
     "city_inspiration": "Birmingham",
     "size_label": "3bed",
     "total_area_sqm": 110,
@@ -10,57 +10,430 @@
     "bathrooms": 1,
     "style": "Birmingham 1930s suburban semi-detached with mock-Tudor character",
     "description": "A 1930s Birmingham suburban semi with bay-windowed front lounge, separate dining room, kitchen, downstairs WC, three upstairs bedrooms (a typical box room) and a compact family bath. Common typology across the West Midlands suburbs.",
-    "suitable_for": ["young family", "downsizers from London", "first-time buyer in West Midlands"],
-    "tags": ["birmingham", "1930s", "semi-detached", "mock_tudor", "3bed", "uk", "west_midlands", "suburb"]
+    "suitable_for": [
+      "young family",
+      "downsizers from London",
+      "first-time buyer in West Midlands"
+    ],
+    "tags": [
+      "birmingham",
+      "1930s",
+      "semi-detached",
+      "mock_tudor",
+      "3bed",
+      "uk",
+      "west_midlands",
+      "suburb",
+      "1930s_semi",
+      "interwar_1920_1939"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[8.5,0],[8.5,13],[0,13]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        8.5,
+        0
+      ],
+      [
+        8.5,
+        13
+      ],
+      [
+        0,
+        13
+      ]
+    ],
     "wall_thickness_mm": 230,
     "ceiling_height_mm": 2500
   },
   "rooms": [
-    { "id": "r_lounge", "name": "Front Lounge", "type": "living",
-      "polygon": [[0,0],[5,0],[5,5],[0,5]], "area_sqm": 25 },
-    { "id": "r_dining", "name": "Dining Room", "type": "dining",
-      "polygon": [[5,0],[8.5,0],[8.5,5],[5,5]], "area_sqm": 17.5 },
-    { "id": "r_hall", "name": "Hallway", "type": "corridor",
-      "polygon": [[0,5],[3,5],[3,8],[0,8]], "area_sqm": 9 },
-    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
-      "polygon": [[3,5],[8.5,5],[8.5,9],[3,9]], "area_sqm": 22 },
-    { "id": "r_wc", "name": "WC", "type": "wc",
-      "polygon": [[0,8],[3,8],[3,9],[0,9]], "area_sqm": 3 },
-    { "id": "r_bedroom1", "name": "Master Bedroom", "type": "master_bedroom",
-      "polygon": [[0,9],[5,9],[5,13],[0,13]], "area_sqm": 20 },
-    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
-      "polygon": [[5,9],[8.5,9],[8.5,11],[5,11]], "area_sqm": 7 },
-    { "id": "r_bath", "name": "Family Bath", "type": "bathroom",
-      "polygon": [[5,11],[8.5,11],[8.5,12],[5,12]], "area_sqm": 3.5 },
-    { "id": "r_bedroom3", "name": "Box Room", "type": "bedroom",
-      "polygon": [[5,12],[8.5,12],[8.5,13],[5,13]], "area_sqm": 3.5,
-      "notes": "Typical 1930s box room above the stairs" }
+    {
+      "id": "r_lounge",
+      "name": "Front Lounge",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 25
+    },
+    {
+      "id": "r_dining",
+      "name": "Dining Room",
+      "type": "dining",
+      "polygon": [
+        [
+          5,
+          0
+        ],
+        [
+          8.5,
+          0
+        ],
+        [
+          8.5,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "area_sqm": 17.5
+    },
+    {
+      "id": "r_hall",
+      "name": "Hallway",
+      "type": "corridor",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_kitchen",
+      "name": "Kitchen",
+      "type": "kitchen",
+      "polygon": [
+        [
+          3,
+          5
+        ],
+        [
+          8.5,
+          5
+        ],
+        [
+          8.5,
+          9
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "area_sqm": 22
+    },
+    {
+      "id": "r_wc",
+      "name": "WC",
+      "type": "wc",
+      "polygon": [
+        [
+          0,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          0,
+          9
+        ]
+      ],
+      "area_sqm": 3
+    },
+    {
+      "id": "r_bedroom1",
+      "name": "Master Bedroom",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          13
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "area_sqm": 20
+    },
+    {
+      "id": "r_bedroom2",
+      "name": "Bedroom 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          9
+        ],
+        [
+          8.5,
+          9
+        ],
+        [
+          8.5,
+          11
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "area_sqm": 7
+    },
+    {
+      "id": "r_bath",
+      "name": "Family Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          11
+        ],
+        [
+          8.5,
+          11
+        ],
+        [
+          8.5,
+          12
+        ],
+        [
+          5,
+          12
+        ]
+      ],
+      "area_sqm": 3.5
+    },
+    {
+      "id": "r_bedroom3",
+      "name": "Box Room",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          12
+        ],
+        [
+          8.5,
+          12
+        ],
+        [
+          8.5,
+          13
+        ],
+        [
+          5,
+          13
+        ]
+      ],
+      "area_sqm": 3.5,
+      "notes": "Typical 1930s box room above the stairs"
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_hall", "position": [0, 6.5],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_hall", "to": "r_lounge", "position": [1.5, 5], "width_mm": 800 },
-    { "from": "r_lounge", "to": "r_dining", "position": [5, 2.5], "width_mm": 1100 },
-    { "from": "r_dining", "to": "r_kitchen", "position": [6.75, 5], "width_mm": 1000 },
-    { "from": "r_hall", "to": "r_kitchen", "position": [3, 6.5], "width_mm": 800 },
-    { "from": "r_hall", "to": "r_wc", "position": [1.5, 8], "width_mm": 700 },
-    { "from": "r_kitchen", "to": "r_bedroom1", "position": [4, 9], "width_mm": 800 },
-    { "from": "r_kitchen", "to": "r_bedroom2", "position": [6.75, 9], "width_mm": 800 },
-    { "from": "r_bedroom1", "to": "r_bath", "position": [5, 11.5], "width_mm": 700 },
-    { "from": "r_bedroom1", "to": "r_bedroom3", "position": [5, 12.5], "width_mm": 700 }
+    {
+      "from": "outside",
+      "to": "r_hall",
+      "position": [
+        0,
+        6.5
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_hall",
+      "to": "r_lounge",
+      "position": [
+        1.5,
+        5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_lounge",
+      "to": "r_dining",
+      "position": [
+        5,
+        2.5
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_dining",
+      "to": "r_kitchen",
+      "position": [
+        6.75,
+        5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_hall",
+      "to": "r_kitchen",
+      "position": [
+        3,
+        6.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_hall",
+      "to": "r_wc",
+      "position": [
+        1.5,
+        8
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_bedroom1",
+      "position": [
+        4,
+        9
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_kitchen",
+      "to": "r_bedroom2",
+      "position": [
+        6.75,
+        9
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bedroom1",
+      "to": "r_bath",
+      "position": [
+        5,
+        11.5
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_bedroom1",
+      "to": "r_bedroom3",
+      "position": [
+        5,
+        12.5
+      ],
+      "width_mm": 700
+    }
   ],
   "windows": [
-    { "room": "r_lounge", "position": [2.5, 0], "width_mm": 2400 },
-    { "room": "r_dining", "position": [6.75, 0], "width_mm": 1800 },
-    { "room": "r_kitchen", "position": [8.5, 7], "width_mm": 1500 },
-    { "room": "r_wc", "position": [0, 8.5], "width_mm": 600 },
-    { "room": "r_bedroom1", "position": [0, 11], "width_mm": 1500 },
-    { "room": "r_bedroom1", "position": [2.5, 13], "width_mm": 1500 },
-    { "room": "r_bedroom2", "position": [8.5, 10], "width_mm": 1200 },
-    { "room": "r_bath", "position": [8.5, 11.5], "width_mm": 600 },
-    { "room": "r_bedroom3", "position": [6.75, 13], "width_mm": 900 }
+    {
+      "room": "r_lounge",
+      "position": [
+        2.5,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_dining",
+      "position": [
+        6.75,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_kitchen",
+      "position": [
+        8.5,
+        7
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_wc",
+      "position": [
+        0,
+        8.5
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bedroom1",
+      "position": [
+        0,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bedroom1",
+      "position": [
+        2.5,
+        13
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bedroom2",
+      "position": [
+        8.5,
+        10
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        8.5,
+        11.5
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bedroom3",
+      "position": [
+        6.75,
+        13
+      ],
+      "width_mm": 900
+    }
   ]
 }

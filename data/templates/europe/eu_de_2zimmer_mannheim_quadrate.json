@@ -1,0 +1,57 @@
+{
+  "id": "eu_de_2zimmer_mannheim_quadrate",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Mannheim",
+    "size_label": "2zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 64,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Mannheim Quadrate 2-Zimmer mit Balkon",
+    "description": "A Mannheim Quadratestadt 2-Zimmer apartment — typical 60 m² with Balkon access from Wohnzimmer. Wohnz, Schlafz, Küche, Duschbad, generous Flur. Source: immo.rheinpfalz.de Mannheim 2-Zi listings.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["germany", "mannheim", "neubau", "1bed", "postwar_1945_1969", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[8,0],[8,5],[7,5]], "area_sqm": 5 },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6.5],[0,6.5]], "area_sqm": 5 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[7,5],[7,8],[2,8]], "area_sqm": 15 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[7,5],[8,5],[8,8],[7,8]], "area_sqm": 3 },
+    { "id": "r_hall_ext", "name": "Flur back", "type": "corridor",
+      "polygon": [[0,6.5],[2,6.5],[2,8],[0,8]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnz", "position": [2, 2], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_bad", "position": [1, 4], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [1, 6.5], "width_mm": 700 },
+    { "from": "r_hall_ext", "to": "r_schlafz", "position": [2, 7.25], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [7, 2.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [4.5, 5], "width_mm": 900 },
+    { "from": "r_schlafz", "to": "r_balkon", "position": [7, 6.5], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [7.5, 0], "width_mm": 1000 },
+    { "room": "r_kuche", "position": [8, 2.5], "width_mm": 1200 },
+    { "room": "r_schlafz", "position": [4.5, 8], "width_mm": 1800 },
+    { "room": "r_balkon", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 5.25], "width_mm": 600 },
+    { "room": "r_flur", "position": [0, 2], "width_mm": 800 }
+  ]
+}

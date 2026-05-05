@@ -1,0 +1,631 @@
+{
+  "id": "eu_de_6zimmer_munich_villa",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Munich",
+    "size_label": "6zimmer",
+    "total_area_sqm": 208,
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "style": "Munich Grünwald premium villa — 6-Zimmer ground floor with master suite",
+    "description": "A premium Munich Grünwald or Bogenhausen villa ground floor — 16 m × 13 m, with a grand Wohnzimmer plus separate Kueche, Esszimmer, Pantry and Arbeitszimmer along the south. North wing is a master suite with attached bath + Ankleidezimmer + three more bedrooms + family bath. 13 rooms total. Targets the upper-tier Munich buyer.",
+    "suitable_for": [
+      "wealthy family with three children",
+      "Munich C-suite",
+      "premium buyer"
+    ],
+    "tags": [
+      "munich",
+      "gruenwald",
+      "bogenhausen",
+      "villa",
+      "6zimmer",
+      "premium",
+      "master_suite",
+      "ankleidezimmer",
+      "study",
+      "stadtvilla",
+      "contemporary_2000_2020"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        16,
+        0
+      ],
+      [
+        16,
+        13
+      ],
+      [
+        0,
+        13
+      ]
+    ],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    {
+      "id": "r_wohnzimmer",
+      "name": "Wohnzimmer",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "area_sqm": 48,
+      "notes": "Grand south-facing reception room"
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kueche",
+      "type": "kitchen",
+      "polygon": [
+        [
+          8,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_essen",
+      "name": "Esszimmer",
+      "type": "dining",
+      "polygon": [
+        [
+          12,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          3
+        ],
+        [
+          12,
+          3
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_pantry",
+      "name": "Pantry",
+      "type": "utility",
+      "polygon": [
+        [
+          8,
+          3
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          8,
+          6
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_arbeitszimmer",
+      "name": "Arbeitszimmer",
+      "type": "study",
+      "polygon": [
+        [
+          12,
+          3
+        ],
+        [
+          16,
+          3
+        ],
+        [
+          16,
+          6
+        ],
+        [
+          12,
+          6
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          6
+        ],
+        [
+          16,
+          6
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "area_sqm": 16
+    },
+    {
+      "id": "r_master",
+      "name": "Master Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          13
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "area_sqm": 36
+    },
+    {
+      "id": "r_master_bath",
+      "name": "Master Bad",
+      "type": "bathroom",
+      "polygon": [
+        [
+          6,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          6,
+          10
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_ankleidezimmer",
+      "name": "Ankleidezimmer",
+      "type": "wardrobe",
+      "polygon": [
+        [
+          6,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          6,
+          13
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_kinderzimmer1",
+      "name": "Kinderzimmer 1",
+      "type": "bedroom",
+      "polygon": [
+        [
+          9,
+          7
+        ],
+        [
+          13,
+          7
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          9,
+          10
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_kinderzimmer2",
+      "name": "Kinderzimmer 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          9,
+          10
+        ],
+        [
+          13,
+          10
+        ],
+        [
+          13,
+          13
+        ],
+        [
+          9,
+          13
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_kinderzimmer3",
+      "name": "Kinderzimmer 3",
+      "type": "bedroom",
+      "polygon": [
+        [
+          13,
+          10
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          16,
+          13
+        ],
+        [
+          13,
+          13
+        ]
+      ],
+      "area_sqm": 9
+    },
+    {
+      "id": "r_bad",
+      "name": "Familien-Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          13,
+          7
+        ],
+        [
+          16,
+          7
+        ],
+        [
+          16,
+          10
+        ],
+        [
+          13,
+          10
+        ]
+      ],
+      "area_sqm": 9
+    }
+  ],
+  "doors": [
+    {
+      "from": "outside",
+      "to": "r_wohnzimmer",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 1200,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_kuche",
+      "position": [
+        8,
+        1.5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_pantry",
+      "position": [
+        8,
+        4.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_kuche",
+      "to": "r_essen",
+      "position": [
+        12,
+        1.5
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_kuche",
+      "to": "r_pantry",
+      "position": [
+        10,
+        3
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_essen",
+      "to": "r_arbeitszimmer",
+      "position": [
+        14,
+        3
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_pantry",
+      "to": "r_arbeitszimmer",
+      "position": [
+        12,
+        4.5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_diele",
+      "position": [
+        4,
+        6
+      ],
+      "width_mm": 1200
+    },
+    {
+      "from": "r_arbeitszimmer",
+      "to": "r_diele",
+      "position": [
+        14,
+        6
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_diele",
+      "to": "r_master",
+      "position": [
+        3,
+        7
+      ],
+      "width_mm": 1100
+    },
+    {
+      "from": "r_master",
+      "to": "r_master_bath",
+      "position": [
+        6,
+        8.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_master",
+      "to": "r_ankleidezimmer",
+      "position": [
+        6,
+        11.5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer1",
+      "position": [
+        11,
+        7
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        14.5,
+        7
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_kinderzimmer1",
+      "to": "r_kinderzimmer2",
+      "position": [
+        11,
+        10
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_kinderzimmer2",
+      "to": "r_kinderzimmer3",
+      "position": [
+        13,
+        11.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bad",
+      "to": "r_kinderzimmer3",
+      "position": [
+        14.5,
+        10
+      ],
+      "width_mm": 800
+    }
+  ],
+  "windows": [
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        4,
+        0
+      ],
+      "width_mm": 3000
+    },
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        0,
+        3
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        10,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        14,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        16,
+        1.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_arbeitszimmer",
+      "position": [
+        16,
+        4.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_master",
+      "position": [
+        0,
+        10
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_master",
+      "position": [
+        3,
+        13
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer1",
+      "position": [
+        13,
+        8.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer2",
+      "position": [
+        11,
+        13
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer3",
+      "position": [
+        14.5,
+        13
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer3",
+      "position": [
+        16,
+        11.5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        16,
+        8.5
+      ],
+      "width_mm": 800
+    }
+  ]
+}

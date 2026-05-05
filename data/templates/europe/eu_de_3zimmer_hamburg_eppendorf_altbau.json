@@ -1,0 +1,63 @@
+{
+  "id": "eu_de_3zimmer_hamburg_eppendorf_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Hamburg",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Hamburg Eppendorf 3-Zi Altbau (Erikastraße)",
+    "description": "A Hamburg Eppendorf 3-Zimmer Altbau apartment — typical 87 m² Gründerzeit Altbau. Wohnz, Schlafz, Kinderz, separate Küche, Bad, generous Diele. Stuck mouldings, original Holzboden. Source: home-kr.de Eppendorf Erikastraße.",
+    "suitable_for": ["young_family", "couple", "academic"],
+    "tags": ["germany", "hamburg", "altbau", "2bed", "wilhelminian", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Wohnzimmer with Stuck mouldings + original Holzboden" },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_storage", "name": "Abstellraum", "type": "store",
+      "polygon": [[7,4],[10,4],[10,5],[7,5]], "area_sqm": 3 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,8],[0,8]], "area_sqm": 6 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_kinderz", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,9],[6,9]], "area_sqm": 16 },
+    { "id": "r_hall_ext", "name": "Flur back", "type": "corridor",
+      "polygon": [[0,8],[2,8],[2,9],[0,9]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 2.5], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnz", "position": [2, 2.5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_bad", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [1, 8], "width_mm": 700 },
+    { "from": "r_hall_ext", "to": "r_schlafz", "position": [2, 8.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [7, 2], "width_mm": 1100 },
+    { "from": "r_wohnz", "to": "r_storage", "position": [7, 4.5], "width_mm": 800 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kinderz", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_schlafz", "to": "r_kinderz", "position": [6, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_kuche", "position": [10, 2], "width_mm": 1500 },
+    { "room": "r_schlafz", "position": [4, 9], "width_mm": 1800 },
+    { "room": "r_kinderz", "position": [8, 9], "width_mm": 1500 },
+    { "room": "r_kinderz", "position": [10, 7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 6.5], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 2.5], "width_mm": 600 }
+  ]
+}

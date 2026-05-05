@@ -1,0 +1,71 @@
+{
+  "id": "eu_cz_2bed_prague_pavlac",
+  "metadata": {
+    "region": "europe",
+    "country": "Czech Republic",
+    "city_inspiration": "Prague",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Prague pavlač apartment (Žižkov/Vinohrady, 1900s tenement with gallery balcony)",
+    "description": "A Prague Žižkov/Vinohrady pavlač apartment — typical 1900s typology with pavlač external gallery balcony. Hala, Salon, Kuchyně, WC, Koupelna, Master, Bedroom 2, with original parquet and stuccatura. Source: sreality.cz Prague pavlač.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["czech_republic", "prague", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_hala", "name": "Hala", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kuchyne", "name": "Kuchyně", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_koupelna", "name": "Koupelna", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,5],[8,5],[8,8],[6,8]], "area_sqm": 6 },
+    { "id": "r_pavlac", "name": "Pavlač (gallery balcony)", "type": "balcony",
+      "polygon": [[0,7],[2,7],[2,9],[0,9]], "area_sqm": 4,
+      "notes": "External gallery balcony — Prague signature" },
+    { "id": "r_storage_back", "name": "Storage back", "type": "store",
+      "polygon": [[2,8],[6,8],[6,9],[2,9]], "area_sqm": 4 },
+    { "id": "r_bed2_storage", "name": "Bedroom storage", "type": "store",
+      "polygon": [[6,8],[8,8],[8,9],[6,9]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hala", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hala", "to": "r_salon", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_hala", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_koupelna", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_kuchyne", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_salon", "to": "r_master", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_kuchyne", "to": "r_bed2", "position": [7, 5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bed2", "position": [6, 6.5], "width_mm": 800 },
+    { "from": "r_koupelna", "to": "r_pavlac", "position": [1, 7], "width_mm": 700, "swing": "slide" },
+    { "from": "r_master", "to": "r_storage_back", "position": [4, 8], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bed2_storage", "position": [7, 8], "width_mm": 700 },
+    { "from": "r_storage_back", "to": "r_bed2_storage", "position": [6, 8.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kuchyne", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kuchyne", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_master", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_pavlac", "position": [1, 9], "width_mm": 1500 },
+    { "room": "r_storage_back", "position": [4, 9], "width_mm": 1200 },
+    { "room": "r_bed2_storage", "position": [7, 9], "width_mm": 800 },
+    { "room": "r_koupelna", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_hala", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

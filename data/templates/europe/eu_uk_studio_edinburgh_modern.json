@@ -1,0 +1,44 @@
+{
+  "id": "eu_uk_studio_edinburgh_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Edinburgh",
+    "size_label": "studio",
+    "size_band": "studio",
+    "total_area_sqm": 36,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Edinburgh Modern Studio (purpose-built city centre)",
+    "description": "An Edinburgh modern studio purpose-built — typical 36 m² city centre flat for student/young professional. Open Living + bed + kitchenette, Bath, Hall. Source: rightmove.co.uk Edinburgh studio listings.",
+    "suitable_for": ["single_professional", "student_share"],
+    "tags": ["united_kingdom", "edinburgh", "purpose_built_flat", "studio", "current_2020plus", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,6],[0,6]],
+    "wall_thickness_mm": 220,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[1,0],[3,0],[3,2],[1,2]], "area_sqm": 4 },
+    { "id": "r_kitchenette", "name": "Kitchenette", "type": "kochnische",
+      "polygon": [[3,0],[6,0],[6,2],[3,2]], "area_sqm": 6 },
+    { "id": "r_living_bed", "name": "Living-Bed (combined)", "type": "living",
+      "polygon": [[0,2],[6,2],[6,6],[0,6]], "area_sqm": 24 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living_bed", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_living_bed", "to": "r_bath", "position": [2, 2], "width_mm": 700 },
+    { "from": "r_living_bed", "to": "r_kitchenette", "position": [4.5, 2], "width_mm": 1500 }
+  ],
+  "windows": [
+    { "room": "r_living_bed", "position": [3, 6], "width_mm": 2400 },
+    { "room": "r_living_bed", "position": [0, 4], "width_mm": 1500 },
+    { "room": "r_living_bed", "position": [6, 4], "width_mm": 1500 },
+    { "room": "r_kitchenette", "position": [4.5, 0], "width_mm": 1200 }
+  ]
+}

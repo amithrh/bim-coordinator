@@ -1,0 +1,67 @@
+{
+  "id": "in_2bhk_mumbai_andheri_compact",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Mumbai",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 64,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Mumbai Andheri East compact 2 BHK (Lodha Eternis Serena C basis)",
+    "description": "A Mumbai Andheri East compact 2 BHK — Lodha Eternis Serena C carpet area 645 sqft (60 m²) basis. Combined Living/Dining + galley Kitchen with dry balcony for laundry/AC condenser, Master with attached bath, Bedroom 2 with shared bath, north Balcony. Carpet-area pricing per Maharashtra RERA. Source: lodhagroup.com Eternis + squareyards.com listing.",
+    "suitable_for": ["young_family", "couple", "executive_pied_a_terre"],
+    "tags": ["india", "mumbai", "apartment_indian", "2bed", "current_2020plus", "modular_kitchen", "dry_balcony", "balkon", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[0,0],[5,0],[5,3.5],[0,3.5]], "area_sqm": 17.5 },
+    { "id": "r_kitchen", "name": "Kitchen (modular)", "type": "kitchen",
+      "polygon": [[5,0],[8,0],[8,3],[5,3]], "area_sqm": 9 },
+    { "id": "r_common_bath", "name": "Common Bath", "type": "bathroom",
+      "polygon": [[5,3],[7,3],[7,5],[5,5]], "area_sqm": 4 },
+    { "id": "r_dry_balcony", "name": "Dry Balcony", "type": "balcony",
+      "polygon": [[7,3],[8,3],[8,5],[7,5]], "area_sqm": 2,
+      "notes": "Indian dry balcony — washing machine + AC condenser" },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,3.5],[3,3.5],[3,7],[0,7]], "area_sqm": 10.5 },
+    { "id": "r_master_bath", "name": "Master Bath", "type": "bathroom",
+      "polygon": [[3,3.5],[5,3.5],[5,5],[3,5]], "area_sqm": 3 },
+    { "id": "r_hall", "name": "Common Corridor", "type": "corridor",
+      "polygon": [[3,5],[5,5],[5,7],[3,7]], "area_sqm": 4 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,7],[5,7],[5,8],[0,8]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_living", "to": "r_kitchen", "position": [5, 1.75], "width_mm": 900 },
+    { "from": "r_living", "to": "r_master", "position": [1.5, 3.5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_master_bath", "position": [3, 4.25], "width_mm": 750 },
+    { "from": "r_kitchen", "to": "r_common_bath", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_common_bath", "to": "r_dry_balcony", "position": [7, 4], "width_mm": 700 },
+    { "from": "r_common_bath", "to": "r_bedroom2", "position": [6, 5], "width_mm": 700 },
+    { "from": "r_hall", "to": "r_bedroom2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_hall", "to": "r_master", "position": [3, 6], "width_mm": 800 },
+    { "from": "r_master", "to": "r_balcony", "position": [1.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_hall", "to": "r_balcony", "position": [4, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.5, 0], "width_mm": 2000 },
+    { "room": "r_living", "position": [0, 1.75], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [6.5, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 1.5], "width_mm": 1200 },
+    { "room": "r_master", "position": [0, 5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [2.5, 8], "width_mm": 2000 },
+    { "room": "r_dry_balcony", "position": [8, 4], "width_mm": 600 }
+  ]
+}

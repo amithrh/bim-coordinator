@@ -1,0 +1,923 @@
+{
+  "id": "in_4bhk_bangalore_villa_duplex",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Bangalore",
+    "size_label": "4bhk",
+    "total_area_sqm": 240,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "style": "Bangalore Whitefield premium 4BHK duplex villa over 2 floors",
+    "description": "A Bangalore Whitefield or Sarjapur premium 4BHK duplex villa — two full floors. Ground floor: drawing room, formal dining, kitchen with utility, guest bedroom with attached bath, downstairs powder room, central staircase. First floor: master bedroom with attached bath + walk-in wardrobe, two more bedrooms with attached baths, dedicated pooja room. Modelled with full multi-floor IFC structure.",
+    "suitable_for": [
+      "NRI returnee family",
+      "tech executive",
+      "joint family"
+    ],
+    "tags": [
+      "bangalore",
+      "whitefield",
+      "sarjapur",
+      "duplex",
+      "4bhk",
+      "villa",
+      "two_storey",
+      "multi_floor",
+      "premium",
+      "all_attached",
+      "duplex_indian",
+      "current_2020plus"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        12,
+        0
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        0,
+        10
+      ]
+    ],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "floors": [
+    {
+      "name": "Ground Floor",
+      "elevation_mm": 0,
+      "ceiling_height_mm": 3000,
+      "rooms": [
+        {
+          "id": "r_drawing",
+          "name": "Drawing Room",
+          "type": "living",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              0,
+              5
+            ]
+          ],
+          "area_sqm": 35
+        },
+        {
+          "id": "r_dining",
+          "name": "Formal Dining",
+          "type": "dining",
+          "polygon": [
+            [
+              7,
+              0
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              7,
+              5
+            ]
+          ],
+          "area_sqm": 25
+        },
+        {
+          "id": "r_corridor",
+          "name": "Corridor (with staircase)",
+          "type": "corridor",
+          "polygon": [
+            [
+              3,
+              5
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "area_sqm": 12,
+          "notes": "Central staircase to first floor"
+        },
+        {
+          "id": "r_kitchen",
+          "name": "Kitchen",
+          "type": "kitchen",
+          "polygon": [
+            [
+              0,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              0,
+              8
+            ]
+          ],
+          "area_sqm": 9
+        },
+        {
+          "id": "r_utility",
+          "name": "Utility",
+          "type": "utility",
+          "polygon": [
+            [
+              0,
+              8
+            ],
+            [
+              3,
+              8
+            ],
+            [
+              3,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_powder",
+          "name": "Powder Room",
+          "type": "wc",
+          "polygon": [
+            [
+              9,
+              5
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_guest",
+          "name": "Guest Bedroom",
+          "type": "bedroom",
+          "polygon": [
+            [
+              3,
+              7
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              9,
+              10
+            ],
+            [
+              3,
+              10
+            ]
+          ],
+          "area_sqm": 18
+        },
+        {
+          "id": "r_guest_bath",
+          "name": "Guest Bath",
+          "type": "bathroom",
+          "polygon": [
+            [
+              9,
+              7
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              9,
+              10
+            ]
+          ],
+          "area_sqm": 9
+        }
+      ],
+      "doors": [
+        {
+          "from": "outside",
+          "to": "r_drawing",
+          "position": [
+            0.5,
+            0
+          ],
+          "width_mm": 1200,
+          "is_main_entry": true
+        },
+        {
+          "from": "r_drawing",
+          "to": "r_dining",
+          "position": [
+            7,
+            2.5
+          ],
+          "width_mm": 1200
+        },
+        {
+          "from": "r_drawing",
+          "to": "r_kitchen",
+          "position": [
+            1.5,
+            5
+          ],
+          "width_mm": 1000
+        },
+        {
+          "from": "r_drawing",
+          "to": "r_corridor",
+          "position": [
+            5,
+            5
+          ],
+          "width_mm": 1100
+        },
+        {
+          "from": "r_dining",
+          "to": "r_corridor",
+          "position": [
+            8,
+            5
+          ],
+          "width_mm": 1100
+        },
+        {
+          "from": "r_dining",
+          "to": "r_powder",
+          "position": [
+            10.5,
+            5
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_kitchen",
+          "to": "r_utility",
+          "position": [
+            1.5,
+            8
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_corridor",
+          "to": "r_guest",
+          "position": [
+            6,
+            7
+          ],
+          "width_mm": 1000
+        },
+        {
+          "from": "r_powder",
+          "to": "r_guest_bath",
+          "position": [
+            10.5,
+            7
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_guest",
+          "to": "r_guest_bath",
+          "position": [
+            9,
+            8.5
+          ],
+          "width_mm": 800
+        }
+      ],
+      "windows": [
+        {
+          "room": "r_drawing",
+          "position": [
+            3.5,
+            0
+          ],
+          "width_mm": 2400
+        },
+        {
+          "room": "r_drawing",
+          "position": [
+            0,
+            2.5
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_dining",
+          "position": [
+            9.5,
+            0
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_dining",
+          "position": [
+            12,
+            2.5
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_kitchen",
+          "position": [
+            0,
+            6.5
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_utility",
+          "position": [
+            0,
+            9
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_utility",
+          "position": [
+            1.5,
+            10
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_guest",
+          "position": [
+            6,
+            10
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_guest_bath",
+          "position": [
+            12,
+            8.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_guest_bath",
+          "position": [
+            10.5,
+            10
+          ],
+          "width_mm": 800
+        }
+      ]
+    },
+    {
+      "name": "First Floor",
+      "elevation_mm": 3000,
+      "ceiling_height_mm": 3000,
+      "rooms": [
+        {
+          "id": "r_master",
+          "name": "Master Bedroom",
+          "type": "master_bedroom",
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              7,
+              0
+            ],
+            [
+              7,
+              5
+            ],
+            [
+              0,
+              5
+            ]
+          ],
+          "area_sqm": 35
+        },
+        {
+          "id": "r_master_bath",
+          "name": "Master Bath",
+          "type": "bathroom",
+          "polygon": [
+            [
+              7,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              7,
+              3
+            ]
+          ],
+          "area_sqm": 9
+        },
+        {
+          "id": "r_walk_in",
+          "name": "Walk-in Wardrobe",
+          "type": "wardrobe",
+          "polygon": [
+            [
+              10,
+              0
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              10,
+              3
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_pooja",
+          "name": "Pooja Room",
+          "type": "pooja",
+          "polygon": [
+            [
+              7,
+              3
+            ],
+            [
+              12,
+              3
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              7,
+              5
+            ]
+          ],
+          "area_sqm": 10
+        },
+        {
+          "id": "r_landing",
+          "name": "Landing",
+          "type": "corridor",
+          "polygon": [
+            [
+              3,
+              5
+            ],
+            [
+              9,
+              5
+            ],
+            [
+              9,
+              7
+            ],
+            [
+              3,
+              7
+            ]
+          ],
+          "area_sqm": 12
+        },
+        {
+          "id": "r_balcony",
+          "name": "Balcony",
+          "type": "balcony",
+          "polygon": [
+            [
+              0,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              3,
+              7
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_balcony2",
+          "name": "Side Balcony",
+          "type": "balcony",
+          "polygon": [
+            [
+              9,
+              5
+            ],
+            [
+              12,
+              5
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              9,
+              7
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_bedroom2",
+          "name": "Bedroom 2",
+          "type": "bedroom",
+          "polygon": [
+            [
+              0,
+              7
+            ],
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              0,
+              10
+            ]
+          ],
+          "area_sqm": 15
+        },
+        {
+          "id": "r_bedroom2_bath",
+          "name": "Bath 2",
+          "type": "bathroom",
+          "polygon": [
+            [
+              5,
+              7
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              7,
+              10
+            ],
+            [
+              5,
+              10
+            ]
+          ],
+          "area_sqm": 6
+        },
+        {
+          "id": "r_bedroom3",
+          "name": "Bedroom 3",
+          "type": "bedroom",
+          "polygon": [
+            [
+              7,
+              7
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              7,
+              10
+            ]
+          ],
+          "area_sqm": 9
+        },
+        {
+          "id": "r_bedroom3_bath",
+          "name": "Bath 3",
+          "type": "bathroom",
+          "polygon": [
+            [
+              10,
+              7
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              12,
+              10
+            ],
+            [
+              10,
+              10
+            ]
+          ],
+          "area_sqm": 6
+        }
+      ],
+      "doors": [
+        {
+          "from": "r_landing",
+          "to": "r_master",
+          "position": [
+            4,
+            5
+          ],
+          "width_mm": 1100
+        },
+        {
+          "from": "r_master",
+          "to": "r_master_bath",
+          "position": [
+            7,
+            1.5
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_master_bath",
+          "to": "r_walk_in",
+          "position": [
+            10,
+            1.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_master",
+          "to": "r_pooja",
+          "position": [
+            7,
+            4
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_landing",
+          "to": "r_pooja",
+          "position": [
+            8,
+            5
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_landing",
+          "to": "r_bedroom2",
+          "position": [
+            4,
+            7
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_bedroom2",
+          "to": "r_bedroom2_bath",
+          "position": [
+            5,
+            8.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_landing",
+          "to": "r_bedroom3",
+          "position": [
+            8,
+            7
+          ],
+          "width_mm": 900
+        },
+        {
+          "from": "r_bedroom3",
+          "to": "r_bedroom3_bath",
+          "position": [
+            10,
+            8.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "from": "r_master",
+          "to": "r_balcony",
+          "position": [
+            1.5,
+            5
+          ],
+          "width_mm": 1200,
+          "swing": "slide"
+        },
+        {
+          "from": "r_pooja",
+          "to": "r_balcony2",
+          "position": [
+            10.5,
+            5
+          ],
+          "width_mm": 1000,
+          "swing": "slide"
+        }
+      ],
+      "windows": [
+        {
+          "room": "r_master",
+          "position": [
+            3.5,
+            0
+          ],
+          "width_mm": 2400
+        },
+        {
+          "room": "r_master",
+          "position": [
+            0,
+            2.5
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_master_bath",
+          "position": [
+            8.5,
+            0
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_walk_in",
+          "position": [
+            11,
+            0
+          ],
+          "width_mm": 1200
+        },
+        {
+          "room": "r_walk_in",
+          "position": [
+            12,
+            1.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_pooja",
+          "position": [
+            12,
+            4
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_balcony",
+          "position": [
+            0,
+            6
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_balcony2",
+          "position": [
+            12,
+            6
+          ],
+          "width_mm": 1800
+        },
+        {
+          "room": "r_bedroom2",
+          "position": [
+            0,
+            8.5
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_bedroom2",
+          "position": [
+            2.5,
+            10
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_bedroom2_bath",
+          "position": [
+            6,
+            10
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_bedroom3",
+          "position": [
+            8.5,
+            10
+          ],
+          "width_mm": 1500
+        },
+        {
+          "room": "r_bedroom3_bath",
+          "position": [
+            12,
+            8.5
+          ],
+          "width_mm": 800
+        },
+        {
+          "room": "r_bedroom3_bath",
+          "position": [
+            11,
+            10
+          ],
+          "width_mm": 800
+        }
+      ]
+    }
+  ]
+}

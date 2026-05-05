@@ -10,58 +10,436 @@
     "bathrooms": 1,
     "style": "Karlsruhe Einfamilienhaus U-shape with internal courtyard",
     "description": "A detached Karlsruhe single-family house with a distinctive U-shape footprint — south wing with kitchen, dining and large living room facing the street; west wing with master bedroom and entry hallway; east wing with two children's rooms and bathroom. The courtyard at the centre brings light into all three wings (Atriumhof).",
-    "suitable_for": ["family with two children", "house buyer wanting a courtyard"],
-    "tags": ["karlsruhe", "einfamilienhaus", "single_family", "u_shape", "courtyard", "atriumhof", "5zimmer", "detached"]
+    "suitable_for": [
+      "family with two children",
+      "house buyer wanting a courtyard"
+    ],
+    "tags": [
+      "karlsruhe",
+      "einfamilienhaus",
+      "single_family",
+      "u_shape",
+      "courtyard",
+      "atriumhof",
+      "5zimmer",
+      "detached",
+      "contemporary_2000_2020"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[14,0],[14,12],[10,12],[10,5],[4,5],[4,12],[0,12]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        14,
+        12
+      ],
+      [
+        10,
+        12
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        0,
+        12
+      ]
+    ],
     "wall_thickness_mm": 300,
     "ceiling_height_mm": 2700
   },
   "rooms": [
-    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
-      "polygon": [[0,0],[8,0],[8,5],[0,5]], "area_sqm": 40,
-      "notes": "Large south-facing living room across the south wing" },
-    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
-      "polygon": [[8,0],[14,0],[14,3],[8,3]], "area_sqm": 18 },
-    { "id": "r_essen", "name": "Esszimmer", "type": "dining",
-      "polygon": [[8,3],[14,3],[14,5],[8,5]], "area_sqm": 12 },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[0,5],[4,5],[4,8],[0,8]], "area_sqm": 12,
-      "notes": "Entry hall in the west wing" },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,8],[4,8],[4,12],[0,12]], "area_sqm": 16 },
-    { "id": "r_kinderzimmer1", "name": "Kinderzimmer 1", "type": "bedroom",
-      "polygon": [[10,5],[14,5],[14,8],[10,8]], "area_sqm": 12 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[10,8],[14,8],[14,10.5],[10,10.5]], "area_sqm": 10 },
-    { "id": "r_kinderzimmer2", "name": "Kinderzimmer 2", "type": "bedroom",
-      "polygon": [[10,10.5],[14,10.5],[14,12],[10,12]], "area_sqm": 6 }
+    {
+      "id": "r_wohnzimmer",
+      "name": "Wohnzimmer",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 40,
+      "notes": "Large south-facing living room across the south wing"
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kueche",
+      "type": "kitchen",
+      "polygon": [
+        [
+          8,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          8,
+          3
+        ]
+      ],
+      "area_sqm": 18
+    },
+    {
+      "id": "r_essen",
+      "name": "Esszimmer",
+      "type": "dining",
+      "polygon": [
+        [
+          8,
+          3
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "area_sqm": 12,
+      "notes": "Entry hall in the west wing"
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          12
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "area_sqm": 16
+    },
+    {
+      "id": "r_kinderzimmer1",
+      "name": "Kinderzimmer 1",
+      "type": "bedroom",
+      "polygon": [
+        [
+          10,
+          5
+        ],
+        [
+          14,
+          5
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          10,
+          8
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          10,
+          8
+        ],
+        [
+          14,
+          8
+        ],
+        [
+          14,
+          10.5
+        ],
+        [
+          10,
+          10.5
+        ]
+      ],
+      "area_sqm": 10
+    },
+    {
+      "id": "r_kinderzimmer2",
+      "name": "Kinderzimmer 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          10,
+          10.5
+        ],
+        [
+          14,
+          10.5
+        ],
+        [
+          14,
+          12
+        ],
+        [
+          10,
+          12
+        ]
+      ],
+      "area_sqm": 6
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_wohnzimmer", "position": [0.5, 0],
-      "width_mm": 1100, "is_main_entry": true },
-    { "from": "r_wohnzimmer", "to": "r_kuche", "position": [8, 2.5], "width_mm": 1000 },
-    { "from": "r_wohnzimmer", "to": "r_essen", "position": [8, 4], "width_mm": 1000 },
-    { "from": "r_kuche", "to": "r_essen", "position": [11, 3], "width_mm": 1000 },
-    { "from": "r_wohnzimmer", "to": "r_diele", "position": [2, 5], "width_mm": 1000 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [2, 8], "width_mm": 900 },
-    { "from": "r_essen", "to": "r_kinderzimmer1", "position": [12, 5], "width_mm": 900 },
-    { "from": "r_kinderzimmer1", "to": "r_bad", "position": [12, 8], "width_mm": 800 },
-    { "from": "r_bad", "to": "r_kinderzimmer2", "position": [12, 10.5], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_wohnzimmer",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 1100,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_kuche",
+      "position": [
+        8,
+        2.5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_essen",
+      "position": [
+        8,
+        4
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_kuche",
+      "to": "r_essen",
+      "position": [
+        11,
+        3
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_diele",
+      "position": [
+        2,
+        5
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        2,
+        8
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_essen",
+      "to": "r_kinderzimmer1",
+      "position": [
+        12,
+        5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_kinderzimmer1",
+      "to": "r_bad",
+      "position": [
+        12,
+        8
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_bad",
+      "to": "r_kinderzimmer2",
+      "position": [
+        12,
+        10.5
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnzimmer", "position": [3, 0], "width_mm": 2400 },
-    { "room": "r_wohnzimmer", "position": [6, 0], "width_mm": 1800 },
-    { "room": "r_kuche", "position": [11, 0], "width_mm": 1500 },
-    { "room": "r_essen", "position": [14, 4], "width_mm": 1500 },
-    { "room": "r_diele", "position": [0, 6.5], "width_mm": 1200 },
-    { "room": "r_diele", "position": [4, 6.5], "width_mm": 1500 },
-    { "room": "r_schlafzimmer", "position": [0, 10], "width_mm": 1800 },
-    { "room": "r_schlafzimmer", "position": [2, 12], "width_mm": 1500 },
-    { "room": "r_kinderzimmer1", "position": [10, 6.5], "width_mm": 1500 },
-    { "room": "r_kinderzimmer1", "position": [14, 6.5], "width_mm": 1200 },
-    { "room": "r_bad", "position": [14, 9.25], "width_mm": 800 },
-    { "room": "r_kinderzimmer2", "position": [12, 12], "width_mm": 1200 }
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        3,
+        0
+      ],
+      "width_mm": 2400
+    },
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        6,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        11,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        14,
+        4
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_diele",
+      "position": [
+        0,
+        6.5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_diele",
+      "position": [
+        4,
+        6.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        10
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2,
+        12
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer1",
+      "position": [
+        10,
+        6.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer1",
+      "position": [
+        14,
+        6.5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        14,
+        9.25
+      ],
+      "width_mm": 800
+    },
+    {
+      "room": "r_kinderzimmer2",
+      "position": [
+        12,
+        12
+      ],
+      "width_mm": 1200
+    }
   ]
 }

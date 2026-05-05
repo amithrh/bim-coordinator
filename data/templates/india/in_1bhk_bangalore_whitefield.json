@@ -1,0 +1,62 @@
+{
+  "id": "in_1bhk_bangalore_whitefield",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Bangalore",
+    "size_label": "1bhk",
+    "size_band": "1bed",
+    "total_area_sqm": 49,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Bangalore Whitefield 1 BHK (IT-belt compact)",
+    "description": "A Bangalore Whitefield 1 BHK — typical IT-corridor compact ~530 sqft (49 m²). Living/Dining, Kitchen + utility, Bedroom + attached bath, narrow Foyer, Balcony. Tech-employee starter unit. Source: 99acres.com Bangalore Whitefield.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["india", "bangalore", "apartment_indian", "1bed", "current_2020plus", "modular_kitchen", "balkon", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_utility", "name": "Utility", "type": "utility",
+      "polygon": [[5,3],[7,3],[7,4.5],[5,4.5]], "area_sqm": 3 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 },
+    { "id": "r_passage", "name": "Passage", "type": "corridor",
+      "polygon": [[5,4.5],[7,4.5],[7,7],[5,7]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [5, 2], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bedroom", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_bedroom", "to": "r_bath", "position": [1.5, 5], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_balcony", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_balcony", "position": [1.5, 6], "width_mm": 800, "swing": "slide" },
+    { "from": "r_utility", "to": "r_passage", "position": [6, 4.5], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_passage", "position": [5, 5.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_living", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kitchen", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_bedroom", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [0.75, 7], "width_mm": 1200 },
+    { "room": "r_passage", "position": [6, 7], "width_mm": 1200 },
+    { "room": "r_passage", "position": [7, 5.75], "width_mm": 800 }
+  ]
+}

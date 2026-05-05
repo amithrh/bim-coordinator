@@ -1,0 +1,72 @@
+{
+  "id": "eu_hu_2bed_budapest_neoklassicista",
+  "metadata": {
+    "region": "europe",
+    "country": "Hungary",
+    "city_inspiration": "Budapest",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Budapest Neoklassicista lakás (Belváros 1880-1910)",
+    "description": "A Budapest Belváros / Erzsébetváros neoklasszicista apartment — typical 90 m² turn-of-century with 4m ceilings, ornate stuccatura, marble fireplace, körfolyosó access. Előszoba, Nappali, Konyha, two Hálószoba, Fürdőszoba, WC, Erkély. Source: ingatlan.com Budapest Belváros.",
+    "suitable_for": ["young_family", "couple", "academic", "creative_artist"],
+    "tags": ["hungary", "budapest", "vintage_traditional", "2bed", "altbau_high_ceilings", "fireplace_kachelofen", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 4000
+  },
+  "rooms": [
+    { "id": "r_eloszoba", "name": "Előszoba", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_nappali", "name": "Nappali", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Nappali with marble fireplace + ornate stuccatura" },
+    { "id": "r_konyha", "name": "Konyha", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,4],[2,4],[2,5],[0,5]], "area_sqm": 2 },
+    { "id": "r_furdoszoba", "name": "Fürdőszoba", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Hálószoba 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_halszoba2", "name": "Hálószoba 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,8],[6,8]], "area_sqm": 12 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[2,8],[6,8],[6,9],[2,9]], "area_sqm": 4 },
+    { "id": "r_erkely", "name": "Erkély (balcony)", "type": "balcony",
+      "polygon": [[6,8],[10,8],[10,9],[6,9]], "area_sqm": 4 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,9],[0,9]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eloszoba", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_eloszoba", "to": "r_nappali", "position": [2, 2], "width_mm": 1200 },
+    { "from": "r_eloszoba", "to": "r_wc", "position": [1, 4], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_furdoszoba", "position": [1, 5], "width_mm": 700 },
+    { "from": "r_nappali", "to": "r_konyha", "position": [7, 2.5], "width_mm": 1200 },
+    { "from": "r_nappali", "to": "r_master", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_nappali", "to": "r_halszoba2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_konyha", "to": "r_halszoba2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_halszoba2", "position": [6, 6.5], "width_mm": 800 },
+    { "from": "r_furdoszoba", "to": "r_hall_back", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_master", "to": "r_storage", "position": [4, 8], "width_mm": 800 },
+    { "from": "r_halszoba2", "to": "r_erkely", "position": [8, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storage", "to": "r_erkely", "position": [6, 8.5], "width_mm": 700 },
+    { "from": "r_storage", "to": "r_hall_back", "position": [2, 8.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_nappali", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_konyha", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_konyha", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_master", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_halszoba2", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_halszoba2", "position": [10, 6.5], "width_mm": 1500 },
+    { "room": "r_erkely", "position": [8, 9], "width_mm": 1500 },
+    { "room": "r_furdoszoba", "position": [0, 6], "width_mm": 600 },
+    { "room": "r_eloszoba", "position": [0, 2], "width_mm": 800 }
+  ]
+}

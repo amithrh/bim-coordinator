@@ -1,0 +1,69 @@
+{
+  "id": "eu_fr_3pieces_paris_haussmannien",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Paris",
+    "size_label": "3pieces",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Paris Haussmannien 3-pièces (8e / 16e arrondissement)",
+    "description": "A classic Paris Haussmannien 3-pièces apartment — 8e or 16e arrondissement typology. Entrée + grand Salon + Salle à manger en enfilade facing the street, Cuisine separate, Chambre principale + Chambre on courtyard side, Salle de bains + WC séparé, balcon filant. Distinctive: parquet pointe-de-Hongrie (point-de-Hongrie herringbone), marble fireplace, Stuckdecken plaster mouldings, 3.20 m piano-nobile ceilings. Source: SeLoger + book-a-flat Haussmannien typology guides.",
+    "suitable_for": ["couple", "young_family", "executive_pied_a_terre"],
+    "tags": ["france", "paris", "haussmannien", "2bed", "vintage_traditional", "altbau_high_ceilings", "fireplace_kachelofen", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[0,0],[5,0],[5,5],[0,5]], "area_sqm": 25,
+      "notes": "Grand street-facing Salon with marble fireplace, herringbone parquet" },
+    { "id": "r_salle_a_manger", "name": "Salle à manger", "type": "dining",
+      "polygon": [[5,0],[8.5,0],[8.5,5],[5,5]], "area_sqm": 17.5,
+      "notes": "Salle-à-manger en enfilade with Salon — pocket doors typical" },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[8.5,0],[10,0],[10,5],[8.5,5]], "area_sqm": 7.5,
+      "notes": "Separate kitchen — classical Haussmannien layout" },
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,5],[2.5,5],[2.5,7],[0,7]], "area_sqm": 5,
+      "notes": "Entry foyer" },
+    { "id": "r_chambre_principale", "name": "Chambre principale", "type": "master_bedroom",
+      "polygon": [[2.5,5],[6,5],[6,9],[2.5,9]], "area_sqm": 14,
+      "notes": "Master on courtyard side — quieter than street" },
+    { "id": "r_chambre", "name": "Chambre", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,9],[6,9]], "area_sqm": 16,
+      "notes": "Second bedroom on courtyard" },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[0,7],[2.5,7],[2.5,8.5],[0,8.5]], "area_sqm": 3.75,
+      "notes": "Bath" },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,8.5],[2.5,8.5],[2.5,9],[0,9]], "area_sqm": 1.25,
+      "notes": "WC séparé — French custom" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0, 6],
+      "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_salon", "position": [1.25, 5], "width_mm": 1200 },
+    { "from": "r_entree", "to": "r_chambre_principale", "position": [2.5, 6], "width_mm": 900 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1.25, 7], "width_mm": 800 },
+    { "from": "r_sdb", "to": "r_wc", "position": [1.25, 8.5], "width_mm": 600 },
+    { "from": "r_salon", "to": "r_salle_a_manger", "position": [5, 2.5], "width_mm": 1500 },
+    { "from": "r_salle_a_manger", "to": "r_cuisine", "position": [8.5, 2.5], "width_mm": 900 },
+    { "from": "r_chambre_principale", "to": "r_chambre", "position": [6, 7], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [2.5, 0], "width_mm": 2400 },
+    { "room": "r_salon", "position": [0, 2.5], "width_mm": 1500 },
+    { "room": "r_salle_a_manger", "position": [6.75, 0], "width_mm": 2000 },
+    { "room": "r_cuisine", "position": [9.25, 0], "width_mm": 1200 },
+    { "room": "r_cuisine", "position": [10, 2.5], "width_mm": 1200 },
+    { "room": "r_chambre_principale", "position": [4.25, 9], "width_mm": 1800 },
+    { "room": "r_chambre", "position": [8, 9], "width_mm": 1800 },
+    { "room": "r_chambre", "position": [10, 7], "width_mm": 1500 }
+  ]
+}

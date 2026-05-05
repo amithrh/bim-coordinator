@@ -1,0 +1,57 @@
+{
+  "id": "in_1bhk_pune_wakad_compact",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Pune",
+    "size_label": "1bhk",
+    "size_band": "1bed",
+    "total_area_sqm": 42,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Pune Wakad / Hinjewadi 1 BHK (IT-belt compact)",
+    "description": "A Pune Wakad/Hinjewadi 1 BHK — typical IT-corridor compact for working professionals. 451 sqft (42 m²) carpet area. Living/Dining + Bedroom + modular kitchen + attached toilet + dedicated dry/utility balcony for washing machine and AC condenser + main balcony. Source: Brigade Cornerstone Utopia Eden 1 BHK floor plan, transposed to Pune typology.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["india", "pune", "apartment_indian", "1bed", "current_2020plus", "modular_kitchen", "dry_balcony", "balkon", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6.5,0],[6.5,6.5],[0,6.5]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[0,0],[4.5,0],[4.5,3.5],[0,3.5]], "area_sqm": 15.75,
+      "notes": "Combined Living-Dining, IT-belt standard" },
+    { "id": "r_kitchen", "name": "Kitchen (modular)", "type": "kitchen",
+      "polygon": [[4.5,0],[6.5,0],[6.5,2.5],[4.5,2.5]], "area_sqm": 5,
+      "notes": "Modular kitchen, 7'x6' standard" },
+    { "id": "r_toilet", "name": "Toilet", "type": "bathroom",
+      "polygon": [[4.5,2.5],[6.5,2.5],[6.5,4.5],[4.5,4.5]], "area_sqm": 4,
+      "notes": "Attached toilet" },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[0,3.5],[4.5,3.5],[4.5,6.5],[0,6.5]], "area_sqm": 13.5,
+      "notes": "Master bedroom" },
+    { "id": "r_dry_balcony", "name": "Dry Balcony (utility)", "type": "balcony",
+      "polygon": [[4.5,4.5],[6.5,4.5],[6.5,6.5],[4.5,6.5]], "area_sqm": 4,
+      "notes": "Indian dry balcony — washing machine + AC condenser zone" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_living", "position": [0.5, 0],
+      "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_living", "to": "r_kitchen", "position": [4.5, 1.25], "width_mm": 900 },
+    { "from": "r_living", "to": "r_bedroom", "position": [2.25, 3.5], "width_mm": 900 },
+    { "from": "r_bedroom", "to": "r_toilet", "position": [4.5, 4], "width_mm": 750 },
+    { "from": "r_toilet", "to": "r_dry_balcony", "position": [5.5, 4.5], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_dry_balcony", "position": [4.5, 5.5], "width_mm": 800, "swing": "slide" },
+    { "from": "r_kitchen", "to": "r_toilet", "position": [5.5, 2.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.25, 0], "width_mm": 1800 },
+    { "room": "r_living", "position": [0, 1.75], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [5.5, 0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [2.25, 6.5], "width_mm": 1800 },
+    { "room": "r_bedroom", "position": [0, 5], "width_mm": 1500 },
+    { "room": "r_toilet", "position": [6.5, 3.5], "width_mm": 600 }
+  ]
+}

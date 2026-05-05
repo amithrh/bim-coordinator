@@ -1,0 +1,182 @@
+{
+  "id": "eu_de_1zimmer_berlin_kreuzberg",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "1zimmer",
+    "total_area_sqm": 28,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Berlin Kreuzberg Hinterhaus Altbau studio — narrow deep with high ceilings",
+    "description": "A narrow deep Berlin Kreuzberg Hinterhaus (back-courtyard building) Einzimmer studio — 4 m wide × 7 m deep, the typical small unit at the back of a Wilhelminian Mietskaserne. High ceilings (3.2 m) compensate for the small footprint. Combined living-sleep area, separate Kochnische, compact bath.",
+    "suitable_for": [
+      "student",
+      "young creative",
+      "weekday flat"
+    ],
+    "tags": [
+      "berlin",
+      "kreuzberg",
+      "altbau",
+      "hinterhaus",
+      "studio",
+      "1zimmer",
+      "narrow",
+      "high_ceilings",
+      "wilhelminian"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        0,
+        7
+      ]
+    ],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    {
+      "id": "r_living",
+      "name": "Wohn-Schlafraum",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          4.5
+        ],
+        [
+          0,
+          4.5
+        ]
+      ],
+      "area_sqm": 18
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kochnische",
+      "type": "kochnische",
+      "polygon": [
+        [
+          0,
+          4.5
+        ],
+        [
+          2.5,
+          4.5
+        ],
+        [
+          2.5,
+          7
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "area_sqm": 6.25
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          2.5,
+          4.5
+        ],
+        [
+          4,
+          4.5
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          2.5,
+          7
+        ]
+      ],
+      "area_sqm": 3.75
+    }
+  ],
+  "doors": [
+    {
+      "from": "outside",
+      "to": "r_living",
+      "position": [
+        0,
+        2.25
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_living",
+      "to": "r_kuche",
+      "position": [
+        1.25,
+        4.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_living",
+      "to": "r_bad",
+      "position": [
+        3.25,
+        4.5
+      ],
+      "width_mm": 700
+    }
+  ],
+  "windows": [
+    {
+      "room": "r_living",
+      "position": [
+        2,
+        0
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        1.25,
+        7
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        4,
+        5.75
+      ],
+      "width_mm": 600
+    }
+  ]
+}

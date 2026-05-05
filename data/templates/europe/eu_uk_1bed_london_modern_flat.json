@@ -2,7 +2,7 @@
   "id": "eu_uk_1bed_london_modern_flat",
   "metadata": {
     "region": "europe",
-    "country": "UK",
+    "country": "United Kingdom",
     "city_inspiration": "London",
     "size_label": "1bed",
     "total_area_sqm": 52,
@@ -10,39 +10,248 @@
     "bathrooms": 1,
     "style": "Modern London 1-bed new-build with balcony",
     "description": "A compact modern London 1-bedroom new-build flat with open-plan living-kitchen, generous balcony, separate bedroom and a 3-piece bath. Typical of Stratford, Wembley, or Battersea developments.",
-    "suitable_for": ["young professional", "single occupant", "investor"],
-    "tags": ["london", "modern", "new_build", "1bed", "balcony", "open_plan", "uk"]
+    "suitable_for": [
+      "young professional",
+      "single occupant",
+      "investor"
+    ],
+    "tags": [
+      "london",
+      "modern",
+      "new_build",
+      "1bed",
+      "balcony",
+      "open_plan",
+      "uk",
+      "purpose_built_flat",
+      "contemporary_2000_2020"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[7,0],[7,7.5],[0,7.5]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        7,
+        7.5
+      ],
+      [
+        0,
+        7.5
+      ]
+    ],
     "wall_thickness_mm": 200,
     "ceiling_height_mm": 2500
   },
   "rooms": [
-    { "id": "r_living", "name": "Living + Kitchen", "type": "living",
-      "polygon": [[0,0],[5,0],[5,4],[0,4]], "area_sqm": 20 },
-    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
-      "polygon": [[5,0],[7,0],[7,4],[5,4]], "area_sqm": 8 },
-    { "id": "r_hall", "name": "Hall", "type": "corridor",
-      "polygon": [[0,4],[7,4],[7,5],[0,5]], "area_sqm": 7 },
-    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
-      "polygon": [[0,5],[5,5],[5,7.5],[0,7.5]], "area_sqm": 12.5 },
-    { "id": "r_bath", "name": "Bath", "type": "bathroom",
-      "polygon": [[5,5],[7,5],[7,7.5],[5,7.5]], "area_sqm": 5 }
+    {
+      "id": "r_living",
+      "name": "Living + Kitchen",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "area_sqm": 20
+    },
+    {
+      "id": "r_balcony",
+      "name": "Balcony",
+      "type": "balcony",
+      "polygon": [
+        [
+          5,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "area_sqm": 8
+    },
+    {
+      "id": "r_hall",
+      "name": "Hall",
+      "type": "corridor",
+      "polygon": [
+        [
+          0,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 7
+    },
+    {
+      "id": "r_bedroom",
+      "name": "Bedroom",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          7.5
+        ],
+        [
+          0,
+          7.5
+        ]
+      ],
+      "area_sqm": 12.5
+    },
+    {
+      "id": "r_bath",
+      "name": "Bath",
+      "type": "bathroom",
+      "polygon": [
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          7.5
+        ],
+        [
+          5,
+          7.5
+        ]
+      ],
+      "area_sqm": 5
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_hall", "position": [0, 4.5],
-      "width_mm": 900, "is_main_entry": true },
-    { "from": "r_hall", "to": "r_living", "position": [2.5, 4], "width_mm": 1000 },
-    { "from": "r_living", "to": "r_balcony", "position": [5, 2],
-      "width_mm": 1500, "swing": "slide" },
-    { "from": "r_hall", "to": "r_bedroom", "position": [2.5, 5], "width_mm": 800 },
-    { "from": "r_hall", "to": "r_bath", "position": [6, 5], "width_mm": 700 }
+    {
+      "from": "outside",
+      "to": "r_hall",
+      "position": [
+        0,
+        4.5
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_hall",
+      "to": "r_living",
+      "position": [
+        2.5,
+        4
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_living",
+      "to": "r_balcony",
+      "position": [
+        5,
+        2
+      ],
+      "width_mm": 1500,
+      "swing": "slide"
+    },
+    {
+      "from": "r_hall",
+      "to": "r_bedroom",
+      "position": [
+        2.5,
+        5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_hall",
+      "to": "r_bath",
+      "position": [
+        6,
+        5
+      ],
+      "width_mm": 700
+    }
   ],
   "windows": [
-    { "room": "r_living", "position": [2.5, 0], "width_mm": 1800 },
-    { "room": "r_bedroom", "position": [2.5, 7.5], "width_mm": 1500 },
-    { "room": "r_bath", "position": [7, 6.25], "width_mm": 600 },
-    { "room": "r_balcony", "position": [7, 2], "width_mm": 1800 }
+    {
+      "room": "r_living",
+      "position": [
+        2.5,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_bedroom",
+      "position": [
+        2.5,
+        7.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_bath",
+      "position": [
+        7,
+        6.25
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_balcony",
+      "position": [
+        7,
+        2
+      ],
+      "width_mm": 1800
+    }
   ]
 }

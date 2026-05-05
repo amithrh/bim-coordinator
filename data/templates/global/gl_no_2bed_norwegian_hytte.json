@@ -1,0 +1,69 @@
+{
+  "id": "gl_no_2bed_norwegian_hytte",
+  "metadata": {
+    "region": "global",
+    "country": "Norway",
+    "city_inspiration": "Norwegian Fjord",
+    "size_label": "hytte",
+    "size_band": "2bed",
+    "total_area_sqm": 60,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Norwegian Fjord Hytte (compact mountain/fjord cabin)",
+    "description": "A modern Norwegian hytte (cabin) — typical post-war 60 m² fjord/mountain cabin. Vindfang airlock entry, central wood-burning stove, panorama window facing fjord, two compact bedrooms, integrated bath+sauna (badstu), and a covered south-facing veranda. Pine-clad walls, dark-stained, sod or slate roof. Sleeping loft (Hems) typically above living. Source: lhmgruppen.no LHM-9 + thenordicnomad cabin survey.",
+    "suitable_for": ["young_family", "retiree", "creative_artist"],
+    "tags": ["norway", "scandinavian", "hytte_no", "vintage_traditional", "fireplace_kachelofen", "sauna", "open_plan", "single_floor", "tall_2800_3000"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,7.5],[0,7.5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2200
+  },
+  "rooms": [
+    { "id": "r_vindfang", "name": "Vindfang", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3,
+      "notes": "Airlock entry / mudroom — keeps snow and cold out" },
+    { "id": "r_bath", "name": "Bad mit Badstu", "type": "bathroom",
+      "polygon": [[1.5,0],[4,0],[4,2],[1.5,2]], "area_sqm": 5,
+      "notes": "Bath + sauna (badstu) integrated" },
+    { "id": "r_kuche", "name": "Kjokken", "type": "kitchen",
+      "polygon": [[4,0],[8,0],[8,2.5],[4,2.5]], "area_sqm": 10,
+      "notes": "Kitchen along one wall — open to stue" },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[0,2],[4,2],[4,5],[0,5]], "area_sqm": 12,
+      "notes": "Living room with central wood stove (Jotul) — pine-clad walls, panorama window fjord-facing" },
+    { "id": "r_dining", "name": "Spisestue", "type": "dining",
+      "polygon": [[4,2.5],[8,2.5],[8,5],[4,5]], "area_sqm": 10,
+      "notes": "Dining nook — built-in benches typical" },
+    { "id": "r_bedroom1", "name": "Soverom 1", "type": "master_bedroom",
+      "polygon": [[0,5],[3,5],[3,7.5],[0,7.5]], "area_sqm": 7.5,
+      "notes": "Compact double bed master" },
+    { "id": "r_bedroom2", "name": "Soverom 2 (Bunk)", "type": "bedroom",
+      "polygon": [[3,5],[5.5,5],[5.5,7.5],[3,7.5]], "area_sqm": 6.25,
+      "notes": "Bunk room for kids" },
+    { "id": "r_veranda", "name": "Veranda", "type": "balcony",
+      "polygon": [[5.5,5],[8,5],[8,7.5],[5.5,7.5]], "area_sqm": 6.25,
+      "notes": "Covered south-facing terrace — outdoor uteliv" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_vindfang", "position": [0.5, 0],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_vindfang", "to": "r_stue", "position": [0.75, 2], "width_mm": 800 },
+    { "from": "r_vindfang", "to": "r_bath", "position": [1.5, 1], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_bath", "position": [2.75, 2], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_kuche", "position": [4, 2.25], "width_mm": 1100 },
+    { "from": "r_stue", "to": "r_dining", "position": [4, 3.75], "width_mm": 1100 },
+    { "from": "r_kuche", "to": "r_dining", "position": [6, 2.5], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_bedroom1", "position": [1.5, 5], "width_mm": 800 },
+    { "from": "r_stue", "to": "r_bedroom2", "position": [3.5, 5], "width_mm": 800 },
+    { "from": "r_dining", "to": "r_veranda", "position": [6.75, 5], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [2, 5], "width_mm": 800 },
+    { "room": "r_dining", "position": [8, 3.75], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [6, 0], "width_mm": 1200 },
+    { "room": "r_bedroom1", "position": [1.5, 7.5], "width_mm": 1200 },
+    { "room": "r_bedroom2", "position": [4.25, 7.5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [2.75, 0], "width_mm": 600 }
+  ]
+}

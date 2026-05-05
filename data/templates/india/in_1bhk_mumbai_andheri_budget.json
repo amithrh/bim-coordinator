@@ -1,0 +1,61 @@
+{
+  "id": "in_1bhk_mumbai_andheri_budget",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Mumbai",
+    "size_label": "1bhk",
+    "size_band": "1bed",
+    "total_area_sqm": 42,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Mumbai Andheri 1 BHK budget (compact urban)",
+    "description": "A Mumbai Andheri compact 1 BHK budget unit — typical 450 sqft (42 m²) carpet for working professional. Living/Dining, Kitchen with dry balcony, Bedroom, attached Bath. Source: Mumbai compact 1 BHK listings.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["india", "mumbai", "apartment_indian", "1bed", "current_2020plus", "modular_kitchen", "dry_balcony", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,7],[0,7]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2 },
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[1,0],[4.5,0],[4.5,4],[1,4]], "area_sqm": 14 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[4.5,0],[6,0],[6,3],[4.5,3]], "area_sqm": 4.5 },
+    { "id": "r_dry_balcony", "name": "Dry Balcony", "type": "balcony",
+      "polygon": [[4.5,3],[6,3],[6,4.5],[4.5,4.5]], "area_sqm": 2.25 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,2],[1,2],[1,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[1,4],[4.5,4],[4.5,7],[1,7]], "area_sqm": 10.5 },
+    { "id": "r_passage", "name": "Passage", "type": "corridor",
+      "polygon": [[4.5,4.5],[6,4.5],[6,7],[4.5,7]], "area_sqm": 3.75 },
+    { "id": "r_hall_back", "name": "Back Hall", "type": "corridor",
+      "polygon": [[0,5],[1,5],[1,7],[0,7]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [1, 1], "width_mm": 800 },
+    { "from": "r_foyer", "to": "r_bath", "position": [0.5, 2], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [4.5, 1.5], "width_mm": 800 },
+    { "from": "r_kitchen", "to": "r_dry_balcony", "position": [5.25, 3], "width_mm": 700, "swing": "slide" },
+    { "from": "r_living", "to": "r_bedroom", "position": [2.75, 4], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_hall_back", "position": [0.5, 5], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_hall_back", "position": [1, 6], "width_mm": 800 },
+    { "from": "r_bedroom", "to": "r_passage", "position": [4.5, 5.5], "width_mm": 800 },
+    { "from": "r_dry_balcony", "to": "r_passage", "position": [5.25, 4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2.75, 0], "width_mm": 1500 },
+    { "room": "r_living", "position": [1, 0], "width_mm": 800 },
+    { "room": "r_kitchen", "position": [5.25, 0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [2.75, 7], "width_mm": 1500 },
+    { "room": "r_dry_balcony", "position": [6, 3.75], "width_mm": 800 },
+    { "room": "r_passage", "position": [5.25, 7], "width_mm": 1000 },
+    { "room": "r_hall_back", "position": [0, 6], "width_mm": 600 }
+  ]
+}

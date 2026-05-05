@@ -10,61 +10,454 @@
     "bathrooms": 2,
     "style": "Freiburg Vauban Passivhaus square footprint with thick insulation envelope",
     "description": "A Freiburg Vauban Passivhaus single-family ground floor — 11 m × 11 m square plan optimized for low surface-to-volume ratio. 350 mm thick exterior walls (super-insulated), south-facing Wohnzimmer for solar gain, separate Kueche and Esszimmer, three bedrooms plus full bath and Gaeste-WC wrap around the central Diele.",
-    "suitable_for": ["eco-conscious family", "passive house enthusiast"],
-    "tags": ["freiburg", "vauban", "passivhaus", "passive_house", "5zimmer", "eco", "sustainable", "square_plan", "thick_walls"]
+    "suitable_for": [
+      "eco-conscious family",
+      "passive house enthusiast"
+    ],
+    "tags": [
+      "freiburg",
+      "vauban",
+      "passivhaus",
+      "passive_house",
+      "5zimmer",
+      "eco",
+      "sustainable",
+      "square_plan",
+      "thick_walls",
+      "current_2020plus"
+    ]
   },
   "boundary": {
-    "polygon": [[0,0],[11,0],[11,11],[0,11]],
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        11,
+        0
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        0,
+        11
+      ]
+    ],
     "wall_thickness_mm": 380,
     "ceiling_height_mm": 2500
   },
   "rooms": [
-    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
-      "polygon": [[0,0],[7,0],[7,5],[0,5]], "area_sqm": 35,
-      "notes": "South-facing for passive solar gain (Sudglas)" },
-    { "id": "r_essen", "name": "Esszimmer", "type": "dining",
-      "polygon": [[7,0],[11,0],[11,3],[7,3]], "area_sqm": 12 },
-    { "id": "r_kuche", "name": "Kueche", "type": "kitchen",
-      "polygon": [[7,3],[11,3],[11,5],[7,5]], "area_sqm": 8 },
-    { "id": "r_diele", "name": "Diele", "type": "diele",
-      "polygon": [[3,5],[8,5],[8,7],[3,7]], "area_sqm": 10,
-      "notes": "Central Diele as thermal buffer" },
-    { "id": "r_wc", "name": "Gaeste-WC", "type": "wc",
-      "polygon": [[0,5],[3,5],[3,7],[0,7]], "area_sqm": 6 },
-    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
-      "polygon": [[8,5],[11,5],[11,7],[8,7]], "area_sqm": 6 },
-    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
-      "polygon": [[0,7],[5,7],[5,11],[0,11]], "area_sqm": 20 },
-    { "id": "r_kinderzimmer1", "name": "Kinderzimmer 1", "type": "bedroom",
-      "polygon": [[5,7],[8,7],[8,11],[5,11]], "area_sqm": 12 },
-    { "id": "r_kinderzimmer2", "name": "Kinderzimmer 2", "type": "bedroom",
-      "polygon": [[8,7],[11,7],[11,11],[8,11]], "area_sqm": 12 }
+    {
+      "id": "r_wohnzimmer",
+      "name": "Wohnzimmer",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 35,
+      "notes": "South-facing for passive solar gain (Sudglas)"
+    },
+    {
+      "id": "r_essen",
+      "name": "Esszimmer",
+      "type": "dining",
+      "polygon": [
+        [
+          7,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          7,
+          3
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kueche",
+      "type": "kitchen",
+      "polygon": [
+        [
+          7,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          7,
+          5
+        ]
+      ],
+      "area_sqm": 8
+    },
+    {
+      "id": "r_diele",
+      "name": "Diele",
+      "type": "diele",
+      "polygon": [
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "area_sqm": 10,
+      "notes": "Central Diele as thermal buffer"
+    },
+    {
+      "id": "r_wc",
+      "name": "Gaeste-WC",
+      "type": "wc",
+      "polygon": [
+        [
+          0,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          8,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "area_sqm": 6
+    },
+    {
+      "id": "r_schlafzimmer",
+      "name": "Schlafzimmer",
+      "type": "master_bedroom",
+      "polygon": [
+        [
+          0,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          0,
+          11
+        ]
+      ],
+      "area_sqm": 20
+    },
+    {
+      "id": "r_kinderzimmer1",
+      "name": "Kinderzimmer 1",
+      "type": "bedroom",
+      "polygon": [
+        [
+          5,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "area_sqm": 12
+    },
+    {
+      "id": "r_kinderzimmer2",
+      "name": "Kinderzimmer 2",
+      "type": "bedroom",
+      "polygon": [
+        [
+          8,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "area_sqm": 12
+    }
   ],
   "doors": [
-    { "from": "outside", "to": "r_wohnzimmer", "position": [0.5, 0],
-      "width_mm": 1100, "is_main_entry": true },
-    { "from": "r_diele", "to": "r_wohnzimmer", "position": [5, 5], "width_mm": 1200 },
-    { "from": "r_wohnzimmer", "to": "r_essen", "position": [7, 1.5], "width_mm": 1200 },
-    { "from": "r_essen", "to": "r_kuche", "position": [9, 3], "width_mm": 1000 },
-    { "from": "r_diele", "to": "r_kuche", "position": [8, 5], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_wc", "position": [3, 6], "width_mm": 700 },
-    { "from": "r_diele", "to": "r_bad", "position": [8, 6], "width_mm": 800 },
-    { "from": "r_diele", "to": "r_schlafzimmer", "position": [4, 7], "width_mm": 900 },
-    { "from": "r_diele", "to": "r_kinderzimmer1", "position": [6.5, 7], "width_mm": 900 },
-    { "from": "r_bad", "to": "r_kinderzimmer2", "position": [9.5, 7], "width_mm": 800 }
+    {
+      "from": "outside",
+      "to": "r_wohnzimmer",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 1100,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wohnzimmer",
+      "position": [
+        5,
+        5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "from": "r_wohnzimmer",
+      "to": "r_essen",
+      "position": [
+        7,
+        1.5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "from": "r_essen",
+      "to": "r_kuche",
+      "position": [
+        9,
+        3
+      ],
+      "width_mm": 1000
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kuche",
+      "position": [
+        8,
+        5
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_wc",
+      "position": [
+        3,
+        6
+      ],
+      "width_mm": 700
+    },
+    {
+      "from": "r_diele",
+      "to": "r_bad",
+      "position": [
+        8,
+        6
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_diele",
+      "to": "r_schlafzimmer",
+      "position": [
+        4,
+        7
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_diele",
+      "to": "r_kinderzimmer1",
+      "position": [
+        6.5,
+        7
+      ],
+      "width_mm": 900
+    },
+    {
+      "from": "r_bad",
+      "to": "r_kinderzimmer2",
+      "position": [
+        9.5,
+        7
+      ],
+      "width_mm": 800
+    }
   ],
   "windows": [
-    { "room": "r_wohnzimmer", "position": [3.5, 0], "width_mm": 3000 },
-    { "room": "r_essen", "position": [9, 0], "width_mm": 1800 },
-    { "room": "r_essen", "position": [11, 1.5], "width_mm": 1500 },
-    { "room": "r_kuche", "position": [11, 4], "width_mm": 1200 },
-    { "room": "r_wohnzimmer", "position": [0, 2.5], "width_mm": 1500 },
-    { "room": "r_wc", "position": [0, 6], "width_mm": 600 },
-    { "room": "r_bad", "position": [11, 6], "width_mm": 600 },
-    { "room": "r_schlafzimmer", "position": [0, 9], "width_mm": 1800 },
-    { "room": "r_schlafzimmer", "position": [2.5, 11], "width_mm": 1500 },
-    { "room": "r_kinderzimmer1", "position": [6.5, 11], "width_mm": 1500 },
-    { "room": "r_kinderzimmer2", "position": [9.5, 11], "width_mm": 1500 },
-    { "room": "r_kinderzimmer2", "position": [11, 9], "width_mm": 1500 }
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        3.5,
+        0
+      ],
+      "width_mm": 3000
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        9,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_essen",
+      "position": [
+        11,
+        1.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        11,
+        4
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_wohnzimmer",
+      "position": [
+        0,
+        2.5
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_wc",
+      "position": [
+        0,
+        6
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        11,
+        6
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        0,
+        9
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_schlafzimmer",
+      "position": [
+        2.5,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer1",
+      "position": [
+        6.5,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer2",
+      "position": [
+        9.5,
+        11
+      ],
+      "width_mm": 1500
+    },
+    {
+      "room": "r_kinderzimmer2",
+      "position": [
+        11,
+        9
+      ],
+      "width_mm": 1500
+    }
   ]
 }

@@ -1,0 +1,67 @@
+{
+  "id": "in_1bhk_hyderabad_madhapur",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Hyderabad",
+    "size_label": "1bhk",
+    "size_band": "1bed",
+    "total_area_sqm": 56,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Hyderabad Madhapur 1 BHK (HITEC IT corridor)",
+    "description": "A Hyderabad Madhapur 1 BHK — typical 540 sqft (50 m²) for IT professional. Living/Dining, Kitchen + utility, Bedroom + attached bath, Balcony. Source: 99acres.com Hyderabad Madhapur.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["india", "hyderabad", "apartment_indian", "1bed", "current_2020plus", "modular_kitchen", "balkon", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_utility", "name": "Utility", "type": "utility",
+      "polygon": [[5,3],[7,3],[7,4.5],[5,4.5]], "area_sqm": 3 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,7],[1.5,7]], "area_sqm": 10.5 },
+    { "id": "r_passage", "name": "Passage", "type": "corridor",
+      "polygon": [[5,4.5],[7,4.5],[7,7],[5,7]], "area_sqm": 5 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,7],[7,7],[7,8],[0,8]], "area_sqm": 7 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bedroom", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_bedroom", "to": "r_bath", "position": [1.5, 4.5], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_utility", "to": "r_passage", "position": [6, 4.5], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_passage", "position": [5, 5.5], "width_mm": 800 },
+    { "from": "r_hall_back", "to": "r_balcony", "position": [0.75, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_bedroom", "to": "r_balcony", "position": [3.25, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_passage", "to": "r_balcony", "position": [6, 7], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_living", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kitchen", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [3.5, 8], "width_mm": 2400 },
+    { "room": "r_bath", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_hall_back", "position": [0, 6], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "eu_pt_2bed_porto_townhouse",
+  "metadata": {
+    "region": "europe",
+    "country": "Portugal",
+    "city_inspiration": "Porto",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 77,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Porto narrow townhouse (Ribeira/Sé, single-floor variant)",
+    "description": "A Porto Ribeira/Sé narrow townhouse single-floor variant — typical 75-90 m² narrow Portuguese townhouse with azulejos and granite. Hall, Sala, Cozinha, WC, Master, Bedroom 2, Bath, Marquise. Tile facade. Source: idealista.pt Porto Ribeira.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["portugal", "porto", "vintage_traditional", "2bed", "narrow_lot", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,11],[0,11]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,5],[1.5,5]], "area_sqm": 17.5,
+      "notes": "Sala with original azulejo facade" },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,4],[5,4]], "area_sqm": 8 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[1.5,3],[1.5,4.5],[0,4.5]], "area_sqm": 2.25 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,6],[5,6]], "area_sqm": 4 },
+    { "id": "r_bath", "name": "Casa de banho", "type": "bathroom",
+      "polygon": [[0,4.5],[1.5,4.5],[1.5,7],[0,7]], "area_sqm": 3.75 },
+    { "id": "r_master", "name": "Quarto principal", "type": "master_bedroom",
+      "polygon": [[1.5,5],[5,5],[5,8],[1.5,8]], "area_sqm": 10.5 },
+    { "id": "r_marquise", "name": "Marquise", "type": "balcony",
+      "polygon": [[5,6],[7,6],[7,11],[5,11]], "area_sqm": 10,
+      "notes": "Glazed Portuguese marquise balcony" },
+    { "id": "r_quarto2", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[1.5,8],[5,8],[5,11],[1.5,11]], "area_sqm": 10.5 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[1.5,7],[1.5,11],[0,11]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_sala", "position": [1.5, 1.5], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_wc", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [5, 2], "width_mm": 1000 },
+    { "from": "r_cozinha", "to": "r_storage", "position": [6, 4], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bath", "position": [0.75, 4.5], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_master", "position": [3.25, 5], "width_mm": 900 },
+    { "from": "r_storage", "to": "r_marquise", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_master", "to": "r_marquise", "position": [5, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_bath", "to": "r_hall_back", "position": [0.75, 7], "width_mm": 700 },
+    { "from": "r_master", "to": "r_quarto2", "position": [3.25, 8], "width_mm": 900 },
+    { "from": "r_quarto2", "to": "r_marquise", "position": [5, 9.5], "width_mm": 800, "swing": "slide" },
+    { "from": "r_quarto2", "to": "r_hall_back", "position": [1.5, 9.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [3.25, 0], "width_mm": 2000 },
+    { "room": "r_sala", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_cozinha", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_cozinha", "position": [7, 2], "width_mm": 1200 },
+    { "room": "r_master", "position": [3.25, 8], "width_mm": 1500 },
+    { "room": "r_quarto2", "position": [3.25, 11], "width_mm": 1500 },
+    { "room": "r_marquise", "position": [6, 11], "width_mm": 1500 },
+    { "room": "r_marquise", "position": [7, 8.5], "width_mm": 2000 },
+    { "room": "r_bath", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_hall_back", "position": [0, 9], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "eu_uk_1bed_manchester_deansgate_highrise",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Manchester",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 56,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Manchester City Centre 1-bed High-rise (Deansgate Square)",
+    "description": "A Manchester city centre Deansgate Square high-rise 1-bed — typical 599 sqft (56 m²). Open Kitchen-Living with floor-to-ceiling glazing, Master Bedroom with ensuite, Hall, sky balcony with panoramic views. Source: rightmove.co.uk Manchester city centre listings.",
+    "suitable_for": ["single_professional", "couple", "executive_pied_a_terre"],
+    "tags": ["united_kingdom", "manchester", "hochhaus", "1bed", "current_2020plus", "open_plan", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 220,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_kit_liv", "name": "Open Kitchen-Living", "type": "living",
+      "polygon": [[1.5,0],[7,0],[7,4.5],[1.5,4.5]], "area_sqm": 24.75,
+      "notes": "Open Kitchen-Living with floor-to-ceiling glazing" },
+    { "id": "r_ensuite", "name": "Ensuite", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,4.5],[0,4.5]], "area_sqm": 3.75 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[0,4.5],[4,4.5],[4,8],[0,8]], "area_sqm": 14 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[4,4.5],[7,4.5],[7,6],[4,6]], "area_sqm": 4.5 },
+    { "id": "r_balcony", "name": "Sky Balcony", "type": "balcony",
+      "polygon": [[4,6],[7,6],[7,8],[4,8]], "area_sqm": 6,
+      "notes": "Sky balcony with panoramic city views" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_kit_liv", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_ensuite", "position": [1.5, 3.25], "width_mm": 700 },
+    { "from": "r_kit_liv", "to": "r_master", "position": [2, 4.5], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_storage", "position": [5.5, 4.5], "width_mm": 800 },
+    { "from": "r_storage", "to": "r_balcony", "position": [5.5, 6], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_master", "to": "r_balcony", "position": [4, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_kit_liv", "position": [4.25, 0], "width_mm": 3000 },
+    { "room": "r_kit_liv", "position": [7, 2.25], "width_mm": 2400 },
+    { "room": "r_master", "position": [2, 8], "width_mm": 2000 },
+    { "room": "r_master", "position": [0, 6.25], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [5.5, 8], "width_mm": 2000 }
+  ]
+}

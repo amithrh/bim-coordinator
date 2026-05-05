@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "purpose": "Controlled vocabulary for tags across all templates. Enables mix-and-match prompting and faceted retrieval.",
+  "facets": {
+    "region": {
+      "values": ["europe", "india", "global"],
+      "required": true,
+      "single": true
+    },
+    "country": {
+      "values": ["Germany", "United Kingdom", "France", "Netherlands", "Italy", "Spain", "Austria", "Switzerland", "Sweden", "Norway", "Denmark", "Ireland", "Poland", "India", "USA", "Japan", "Australia"],
+      "required": true,
+      "single": true
+    },
+    "size_band": {
+      "values": ["studio", "1bed", "2bed", "3bed", "4bed", "5plus_bed"],
+      "required": true,
+      "single": true,
+      "mapping_de": {"1zimmer": "studio", "2zimmer": "1bed", "3zimmer": "2bed", "4zimmer": "3bed", "5zimmer": "4bed", "6zimmer": "5plus_bed"},
+      "mapping_in": {"studio": "studio", "1bhk": "1bed", "2bhk": "2bed", "3bhk": "3bed", "4bhk": "4bed", "5bhk": "5plus_bed"}
+    },
+    "typology": {
+      "values": [
+        "altbau", "neubau", "plattenbau", "hochhaus", "einfamilienhaus", "doppelhaus", "reihenhaus", "maisonette", "penthouse", "souterrain", "dachgeschoss", "bauernhof", "stadtvilla", "passivhaus", "genossenschaft", "hinterhaus", "bremerhaus",
+        "victorian_terrace", "edwardian_semi", "georgian_townhouse", "1930s_semi", "tudor_semi", "modernist", "tenement", "cottage", "barn_conversion", "mews", "bungalow", "purpose_built_flat", "warehouse_conversion", "new_build_estate",
+        "haussmannien", "echoppe", "longere", "mas_provencal", "trois_fenetres",
+        "grachtenhuis", "rijtjeshuis", "vrijstaande_villa", "stelpboerderij",
+        "liberty", "trastevere", "trullo", "palazzo", "masseria", "palazzotto",
+        "modernista_eixample", "corrala", "cortijo", "ensanche",
+        "gruenderzeit_at", "buergerhaus", "tirolerhaus", "engadinerhaus",
+        "sekelskifte", "bygaard_no", "klassisk_dk",
+        "kamienica", "georgian_dublin",
+        "apartment_indian", "villa_indian", "duplex_indian", "row_house_indian", "tower_indian",
+        "ranch_us", "colonial_us", "walkup_us", "edwardian_us",
+        "mansion_jp", "machiya", "ldk_apartment_jp",
+        "hytte_no", "stuga_se", "terrace_au"
+      ],
+      "single": true
+    },
+    "era": {
+      "values": ["pre_1900", "wilhelminian", "jugendstil", "gruenderzeit", "interwar_1920_1939", "postwar_1945_1969", "modernist_1970s", "1990s_post_reunification", "contemporary_2000_2020", "current_2020plus", "victorian", "edwardian", "georgian", "tudor", "art_deco", "mid_century", "vintage_traditional"],
+      "single": true
+    },
+    "features": {
+      "values": [
+        "loggia", "balkon", "terrasse", "garten", "wintergarten", "erker", "stube", "dachschraege", "souterrain", "fireplace_kachelofen", "altbau_high_ceilings",
+        "bay_window", "conservatory", "snug", "pantry", "utility_room", "loft_conversion", "dormer", "basement", "ensuite_master",
+        "pooja_room", "servant_quarter", "dry_balcony", "modular_kitchen", "vastu_compliant", "walk_in_wardrobe", "thinnai_verandah", "courtyard",
+        "chambre_de_bonne", "carnotzet", "sauna", "engawa_corridor", "tatami",
+        "open_plan", "split_level", "duplex", "triplex", "voids_double_height",
+        "garage_attached", "carport", "driveway"
+      ],
+      "single": false
+    },
+    "suitable_for": {
+      "values": ["single_professional", "couple", "young_family", "growing_family", "large_family", "joint_family", "empty_nester", "retiree", "student_share", "executive_pied_a_terre", "expat", "NRI_returnee", "diplomat", "creative_artist", "academic", "entrepreneur", "doctor_HNI"],
+      "single": false
+    },
+    "price_band": {
+      "values": ["entry_starter", "mid_market", "upper_mid", "premium", "luxury_HNI"],
+      "single": true
+    },
+    "floor_count": {
+      "values": ["single_floor", "two_floor_duplex", "three_plus_floor"],
+      "single": true
+    },
+    "ceiling_height": {
+      "values": ["standard_2400_2700", "tall_2800_3000", "altbau_high_3000_3500", "double_height_void"],
+      "single": true
+    }
+  },
+  "city_to_country": {
+    "Berlin": "Germany", "Munich": "Germany", "Hamburg": "Germany", "Frankfurt": "Germany", "Cologne": "Germany", "Stuttgart": "Germany", "Düsseldorf": "Germany", "Leipzig": "Germany", "Dresden": "Germany", "Hannover": "Germany", "Bremen": "Germany", "Nürnberg": "Germany", "Bonn": "Germany", "Mainz": "Germany", "Augsburg": "Germany", "Heidelberg": "Germany", "Wiesbaden": "Germany", "Karlsruhe": "Germany", "Freiburg": "Germany", "Münster": "Germany", "Aachen": "Germany", "Mannheim": "Germany", "Erfurt": "Germany", "Magdeburg": "Germany", "Rostock": "Germany", "Kiel": "Germany",
+    "London": "United Kingdom", "Manchester": "United Kingdom", "Birmingham": "United Kingdom", "Glasgow": "United Kingdom", "Edinburgh": "United Kingdom", "Liverpool": "United Kingdom", "Bristol": "United Kingdom", "Cotswolds": "United Kingdom", "Bath": "United Kingdom", "Cardiff": "United Kingdom", "Belfast": "United Kingdom", "Newcastle": "United Kingdom", "Leeds": "United Kingdom", "Sheffield": "United Kingdom", "Brighton": "United Kingdom", "York": "United Kingdom",
+    "Paris": "France", "Lyon": "France", "Bordeaux": "France", "Marseille": "France", "Lille": "France", "Strasbourg": "France", "Nantes": "France", "Toulouse": "France", "Annecy": "France", "Brittany": "France",
+    "Amsterdam": "Netherlands", "Rotterdam": "Netherlands", "Utrecht": "Netherlands", "DenHaag": "Netherlands", "Friesland": "Netherlands",
+    "Milano": "Italy", "Roma": "Italy", "Firenze": "Italy", "Napoli": "Italy", "Puglia": "Italy", "Sicily": "Italy",
+    "Barcelona": "Spain", "Madrid": "Spain", "Sevilla": "Spain", "Valencia": "Spain", "Andalucía": "Spain",
+    "Wien": "Austria", "Salzburg": "Austria", "Innsbruck": "Austria",
+    "Zürich": "Switzerland", "Engadin": "Switzerland",
+    "Stockholm": "Sweden", "Oslo": "Norway", "Copenhagen": "Denmark",
+    "Dublin": "Ireland", "Warsaw": "Poland",
+    "Mumbai": "India", "Delhi": "India", "Bangalore": "India", "Pune": "India", "Chennai": "India", "Hyderabad": "India", "Kolkata": "India", "Ahmedabad": "India", "Gurgaon": "India", "Kochi": "India", "Goa": "India",
+    "NewYork": "USA", "SanFrancisco": "USA", "LosAngeles": "USA", "Chicago": "USA", "SuburbanUS": "USA",
+    "Tokyo": "Japan", "Kyoto": "Japan", "Yokohama": "Japan",
+    "Sydney": "Australia", "Melbourne": "Australia"
+  }
+}

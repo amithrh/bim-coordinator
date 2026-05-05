@@ -1,0 +1,61 @@
+{
+  "id": "eu_it_3vani_milano_liberty",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Milano",
+    "size_label": "trilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Milano Porta Venezia Liberty trilocale (Italian Art Nouveau 1900-1915)",
+    "description": "A Milano Porta Venezia / Buenos Aires Liberty 3-vani apartment — typical Italian Art Nouveau (Liberty 1900-1915) typology, 75 m². Ingresso, large Soggiorno with 3.5m ceilings, Cucina abitabile (eat-in), Camera matrimoniale, Cameretta, finestrato Bagno, balcone with floral wrought iron. Stained glass and mosaico hidraulico floors. Source: immobiliare.it Liberty listings + mitula architecture references.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["italy", "milano", "liberty", "2bed", "vintage_traditional", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,8],[0,8]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Grand Liberty soggiorno — stained glass, marble fp" },
+    { "id": "r_cucina", "name": "Cucina abitabile", "type": "kitchen",
+      "polygon": [[7,0],[9,0],[9,5],[7,5]], "area_sqm": 10,
+      "notes": "Italian eat-in kitchen" },
+    { "id": "r_bagno", "name": "Bagno finestrato", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_camera_principale", "name": "Camera matrimoniale", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_cameretta", "name": "Cameretta", "type": "bedroom",
+      "polygon": [[6,5],[9,5],[9,8],[6,8]], "area_sqm": 9 },
+    { "id": "r_balcone", "name": "Balcone", "type": "balcony",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4,
+      "notes": "Floral wrought iron Liberty balcone" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2, 1.5], "width_mm": 1200 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_bagno", "to": "r_balcone", "position": [1, 6], "width_mm": 800, "swing": "slide" },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [7, 2.5], "width_mm": 1100 },
+    { "from": "r_soggiorno", "to": "r_camera_principale", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_cameretta", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_camera_principale", "to": "r_balcone", "position": [2, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_camera_principale", "to": "r_cameretta", "position": [6, 6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [4.5, 0], "width_mm": 3000 },
+    { "room": "r_cucina", "position": [8, 0], "width_mm": 1800 },
+    { "room": "r_cucina", "position": [9, 2.5], "width_mm": 1500 },
+    { "room": "r_camera_principale", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_cameretta", "position": [7.5, 8], "width_mm": 1500 },
+    { "room": "r_cameretta", "position": [9, 6.5], "width_mm": 1500 },
+    { "room": "r_bagno", "position": [0, 4.5], "width_mm": 600 }
+  ]
+}

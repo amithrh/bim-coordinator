@@ -1,0 +1,55 @@
+{
+  "id": "eu_de_2zimmer_hannover_list",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Hannover",
+    "size_label": "2zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 56,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Hannover List 2-Zi frischsanierter Altbau (with offene Küche)",
+    "description": "A Hannover List 2-Zimmer freshly renovated Altbau apartment — typical 56 m² with open kitchen layout. Wohnzimmer + offene Küche, Schlafzimmer, Duschbad, generous Diele. Source: immowelt.de Hannover List 2-Zi listings.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["germany", "hannover", "altbau", "1bed", "wilhelminian", "open_plan", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,4.5],[0,4.5]], "area_sqm": 9 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+    { "id": "r_kuche", "name": "Küche (offen)", "type": "kitchen",
+      "polygon": [[5,4.5],[7,4.5],[7,8],[5,8]], "area_sqm": 7,
+      "notes": "Open kitchen extending to back" },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,4.5],[5,4.5],[5,8],[2,8]], "area_sqm": 10.5 },
+    { "id": "r_hall_ext", "name": "Flur back", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,8],[0,8]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 2.25], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnz", "position": [2, 2.25], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_bad", "position": [1, 4.5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_hall_ext", "to": "r_schlafz", "position": [2, 7.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [6, 4.5], "width_mm": 1500 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [3.5, 4.5], "width_mm": 900 },
+    { "from": "r_schlafz", "to": "r_kuche", "position": [5, 6.25], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [6, 8], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [7, 6.25], "width_mm": 1200 },
+    { "room": "r_schlafz", "position": [3.5, 8], "width_mm": 1800 },
+    { "room": "r_bad", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 2.25], "width_mm": 800 }
+  ]
+}

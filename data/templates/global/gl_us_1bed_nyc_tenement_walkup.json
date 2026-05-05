@@ -1,0 +1,48 @@
+{
+  "id": "gl_us_1bed_nyc_tenement_walkup",
+  "metadata": {
+    "region": "global",
+    "country": "USA",
+    "city_inspiration": "New York",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 32,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "NYC Old-Law Tenement Walk-up (East Village / Lower East Side)",
+    "description": "A modernized 1-bed conversion of a pre-war Old-Law NYC dumbbell tenement — Lower East Side / East Village typology. Linear railroad arrangement: street-facing living room (only true window), middle kitchen with original air-shaft window, rear bedroom looking onto courtyard, and an internal bathroom retrofitted from the original hallway WC. 5-storey walk-up with no elevator. NYC code §27-2074 minimum 60 sqft per living room. Sources: NYC Old-Law Tenement act + Village Preservation tenement typology archive.",
+    "suitable_for": ["single_professional", "creative_artist", "student_share"],
+    "tags": ["usa", "new_york", "walkup_us", "1bed", "compact", "pre_war", "railroad", "narrow_lot", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[4,0],[4,8],[0,8]],
+    "wall_thickness_mm": 240,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[0,0],[4,0],[4,3],[0,3]], "area_sqm": 12,
+      "notes": "Front street-facing — only true daylight per code" },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5.5],[0,5.5]], "area_sqm": 3.75,
+      "notes": "Internal bath — retrofitted (originally toilet was in hallway)" },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[1.5,3],[4,3],[4,5.5],[1.5,5.5]], "area_sqm": 6.25,
+      "notes": "Middle railroad room — original cast-iron tub had counter lid" },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5.5],[4,5.5],[4,8],[0,8]], "area_sqm": 10,
+      "notes": "Rear room — single window onto rear courtyard" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_kitchen", "position": [4, 4],
+      "width_mm": 900, "is_main_entry": true },
+    { "from": "r_kitchen", "to": "r_living", "position": [2.5, 3], "width_mm": 800 },
+    { "from": "r_kitchen", "to": "r_bath", "position": [1.5, 4], "width_mm": 700 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [2.5, 5.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [2, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [4, 5], "width_mm": 600 },
+    { "room": "r_bedroom", "position": [2, 8], "width_mm": 1500 }
+  ]
+}

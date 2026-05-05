@@ -1,0 +1,63 @@
+{
+  "id": "eu_de_3zimmer_berlin_souterrain_garten",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Berlin Souterrain 3-Zi mit eigener Garten (Hofseite)",
+    "description": "A Berlin Souterrain 3-Zi apartment with private garden — typical 70 m² Hofseite (courtyard side) ground/below-ground level. Wohnzimmer, Schlafzimmer, Arbeitszimmer, Küche, Duschbad, Diele, with direct access to private 80 m² Garten. Source: immobilienscout24.de Berlin Souterrainwohnungen.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["germany", "berlin", "altbau", "2bed", "wilhelminian", "garten", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,4.5],[0,4.5]], "area_sqm": 9 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[9,0],[9,3.5],[7,3.5]], "area_sqm": 7 },
+    { "id": "r_storage", "name": "Abstellraum", "type": "store",
+      "polygon": [[7,3.5],[9,3.5],[9,5],[7,5]], "area_sqm": 3 },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_arbeitsz", "name": "Arbeitszimmer", "type": "study",
+      "polygon": [[6,5],[9,5],[9,8],[6,8]], "area_sqm": 9 },
+    { "id": "r_hall_ext", "name": "Flur (Garten)", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,8],[0,8]], "area_sqm": 2,
+      "notes": "Hall with door to private garden" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 2.25], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnz", "position": [2, 2.25], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_bad", "position": [1, 4.5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_schlafz", "position": [2, 7.5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_kuche", "position": [7, 1.75], "width_mm": 1000 },
+    { "from": "r_wohnz", "to": "r_storage", "position": [7, 4.25], "width_mm": 800 },
+    { "from": "r_wohnz", "to": "r_schlafz", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_arbeitsz", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_schlafz", "to": "r_arbeitsz", "position": [6, 6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kuche", "position": [8, 0], "width_mm": 1200 },
+    { "room": "r_kuche", "position": [9, 1.75], "width_mm": 1200 },
+    { "room": "r_schlafz", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_arbeitsz", "position": [7.5, 8], "width_mm": 1500 },
+    { "room": "r_arbeitsz", "position": [9, 6.5], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 2.25], "width_mm": 600 }
+  ]
+}

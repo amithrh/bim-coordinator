@@ -1,0 +1,44 @@
+# India Research — 18 Templates Source Data
+
+Conversion: 1 sqm = 10.764 sqft. All sizes from real listings (Brigade Cornerstone Utopia, Lodha, Adani, DLF, Hiranandani, Mahindra, MJR, Brigade No.7, Aralias, etc.)
+
+## 1 BHK (2)
+- I1. Pune Wakad/Hinjewadi 1 BHK 451 sqft / 41.9 sqm carpet (Living/Dining 15.6'x11.8' = 17.1 m²; Bedroom 12.4'x10' = 11.5; Kitchen 7.10'x6' = 4.4; Utility 7.10'x3.11 = 2.3; Toilet 8.1'x4.11 = 3.7; Balcony 4.11'x7.1 = 3.2) - dry/utility w/ washing m/c+AC, IT-belt - https://www.brigadecornerstoneutopia.net.in/floor-plan.html
+- I2. Hyderabad HITEC City studio-style 1 BHK 547 sqft / 50.8 sqm super (332 carpet) (Foyer 3.5'x8.8 = 2.9; Living/Bedroom combined 16.3'x15.3 = 23.2; Kitchenette 6.8'x8.8 = 5.5; Toilet 5.2'x8.4 = 4.1) - galley, IT-corridor service apt - https://www.brigadecornerstoneutopia.net.in/floor-plan.html
+
+## 2 BHK (5)
+- I3. Mumbai Andheri compact 2 BHK 645 sqft carpet / 59.9 sqm (Liv-Din 12'x16 = 17.8; Master 12'x12 = 13.4; Bed2 10'x11 = 10.2; Kitchen 8'x9 = 6.7; M.Bath 6'x7 = 3.9; Bath2 5'x7 = 3.3; Dry balcony 7'x3 = 2; Balcony 5'x8 = 3.7) - dry balcony for laundry/AC - https://www.lodhagroup.com/projects/residential-property-in-andheri/lodha-eternis/plans
+- I4. Chennai T Nagar 2 BHK + pooja 1100 sqft / 102 sqm builtup (Hall 12'x16 = 17.8; Master 12'x14 = 15.6; Bed2 10'x12 = 11.1; Kitchen 8'x10 = 7.4; Pooja 3.5'x4.5 = 1.5; M.Bath 6'x8 = 4.5; Bath2 5'x7 = 3.3; Balcony 4'x10 = 3.7) - NE pooja, classic Chennai - https://property.sulekha.com/2-bhk
+- I5. Kolkata Salt Lake 2 BHK 916 sqft super (Liv-Din 11'x18 = 18.4; Master 11'x13 = 13.3; Bed2 10'x11 = 10.2; Kitchen 8'x9 = 6.7; M.Bath 5'x7 = 3.3; Bath2 5'x7 = 3.3; Verandah 9'x4 = 3.3; Service balcony 5'x4 = 1.9) - Bengali verandah, service balcony - https://www.squareyards.com/kolkata-residential-property/merlin-5th-avenue/8472/project
+- I6. Hyderabad Gachibowli IT 2 BHK 1208 sqft / 870 carpet (Living 14'x12 = 15.6; Dining 8'x10 = 7.4; Master 12'x14 = 15.6; Bed2 11'x12 = 12.3; Kitchen 8'x10 = 7.4; Utility 7'x4 = 2.6; M.Bath 6'x8 = 4.5; Bath2 5'x7 = 3.3; Balcony 6'x10 = 5.6; Balcony 4'x6 = 2.2) - IT-prof, modular kit, 2 balconies - http://www.pbelcity.propladder.com
+- I7. Ahmedabad utility verandah 2 BHK 697 sqft carpet (Liv-Din 11'x16 = 16.4; Master 11'x12 = 12.3; Bed2 10'x10 = 9.3; Kitchen 7'x9 = 5.9; Util verandah 9'x4 = 3.3; M.Bath 6'x7 = 3.9; Bath2 5'x6 = 2.8) - Gujarati otla utility - https://www.adanirealty.com/residential-projects/ahmedabad/aster
+
+## 3 BHK (5)
+- I8. Gurgaon DLF Phase V tower 3 BHK 2210 sqft super / 205 sqm (Foyer 5'x6 = 2.8; Living 16'x18 = 26.8; Dining 12'x14 = 15.6; Master 14'x16 = 20.8; Bed2 12'x14 = 15.6; Bed3 12'x12 = 13.4; Kitchen 10'x12 = 11.1; Utility 6'x8 = 4.5; M.Bath 8'x10 = 7.4; Bath2 6'x8 = 4.5; Bath3 5'x8 = 3.7; Servant 7'x8 + WC 4'x5 = 7; Balcony main 12'x6 = 6.7; Balcony bedroom 8'x5 = 3.7) - premium NCR, servant qtr, foyer - https://www.squareyards.com/gurgaon-residential-property/dlf-trinity-towers/329/project
+- I9. Chennai vastu 3 BHK 1480 sqft / 137 sqm (Living 14'x16 NE = 20.8; Dining 10'x12 = 11.1; Master 12'x14 SW = 15.6; Bed2 11'x13 NW = 13.3; Bed3 10'x12 = 11.1; Kitchen 9'x10 SE = 8.4; Pooja 4'x5 NE corner = 1.9; M.Bath 6'x8 = 4.5; Bath2 5'x8 = 3.7; Bath3 5'x7 = 3.3; Balcony 12'x5 = 5.6; Utility 7'x4 = 2.6) - SW master, SE kitchen, NE pooja+entrance - https://stylesatlife.com/articles/best-3-bhk-house-plan-drawings/
+- I10. Pune Kharadi family 3 BHK 1115 sqft carpet / 103 sqm (Living 13'x15 = 18.1; Dining 9'x10 = 8.4; Master 12'x13 = 14.5; Bed2 11'x12 = 12.3; Bed3 10'x10 = 9.3; Kitchen 8'x10 = 7.4; Utility 5'x7 = 3.3; M.Bath 6'x8 = 4.5; Bath2 5'x7 = 3.3; Bath3 5'x7 = 3.3; Sit-out 8'x4 = 3; Balcony 11'x5 = 5.1) - east-facing, sit-out - https://www.mahindralifespaces.com/real-estate-properties/pune-property/mahindra-ivylush/
+- I11. Kerala Kochi nadumuttam 3 BHK 2316 sqft / 215 sqm 2 FLOORS (GF: Sit-out thinnai 12'x6 = 6.7; Living 14'x16 = 20.8; Dining 12'x14 = 15.6; Nadumuttam 8'x8 = 5.9; Kitchen 10'x12 = 11.1; Work area 8'x9 = 5.9; Store 6'x6 = 3.3; Master GF 13'x15 = 18.1; M.Bath 6'x8 = 4.5; Common toilet 4'x6 = 2.2; Car porch 12'x18 = 20.1. FF: Bed2 12'x13 = 14.5; Bed3 11'x12 = 12.3; Bath2 5'x7 = 3.3; Bath3 5'x7 = 3.3; Open terrace 12'x10 = 11.1; Balcony 10'x4 = 3.7) - Kerala-style, semi-open thinnai, central nadumuttam courtyard cross-vent - https://www.99homeplans.com/p/3bhk-house-plan-2316-sq-ft-homes/
+- I12. Mumbai Powai Hiranandani 3 BHK 1600 sqft / 149 sqm (Foyer 4'x5 = 1.9; Living 14'x18 = 23.4; Dining 10'x12 = 11.1; Master 13'x15 = 18.1; Bed2 12'x13 = 14.5; Bed3 11'x12 = 12.3; Kitchen 9'x12 = 10; Utility 7'x5 = 3.3; M.Bath 7'x9 = 5.9; Bath2 6'x8 = 4.5; Bath3 5'x8 = 3.7; Deck 16'x6 = 8.9; Dry balcony 8'x4 = 3) - Powai lake deck - https://www.indextap.com/properties/details/hiranandani-group/powai/hiranandani-adonia/63456a3a56fd6d87a56d8ec1
+
+## 4 BHK (3)
+- I13. Hyderabad Banjara Hills luxury 4 BHK 3347 sqft / 311 sqm (Foyer 6'x8 = 4.5; Living 18'x22 = 36.8; Formal dining 14'x16 = 20.8; Family lounge 12'x14 = 15.6; Master 16'x18 = 26.8 + WIC 8'x6 = 4.5; Bed2 14'x14 = 18.2; Bed3 12'x14 = 15.6; Bed4/study 11'x12 = 12.3; Kitchen 12'x14 = 15.6; Utility 6'x8 = 4.5; M.Bath 10'x10 = 9.3; Bath2 8'x8 = 5.9; Bath3 6'x8 = 4.5; Bath4 5'x7 = 3.3; Powder 4'x5 = 1.9; Servant 8'x10 + WC 4'x5 = 9; Sit-out deck 14'x6 = 7.8; Balcony 12'x5 = 5.6) - imported marble, hardwood master, WIC, family lounge - https://www.squareyards.com/hyderabad-residential-property/brigade-no-7/4436/project
+- I14. Kolkata New Town 4 BHK + pooja 1719 sqft / 160 sqm (Living 14'x18 = 23.4; Dining 10'x12 = 11.1; Master 13'x15 = 18.1; Bed2 12'x13 = 14.5; Bed3 11'x12 = 12.3; Bed4 10'x11 = 10.2; Kitchen 9'x11 = 9.2; Pooja 5'x6 NE = 2.8; M.Bath 6'x9 = 5; Bath2-4 incl 5'x7 = 3.3 each; Service balcony 7'x4 = 2.6; Balcony 10'x5 = 4.6) - Bengali joint-family, NE pooja - https://www.squareyards.com/resale-4-bhk-pooja-room-1719-sq-ft-builder-floor-in-new-town-action-area-ii/9621458
+- I15. Pune NIBM premium 4 BHK 1659 sqft carpet / 154 sqm (Living 14'x16 = 20.8; Dining 10'x12 = 11.1; Master 13'x15 = 18.1; Bed2 12'x13 = 14.5; Bed3 11'x12 = 12.3; Bed4 10'x11 = 10.2; Kitchen 9'x11 = 9.2; Utility 6'x6 = 3.3; M.Bath 7'x8 = 5.2; Bath2 6'x7 = 3.9; Bath3 5'x7 = 3.3; Bath4 5'x7 = 3.3; Powder 3'x5 = 1.4; Deck 12'x6 = 6.7; Dry balcony 8'x4 = 3) - vastu, all-attached - https://www.lodhagroup.com/projects/residential-property-in-pune/lodha-bella-vita-nibm/plans
+
+## 5 BHK (2)
+- I16. Mumbai Bandra sea-view 5 BHK 3221 sqft / 299 sqm (Foyer 6'x8 = 4.5; Living sea-facing 18'x24 = 40.1; Formal dining 14'x16 = 20.8; Family room 12'x14 = 15.6; Master 16'x20 = 29.7 + WIC 8'x10 = 7.4; Bed2 14'x16 = 20.8; Bed3 12'x14 = 15.6; Bed4 12'x12 = 13.4; Bed5/study 10'x12 = 11.1; Kitchen 12'x14 = 15.6; Utility 6'x8 = 4.5; M.Bath 10'x12 = 11.1; Bath2 8'x9 = 6.7; Bath3 6'x8 = 4.5; Bath4 6'x8 = 4.5; Powder 4'x5 = 1.9; Servant 8'x10 + WC 4'x5; Sea deck 18'x8 = 13.4; Side balcony 10'x5 = 4.6) - sea-facing wraparound deck - https://www.expatpropertiesmumbai.com/listings/5-bhk-flat-for-rent-pali-hill-bandra/
+- I17. Bangalore Sarjapur villa 5 BHK 3485 sqft / 324 sqm 2 FLOORS plot 35'x60' (GF: Foyer 6'x8 = 4.5; Living 16'x20 = 29.7; Dining 12'x14 = 15.6; Family hall 12'x14 = 15.6; Guest 12'x13 = 14.5; Guest bath 6'x8 = 4.5; Kitchen 10'x12 = 11.1; Utility 6'x8 = 4.5; Pooja 5'x6 = 2.8; Powder 4'x5 = 1.9; Servant 8'x10 + WC; Car porch 18'x16 = 26.8. FF: Master 14'x18 = 23.4 + WIC 6'x8 = 4.5; Bed2 12'x14 = 15.6; Bed3 12'x13 = 14.5; Bed4 11'x12 = 12.3; M.Bath 8'x10 = 7.4; Baths 6'x8 = 4.5 each; Family lounge 12'x14 = 15.6; Open terrace 14'x10 = 13) - triplex-ready, servant qtr, NE pooja - https://mjrdivinemeadows.com/villas-sarjapur-bangalore/index.html
+
+## Penthouse (1)
+- I18. Gurgaon DLF Aralias penthouse duplex 6000 sqft / 557 sqm 2 FLOORS (LOWER: Grand foyer 8'x10 = 7.4; Drawing 20'x24 = 44.6; Formal dining 14'x18 = 23.4; Family lounge 14'x16 = 20.8; Powder 5'x6 = 2.8; Guest 14'x16 + bath 8'x9; Kitchen 12'x16 = 17.8; Utility 8'x10 = 7.4; Servant 1 8'x10 + WC; Servant 2 8'x9 + WC; Store 6'x8; Balcony 1 24'x6 = 13.4; Balcony 2 12'x6 = 6.7; Internal staircase 8'x12 = 8.9. UPPER: Master 18'x22 = 36.8 + WIC 10'x12 = 11.1 + M.Bath 12'x14 = 15.6; Bed2 14'x16 + bath 8'x9; Bed3 14'x14 + bath 6'x8; Study 12'x14 = 15.6; Family TV lounge 14'x16; Master deck 22'x8 = 16.4; Bedroom decks 12'x6 x2; Open terrace 24'x16 = 35.7) - 7 balconies/decks, double-height drawing - https://araliasgurgaon.in/floor-plan
+
+## Cultural-feature index
+- Vastu (NE pooja, SW master, SE kitchen): I4, I9, I14, I17 explicit; I15 noted
+- Pooja room: I4, I9, I14, I17
+- Servant quarter (8'x10 + WC 4'x5): I8, I13, I16, I17, I18 (2x in penthouse)
+- Dry/service balcony: I3, I5, I12, I14, I15
+- Modular kitchen: I1, I6, I8, I10, I12, I13, I15
+- Thinnai/nadumuttam (Kerala): I11
+- Walk-in wardrobe: I13, I16, I17, I18
+- Gujarati otla utility: I7
+- Bengali verandah: I5, I14

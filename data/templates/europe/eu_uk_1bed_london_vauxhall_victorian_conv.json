@@ -1,0 +1,58 @@
+{
+  "id": "eu_uk_1bed_london_vauxhall_victorian_conv",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "London",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 64,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "London Vauxhall (SW8) Victorian Conversion 1-bed",
+    "description": "A London Zone 2 Victorian conversion 1-bed flat — Vauxhall SW8 typology, ~668 sqft (62 m²). Reception room (front, sash windows, period stucco), separate Kitchen, full Bath, master Bedroom, narrow entry Hall, with closets along west wall. High ceilings, original plasterwork. Source: Rightmove Vauxhall Keybridge House listings.",
+    "suitable_for": ["single_professional", "couple", "executive_pied_a_terre"],
+    "tags": ["united_kingdom", "london", "victorian_terrace", "1bed", "victorian", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_reception", "name": "Reception", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4.5],[2,4.5]], "area_sqm": 18,
+      "notes": "Front Reception with sash windows + period stucco" },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4.5],[6,4.5]], "area_sqm": 9 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5.5],[0,5.5]], "area_sqm": 5 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4.5],[6,4.5],[6,8],[2,8]], "area_sqm": 14 },
+    { "id": "r_closet", "name": "Closet", "type": "store",
+      "polygon": [[0,5.5],[2,5.5],[2,8],[0,8]], "area_sqm": 5 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[6,4.5],[8,4.5],[8,8],[6,8]], "area_sqm": 7 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_reception", "position": [2, 1.5], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_bath", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_closet", "position": [1, 5.5], "width_mm": 700 },
+    { "from": "r_reception", "to": "r_kitchen", "position": [6, 2.25], "width_mm": 1000 },
+    { "from": "r_reception", "to": "r_bedroom", "position": [4, 4.5], "width_mm": 900 },
+    { "from": "r_bedroom", "to": "r_storage", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_bedroom", "to": "r_closet", "position": [2, 6.75], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_reception", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 2.25], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [4, 8], "width_mm": 2000 },
+    { "room": "r_storage", "position": [8, 6.5], "width_mm": 800 },
+    { "room": "r_bath", "position": [0, 4.25], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.5], "width_mm": 1200 }
+  ]
+}

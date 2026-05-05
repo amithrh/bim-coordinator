@@ -1,0 +1,241 @@
+{
+  "id": "eu_de_1zimmer_hamburg_eppendorf",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Hamburg",
+    "size_label": "1zimmer",
+    "total_area_sqm": 31,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Hamburg Eppendorf modern Einzimmer with cantilever balcony",
+    "description": "A modern Hamburg Eppendorf or Winterhude Einzimmer with an L-shape boundary — the east-side balcony cantilevers out from the main square footprint. Open living-sleeping area, small Kochnische, compact bath. Typical young-professional starter flat.",
+    "suitable_for": [
+      "young professional",
+      "weekday flat"
+    ],
+    "tags": [
+      "hamburg",
+      "eppendorf",
+      "modern",
+      "1zimmer",
+      "studio",
+      "l_shape",
+      "cantilever",
+      "balcony",
+      "altbau",
+      "wilhelminian"
+    ]
+  },
+  "boundary": {
+    "polygon": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        0,
+        5
+      ]
+    ],
+    "wall_thickness_mm": 220,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    {
+      "id": "r_living",
+      "name": "Wohn-Schlafraum",
+      "type": "living",
+      "polygon": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          3.5
+        ],
+        [
+          0,
+          3.5
+        ]
+      ],
+      "area_sqm": 17.5
+    },
+    {
+      "id": "r_balkon",
+      "name": "Balkon",
+      "type": "balcony",
+      "polygon": [
+        [
+          5,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "area_sqm": 6,
+      "notes": "Cantilever balcony pushing east"
+    },
+    {
+      "id": "r_kuche",
+      "name": "Kochnische",
+      "type": "kochnische",
+      "polygon": [
+        [
+          0,
+          3.5
+        ],
+        [
+          2.5,
+          3.5
+        ],
+        [
+          2.5,
+          5
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "area_sqm": 3.75
+    },
+    {
+      "id": "r_bad",
+      "name": "Badezimmer",
+      "type": "bathroom",
+      "polygon": [
+        [
+          2.5,
+          3.5
+        ],
+        [
+          5,
+          3.5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2.5,
+          5
+        ]
+      ],
+      "area_sqm": 3.75
+    }
+  ],
+  "doors": [
+    {
+      "from": "outside",
+      "to": "r_living",
+      "position": [
+        0.5,
+        0
+      ],
+      "width_mm": 900,
+      "is_main_entry": true
+    },
+    {
+      "from": "r_living",
+      "to": "r_balkon",
+      "position": [
+        5,
+        2.75
+      ],
+      "width_mm": 1200,
+      "swing": "slide"
+    },
+    {
+      "from": "r_living",
+      "to": "r_kuche",
+      "position": [
+        1.25,
+        3.5
+      ],
+      "width_mm": 800
+    },
+    {
+      "from": "r_living",
+      "to": "r_bad",
+      "position": [
+        3.75,
+        3.5
+      ],
+      "width_mm": 700
+    }
+  ],
+  "windows": [
+    {
+      "room": "r_living",
+      "position": [
+        2.5,
+        0
+      ],
+      "width_mm": 1800
+    },
+    {
+      "room": "r_living",
+      "position": [
+        0,
+        1.75
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_kuche",
+      "position": [
+        1.25,
+        5
+      ],
+      "width_mm": 1200
+    },
+    {
+      "room": "r_bad",
+      "position": [
+        5,
+        4.25
+      ],
+      "width_mm": 600
+    },
+    {
+      "room": "r_balkon",
+      "position": [
+        7,
+        3.5
+      ],
+      "width_mm": 1500
+    }
+  ]
+}

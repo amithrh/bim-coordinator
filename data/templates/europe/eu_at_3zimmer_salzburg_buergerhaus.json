@@ -1,0 +1,73 @@
+{
+  "id": "eu_at_3zimmer_salzburg_buergerhaus",
+  "metadata": {
+    "region": "europe",
+    "country": "Austria",
+    "city_inspiration": "Salzburg",
+    "size_label": "3zimmer",
+    "size_band": "3bed",
+    "total_area_sqm": 110,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Salzburg Bürgerhaus Altstadt (deep narrow plot, Kastenfenster)",
+    "description": "A Salzburg Bürgerhaus Altstadt apartment — typical 113 m² inside historic Bürgerhaus, deep narrow plot. Vorraum, Wohnzimmer with Erker oriel, Esszimmer, Küche, three Schlafzimmer, Bad, separate WC. Tall casement Kastenfenster windows toward Getreidegasse. Source: immo.salzburg24.at Altstadt listings.",
+    "suitable_for": ["young_family", "academic", "executive_pied_a_terre"],
+    "tags": ["austria", "salzburg", "buergerhaus", "3bed", "vintage_traditional", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,11],[0,11]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_vorraum", "name": "Vorraum", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_wohnz", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5.5],[2,5.5]], "area_sqm": 27.5,
+      "notes": "Wohnzimmer with Erker oriel toward Getreidegasse" },
+    { "id": "r_esszimmer", "name": "Esszimmer", "type": "dining",
+      "polygon": [[7,0],[10,0],[10,5.5],[7,5.5]], "area_sqm": 16.5 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[0,3],[2,3],[2,9],[0,9]], "area_sqm": 12,
+      "notes": "Long thin Küche along west wall" },
+    { "id": "r_schlafz1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[2,5.5],[6,5.5],[6,9],[2,9]], "area_sqm": 14 },
+    { "id": "r_schlafz2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[6,5.5],[10,5.5],[10,9],[6,9]], "area_sqm": 14 },
+    { "id": "r_schlafz3", "name": "Schlafzimmer 3", "type": "bedroom",
+      "polygon": [[2,9],[7,9],[7,11],[2,11]], "area_sqm": 10 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[7,9],[10,9],[10,11],[7,11]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,9],[2,9],[2,10],[0,10]], "area_sqm": 2 },
+    { "id": "r_storage", "name": "Kellerabteil", "type": "store",
+      "polygon": [[0,10],[2,10],[2,11],[0,11]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_vorraum", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_vorraum", "to": "r_wohnz", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_vorraum", "to": "r_kuche", "position": [1, 3], "width_mm": 900 },
+    { "from": "r_wohnz", "to": "r_esszimmer", "position": [7, 2.75], "width_mm": 1500 },
+    { "from": "r_wohnz", "to": "r_schlafz1", "position": [4, 5.5], "width_mm": 900 },
+    { "from": "r_esszimmer", "to": "r_schlafz2", "position": [8, 5.5], "width_mm": 900 },
+    { "from": "r_kuche", "to": "r_schlafz1", "position": [2, 7.25], "width_mm": 800 },
+    { "from": "r_schlafz1", "to": "r_schlafz2", "position": [6, 7.25], "width_mm": 800 },
+    { "from": "r_schlafz1", "to": "r_schlafz3", "position": [4, 9], "width_mm": 900 },
+    { "from": "r_schlafz2", "to": "r_bad", "position": [8, 9], "width_mm": 800 },
+    { "from": "r_schlafz3", "to": "r_bad", "position": [7, 10], "width_mm": 800 },
+    { "from": "r_kuche", "to": "r_wc", "position": [1, 9], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_storage", "position": [1, 10], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnz", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_esszimmer", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_esszimmer", "position": [10, 2.75], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [0, 6], "width_mm": 1200 },
+    { "room": "r_schlafz1", "position": [4, 9], "width_mm": 1500 },
+    { "room": "r_schlafz2", "position": [8, 9], "width_mm": 1500 },
+    { "room": "r_schlafz2", "position": [10, 7.25], "width_mm": 1500 },
+    { "room": "r_schlafz3", "position": [4.5, 11], "width_mm": 1800 },
+    { "room": "r_bad", "position": [10, 10], "width_mm": 800 },
+    { "room": "r_vorraum", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

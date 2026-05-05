@@ -1,0 +1,73 @@
+{
+  "id": "eu_de_4zimmer_dusseldorf_pempelfort_neubau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Düsseldorf",
+    "size_label": "4zimmer",
+    "size_band": "3bed",
+    "total_area_sqm": 110,
+    "bedrooms": 3,
+    "bathrooms": 1.5,
+    "style": "Düsseldorf Pempelfort 4-Zi Neubau mit Loggia",
+    "description": "A Düsseldorf Pempelfort Neubau 4-Zimmer family apartment — typical 110 m² with Loggia, Tiefgarage. Wohnen-Essen + offene Küche, Schlafen, two Kinderzimmer, Bad, Gast-WC, Diele. Source: immobilienscout24.de Düsseldorf Neubau 4-Zi.",
+    "suitable_for": ["young_family", "growing_family", "executive_pied_a_terre"],
+    "tags": ["germany", "dusseldorf", "neubau", "3bed", "contemporary_2000_2020", "loggia", "open_plan", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,10],[0,10]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_wohnen", "name": "Wohnen-Essen", "type": "living",
+      "polygon": [[2,0],[8,0],[8,5],[2,5]], "area_sqm": 30 },
+    { "id": "r_kuche", "name": "Küche (offen)", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,4],[8,4]], "area_sqm": 12 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[8,4],[11,4],[11,6],[8,6]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "Gast-WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_schlafen", "name": "Schlafen", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_kind1", "name": "Kinderzimmer 1", "type": "bedroom",
+      "polygon": [[6,5],[8,5],[8,8],[6,8]], "area_sqm": 6 },
+    { "id": "r_kind2", "name": "Kinderzimmer 2", "type": "bedroom",
+      "polygon": [[8,6],[11,6],[11,10],[8,10]], "area_sqm": 12 },
+    { "id": "r_hall_ext", "name": "Flur back", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,10],[0,10]], "area_sqm": 6 },
+    { "id": "r_storage", "name": "Abstellraum", "type": "store",
+      "polygon": [[2,8],[8,8],[8,10],[2,10]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnen", "position": [2, 1.5], "width_mm": 1200 },
+    { "from": "r_diele", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bad", "position": [1, 4.5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_hall_ext", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_storage", "position": [2, 8.5], "width_mm": 900 },
+    { "from": "r_wohnen", "to": "r_kuche", "position": [8, 2.5], "width_mm": 1500 },
+    { "from": "r_kuche", "to": "r_loggia", "position": [9.5, 4], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_wohnen", "to": "r_schlafen", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_wohnen", "to": "r_kind1", "position": [7, 5], "width_mm": 900 },
+    { "from": "r_kind1", "to": "r_kind2", "position": [8, 7], "width_mm": 800 },
+    { "from": "r_kind2", "to": "r_loggia", "position": [9.5, 6], "width_mm": 1000, "swing": "slide" },
+    { "from": "r_schlafen", "to": "r_storage", "position": [4, 8], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [5, 0], "width_mm": 3000 },
+    { "room": "r_kuche", "position": [9.5, 0], "width_mm": 1800 },
+    { "room": "r_kuche", "position": [11, 2], "width_mm": 1500 },
+    { "room": "r_loggia", "position": [11, 5], "width_mm": 1500 },
+    { "room": "r_schlafen", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_kind1", "position": [7, 8], "width_mm": 1200 },
+    { "room": "r_kind2", "position": [9.5, 10], "width_mm": 1800 },
+    { "room": "r_kind2", "position": [11, 8], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

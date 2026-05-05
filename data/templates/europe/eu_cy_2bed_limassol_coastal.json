@@ -1,0 +1,64 @@
+{
+  "id": "eu_cy_2bed_limassol_coastal",
+  "metadata": {
+    "region": "europe",
+    "country": "Cyprus",
+    "city_inspiration": "Limassol",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 76,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Limassol Coastal Apartment (Mediterranean modern with sea-view balcony)",
+    "description": "A Limassol coastal Mediterranean modern apartment — typical 80 m² with sea-view balcony. Hall, Open Living-Kitchen, Master, Bedroom 2, Bath, WC, large coastal Balcony. Cyprus modern construction. Source: bazaraki.com Limassol coastal.",
+    "suitable_for": ["young_family", "couple", "expat", "retiree"],
+    "tags": ["cyprus", "limassol", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2.5],[0,2.5]], "area_sqm": 3.75 },
+    { "id": "r_living_kitchen", "name": "Living-Kitchen (open)", "type": "living",
+      "polygon": [[1.5,0],[8,0],[8,5],[1.5,5]], "area_sqm": 32.5,
+      "notes": "Open Living-Kitchen with sea-view glazing" },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,2.5],[1.5,2.5],[1.5,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,4.5],[1.5,4.5],[1.5,7],[0,7]], "area_sqm": 3.75 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[1.5,5],[5,5],[5,8],[1.5,8]], "area_sqm": 10.5 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,8],[5,8]], "area_sqm": 9 },
+    { "id": "r_balcony", "name": "Sea-view Balcony", "type": "balcony",
+      "polygon": [[0,8],[8,8],[8,9],[0,9]], "area_sqm": 8 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[1.5,7],[1.5,8],[0,8]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living_kitchen", "position": [1.5, 1.25], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_wc", "position": [0.75, 2.5], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bath", "position": [0.75, 4.5], "width_mm": 700 },
+    { "from": "r_living_kitchen", "to": "r_master", "position": [3.25, 5], "width_mm": 900 },
+    { "from": "r_living_kitchen", "to": "r_bed2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_bath", "to": "r_hall_back", "position": [0.75, 7], "width_mm": 700 },
+    { "from": "r_master", "to": "r_bed2", "position": [5, 6.5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_balcony", "position": [3.25, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_bed2", "to": "r_balcony", "position": [6.5, 8], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_hall_back", "to": "r_balcony", "position": [0.75, 8], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living_kitchen", "position": [4.75, 0], "width_mm": 3000 },
+    { "room": "r_living_kitchen", "position": [8, 2.5], "width_mm": 2400 },
+    { "room": "r_master", "position": [3.25, 8], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [6.5, 8], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [8, 6.5], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_bath", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.25], "width_mm": 800 }
+  ]
+}

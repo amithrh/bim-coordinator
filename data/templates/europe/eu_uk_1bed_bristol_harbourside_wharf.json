@@ -1,0 +1,61 @@
+{
+  "id": "eu_uk_1bed_bristol_harbourside_wharf",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Bristol",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 67,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Bristol Harbourside Wharf Conversion 1-bed (Steamship/Invicta)",
+    "description": "A Bristol BS1 harbourside wharf conversion 1-bed flat — Steamship/Invicta development typology, ~726 sqft (67 m²). Open Kitchen-Living, Bedroom, Bath, Hall, waterfront balcony. Brick wharf conversion with waterfront views. Source: rightmove.co.uk Bristol Harbourside listings.",
+    "suitable_for": ["single_professional", "couple", "executive_pied_a_terre"],
+    "tags": ["united_kingdom", "bristol", "warehouse_conversion", "1bed", "contemporary_2000_2020", "open_plan", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2.5],[0,2.5]], "area_sqm": 3.75 },
+    { "id": "r_kit_liv", "name": "Open Kitchen-Living", "type": "living",
+      "polygon": [[1.5,0],[8,0],[8,4.5],[1.5,4.5]], "area_sqm": 29.25,
+      "notes": "Open Kitchen-Living with waterfront views" },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,2.5],[1.5,2.5],[1.5,5],[0,5]], "area_sqm": 3.75 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[0,5],[5,5],[5,8],[0,8]], "area_sqm": 15 },
+    { "id": "r_hall_ext", "name": "Hall ext", "type": "corridor",
+      "polygon": [[1.5,4.5],[5,4.5],[5,5],[1.5,5]], "area_sqm": 1.75 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4.5],[8,4.5],[8,7],[5,7]], "area_sqm": 7.5 },
+    { "id": "r_balcony", "name": "Waterfront Balcony", "type": "balcony",
+      "polygon": [[5,7],[8,7],[8,9],[5,9]], "area_sqm": 6,
+      "notes": "Waterfront balcony — Steamship development signature" },
+    { "id": "r_balcony_ext", "name": "Bedroom Balcony", "type": "balcony",
+      "polygon": [[0,8],[5,8],[5,9],[0,9]], "area_sqm": 5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_kit_liv", "position": [1.5, 1.25], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_bath", "position": [1.5, 3.75], "width_mm": 700 },
+    { "from": "r_kit_liv", "to": "r_hall_ext", "position": [3.25, 4.5], "width_mm": 900 },
+    { "from": "r_hall_ext", "to": "r_bedroom", "position": [3.25, 5], "width_mm": 900 },
+    { "from": "r_kit_liv", "to": "r_storage", "position": [6.5, 4.5], "width_mm": 800 },
+    { "from": "r_storage", "to": "r_balcony", "position": [6.5, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bedroom", "to": "r_balcony_ext", "position": [2.5, 8], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_kit_liv", "position": [4.75, 0], "width_mm": 3000 },
+    { "room": "r_kit_liv", "position": [8, 2.25], "width_mm": 2400 },
+    { "room": "r_bedroom", "position": [2.5, 8], "width_mm": 2000 },
+    { "room": "r_bedroom", "position": [0, 6.5], "width_mm": 1500 },
+    { "room": "r_storage", "position": [8, 5.75], "width_mm": 1200 },
+    { "room": "r_balcony", "position": [6.5, 9], "width_mm": 1800 },
+    { "room": "r_bath", "position": [0, 3.75], "width_mm": 600 }
+  ]
+}

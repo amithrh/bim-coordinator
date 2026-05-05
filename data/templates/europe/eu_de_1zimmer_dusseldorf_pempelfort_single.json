@@ -1,0 +1,44 @@
+{
+  "id": "eu_de_1zimmer_dusseldorf_pempelfort_single",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Düsseldorf",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 30,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Düsseldorf Pempelfort Single Apartment (möbliert Neubau)",
+    "description": "A Düsseldorf Pempelfort möbliertes Neubau Apartment — typical 32 m² with EBK + Aufzug + Tiefgarage. Wohnen-Schlafen, Küche, Wannenbad, Diele. Source: immobilienscout24.de Pempelfort möbliert.",
+    "suitable_for": ["single_professional", "executive_pied_a_terre"],
+    "tags": ["germany", "dusseldorf", "neubau", "studio", "current_2020plus", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,6],[0,6]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2 },
+    { "id": "r_bad", "name": "Wannenbad", "type": "bathroom",
+      "polygon": [[1,0],[3,0],[3,2],[1,2]], "area_sqm": 4 },
+    { "id": "r_kuche", "name": "Küche", "type": "kitchen",
+      "polygon": [[3,0],[5,0],[5,2],[3,2]], "area_sqm": 4 },
+    { "id": "r_wohnen", "name": "Wohnen-Schlafen", "type": "living",
+      "polygon": [[0,2],[5,2],[5,6],[0,6]], "area_sqm": 20 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnen", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_wohnen", "to": "r_bad", "position": [2, 2], "width_mm": 700 },
+    { "from": "r_wohnen", "to": "r_kuche", "position": [4, 2], "width_mm": 1100 }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [2.5, 6], "width_mm": 2000 },
+    { "room": "r_wohnen", "position": [0, 4], "width_mm": 1500 },
+    { "room": "r_wohnen", "position": [5, 4], "width_mm": 1500 },
+    { "room": "r_kuche", "position": [4, 0], "width_mm": 1200 }
+  ]
+}

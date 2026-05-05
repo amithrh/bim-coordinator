@@ -1,0 +1,56 @@
+{
+  "id": "eu_fr_2pieces_bordeaux_echoppe",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Bordeaux",
+    "size_label": "echoppe",
+    "size_band": "2bed",
+    "total_area_sqm": 60,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Bordeaux Échoppe simple (single-storey stone-fronted, Saint-Genès)",
+    "description": "A Bordeaux Échoppe simple — single-storey pierre blonde de Bordeaux stone-fronted house. Three rooms en enfilade (Salon, Chambre principale, Chambre 2) alongside a long lateral Couloir, with Cuisine + SDB at the back facing rear garden. Source: lalanneimmo.com Echoppe + bordeauxsothebysrealty.com.",
+    "suitable_for": ["couple", "young_family", "creative_artist"],
+    "tags": ["france", "bordeaux", "echoppe", "2bed", "vintage_traditional", "single_floor", "garten"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,12],[0,12]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[0,0],[4,0],[4,4],[0,4]], "area_sqm": 16 },
+    { "id": "r_couloir", "name": "Couloir lateral", "type": "corridor",
+      "polygon": [[4,0],[5,0],[5,8],[4,8]], "area_sqm": 8,
+      "notes": "Long lateral corridor — Échoppe signature" },
+    { "id": "r_chambre_principale", "name": "Chambre principale", "type": "master_bedroom",
+      "polygon": [[0,4],[4,4],[4,7.5],[0,7.5]], "area_sqm": 14 },
+    { "id": "r_chambre", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[0,7.5],[4,7.5],[4,10.5],[0,10.5]], "area_sqm": 12 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[4,8],[5,8],[5,12],[4,12]], "area_sqm": 4 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[0,10.5],[4,10.5],[4,12],[0,12]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_salon", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_salon", "to": "r_couloir", "position": [4, 2], "width_mm": 1100 },
+    { "from": "r_couloir", "to": "r_chambre_principale", "position": [4, 5.75], "width_mm": 900 },
+    { "from": "r_couloir", "to": "r_sdb", "position": [4.5, 8], "width_mm": 800 },
+    { "from": "r_salon", "to": "r_chambre_principale", "position": [2, 4], "width_mm": 900 },
+    { "from": "r_chambre_principale", "to": "r_chambre", "position": [2, 7.5], "width_mm": 900 },
+    { "from": "r_chambre", "to": "r_cuisine", "position": [2, 10.5], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_cuisine", "position": [4, 11], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [2, 0], "width_mm": 1800 },
+    { "room": "r_salon", "position": [0, 2], "width_mm": 1200 },
+    { "room": "r_chambre_principale", "position": [0, 5.75], "width_mm": 1500 },
+    { "room": "r_chambre", "position": [0, 9], "width_mm": 1500 },
+    { "room": "r_cuisine", "position": [2, 12], "width_mm": 1800 },
+    { "room": "r_cuisine", "position": [0, 11.25], "width_mm": 1200 },
+    { "room": "r_sdb", "position": [5, 10], "width_mm": 600 }
+  ]
+}

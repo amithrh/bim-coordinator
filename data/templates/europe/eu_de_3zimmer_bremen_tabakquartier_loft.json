@@ -1,0 +1,57 @@
+{
+  "id": "eu_de_3zimmer_bremen_tabakquartier_loft",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Bremen",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Bremen Tabakquartier Loft 3-Zi (industrial monument conversion)",
+    "description": "A Bremen Tabakquartier Loft 3-Zi apartment — typical 90 m² industrial monument conversion. Open Wohn-Essbereich, Schlafzimmer, Kinderzimmer, offene Küche, Bad, generous Diele. High ceilings, exposed industrial structure. Source: tabakquartier.com.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["germany", "bremen", "warehouse_conversion", "2bed", "contemporary_2000_2020", "open_plan", "altbau_high_ceilings", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "diele",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_wohn_ess", "name": "Wohn-Essbereich (open)", "type": "living",
+      "polygon": [[2,0],[8,0],[8,5],[2,5]], "area_sqm": 30,
+      "notes": "Open Wohn-Essbereich with exposed industrial structure" },
+    { "id": "r_kuche", "name": "Küche (offen)", "type": "kitchen",
+      "polygon": [[8,0],[10,0],[10,5],[8,5]], "area_sqm": 10 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,9],[0,9]], "area_sqm": 8 },
+    { "id": "r_schlafz", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_kinderz", "name": "Kinderzimmer", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,9],[6,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0, 2.5], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohn_ess", "position": [2, 2.5], "width_mm": 1500 },
+    { "from": "r_diele", "to": "r_bad", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_wohn_ess", "to": "r_kuche", "position": [8, 2.5], "width_mm": 1500 },
+    { "from": "r_wohn_ess", "to": "r_schlafz", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_wohn_ess", "to": "r_kinderz", "position": [7, 5], "width_mm": 900 },
+    { "from": "r_schlafz", "to": "r_kinderz", "position": [6, 7], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_schlafz", "position": [2, 7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohn_ess", "position": [5, 0], "width_mm": 3000 },
+    { "room": "r_kuche", "position": [9, 0], "width_mm": 1800 },
+    { "room": "r_kuche", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_schlafz", "position": [4, 9], "width_mm": 1800 },
+    { "room": "r_kinderz", "position": [8, 9], "width_mm": 1500 },
+    { "room": "r_kinderz", "position": [10, 7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 7], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 2.5], "width_mm": 600 }
+  ]
+}

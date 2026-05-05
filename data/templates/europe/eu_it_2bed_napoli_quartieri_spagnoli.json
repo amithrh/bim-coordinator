@@ -1,0 +1,66 @@
+{
+  "id": "eu_it_2bed_napoli_quartieri_spagnoli",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Napoli",
+    "size_label": "2vani",
+    "size_band": "2bed",
+    "total_area_sqm": 77,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Napoli Quartieri Spagnoli (Montecalvario, vicoli labirinto)",
+    "description": "A Naples Quartieri Spagnoli apartment — typical 75 m² in vicoli labirinto. Ingresso, open Soggiorno-Cucina with cooking-vista, Camera matrimoniale + Camera, Bagno + Bagno servizio, two small Balconcino. Majolica tiles, sometimes with Gulf view. Source: wikicasa.it Quartieri Spagnoli + immobiliare.mitula.it Napoli.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["italy", "napoli", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,8.5],[0,8.5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2.5],[0,2.5]], "area_sqm": 5 },
+    { "id": "r_soggiorno_cucina", "name": "Soggiorno-Cucina", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25,
+      "notes": "Open Soggiorno with cooking vista — Naples style" },
+    { "id": "r_balconcino1", "name": "Balconcino 1", "type": "balcony",
+      "polygon": [[7,0],[9,0],[9,2.5],[7,2.5]], "area_sqm": 5 },
+    { "id": "r_cucina_ext", "name": "Cucina ext", "type": "store",
+      "polygon": [[7,2.5],[9,2.5],[9,5],[7,5]], "area_sqm": 5 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,2.5],[2,2.5],[2,5],[0,5]], "area_sqm": 5 },
+    { "id": "r_master", "name": "Camera matrimoniale", "type": "master_bedroom",
+      "polygon": [[0,5],[4,5],[4,8.5],[0,8.5]], "area_sqm": 14 },
+    { "id": "r_camera", "name": "Camera", "type": "bedroom",
+      "polygon": [[4,5],[7,5],[7,8.5],[4,8.5]], "area_sqm": 10.5 },
+    { "id": "r_bagno_servizio", "name": "Bagno servizio", "type": "wc",
+      "polygon": [[7,5],[9,5],[9,7],[7,7]], "area_sqm": 4 },
+    { "id": "r_balconcino2", "name": "Balconcino 2", "type": "balcony",
+      "polygon": [[7,7],[9,7],[9,8.5],[7,8.5]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno_cucina", "position": [2, 1.25], "width_mm": 1100 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1, 2.5], "width_mm": 800 },
+    { "from": "r_soggiorno_cucina", "to": "r_balconcino1", "position": [7, 1.25], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_soggiorno_cucina", "to": "r_cucina_ext", "position": [7, 3.75], "width_mm": 900 },
+    { "from": "r_soggiorno_cucina", "to": "r_master", "position": [3, 5], "width_mm": 900 },
+    { "from": "r_soggiorno_cucina", "to": "r_camera", "position": [5.5, 5], "width_mm": 900 },
+    { "from": "r_cucina_ext", "to": "r_bagno_servizio", "position": [8, 5], "width_mm": 700 },
+    { "from": "r_camera", "to": "r_bagno_servizio", "position": [7, 6], "width_mm": 700 },
+    { "from": "r_bagno_servizio", "to": "r_balconcino2", "position": [8, 7], "width_mm": 700, "swing": "slide" },
+    { "from": "r_master", "to": "r_camera", "position": [4, 6.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno_cucina", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_balconcino1", "position": [8, 0], "width_mm": 1500 },
+    { "room": "r_cucina_ext", "position": [9, 3.75], "width_mm": 1200 },
+    { "room": "r_master", "position": [2, 8.5], "width_mm": 1800 },
+    { "room": "r_master", "position": [0, 6.75], "width_mm": 1500 },
+    { "room": "r_camera", "position": [5.5, 8.5], "width_mm": 1500 },
+    { "room": "r_balconcino2", "position": [8, 8.5], "width_mm": 1200 },
+    { "room": "r_bagno", "position": [0, 3.75], "width_mm": 600 }
+  ]
+}

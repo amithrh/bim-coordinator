@@ -1,0 +1,70 @@
+{
+  "id": "eu_se_2bed_stockholm_sekelskifte",
+  "metadata": {
+    "region": "europe",
+    "country": "Sweden",
+    "city_inspiration": "Stockholm",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 120,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Stockholm Östermalm Sekelskifte (turn-of-century)",
+    "description": "A Stockholm Östermalm Sekelskifte (1880-1920) apartment — typical 114 m² with 3-3.5m ceilings, original Kakelugn ceramic tile stove, Stuckaturer plaster mouldings, fiskbensparkett herringbone parquet, jungfrukammare maid's room near kitchen. Hall, Vardagsrum, Matsal with serveringsgång (serving hatch) to Kök, two Sovrum, Badrum, separate WC, Klädkammare, Balkong. Source: hemnet.se Östermalm sekelskifte listings.",
+    "suitable_for": ["young_family", "couple", "executive_pied_a_terre", "academic"],
+    "tags": ["sweden", "scandinavian", "stockholm", "sekelskifte", "2bed", "vintage_traditional", "altbau_high_ceilings", "fireplace_kachelofen", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,10],[0,10]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[3,0],[3,4],[0,4]], "area_sqm": 12,
+      "notes": "Generous Stockholm hall" },
+    { "id": "r_vardagsrum", "name": "Vardagsrum", "type": "living",
+      "polygon": [[3,0],[8,0],[8,5],[3,5]], "area_sqm": 25,
+      "notes": "Living with Kakelugn tile stove + Stuckatur" },
+    { "id": "r_matsal", "name": "Matsal", "type": "dining",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16,
+      "notes": "Dining with serveringsgång to Kök" },
+    { "id": "r_kok", "name": "Kök", "type": "kitchen",
+      "polygon": [[8,4],[12,4],[12,7],[8,7]], "area_sqm": 12 },
+    { "id": "r_klad", "name": "Klädkammare", "type": "wardrobe",
+      "polygon": [[0,4],[3,4],[3,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_badrum", "name": "Badrum", "type": "bathroom",
+      "polygon": [[0,6],[3,6],[3,8],[0,8]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "Separat WC", "type": "wc",
+      "polygon": [[0,8],[3,8],[3,10],[0,10]], "area_sqm": 6 },
+    { "id": "r_sovrum1", "name": "Sovrum 1 (Master)", "type": "master_bedroom",
+      "polygon": [[3,5],[8,5],[8,10],[3,10]], "area_sqm": 25 },
+    { "id": "r_sovrum2", "name": "Sovrum 2", "type": "bedroom",
+      "polygon": [[8,7],[12,7],[12,10],[8,10]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_vardagsrum", "position": [3, 2], "width_mm": 1200 },
+    { "from": "r_hall", "to": "r_klad", "position": [1.5, 4], "width_mm": 800 },
+    { "from": "r_klad", "to": "r_badrum", "position": [1.5, 6], "width_mm": 800 },
+    { "from": "r_badrum", "to": "r_wc", "position": [1.5, 8], "width_mm": 700 },
+    { "from": "r_vardagsrum", "to": "r_matsal", "position": [8, 2], "width_mm": 1500 },
+    { "from": "r_matsal", "to": "r_kok", "position": [10, 4], "width_mm": 1100 },
+    { "from": "r_vardagsrum", "to": "r_sovrum1", "position": [5.5, 5], "width_mm": 900 },
+    { "from": "r_sovrum1", "to": "r_sovrum2", "position": [8, 8.5], "width_mm": 800 },
+    { "from": "r_kok", "to": "r_sovrum2", "position": [10, 7], "width_mm": 800 },
+    { "from": "r_klad", "to": "r_sovrum1", "position": [3, 5.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_vardagsrum", "position": [5.5, 0], "width_mm": 3000 },
+    { "room": "r_matsal", "position": [10, 0], "width_mm": 2400 },
+    { "room": "r_matsal", "position": [12, 2], "width_mm": 1500 },
+    { "room": "r_kok", "position": [12, 5.5], "width_mm": 1500 },
+    { "room": "r_sovrum1", "position": [5.5, 10], "width_mm": 2400 },
+    { "room": "r_sovrum2", "position": [10, 10], "width_mm": 1800 },
+    { "room": "r_sovrum2", "position": [12, 8.5], "width_mm": 1500 },
+    { "room": "r_badrum", "position": [0, 7], "width_mm": 600 },
+    { "room": "r_wc", "position": [0, 9], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 2], "width_mm": 1200 }
+  ]
+}

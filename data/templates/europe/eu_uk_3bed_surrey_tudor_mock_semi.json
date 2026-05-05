@@ -1,0 +1,70 @@
+{
+  "id": "eu_uk_3bed_surrey_tudor_mock_semi",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Surrey",
+    "size_label": "3bed",
+    "size_band": "3bed",
+    "total_area_sqm": 100,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Surrey Tudor Mock 3-bed Semi (Esher / Sutton, half-timbered gable)",
+    "description": "A Surrey Tudor mock 3-bed semi-detached — typical 100 m² 1930s mock-Tudor with half-timbered gable, leaded windows, hipped tile roof. Lounge with inglenook, Kitchen-Diner, Master, Bedroom 2, Bedroom 3, Bath, Hall + back hall, Garage, large rear garden. Source: justanswer.com 1930s mock-Tudor.",
+    "suitable_for": ["young_family", "growing_family"],
+    "tags": ["united_kingdom", "surrey", "tudor_semi", "3bed", "interwar_1920_1939", "fireplace_kachelofen", "garage_attached", "garten", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,10],[0,10]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_lounge", "name": "Lounge", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20,
+      "notes": "Lounge with faux-Tudor inglenook fireplace" },
+    { "id": "r_kit_diner", "name": "Kitchen-Diner", "type": "kitchen",
+      "polygon": [[6,0],[10,0],[10,4.5],[6,4.5]], "area_sqm": 18 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5.5],[0,5.5]], "area_sqm": 5 },
+    { "id": "r_garage", "name": "Garage", "type": "parking",
+      "polygon": [[6,4.5],[10,4.5],[10,8],[6,8]], "area_sqm": 14 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_hall_ext", "name": "Back Hall", "type": "corridor",
+      "polygon": [[0,5.5],[2,5.5],[2,8],[0,8]], "area_sqm": 5 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[2,8],[6,8],[6,10],[2,10]], "area_sqm": 8 },
+    { "id": "r_bed3", "name": "Bedroom 3", "type": "bedroom",
+      "polygon": [[6,8],[10,8],[10,10],[6,10]], "area_sqm": 8 },
+    { "id": "r_garden_strip", "name": "Garden Strip", "type": "balcony",
+      "polygon": [[0,8],[2,8],[2,10],[0,10]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_lounge", "position": [2, 1.5], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_bath", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_hall_ext", "position": [1, 5.5], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_master", "position": [2, 6.5], "width_mm": 900 },
+    { "from": "r_lounge", "to": "r_kit_diner", "position": [6, 2.5], "width_mm": 1500 },
+    { "from": "r_lounge", "to": "r_master", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_kit_diner", "to": "r_garage", "position": [8, 4.5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bed2", "position": [4, 8], "width_mm": 900 },
+    { "from": "r_garage", "to": "r_bed3", "position": [8, 8], "width_mm": 900 },
+    { "from": "r_bed2", "to": "r_bed3", "position": [6, 9], "width_mm": 800 },
+    { "from": "r_hall_ext", "to": "r_garden_strip", "position": [1, 8], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_lounge", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kit_diner", "position": [8, 0], "width_mm": 2000 },
+    { "room": "r_kit_diner", "position": [10, 2.25], "width_mm": 1500 },
+    { "room": "r_garage", "position": [10, 6], "width_mm": 1200 },
+    { "room": "r_master", "position": [4, 8], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [4, 10], "width_mm": 1500 },
+    { "room": "r_bed3", "position": [8, 10], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0, 4.25], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.5], "width_mm": 1000 }
+  ]
+}

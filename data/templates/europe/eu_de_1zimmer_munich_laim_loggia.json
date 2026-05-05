@@ -1,0 +1,45 @@
+{
+  "id": "eu_de_1zimmer_munich_laim_loggia",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "München",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 25,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "München Laim Studio mit Loggia (Studio M2)",
+    "description": "A München Laim Studio mit Loggia — typical 21 m² Studentenappartement with EBK Pantry, separate Duschbad, and a recessed Loggia. Aufzug, möbliert. Source: studentenappartements-muenchen.de Studio M2 listings.",
+    "suitable_for": ["single_professional", "student_share"],
+    "tags": ["germany", "munich", "neubau", "studio", "current_2020plus", "loggia", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,5],[0,5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_wohnen", "name": "Wohn-Schlafraum", "type": "living",
+      "polygon": [[0,0],[5,0],[5,3],[0,3]], "area_sqm": 15 },
+    { "id": "r_pantry", "name": "Pantry", "type": "kochnische",
+      "polygon": [[0,3],[1.5,3],[1.5,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_bad", "name": "Duschbad", "type": "bathroom",
+      "polygon": [[1.5,3],[3,3],[3,5],[1.5,5]], "area_sqm": 3 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[3,3],[5,3],[5,5],[3,5]], "area_sqm": 4,
+      "notes": "Recessed Loggia — Munich Studentenappartement signature" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_wohnen", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_wohnen", "to": "r_pantry", "position": [0.75, 3], "width_mm": 800 },
+    { "from": "r_wohnen", "to": "r_bad", "position": [2.25, 3], "width_mm": 700 },
+    { "from": "r_wohnen", "to": "r_loggia", "position": [4, 3], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_wohnen", "position": [2.5, 0], "width_mm": 1800 },
+    { "room": "r_wohnen", "position": [5, 1.5], "width_mm": 1200 },
+    { "room": "r_loggia", "position": [4, 5], "width_mm": 1200 },
+    { "room": "r_pantry", "position": [0, 4], "width_mm": 600 }
+  ]
+}

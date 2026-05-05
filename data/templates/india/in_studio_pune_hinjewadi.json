@@ -1,0 +1,44 @@
+{
+  "id": "in_studio_pune_hinjewadi",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Pune",
+    "size_label": "studio",
+    "size_band": "studio",
+    "total_area_sqm": 30,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Pune Hinjewadi Studio (IT-belt service apartment)",
+    "description": "A Pune Hinjewadi compact studio — typical 320 sqft (~30 m²) IT-corridor service apartment. Open Living-Bed-Kitchenette combined, Toilet, Foyer. Source: Pune Hinjewadi studio listings.",
+    "suitable_for": ["single_professional", "expat"],
+    "tags": ["india", "pune", "apartment_indian", "studio", "current_2020plus", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[5,0],[5,6],[0,6]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[1,0],[1,2],[0,2]], "area_sqm": 2 },
+    { "id": "r_toilet", "name": "Toilet", "type": "bathroom",
+      "polygon": [[1,0],[3,0],[3,2],[1,2]], "area_sqm": 4 },
+    { "id": "r_kitchenette", "name": "Kitchenette", "type": "kochnische",
+      "polygon": [[3,0],[5,0],[5,2],[3,2]], "area_sqm": 4 },
+    { "id": "r_living_bed", "name": "Living-Bed (combined)", "type": "living",
+      "polygon": [[0,2],[5,2],[5,6],[0,6]], "area_sqm": 20 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living_bed", "position": [0.5, 2], "width_mm": 800 },
+    { "from": "r_living_bed", "to": "r_toilet", "position": [2, 2], "width_mm": 700 },
+    { "from": "r_living_bed", "to": "r_kitchenette", "position": [4, 2], "width_mm": 1100 }
+  ],
+  "windows": [
+    { "room": "r_living_bed", "position": [2.5, 6], "width_mm": 1800 },
+    { "room": "r_living_bed", "position": [0, 4], "width_mm": 1500 },
+    { "room": "r_living_bed", "position": [5, 4], "width_mm": 1500 },
+    { "room": "r_kitchenette", "position": [4, 0], "width_mm": 1200 }
+  ]
+}
