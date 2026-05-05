@@ -1,0 +1,64 @@
+{
+  "id": "eu_ro_2bed_bucharest_interbelic",
+  "metadata": {
+    "region": "europe",
+    "country": "Romania",
+    "city_inspiration": "Bucharest",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Bucharest Interbelic apartment (1920s-30s Art Deco)",
+    "description": "A Bucharest interbelic Art Deco apartment — typical 1920s-30s Cotroceni/Dorobanti typology, ~90 m² with high ceilings, ornate plaster, original parquet. Hol, Sufragerie, Bucătărie, Două Dormitoare, Baie, WC, Balcon. Source: imobiliare.ro Bucharest interbelic.",
+    "suitable_for": ["young_family", "couple", "academic", "creative_artist"],
+    "tags": ["romania", "bucharest", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Hol", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sufragerie", "name": "Sufragerie (Living)", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_bucatarie", "name": "Bucătărie", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_baie", "name": "Baie", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_dormitor1", "name": "Dormitor 1 (Master)", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,7],[2,7]], "area_sqm": 8 },
+    { "id": "r_dormitor2", "name": "Dormitor 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,7],[6,7]], "area_sqm": 8 },
+    { "id": "r_balcon", "name": "Balcon", "type": "balcony",
+      "polygon": [[0,7],[10,7],[10,9],[0,9]], "area_sqm": 20 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_sufragerie", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_hol", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_baie", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_sufragerie", "to": "r_bucatarie", "position": [7, 2.5], "width_mm": 1100 },
+    { "from": "r_sufragerie", "to": "r_dormitor1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_bucatarie", "to": "r_dormitor2", "position": [8.5, 5], "width_mm": 900 },
+    { "from": "r_dormitor1", "to": "r_dormitor2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_baie", "to": "r_balcon", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_dormitor1", "to": "r_balcon", "position": [4, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_dormitor2", "to": "r_balcon", "position": [8, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_sufragerie", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_bucatarie", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_bucatarie", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_dormitor1", "position": [4, 7], "width_mm": 1500 },
+    { "room": "r_dormitor2", "position": [8, 7], "width_mm": 1500 },
+    { "room": "r_dormitor2", "position": [10, 6], "width_mm": 1200 },
+    { "room": "r_balcon", "position": [5, 9], "width_mm": 3000 },
+    { "room": "r_baie", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_hol", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

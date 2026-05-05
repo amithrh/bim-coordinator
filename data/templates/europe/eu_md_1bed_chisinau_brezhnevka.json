@@ -1,0 +1,65 @@
+{
+  "id": "eu_md_1bed_chisinau_brezhnevka",
+  "metadata": {
+    "region": "europe",
+    "country": "Moldova",
+    "city_inspiration": "Chisinau",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 49,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Chisinau Brezhnevka 1-bed (1970s improved Soviet prefab)",
+    "description": "A Chisinau Brezhnevka 1-bed — improved 1970s Soviet prefab, ~49 m². Hol, Sufragerie, Bucătărie, Dormitor, Baie, WC, Balcon. Source: 999.md Chisinau.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["moldova", "chisinau", "plattenbau", "1bed", "modernist_1970s", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Hol", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_sufragerie", "name": "Sufragerie", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_bucatarie", "name": "Bucătărie", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[5,3],[7,3],[7,4],[5,4]], "area_sqm": 2 },
+    { "id": "r_baie", "name": "Baie", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_dormitor", "name": "Dormitor", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,6],[1.5,6]], "area_sqm": 7 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,6],[5,6]], "area_sqm": 4 },
+    { "id": "r_balcon", "name": "Balcon", "type": "balcony",
+      "polygon": [[0,6],[7,6],[7,7],[0,7]], "area_sqm": 7 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,6],[0,6]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_sufragerie", "position": [1.5, 1.5], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_baie", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_sufragerie", "to": "r_bucatarie", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_bucatarie", "to": "r_wc", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_sufragerie", "to": "r_dormitor", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_sufragerie", "to": "r_wc", "position": [5, 3.5], "width_mm": 700 },
+    { "from": "r_dormitor", "to": "r_storage", "position": [5, 5], "width_mm": 700 },
+    { "from": "r_baie", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_hall_back", "to": "r_balcon", "position": [0.75, 6], "width_mm": 700, "swing": "slide" },
+    { "from": "r_dormitor", "to": "r_balcon", "position": [3.25, 6], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storage", "to": "r_balcon", "position": [6, 6], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_sufragerie", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_bucatarie", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_bucatarie", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_dormitor", "position": [3.25, 6], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 5], "width_mm": 1000 },
+    { "room": "r_balcon", "position": [3.5, 7], "width_mm": 2400 },
+    { "room": "r_baie", "position": [0, 4], "width_mm": 600 }
+  ]
+}

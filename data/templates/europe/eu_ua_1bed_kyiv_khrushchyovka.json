@@ -1,0 +1,66 @@
+{
+  "id": "eu_ua_1bed_kyiv_khrushchyovka",
+  "metadata": {
+    "region": "europe",
+    "country": "Ukraine",
+    "city_inspiration": "Kyiv",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 49,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Kyiv Khrushchyovka 1-bed (Soviet-era 1960s prefab)",
+    "description": "A Kyiv Khrushchyovka 1-bed apartment — Soviet-era 1960s 5-storey prefab, ~49 m². Передпокій (Hall), Кімната (Living-Bed), Кухня (Kitchen), Ванна (Bath), Туалет (WC), Балкон (Balcony). Compact functional Soviet typology. Source: olx.ua Kyiv Khrushchyovka.",
+    "suitable_for": ["single_professional", "couple", "retiree"],
+    "tags": ["ukraine", "kyiv", "plattenbau", "1bed", "modernist_1970s", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2500
+  },
+  "rooms": [
+    { "id": "r_perdpokoy", "name": "Передпокій", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_kimnata", "name": "Кімната (Living-Bed)", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_kukhnya", "name": "Кухня", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_tualet", "name": "Туалет", "type": "wc",
+      "polygon": [[5,3],[7,3],[7,4],[5,4]], "area_sqm": 2 },
+    { "id": "r_vanna", "name": "Ванна", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_spalnya", "name": "Спальня", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,6],[1.5,6]], "area_sqm": 7 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,4],[7,4],[7,6],[5,6]], "area_sqm": 4 },
+    { "id": "r_balkon", "name": "Балкон", "type": "balcony",
+      "polygon": [[0,6],[7,6],[7,7],[0,7]], "area_sqm": 7 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,6],[0,6]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_perdpokoy", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_perdpokoy", "to": "r_kimnata", "position": [1.5, 1.5], "width_mm": 900 },
+    { "from": "r_perdpokoy", "to": "r_vanna", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_kimnata", "to": "r_kukhnya", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_kukhnya", "to": "r_tualet", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_kimnata", "to": "r_spalnya", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_kimnata", "to": "r_tualet", "position": [5, 3.5], "width_mm": 700 },
+    { "from": "r_spalnya", "to": "r_storage", "position": [5, 5], "width_mm": 700 },
+    { "from": "r_vanna", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_hall_back", "to": "r_balkon", "position": [0.75, 6], "width_mm": 700, "swing": "slide" },
+    { "from": "r_spalnya", "to": "r_balkon", "position": [3.25, 6], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storage", "to": "r_balkon", "position": [6, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_kimnata", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_kimnata", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kukhnya", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kukhnya", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_spalnya", "position": [3.25, 6], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 5], "width_mm": 1000 },
+    { "room": "r_balkon", "position": [3.5, 7], "width_mm": 2400 },
+    { "room": "r_vanna", "position": [0, 4], "width_mm": 600 }
+  ]
+}

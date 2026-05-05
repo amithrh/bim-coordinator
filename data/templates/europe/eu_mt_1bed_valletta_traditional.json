@@ -1,0 +1,60 @@
+{
+  "id": "eu_mt_1bed_valletta_traditional",
+  "metadata": {
+    "region": "europe",
+    "country": "Malta",
+    "city_inspiration": "Valletta",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 60,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Valletta traditional 1-bed (limestone townhouse with gallarija balcony)",
+    "description": "A Valletta UNESCO traditional 1-bed apartment — Maltese limestone townhouse typology with characteristic enclosed gallarija balcony. Hall, Living-Kitchen, Bedroom, Bath, WC, Gallarija (enclosed balcony). Source: maltapark.com Valletta.",
+    "suitable_for": ["single_professional", "couple", "creative_artist"],
+    "tags": ["malta", "valletta", "vintage_traditional", "1bed", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_living_kitchen", "name": "Living-Kitchen (open)", "type": "living",
+      "polygon": [[1.5,0],[7,0],[7,5],[1.5,5]], "area_sqm": 27.5,
+      "notes": "Open Living-Kitchen with limestone walls" },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[1.5,3],[1.5,4.5],[0,4.5]], "area_sqm": 2.25 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,4.5],[1.5,4.5],[1.5,7],[0,7]], "area_sqm": 3.75 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[1.5,5],[7,5],[7,8],[1.5,8]], "area_sqm": 16.5 },
+    { "id": "r_gallarija", "name": "Gallarija (enclosed balcony)", "type": "balcony",
+      "polygon": [[0,8],[7,8],[7,9],[0,9]], "area_sqm": 7,
+      "notes": "Maltese gallarija — enclosed colored timber balcony" },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,7],[1.5,7],[1.5,8],[0,8]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_living_kitchen", "position": [1.5, 1.5], "width_mm": 1000 },
+    { "from": "r_hall", "to": "r_wc", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bath", "position": [0.75, 4.5], "width_mm": 700 },
+    { "from": "r_living_kitchen", "to": "r_bedroom", "position": [4.25, 5], "width_mm": 900 },
+    { "from": "r_bath", "to": "r_hall_back", "position": [0.75, 7], "width_mm": 700 },
+    { "from": "r_bedroom", "to": "r_gallarija", "position": [4.25, 8], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_hall_back", "to": "r_gallarija", "position": [0.75, 8], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living_kitchen", "position": [4.25, 0], "width_mm": 2400 },
+    { "room": "r_living_kitchen", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_living_kitchen", "position": [7, 2.5], "width_mm": 1500 },
+    { "room": "r_bedroom", "position": [4.25, 8], "width_mm": 1800 },
+    { "room": "r_bedroom", "position": [7, 6.5], "width_mm": 1500 },
+    { "room": "r_gallarija", "position": [3.5, 9], "width_mm": 3000 },
+    { "room": "r_bath", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

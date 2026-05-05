@@ -1,0 +1,65 @@
+{
+  "id": "eu_rs_1bed_belgrade_compact",
+  "metadata": {
+    "region": "europe",
+    "country": "Serbia",
+    "city_inspiration": "Belgrade",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 49,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Belgrade compact 1-bed (Novi Beograd 1970s prefab)",
+    "description": "A Belgrade Novi Beograd 1-bed — Yugoslav-era 1970s prefab, ~49 m². Predsoblje, Dnevna soba, Kuhinja, Spavaća soba, Kupatilo, Balkon. Source: nekretnine.rs Belgrade.",
+    "suitable_for": ["young_family", "couple", "single_professional"],
+    "tags": ["serbia", "belgrade", "plattenbau", "1bed", "modernist_1970s", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,7],[0,7]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_predsoblje", "name": "Predsoblje", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_dnevna", "name": "Dnevna soba", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4],[1.5,4]], "area_sqm": 14 },
+    { "id": "r_kuhinja", "name": "Kuhinja", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,3],[5,3]], "area_sqm": 6 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,3],[7,3],[7,4],[5,4]], "area_sqm": 2 },
+    { "id": "r_kupatilo", "name": "Kupatilo", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_spavaca", "name": "Spavaća soba", "type": "master_bedroom",
+      "polygon": [[1.5,4],[5,4],[5,6],[1.5,6]], "area_sqm": 7 },
+    { "id": "r_storage2", "name": "Storage 2", "type": "store",
+      "polygon": [[5,4],[7,4],[7,6],[5,6]], "area_sqm": 4 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,6],[7,6],[7,7],[0,7]], "area_sqm": 7 },
+    { "id": "r_hall_back", "name": "Hall back", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,6],[0,6]], "area_sqm": 1.5 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_predsoblje", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_predsoblje", "to": "r_dnevna", "position": [1.5, 1.5], "width_mm": 900 },
+    { "from": "r_predsoblje", "to": "r_kupatilo", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_dnevna", "to": "r_kuhinja", "position": [5, 1.5], "width_mm": 900 },
+    { "from": "r_kuhinja", "to": "r_storage", "position": [6, 3], "width_mm": 700 },
+    { "from": "r_dnevna", "to": "r_spavaca", "position": [3.25, 4], "width_mm": 900 },
+    { "from": "r_dnevna", "to": "r_storage", "position": [5, 3.5], "width_mm": 700 },
+    { "from": "r_spavaca", "to": "r_storage2", "position": [5, 5], "width_mm": 700 },
+    { "from": "r_kupatilo", "to": "r_hall_back", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_hall_back", "to": "r_balkon", "position": [0.75, 6], "width_mm": 700, "swing": "slide" },
+    { "from": "r_spavaca", "to": "r_balkon", "position": [3.25, 6], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_storage2", "to": "r_balkon", "position": [6, 6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_dnevna", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_kuhinja", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kuhinja", "position": [7, 1.5], "width_mm": 1200 },
+    { "room": "r_spavaca", "position": [3.25, 6], "width_mm": 1500 },
+    { "room": "r_storage2", "position": [7, 5], "width_mm": 1000 },
+    { "room": "r_balkon", "position": [3.5, 7], "width_mm": 2400 },
+    { "room": "r_kupatilo", "position": [0, 4], "width_mm": 600 }
+  ]
+}

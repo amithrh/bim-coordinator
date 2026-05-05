@@ -1,0 +1,63 @@
+{
+  "id": "eu_mk_2bed_skopje_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "North Macedonia",
+    "city_inspiration": "Skopje",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Skopje modern 2-bed (Centar/Aerodrom contemporary)",
+    "description": "A Skopje Centar/Aerodrom modern 2-bed — typical contemporary post-2000 build, ~72 m². Антре, Дневна, Кујна, two Спална, Бања, WC, Тераса. Source: pazar3.mk Skopje.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["north_macedonia", "skopje", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_antre", "name": "Антре", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_dnevna", "name": "Дневна", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kujna", "name": "Кујна", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_banja", "name": "Бања", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_spalna1", "name": "Спална 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_spalna2", "name": "Спална 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_terasa", "name": "Тераса", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_antre", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_antre", "to": "r_dnevna", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_antre", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_banja", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_dnevna", "to": "r_kujna", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_dnevna", "to": "r_spalna1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_kujna", "to": "r_spalna2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_spalna1", "to": "r_spalna2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_banja", "to": "r_terasa", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_spalna1", "to": "r_terasa", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_spalna2", "to": "r_terasa", "position": [6.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_dnevna", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kujna", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kujna", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_terasa", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_terasa", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_terasa", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_banja", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_antre", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}
