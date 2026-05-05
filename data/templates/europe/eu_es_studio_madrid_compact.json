@@ -1,0 +1,46 @@
+{
+  "id": "eu_es_studio_madrid_compact",
+  "metadata": {
+    "region": "europe",
+    "country": "Spain",
+    "city_inspiration": "Madrid",
+    "size_label": "studio",
+    "size_band": "studio",
+    "total_area_sqm": 42,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Madrid studio compact (Malasaña central conversion)",
+    "description": "A Madrid Malasaña studio compact — central conversion in old corrala, ~35 m². Hall, Open Living-Sleep-Kitchen, Baño, Balcón. Source: idealista.com Madrid Malasaña.",
+    "suitable_for": ["single_professional", "student"],
+    "tags": ["spain", "madrid", "vintage_traditional", "studio", "altbau_high_ceilings", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,7],[0,7]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_studio", "name": "Living-Sleep-Kitchen", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,5],[1.5,5]], "area_sqm": 22.5 },
+    { "id": "r_bano", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_balcon", "name": "Balcón", "type": "balcony",
+      "polygon": [[0,5],[6,5],[6,7],[0,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_studio", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_bano", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_studio", "to": "r_balcon", "position": [3.75, 5], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bano", "to": "r_balcon", "position": [0.75, 5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_studio", "position": [3.75, 0], "width_mm": 2400 },
+    { "room": "r_studio", "position": [6, 2.5], "width_mm": 1500 },
+    { "room": "r_balcon", "position": [3, 7], "width_mm": 3000 },
+    { "room": "r_bano", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_hall", "position": [0, 1], "width_mm": 800 }
+  ]
+}

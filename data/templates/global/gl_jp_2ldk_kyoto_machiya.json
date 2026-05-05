@@ -1,0 +1,69 @@
+{
+  "id": "gl_jp_2ldk_kyoto_machiya",
+  "metadata": {
+    "region": "global",
+    "country": "Japan",
+    "city_inspiration": "Kyoto",
+    "size_label": "2LDK",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Kyoto 2LDK machiya (traditional wooden townhouse)",
+    "description": "A Kyoto traditional 2LDK machiya (町家) — wooden townhouse with engawa veranda, tatami zashiki, kitchen+living LDK, and tsuboniwa courtyard, ~75 m². 玄関 (genkan), Living-Dining-Kitchen, two 和室 (washitsu), Bath unit, 中庭 (tsuboniwa). Source: suumo.jp Kyoto.",
+    "suitable_for": ["family", "creative_artist"],
+    "tags": ["japan", "kyoto", "vintage_traditional", "2bed", "altbau_high_ceilings", "courtyard_central", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,12],[0,12]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_genkan", "name": "玄関", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_doma", "name": "土間 (entry hall)", "type": "corridor",
+      "polygon": [[2,0],[6,0],[6,2],[2,2]], "area_sqm": 8 },
+    { "id": "r_ldk", "name": "Living-Dining-Kitchen", "type": "living",
+      "polygon": [[0,2],[6,2],[6,6],[0,6]], "area_sqm": 24 },
+    { "id": "r_washitsu1", "name": "和室 1", "type": "master_bedroom",
+      "polygon": [[0,6],[3,6],[3,8],[0,8]], "area_sqm": 6 },
+    { "id": "r_washitsu2", "name": "和室 2", "type": "bedroom",
+      "polygon": [[3,6],[6,6],[6,8],[3,8]], "area_sqm": 6 },
+    { "id": "r_bath", "name": "Unit Bath", "type": "bathroom",
+      "polygon": [[0,8],[2,8],[2,9.5],[0,9.5]], "area_sqm": 3 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[2,8],[4,8],[4,9.5],[2,9.5]], "area_sqm": 3 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[4,8],[6,8],[6,9.5],[4,9.5]], "area_sqm": 3 },
+    { "id": "r_tsuboniwa", "name": "中庭 (tsuboniwa)", "type": "balcony",
+      "polygon": [[0,9.5],[6,9.5],[6,12],[0,12]], "area_sqm": 15,
+      "notes": "Traditional inner courtyard garden" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_genkan", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_genkan", "to": "r_doma", "position": [2, 1], "width_mm": 1100 },
+    { "from": "r_doma", "to": "r_ldk", "position": [3, 2], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_ldk", "to": "r_washitsu1", "position": [1.5, 6], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_ldk", "to": "r_washitsu2", "position": [4.5, 6], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_washitsu1", "to": "r_washitsu2", "position": [3, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_washitsu1", "to": "r_bath", "position": [1, 8], "width_mm": 700 },
+    { "from": "r_washitsu2", "to": "r_wc", "position": [3, 8], "width_mm": 700 },
+    { "from": "r_washitsu2", "to": "r_storage", "position": [5, 8], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_tsuboniwa", "position": [1, 9.5], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_tsuboniwa", "position": [3, 9.5], "width_mm": 700 },
+    { "from": "r_storage", "to": "r_tsuboniwa", "position": [5, 9.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_doma", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_ldk", "position": [3, 2], "width_mm": 2400 },
+    { "room": "r_ldk", "position": [0, 4], "width_mm": 1500 },
+    { "room": "r_ldk", "position": [6, 4], "width_mm": 1500 },
+    { "room": "r_washitsu1", "position": [0, 7], "width_mm": 1200 },
+    { "room": "r_washitsu2", "position": [6, 7], "width_mm": 1200 },
+    { "room": "r_tsuboniwa", "position": [3, 12], "width_mm": 3000 },
+    { "room": "r_tsuboniwa", "position": [0, 10.5], "width_mm": 1500 },
+    { "room": "r_tsuboniwa", "position": [6, 10.5], "width_mm": 1500 },
+    { "room": "r_genkan", "position": [0, 1], "width_mm": 800 }
+  ]
+}

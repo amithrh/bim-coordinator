@@ -1,0 +1,67 @@
+{
+  "id": "gl_kr_2bed_seoul_apartment",
+  "metadata": {
+    "region": "global",
+    "country": "South Korea",
+    "city_inspiration": "Seoul",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 85,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Seoul 2-bed apartment (Gangnam apateu)",
+    "description": "A Seoul Gangnam 2-bed apateu — typical Korean high-rise apartment with ondol underfloor heating, ~85 m². 현관 (hyeon-gwan), Living-Dining, Kitchen, two 침실 (chimsil), Bath, Pantry, Balcony. Source: r114.com Seoul Gangnam.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["south_korea", "seoul", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,11],[0,11]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_hyeon_gwan", "name": "현관", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_corridor", "name": "Corridor", "type": "corridor",
+      "polygon": [[2,0],[6,0],[6,2],[2,2]], "area_sqm": 8 },
+    { "id": "r_pantry", "name": "Pantry", "type": "store",
+      "polygon": [[6,0],[8,0],[8,2],[6,2]], "area_sqm": 4 },
+    { "id": "r_chimsil1", "name": "침실 1 (master)", "type": "master_bedroom",
+      "polygon": [[0,2],[4,2],[4,5],[0,5]], "area_sqm": 12 },
+    { "id": "r_chimsil2", "name": "침실 2", "type": "bedroom",
+      "polygon": [[4,2],[8,2],[8,5],[4,5]], "area_sqm": 12 },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,5],[3,5],[3,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[3,5],[8,5],[8,7],[3,7]], "area_sqm": 10 },
+    { "id": "r_ldk", "name": "Living-Dining", "type": "living",
+      "polygon": [[0,7],[8,7],[8,10],[0,10]], "area_sqm": 24 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,10],[8,10],[8,11],[0,11]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hyeon_gwan", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hyeon_gwan", "to": "r_corridor", "position": [2, 1], "width_mm": 1100 },
+    { "from": "r_corridor", "to": "r_pantry", "position": [6, 1], "width_mm": 800 },
+    { "from": "r_corridor", "to": "r_chimsil1", "position": [3, 2], "width_mm": 800 },
+    { "from": "r_corridor", "to": "r_chimsil2", "position": [5, 2], "width_mm": 800 },
+    { "from": "r_chimsil1", "to": "r_bath", "position": [1.5, 5], "width_mm": 800 },
+    { "from": "r_chimsil1", "to": "r_kitchen", "position": [3, 5], "width_mm": 800 },
+    { "from": "r_chimsil2", "to": "r_kitchen", "position": [6, 5], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_ldk", "position": [1.5, 7], "width_mm": 800 },
+    { "from": "r_kitchen", "to": "r_ldk", "position": [5, 7], "width_mm": 1500 },
+    { "from": "r_ldk", "to": "r_balcony", "position": [4, 10], "width_mm": 2400, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_corridor", "position": [4, 0], "width_mm": 1200 },
+    { "room": "r_chimsil1", "position": [0, 3.5], "width_mm": 1500 },
+    { "room": "r_chimsil2", "position": [8, 3.5], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 6], "width_mm": 1500 },
+    { "room": "r_ldk", "position": [4, 7], "width_mm": 2400 },
+    { "room": "r_balcony", "position": [4, 11], "width_mm": 3000 },
+    { "room": "r_balcony", "position": [0, 10.5], "width_mm": 800 },
+    { "room": "r_balcony", "position": [8, 10.5], "width_mm": 800 },
+    { "room": "r_bath", "position": [0, 6], "width_mm": 600 },
+    { "room": "r_hyeon_gwan", "position": [0, 1], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "eu_de_studio_berlin_compact",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Berlin",
+    "size_label": "1zimmer",
+    "size_band": "studio",
+    "total_area_sqm": 42,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "Berlin 1-Zimmer studio compact (Friedrichshain Altbau)",
+    "description": "A Berlin Friedrichshain 1-Zimmer Altbau studio — compact East Berlin Gründerzeit, ~35 m². Diele, Open Wohnen-Schlaf-Küche, Bad, Balkon. Source: immobilienscout24.de Berlin Friedrichshain.",
+    "suitable_for": ["single_professional", "student"],
+    "tags": ["germany", "berlin", "altbau_grunderzeit", "studio", "altbau_high_ceilings", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[6,0],[6,7],[0,7]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,2],[0,2]], "area_sqm": 3 },
+    { "id": "r_studio", "name": "Wohnen-Schlaf-Küche", "type": "living",
+      "polygon": [[1.5,0],[6,0],[6,5],[1.5,5]], "area_sqm": 22.5 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,2],[1.5,2],[1.5,5],[0,5]], "area_sqm": 4.5 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,5],[6,5],[6,7],[0,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0.5, 0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_studio", "position": [1.5, 1], "width_mm": 900 },
+    { "from": "r_diele", "to": "r_bad", "position": [0.75, 2], "width_mm": 700 },
+    { "from": "r_studio", "to": "r_balkon", "position": [3.75, 5], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bad", "to": "r_balkon", "position": [0.75, 5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_studio", "position": [3.75, 0], "width_mm": 2400 },
+    { "room": "r_studio", "position": [6, 2.5], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [3, 7], "width_mm": 3000 },
+    { "room": "r_bad", "position": [0, 3.5], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 1], "width_mm": 800 }
+  ]
+}

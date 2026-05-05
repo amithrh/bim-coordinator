@@ -1,0 +1,71 @@
+{
+  "id": "gl_jp_3ldk_osaka_modern",
+  "metadata": {
+    "region": "global",
+    "country": "Japan",
+    "city_inspiration": "Osaka",
+    "size_label": "3LDK",
+    "size_band": "3bed",
+    "total_area_sqm": 80,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Osaka 3LDK modern (Umeda mansion newbuild)",
+    "description": "A Osaka Umeda 3LDK mansion — typical post-2000 Japanese newbuild apartment, ~80 m². 玄関 (genkan), LDK, three 洋室 (yōshitsu), Unit Bath, WC, Balcony. Source: suumo.jp Osaka Umeda.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["japan", "osaka", "neubau", "3bed", "current_2020plus", "balkon", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,11],[0,11]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_genkan", "name": "玄関", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_corridor", "name": "Corridor", "type": "corridor",
+      "polygon": [[2,0],[6,0],[6,2],[2,2]], "area_sqm": 8 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[6,0],[8,0],[8,2],[6,2]], "area_sqm": 4 },
+    { "id": "r_yoshitsu1", "name": "洋室 1 (master)", "type": "master_bedroom",
+      "polygon": [[0,2],[4,2],[4,5],[0,5]], "area_sqm": 12 },
+    { "id": "r_yoshitsu2", "name": "洋室 2", "type": "bedroom",
+      "polygon": [[4,2],[8,2],[8,5],[4,5]], "area_sqm": 12 },
+    { "id": "r_bath", "name": "Unit Bath", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_yoshitsu3", "name": "洋室 3", "type": "bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_ldk", "name": "LDK", "type": "living",
+      "polygon": [[0,7],[8,7],[8,10],[0,10]], "area_sqm": 24 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,10],[8,10],[8,11],[0,11]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_genkan", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_genkan", "to": "r_corridor", "position": [2, 1], "width_mm": 1100 },
+    { "from": "r_corridor", "to": "r_wc", "position": [6, 1], "width_mm": 700 },
+    { "from": "r_corridor", "to": "r_yoshitsu1", "position": [3, 2], "width_mm": 800 },
+    { "from": "r_corridor", "to": "r_yoshitsu2", "position": [5, 2], "width_mm": 800 },
+    { "from": "r_yoshitsu1", "to": "r_bath", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_yoshitsu1", "to": "r_yoshitsu3", "position": [3, 5], "width_mm": 800 },
+    { "from": "r_yoshitsu2", "to": "r_storage", "position": [6, 5], "width_mm": 800 },
+    { "from": "r_yoshitsu3", "to": "r_storage", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_ldk", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_yoshitsu3", "to": "r_ldk", "position": [3.5, 7], "width_mm": 800 },
+    { "from": "r_storage", "to": "r_ldk", "position": [6.5, 7], "width_mm": 800 },
+    { "from": "r_ldk", "to": "r_balcony", "position": [4, 10], "width_mm": 2400, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_corridor", "position": [4, 0], "width_mm": 1200 },
+    { "room": "r_yoshitsu1", "position": [0, 3.5], "width_mm": 1500 },
+    { "room": "r_yoshitsu2", "position": [8, 3.5], "width_mm": 1500 },
+    { "room": "r_yoshitsu3", "position": [3.5, 7], "width_mm": 1500 },
+    { "room": "r_storage", "position": [8, 6], "width_mm": 1200 },
+    { "room": "r_ldk", "position": [4, 7], "width_mm": 2400 },
+    { "room": "r_balcony", "position": [4, 11], "width_mm": 3000 },
+    { "room": "r_balcony", "position": [0, 10.5], "width_mm": 800 },
+    { "room": "r_balcony", "position": [8, 10.5], "width_mm": 800 },
+    { "room": "r_genkan", "position": [0, 1], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "eu_cz_2bed_brno_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "Czech Republic",
+    "city_inspiration": "Brno",
+    "size_label": "3kk",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Brno 3+kk modern (Královo Pole contemporary)",
+    "description": "A Brno Královo Pole 3+kk modern — Czech contemporary newbuild, ~75 m². Předsíň, Obývací pokoj, Kuchyňský kout, two Ložnice, Koupelna, WC, Balkon. Source: sreality.cz Brno Královo Pole.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["czech_republic", "brno", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_predsin", "name": "Předsíň", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_obyvaci", "name": "Obývací pokoj", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kuchyne", "name": "Kuchyňský kout", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_koupelna", "name": "Koupelna", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_loznice1", "name": "Ložnice 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_loznice2", "name": "Ložnice 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_predsin", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_predsin", "to": "r_obyvaci", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_predsin", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_koupelna", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_obyvaci", "to": "r_kuchyne", "position": [6, 2.5], "width_mm": 1500 },
+    { "from": "r_obyvaci", "to": "r_loznice1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_kuchyne", "to": "r_loznice2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_loznice1", "to": "r_loznice2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_koupelna", "to": "r_balkon", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_loznice1", "to": "r_balkon", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_loznice2", "to": "r_balkon", "position": [6.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_obyvaci", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kuchyne", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kuchyne", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_balkon", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_koupelna", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_predsin", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "gl_mx_2bed_mexico_city_colonia",
+  "metadata": {
+    "region": "global",
+    "country": "Mexico",
+    "city_inspiration": "Mexico City",
+    "size_label": "2rec",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Mexico City 2-rec colonia (Roma Norte historic)",
+    "description": "A Mexico City Roma Norte 2-recámaras colonia — historic neighborhood Porfiriato apartment, ~90 m². Recibidor, Sala-Comedor, Cocina, two Recámaras, two Baños, Patio. Source: inmuebles24.com Mexico City Roma Norte.",
+    "suitable_for": ["young_family", "couple", "creative_artist"],
+    "tags": ["mexico", "mexico_city", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_recibidor", "name": "Recibidor", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sala", "name": "Sala-Comedor", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_cocina", "name": "Cocina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bano1", "name": "Baño 1", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_bano2", "name": "Baño 2", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_recamara1", "name": "Recámara 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,7],[2,7]], "area_sqm": 8 },
+    { "id": "r_recamara2", "name": "Recámara 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,7],[6,7]], "area_sqm": 8 },
+    { "id": "r_patio", "name": "Patio", "type": "balcony",
+      "polygon": [[0,7],[10,7],[10,9],[0,9]], "area_sqm": 20 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_recibidor", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_recibidor", "to": "r_sala", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_recibidor", "to": "r_bano1", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_cocina", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_bano1", "to": "r_bano2", "position": [1, 5], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_recamara1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_cocina", "to": "r_recamara2", "position": [8, 5], "width_mm": 900 },
+    { "from": "r_recamara1", "to": "r_recamara2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_bano2", "to": "r_patio", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_recamara1", "to": "r_patio", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_recamara2", "to": "r_patio", "position": [8, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_cocina", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_cocina", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_patio", "position": [5, 9], "width_mm": 3000 },
+    { "room": "r_patio", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_patio", "position": [10, 8], "width_mm": 1500 },
+    { "room": "r_bano1", "position": [0, 4], "width_mm": 600 },
+    { "room": "r_recibidor", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gl_us_studio_sf_loft",
+  "metadata": {
+    "region": "global",
+    "country": "United States",
+    "city_inspiration": "San Francisco",
+    "size_label": "studio",
+    "size_band": "studio",
+    "total_area_sqm": 56,
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "style": "San Francisco loft studio (SoMa industrial conversion)",
+    "description": "A San Francisco SoMa loft studio — converted industrial loft, ~50 m² (540 sqft). Open Living-Sleep-Kitchen, Bath, Storage. Exposed brick, tall windows. Source: zillow.com San Francisco SoMa.",
+    "suitable_for": ["single_professional", "creative_artist"],
+    "tags": ["united_states", "san_francisco", "vintage_traditional", "studio", "altbau_high_ceilings", "compact", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 4000
+  },
+  "rooms": [
+    { "id": "r_studio", "name": "Living-Sleep-Kitchen", "type": "living",
+      "polygon": [[0,0],[7,0],[7,5],[0,5]], "area_sqm": 35,
+      "notes": "Open loft with exposed brick and tall windows" },
+    { "id": "r_bath", "name": "Bath", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_storage", "name": "Storage", "type": "store",
+      "polygon": [[2,5],[7,5],[7,7],[2,7]], "area_sqm": 10 },
+    { "id": "r_patio", "name": "Patio", "type": "balcony",
+      "polygon": [[0,7],[7,7],[7,8],[0,8]], "area_sqm": 7 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_studio", "position": [1, 0], "width_mm": 1500, "is_main_entry": true },
+    { "from": "r_studio", "to": "r_bath", "position": [1, 5], "width_mm": 800 },
+    { "from": "r_studio", "to": "r_storage", "position": [4, 5], "width_mm": 1100 },
+    { "from": "r_bath", "to": "r_patio", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_storage", "to": "r_patio", "position": [4.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_studio", "position": [3.5, 0], "width_mm": 2400 },
+    { "room": "r_studio", "position": [7, 2.5], "width_mm": 2400 },
+    { "room": "r_studio", "position": [0, 2.5], "width_mm": 1500 },
+    { "room": "r_storage", "position": [7, 6], "width_mm": 1200 },
+    { "room": "r_patio", "position": [3.5, 8], "width_mm": 3000 },
+    { "room": "r_bath", "position": [0, 6], "width_mm": 600 }
+  ]
+}

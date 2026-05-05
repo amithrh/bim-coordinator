@@ -1,0 +1,63 @@
+{
+  "id": "gl_vn_2bed_hanoi_modern",
+  "metadata": {
+    "region": "global",
+    "country": "Vietnam",
+    "city_inspiration": "Hanoi",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Hanoi 2-bed modern (Tay Ho Lakeview apartment)",
+    "description": "A Hanoi Tay Ho 2-bed modern — West Lake newbuild apartment, ~70 m². Foyer, Living-Dining, Kitchen, two Bedrooms, two Baths, Balcony. Source: batdongsan.com.vn Hanoi Tay Ho.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["vietnam", "hanoi", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Living-Dining", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_bath1", "name": "Bath 1", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_bath2", "name": "Bath 2", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_foyer", "to": "r_bath1", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_bath1", "to": "r_bath2", "position": [1, 5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bed2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_bath2", "to": "r_balcony", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_master", "to": "r_balcony", "position": [3.5, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bed2", "to": "r_balcony", "position": [6.5, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_balcony", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_bath1", "position": [0, 4], "width_mm": 600 },
+    { "room": "r_foyer", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

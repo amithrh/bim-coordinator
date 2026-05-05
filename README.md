@@ -6,9 +6,9 @@ See `Day-Zero-Build-Plan-v3.2.docx` for the full spec.
 
 ## Template Library
 
-**187 hand-curated templates, all 35/35 IFC-verified.** Real-listing-grounded room programs with cited source URLs.
+**300 hand-curated templates, all 35/35 IFC-verified.** Real-listing-grounded room programs with cited source URLs spanning 50+ countries across Europe, India, USA, Asia-Pacific, Africa, MENA, and Latin America.
 
-### Coverage (24 countries)
+### Coverage (50+ countries)
 
 | Region | Count | |
 |---|---|---|

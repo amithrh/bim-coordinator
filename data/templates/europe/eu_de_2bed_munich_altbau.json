@@ -1,0 +1,63 @@
+{
+  "id": "eu_de_2bed_munich_altbau",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Munich",
+    "size_label": "3zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Munich 3-Zimmer Altbau (Schwabing Gründerzeit)",
+    "description": "A Munich Schwabing 3-Zimmer Altbau — classic Bavarian Gründerzeit, ~90 m². Diele, Wohnzimmer, Küche, two Schlafzimmer, Badezimmer, WC, Balkon. Stuck, parquet. Source: immowelt.de Munich Schwabing.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["germany", "munich", "altbau_grunderzeit", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_diele", "name": "Diele", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_bad", "name": "Badezimmer", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_schlaf1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,7],[2,7]], "area_sqm": 8 },
+    { "id": "r_schlaf2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,7],[6,7]], "area_sqm": 8 },
+    { "id": "r_balkon", "name": "Balkon", "type": "balcony",
+      "polygon": [[0,7],[10,7],[10,9],[0,9]], "area_sqm": 20 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_diele", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_diele", "to": "r_wohnzimmer", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_diele", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bad", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [7, 2.5], "width_mm": 1500 },
+    { "from": "r_wohnzimmer", "to": "r_schlaf1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlaf2", "position": [8, 5], "width_mm": 900 },
+    { "from": "r_schlaf1", "to": "r_schlaf2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_balkon", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_schlaf1", "to": "r_balkon", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_schlaf2", "to": "r_balkon", "position": [8, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [4.5, 0], "width_mm": 2400 },
+    { "room": "r_kueche", "position": [8.5, 0], "width_mm": 1800 },
+    { "room": "r_kueche", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [5, 9], "width_mm": 3000 },
+    { "room": "r_balkon", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [10, 8], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_diele", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

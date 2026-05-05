@@ -1,0 +1,63 @@
+{
+  "id": "gl_id_2bed_jakarta_kampung",
+  "metadata": {
+    "region": "global",
+    "country": "Indonesia",
+    "city_inspiration": "Jakarta",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Jakarta 2-bed kampung house (Menteng compact)",
+    "description": "A Jakarta Menteng 2-bed kampung-style — compact urban Indonesian house, ~70 m². Teras (entry porch), Ruang tamu, Dapur, two Kamar tidur, Kamar mandi, WC, Halaman. Source: rumah123.com Jakarta Menteng.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["indonesia", "jakarta", "vintage_traditional", "2bed", "garden_terrace", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_teras", "name": "Teras", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_ruang_tamu", "name": "Ruang tamu", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_dapur", "name": "Dapur", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_kamar_mandi", "name": "Kamar mandi", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_kamar1", "name": "Kamar tidur 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_kamar2", "name": "Kamar tidur 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_halaman", "name": "Halaman", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_teras", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_teras", "to": "r_ruang_tamu", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_teras", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_kamar_mandi", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_ruang_tamu", "to": "r_dapur", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_ruang_tamu", "to": "r_kamar1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_dapur", "to": "r_kamar2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_kamar1", "to": "r_kamar2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_kamar_mandi", "to": "r_halaman", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_kamar1", "to": "r_halaman", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_kamar2", "to": "r_halaman", "position": [6.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_ruang_tamu", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_dapur", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_dapur", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_halaman", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_halaman", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_halaman", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_kamar_mandi", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_teras", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}
