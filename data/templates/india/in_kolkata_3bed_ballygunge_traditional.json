@@ -1,0 +1,73 @@
+{
+  "id": "in_kolkata_3bed_ballygunge_traditional",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Kolkata",
+    "size_label": "3bhk",
+    "size_band": "3bed",
+    "total_area_sqm": 130,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Kolkata 3BHK Bengali traditional (Ballygunge with verandah and study)",
+    "description": "A Kolkata Ballygunge 3BHK Bengali traditional — heritage-inspired flat with characteristic Bengali verandah on three sides. Foyer, Living-Dining, Kitchen, Master Bedroom, Bedroom 2, Bedroom/Study, Common Bath, Master Bath, Verandah. Source: housing.com Kolkata Ballygunge.",
+    "suitable_for": ["family", "extended_family"],
+    "tags": ["india", "kolkata", "vintage_traditional", "3bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,11],[0,11]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Living-Dining", "type": "living",
+      "polygon": [[2,0],[8,0],[8,5],[2,5]], "area_sqm": 30 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,5],[8,5]], "area_sqm": 20 },
+    { "id": "r_bath_common", "name": "Common Bath", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_bath_master", "name": "Master Bath", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,5],[9,5],[9,9],[6,9]], "area_sqm": 12 },
+    { "id": "r_study", "name": "Bedroom/Study", "type": "bedroom",
+      "polygon": [[9,5],[12,5],[12,9],[9,9]], "area_sqm": 12 },
+    { "id": "r_verandah", "name": "Verandah", "type": "balcony",
+      "polygon": [[0,9],[12,9],[12,11],[0,11]], "area_sqm": 24 },
+    { "id": "r_corridor", "name": "Corridor", "type": "corridor",
+      "polygon": [[0,7],[2,7],[2,9],[0,9]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_foyer", "to": "r_bath_common", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_living", "to": "r_kitchen", "position": [8, 2.5], "width_mm": 1500 },
+    { "from": "r_living", "to": "r_master", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_living", "to": "r_bed2", "position": [7, 5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_study", "position": [10, 5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bath_master", "position": [2, 6], "width_mm": 700 },
+    { "from": "r_master", "to": "r_bed2", "position": [6, 7], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_study", "position": [9, 7], "width_mm": 800 },
+    { "from": "r_bath_master", "to": "r_corridor", "position": [1, 7], "width_mm": 700 },
+    { "from": "r_master", "to": "r_verandah", "position": [4, 9], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_bed2", "to": "r_verandah", "position": [7.5, 9], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_study", "to": "r_verandah", "position": [10.5, 9], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_corridor", "to": "r_verandah", "position": [1, 9], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [5, 0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [10, 0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [12, 2.5], "width_mm": 1500 },
+    { "room": "r_master", "position": [4, 9], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [7.5, 9], "width_mm": 1500 },
+    { "room": "r_study", "position": [10.5, 9], "width_mm": 1500 },
+    { "room": "r_study", "position": [12, 7], "width_mm": 1500 },
+    { "room": "r_verandah", "position": [6, 11], "width_mm": 3000 },
+    { "room": "r_bath_common", "position": [0, 4], "width_mm": 600 },
+    { "room": "r_foyer", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

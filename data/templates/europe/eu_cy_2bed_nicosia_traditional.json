@@ -1,0 +1,64 @@
+{
+  "id": "eu_cy_2bed_nicosia_traditional",
+  "metadata": {
+    "region": "europe",
+    "country": "Cyprus",
+    "city_inspiration": "Nicosia",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 85,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Nicosia 2-bed (Old Town traditional courtyard house)",
+    "description": "A Nicosia Old Town 2-bed — traditional Cypriot stone courtyard house, ~85 m². Είσοδος, Σαλόνι, Κουζίνα, two Υπνοδωμάτιο, Μπάνιο, WC, Αυλή. Limestone, terracotta tile. Source: bazaraki.com Nicosia.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["cyprus", "nicosia", "vintage_traditional", "2bed", "altbau_high_ceilings", "courtyard_central", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_eisodos", "name": "Είσοδος", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_saloni", "name": "Σαλόνι", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kouzina", "name": "Κουζίνα", "type": "kitchen",
+      "polygon": [[6,0],[10,0],[10,5],[6,5]], "area_sqm": 20 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_banio", "name": "Μπάνιο", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_ypno1", "name": "Υπνοδωμάτιο 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,7],[2,7]], "area_sqm": 8 },
+    { "id": "r_ypno2", "name": "Υπνοδωμάτιο 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,7],[6,7]], "area_sqm": 8 },
+    { "id": "r_avli", "name": "Αυλή", "type": "balcony",
+      "polygon": [[0,7],[10,7],[10,9],[0,9]], "area_sqm": 20,
+      "notes": "Traditional courtyard with citrus trees" }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eisodos", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_eisodos", "to": "r_saloni", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_eisodos", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_banio", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_saloni", "to": "r_kouzina", "position": [6, 2.5], "width_mm": 1500 },
+    { "from": "r_saloni", "to": "r_ypno1", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_kouzina", "to": "r_ypno2", "position": [8, 5], "width_mm": 900 },
+    { "from": "r_ypno1", "to": "r_ypno2", "position": [6, 6], "width_mm": 800 },
+    { "from": "r_banio", "to": "r_avli", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_ypno1", "to": "r_avli", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_ypno2", "to": "r_avli", "position": [8, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_saloni", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kouzina", "position": [8, 0], "width_mm": 1800 },
+    { "room": "r_kouzina", "position": [10, 2.5], "width_mm": 1500 },
+    { "room": "r_avli", "position": [5, 9], "width_mm": 3000 },
+    { "room": "r_avli", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_avli", "position": [10, 8], "width_mm": 1500 },
+    { "room": "r_banio", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_eisodos", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "eu_it_2bed_naples_traditional",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Naples",
+    "size_label": "bilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Naples bilocale (Spaccanapoli centro storico)",
+    "description": "A Naples Spaccanapoli centro storico bilocale — UNESCO old city tufo apartment, ~70 m². Ingresso, Soggiorno, Cucina, two Camere, Bagno, WC, Balcone. Tufo stone walls. Source: subito.it Napoli centro.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["italy", "naples", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_camera1", "name": "Camera 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_camera2", "name": "Camera 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_balcone", "name": "Balcone", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_ingresso", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_bagno", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_soggiorno", "to": "r_camera1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_camera1", "to": "r_camera2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_bagno", "to": "r_balcone", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_camera1", "to": "r_balcone", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_camera2", "to": "r_balcone", "position": [6.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_cucina", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_cucina", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_balcone", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_balcone", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balcone", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_bagno", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_ingresso", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

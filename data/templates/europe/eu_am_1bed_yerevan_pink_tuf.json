@@ -1,0 +1,59 @@
+{
+  "id": "eu_am_1bed_yerevan_pink_tuf",
+  "metadata": {
+    "region": "europe",
+    "country": "Armenia",
+    "city_inspiration": "Yerevan",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 64,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Yerevan pink tufa 1-bed (Kentron Stalinka)",
+    "description": "A Yerevan Kentron 1-bed Stalinka — characteristic pink tuff stone facade, ~55 m². Միջանցք, Հյուրասենյակ, Խոհանոց, Ննջասենյակ, Լոգարան, Զուգարան, Պատշգամբ. Source: list.am Yerevan Kentron.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["armenia", "yerevan", "stalinist_classical", "1bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_mijantsk", "name": "Միջանցք", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_hyurasenyak", "name": "Հյուրասենյակ", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4.5],[2,4.5]], "area_sqm": 18 },
+    { "id": "r_khohanots", "name": "Խոհանոց", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4.5],[6,4.5]], "area_sqm": 9 },
+    { "id": "r_zugaran", "name": "Զուգարան", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_logaran", "name": "Լոգարան", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_nnjasenyak", "name": "Ննջասենյակ", "type": "master_bedroom",
+      "polygon": [[2,4.5],[8,4.5],[8,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_patshgamb", "name": "Պատշգամբ", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,8],[0,8]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_mijantsk", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_mijantsk", "to": "r_hyurasenyak", "position": [2, 1.5], "width_mm": 1000 },
+    { "from": "r_mijantsk", "to": "r_zugaran", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_zugaran", "to": "r_logaran", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_hyurasenyak", "to": "r_khohanots", "position": [6, 2.25], "width_mm": 1000 },
+    { "from": "r_hyurasenyak", "to": "r_nnjasenyak", "position": [4, 4.5], "width_mm": 900 },
+    { "from": "r_logaran", "to": "r_patshgamb", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_nnjasenyak", "to": "r_patshgamb", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_nnjasenyak", "to": "r_patshgamb", "position": [7, 7], "width_mm": 800, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_hyurasenyak", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_khohanots", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_khohanots", "position": [8, 2.25], "width_mm": 1200 },
+    { "room": "r_nnjasenyak", "position": [4, 7], "width_mm": 1800 },
+    { "room": "r_nnjasenyak", "position": [8, 5.75], "width_mm": 1500 },
+    { "room": "r_patshgamb", "position": [4, 8], "width_mm": 3000 },
+    { "room": "r_logaran", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_mijantsk", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

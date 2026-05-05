@@ -1,0 +1,61 @@
+{
+  "id": "eu_al_1bed_tirana_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "Albania",
+    "city_inspiration": "Tirana",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 60,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Tirana modern 1-bed (Blloku contemporary)",
+    "description": "A Tirana Blloku modern 1-bed — post-2010 contemporary, ~60 m². Holli (entry), Salloni, Kuzhina, Dhoma e gjumit, Banjo, Tualeti, Ballkoni. Source: merrjep.al Tirana.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["albania", "tirana", "neubau", "1bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,8],[0,8]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_holli", "name": "Holli", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_salloni", "name": "Salloni", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_kuzhina", "name": "Kuzhina", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_tualeti", "name": "Tualeti", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_banjo", "name": "Banjo", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,6],[0,6]], "area_sqm": 3 },
+    { "id": "r_dhoma", "name": "Dhoma e gjumit", "type": "master_bedroom",
+      "polygon": [[2,5],[8,5],[8,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_ballkoni", "name": "Ballkoni", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,8],[0,8]], "area_sqm": 8 },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_holli", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_holli", "to": "r_salloni", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_holli", "to": "r_tualeti", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_tualeti", "to": "r_banjo", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_salloni", "to": "r_kuzhina", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_salloni", "to": "r_dhoma", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_banjo", "to": "r_korridor", "position": [1, 6], "width_mm": 700 },
+    { "from": "r_dhoma", "to": "r_ballkoni", "position": [4, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_korridor", "to": "r_ballkoni", "position": [1, 7], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salloni", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_kuzhina", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_kuzhina", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_dhoma", "position": [4, 7], "width_mm": 1800 },
+    { "room": "r_dhoma", "position": [8, 6], "width_mm": 1500 },
+    { "room": "r_ballkoni", "position": [4, 8], "width_mm": 3000 },
+    { "room": "r_banjo", "position": [0, 5.25], "width_mm": 600 },
+    { "room": "r_holli", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "eu_kz_2bed_almaty_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "Kazakhstan",
+    "city_inspiration": "Almaty",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Almaty modern 2-bed (Bostandyk contemporary newbuild)",
+    "description": "A Almaty Bostandyk modern 2-bed — post-2010 newbuild, ~80 m². Кіреберіс, Қонақ бөлме, Ас үй, two Жатын бөлме, Жуыну бөлмесі, Дәретхана, Балкон. Source: krisha.kz Almaty Bostandyk.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["kazakhstan", "almaty", "neubau", "2bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,9],[0,9]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_kireberis", "name": "Кіреберіс", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_konakbolme", "name": "Қонақ бөлме", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_asuy", "name": "Ас үй", "type": "kitchen",
+      "polygon": [[6,0],[9,0],[9,5],[6,5]], "area_sqm": 15 },
+    { "id": "r_daretkhana", "name": "Дәретхана", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_zhuynu", "name": "Жуыну бөлмесі", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_zhatyn1", "name": "Жатын бөлме 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_zhatyn2", "name": "Жатын бөлме 2", "type": "bedroom",
+      "polygon": [[5,5],[9,5],[9,7],[5,7]], "area_sqm": 8 },
+    { "id": "r_balkon", "name": "Балкон", "type": "balcony",
+      "polygon": [[0,7],[9,7],[9,9],[0,9]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_kireberis", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_kireberis", "to": "r_konakbolme", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_kireberis", "to": "r_daretkhana", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_daretkhana", "to": "r_zhuynu", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_konakbolme", "to": "r_asuy", "position": [6, 2.5], "width_mm": 1200 },
+    { "from": "r_konakbolme", "to": "r_zhatyn1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_asuy", "to": "r_zhatyn2", "position": [7, 5], "width_mm": 900 },
+    { "from": "r_zhatyn1", "to": "r_zhatyn2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_zhuynu", "to": "r_balkon", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_zhatyn1", "to": "r_balkon", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_zhatyn2", "to": "r_balkon", "position": [7, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_konakbolme", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_asuy", "position": [7.5, 0], "width_mm": 1800 },
+    { "room": "r_asuy", "position": [9, 2.5], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [4.5, 9], "width_mm": 3000 },
+    { "room": "r_balkon", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_balkon", "position": [9, 8], "width_mm": 1500 },
+    { "room": "r_zhuynu", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_kireberis", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

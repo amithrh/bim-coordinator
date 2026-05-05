@@ -1,0 +1,63 @@
+{
+  "id": "eu_be_2bed_antwerp_diamantwijk",
+  "metadata": {
+    "region": "europe",
+    "country": "Belgium",
+    "city_inspiration": "Antwerp",
+    "size_label": "2slpk",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Antwerp 2-slpk (Diamantwijk Art Nouveau)",
+    "description": "A Antwerp Diamantwijk 2-slpk Art Nouveau — heritage townhouse near Centraal, ~80 m². Inkom, Woonkamer, Keuken, two Slaapkamer, Badkamer, WC, Terras. Source: immoweb.be Antwerpen.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["belgium", "antwerp", "vintage_traditional", "2bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_inkom", "name": "Inkom", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_woonkamer", "name": "Woonkamer", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_keuken", "name": "Keuken", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,3],[2,3],[2,4.5],[0,4.5]], "area_sqm": 3 },
+    { "id": "r_badkamer", "name": "Badkamer", "type": "bathroom",
+      "polygon": [[0,4.5],[2,4.5],[2,7],[0,7]], "area_sqm": 5 },
+    { "id": "r_slaap1", "name": "Slaapkamer 1", "type": "master_bedroom",
+      "polygon": [[2,5],[5,5],[5,7],[2,7]], "area_sqm": 6 },
+    { "id": "r_slaap2", "name": "Slaapkamer 2", "type": "bedroom",
+      "polygon": [[5,5],[8,5],[8,7],[5,7]], "area_sqm": 6 },
+    { "id": "r_terras", "name": "Terras", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_inkom", "position": [0.5, 0], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_inkom", "to": "r_woonkamer", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_inkom", "to": "r_wc", "position": [1, 3], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_badkamer", "position": [1, 4.5], "width_mm": 700 },
+    { "from": "r_woonkamer", "to": "r_keuken", "position": [6, 2.5], "width_mm": 1100 },
+    { "from": "r_woonkamer", "to": "r_slaap1", "position": [3.5, 5], "width_mm": 900 },
+    { "from": "r_keuken", "to": "r_slaap2", "position": [6.5, 5], "width_mm": 900 },
+    { "from": "r_slaap1", "to": "r_slaap2", "position": [5, 6], "width_mm": 800 },
+    { "from": "r_badkamer", "to": "r_terras", "position": [1, 7], "width_mm": 800 },
+    { "from": "r_slaap1", "to": "r_terras", "position": [3.5, 7], "width_mm": 1200, "swing": "slide" },
+    { "from": "r_slaap2", "to": "r_terras", "position": [6.5, 7], "width_mm": 1200, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_woonkamer", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_keuken", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_keuken", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_terras", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_terras", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_terras", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_badkamer", "position": [0, 5.75], "width_mm": 600 },
+    { "room": "r_inkom", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "eu_me_1bed_kotor_stone",
+  "metadata": {
+    "region": "europe",
+    "country": "Montenegro",
+    "city_inspiration": "Kotor",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Kotor Old Town stone 1-bed (UNESCO Venetian heritage)",
+    "description": "A Kotor Stari Grad UNESCO 1-bed — Venetian Adriatic stone townhouse renovation. Hodnik, Dnevna, Kuhinja, Spavaća, Kupatilo, Balkon (loggia). Limestone walls. Source: realestatemontenegro.com Kotor.",
+    "suitable_for": ["single_professional", "couple", "creative_artist"],
+    "tags": ["montenegro", "kotor", "vintage_traditional", "1bed", "altbau_high_ceilings", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[7,0],[7,8],[0,8]],
+    "wall_thickness_mm": 400,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_hodnik", "name": "Hodnik", "type": "entry",
+      "polygon": [[0,0],[1.5,0],[1.5,3],[0,3]], "area_sqm": 4.5 },
+    { "id": "r_dnevna", "name": "Dnevna", "type": "living",
+      "polygon": [[1.5,0],[5,0],[5,4.5],[1.5,4.5]], "area_sqm": 15.75,
+      "notes": "Living with stone walls" },
+    { "id": "r_kuhinja", "name": "Kuhinja", "type": "kitchen",
+      "polygon": [[5,0],[7,0],[7,4.5],[5,4.5]], "area_sqm": 9 },
+    { "id": "r_kupatilo", "name": "Kupatilo", "type": "bathroom",
+      "polygon": [[0,3],[1.5,3],[1.5,5],[0,5]], "area_sqm": 3 },
+    { "id": "r_spavaca", "name": "Spavaća", "type": "master_bedroom",
+      "polygon": [[1.5,4.5],[7,4.5],[7,7],[1.5,7]], "area_sqm": 13.75 },
+    { "id": "r_loggia", "name": "Loggia", "type": "balcony",
+      "polygon": [[0,7],[7,7],[7,8],[0,8]], "area_sqm": 7 },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,5],[1.5,5],[1.5,7],[0,7]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hodnik", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_hodnik", "to": "r_dnevna", "position": [1.5, 1.5], "width_mm": 1000 },
+    { "from": "r_hodnik", "to": "r_kupatilo", "position": [0.75, 3], "width_mm": 700 },
+    { "from": "r_dnevna", "to": "r_kuhinja", "position": [5, 2.25], "width_mm": 1000 },
+    { "from": "r_dnevna", "to": "r_spavaca", "position": [3.25, 4.5], "width_mm": 900 },
+    { "from": "r_kupatilo", "to": "r_korridor", "position": [0.75, 5], "width_mm": 700 },
+    { "from": "r_spavaca", "to": "r_loggia", "position": [3.25, 7], "width_mm": 1500, "swing": "slide" },
+    { "from": "r_korridor", "to": "r_loggia", "position": [0.75, 7], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_dnevna", "position": [3.25, 0], "width_mm": 1800 },
+    { "room": "r_dnevna", "position": [1.5, 0], "width_mm": 800 },
+    { "room": "r_kuhinja", "position": [6, 0], "width_mm": 1500 },
+    { "room": "r_kuhinja", "position": [7, 2.25], "width_mm": 1200 },
+    { "room": "r_spavaca", "position": [3.25, 7], "width_mm": 1500 },
+    { "room": "r_spavaca", "position": [7, 5.75], "width_mm": 1500 },
+    { "room": "r_loggia", "position": [3.5, 8], "width_mm": 3000 },
+    { "room": "r_kupatilo", "position": [0, 4], "width_mm": 600 }
+  ]
+}

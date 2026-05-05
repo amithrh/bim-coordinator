@@ -1,0 +1,58 @@
+{
+  "id": "eu_is_1bed_reykjavik_modern",
+  "metadata": {
+    "region": "europe",
+    "country": "Iceland",
+    "city_inspiration": "Reykjavik",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 72,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Reykjavik modern 1-bed (Nordic compact, 101 postcode)",
+    "description": "A Reykjavik 101-postcode modern 1-bed — Nordic minimalist with thermal envelope. Forstofa (entry), Stofa, Eldhús, Svefnherbergi, Baðherbergi, Þvottahús, Svalir. Triple-glazed, geothermal underfloor. Source: mbl.is fasteignir Reykjavik 101.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["iceland", "reykjavik", "neubau", "1bed", "current_2020plus", "balkon", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,9],[0,9]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_forstofa", "name": "Forstofa", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_stofa", "name": "Stofa", "type": "living",
+      "polygon": [[2,0],[6,0],[6,5],[2,5]], "area_sqm": 20 },
+    { "id": "r_eldhus", "name": "Eldhús", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,5],[6,5]], "area_sqm": 10 },
+    { "id": "r_bad", "name": "Baðherbergi", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_thvottahus", "name": "Þvottahús", "type": "store",
+      "polygon": [[0,5],[2,5],[2,7],[0,7]], "area_sqm": 4 },
+    { "id": "r_svefn", "name": "Svefnherbergi", "type": "master_bedroom",
+      "polygon": [[2,5],[8,5],[8,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_svalir", "name": "Svalir", "type": "balcony",
+      "polygon": [[0,7],[8,7],[8,9],[0,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_forstofa", "position": [0.5, 0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_forstofa", "to": "r_stofa", "position": [2, 1.5], "width_mm": 1100 },
+    { "from": "r_forstofa", "to": "r_bad", "position": [1, 3], "width_mm": 800 },
+    { "from": "r_stofa", "to": "r_eldhus", "position": [6, 2.5], "width_mm": 1200 },
+    { "from": "r_stofa", "to": "r_svefn", "position": [4, 5], "width_mm": 900 },
+    { "from": "r_bad", "to": "r_thvottahus", "position": [1, 5], "width_mm": 700 },
+    { "from": "r_thvottahus", "to": "r_svalir", "position": [1, 7], "width_mm": 800, "swing": "slide" },
+    { "from": "r_svefn", "to": "r_svalir", "position": [4, 7], "width_mm": 1500, "swing": "slide" }
+  ],
+  "windows": [
+    { "room": "r_stofa", "position": [4, 0], "width_mm": 2400 },
+    { "room": "r_eldhus", "position": [7, 0], "width_mm": 1500 },
+    { "room": "r_eldhus", "position": [8, 2.5], "width_mm": 1500 },
+    { "room": "r_svalir", "position": [4, 9], "width_mm": 3000 },
+    { "room": "r_svalir", "position": [0, 8], "width_mm": 1500 },
+    { "room": "r_svalir", "position": [8, 8], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0, 4], "width_mm": 600 },
+    { "room": "r_forstofa", "position": [0, 1.5], "width_mm": 800 }
+  ]
+}
