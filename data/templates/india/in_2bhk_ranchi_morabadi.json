@@ -1,18 +1,18 @@
 {
-  "id": "in_2bhk_nashik_gangapur_road",
+  "id": "in_2bhk_ranchi_morabadi",
   "metadata": {
     "region": "india",
     "country": "India",
-    "city_inspiration": "Nashik",
+    "city_inspiration": "Ranchi",
     "size_label": "2bhk",
     "size_band": "2bed",
     "total_area_sqm": 75,
     "bedrooms": 2,
     "bathrooms": 2,
-    "style": "Nashik Gangapur Road 2 BHK (vineyard belt premium residential)",
-    "description": "A 2 BHK on Nashik's Gangapur Road — the prime residential artery through the wine country near Sula Vineyards and the Godavari riverbanks, gated society with mid-rise RCC towers, ~75 m² (808 sqft). Foyer, Living/Dining, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: 99acres.com / Housing.com Nashik Gangapur Road.",
+    "style": "Ranchi Morabadi 2 BHK (Maidan corridor prime residential)",
+    "description": "A 2 BHK in Ranchi's Morabadi locality — the upscale residential area near the Morabadi Ground and the Jharkhand Raj Bhavan, preferred by senior officials and business families, mid-rise flat, ~75 m² (808 sqft). Foyer, Living/Dining, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: 99acres.com / Housing.com Ranchi Morabadi.",
     "suitable_for": ["couple", "young_family"],
-    "tags": ["india", "nashik", "maharashtra", "gangapur_road", "2bed", "apartment_indian", "current_2020plus"]
+    "tags": ["india", "ranchi", "jharkhand", "morabadi", "2bed", "apartment_indian", "current_2020plus"]
   },
   "boundary": {
     "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],

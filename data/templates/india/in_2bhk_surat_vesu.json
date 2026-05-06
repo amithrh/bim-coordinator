@@ -1,23 +1,23 @@
 {
-  "id": "in_2bhk_nashik_gangapur_road",
+  "id": "in_2bhk_surat_vesu",
   "metadata": {
     "region": "india",
     "country": "India",
-    "city_inspiration": "Nashik",
+    "city_inspiration": "Surat",
     "size_label": "2bhk",
     "size_band": "2bed",
     "total_area_sqm": 75,
     "bedrooms": 2,
     "bathrooms": 2,
-    "style": "Nashik Gangapur Road 2 BHK (vineyard belt premium residential)",
-    "description": "A 2 BHK on Nashik's Gangapur Road — the prime residential artery through the wine country near Sula Vineyards and the Godavari riverbanks, gated society with mid-rise RCC towers, ~75 m² (808 sqft). Foyer, Living/Dining, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: 99acres.com / Housing.com Nashik Gangapur Road.",
+    "style": "Surat Vesu 2 BHK (upmarket suburb IT corridor)",
+    "description": "A Surat Vesu 2 BHK — the upmarket suburban locality popular with IT professionals and diamond merchants near VR Surat mall, modern RCC high-rise, ~75 m² (808 sqft). Foyer, Living/Dining, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: 99acres.com / Housing.com Surat Vesu.",
     "suitable_for": ["couple", "young_family"],
-    "tags": ["india", "nashik", "maharashtra", "gangapur_road", "2bed", "apartment_indian", "current_2020plus"]
+    "tags": ["india", "surat", "gujarat", "vesu", "2bed", "apartment_indian", "current_2020plus"]
   },
   "boundary": {
     "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
     "wall_thickness_mm": 230,
-    "ceiling_height_mm": 2700
+    "ceiling_height_mm": 2750
   },
   "rooms": [
     { "id": "r_foyer", "name": "Foyer", "type": "entry",

@@ -1,0 +1,53 @@
+{
+  "id": "in_1bhk_agra_kamla_nagar",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Agra",
+    "size_label": "1bhk",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Agra Kamla Nagar 1 BHK (Taj city residential)",
+    "description": "A 1 BHK in Agra's Kamla Nagar — well-connected mid-city locality popular with tourism-sector workers and small business owners near the Taj Mahal corridor, low-rise brick construction, ~50 m² (540 sqft). Foyer, Living/Dining, Kitchen, Bathroom, Bedroom, Balcony. Source: 99acres.com / MagicBricks Agra Kamla Nagar.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["india", "agra", "uttar_pradesh", "kamla_nagar", "1bed", "apartment_indian", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,5.5],[0,5.5]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,1.5],[0,1.5]], "area_sqm": 3 },
+    { "id": "r_living", "name": "Living/Dining", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3.5],[2,3.5]], "area_sqm": 17.5 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[9,0],[9,3.5],[7,3.5]], "area_sqm": 7 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,1.5],[2,1.5],[2,4.5],[0,4.5]], "area_sqm": 6 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[2,3.5],[9,3.5],[9,5.5],[2,5.5]], "area_sqm": 14 },
+    { "id": "r_balcony", "name": "Balcony", "type": "balcony",
+      "polygon": [[0,4.5],[2,4.5],[2,5.5],[0,5.5]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,0.75], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,0.75], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,1.75], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [1,1.5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bedroom", "position": [4.5,3.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [8,3.5], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_bedroom", "position": [2,4], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_balcony", "position": [1,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [9,1.75], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [5.5,5.5], "width_mm": 1500 },
+    { "room": "r_balcony", "position": [1,5.5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [0,3], "width_mm": 600 }
+  ]
+}
