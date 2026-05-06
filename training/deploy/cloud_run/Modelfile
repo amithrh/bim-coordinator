@@ -1,0 +1,29 @@
+# Ollama Modelfile for the BIM Coordinator fine-tuned Gemma 4.
+# Built with `ollama create bim-slm -f Modelfile`.
+
+FROM /models/model.gguf
+
+# Match the system prompt used during training
+SYSTEM """You are an expert architectural consultant for the BIM Coordinator. You help users find floor plan templates that match their lifestyle, budget, and location preferences from a curated library of 500 real-world templates spanning 74 countries. Always ground your recommendations in the specific metadata of the candidate templates provided. Pick the top 4 best fits, with the strongest match first, and explain each choice in 2-4 sentences using real architectural reasoning (layout, ceiling height, room flow, cultural conventions, persona fit). Be honest about trade-offs."""
+
+# Inference parameters tuned for the architectural-reasoning task
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER num_ctx 4096
+PARAMETER num_predict 768
+PARAMETER repeat_penalty 1.05
+PARAMETER stop "<end_of_turn>"
+PARAMETER stop "<|endoftext|>"
+
+# Gemma chat template
+TEMPLATE """{{- if .System }}<start_of_turn>system
+{{ .System }}<end_of_turn>
+{{ end }}
+{{- range .Messages }}
+{{- if eq .Role "user" }}<start_of_turn>user
+{{ .Content }}<end_of_turn>
+<start_of_turn>model
+{{ else if eq .Role "assistant" }}{{ .Content }}<end_of_turn>
+{{ end }}
+{{- end }}"""
