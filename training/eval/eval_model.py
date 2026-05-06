@@ -36,35 +36,48 @@ from typing import Any, Callable
 # Response parsing
 # ---------------------------------------------------------------------------
 
-# Pattern: matches `\`<template_id>\`` style references AND **N. Title** (id) blocks.
-TEMPLATE_ID_RE = re.compile(r"`([a-z0-9_]+)`")
+# Patterns: structured `**N. Title** (\`id\`)`, backticked, or bare id.
+TEMPLATE_ID_RE = re.compile(r"`((?:eu|gl|in)_[a-z0-9_]+)`")
 NUMBERED_PICK_RE = re.compile(
-    r"\*\*\s*(\d+)\.\s*[^*]+\*\*\s*\(`([a-z0-9_]+)`\)",
+    r"\*\*\s*(\d+)\.\s*[^*]+\*\*\s*\(`((?:eu|gl|in)_[a-z0-9_]+)`\)",
     re.MULTILINE,
 )
+# Bare template id (matches eu_de_xxx, gl_jp_xxx, in_2bhk_xxx with prefix discipline).
+# Char-after-prefix can be letter OR digit (e.g. in_2bhk_trichy).
+BARE_ID_RE = re.compile(r"\b((?:eu|gl|in)_[a-z0-9][a-z0-9_]+)\b")
 
 
-def parse_picks(response: str) -> list[str]:
-    r"""Extract the model's top picks in rank order.
-
-    Tries the structured pattern first (``**1. Title** (\`id\`)``), falls back
-    to any ``\`id\``` mentions in document order, dedupping while preserving order.
-    """
-    structured = NUMBERED_PICK_RE.findall(response)
-    if structured:
-        # Sort by the numeric rank (in case the model wrote them out of order)
-        ranked = sorted(structured, key=lambda x: int(x[0]))
-        return [tid for _, tid in ranked]
-
-    # Fallback: any backticked id, dedupped
-    ids = TEMPLATE_ID_RE.findall(response)
-    seen = set()
-    out = []
+def _dedup(ids: list[str]) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
     for tid in ids:
         if tid not in seen:
             seen.add(tid)
             out.append(tid)
     return out
+
+
+def parse_picks(response: str) -> list[str]:
+    r"""Extract the model's top picks in rank order.
+
+    Tries:
+      1. Structured pattern ``**1. Title** (\`id\`)``
+      2. Backticked id ``\`id\```
+      3. Bare template id (eu_/gl_/in_ prefix)
+
+    Dedupes while preserving order.
+    """
+    structured = NUMBERED_PICK_RE.findall(response)
+    if structured:
+        ranked = sorted(structured, key=lambda x: int(x[0]))
+        return _dedup([tid for _, tid in ranked])
+
+    ids = TEMPLATE_ID_RE.findall(response)
+    if ids:
+        return _dedup(ids)
+
+    bare = BARE_ID_RE.findall(response)
+    return _dedup(bare)
 
 
 # ---------------------------------------------------------------------------
