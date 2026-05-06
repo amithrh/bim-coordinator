@@ -1,23 +1,23 @@
 {
-  "id": "eu_es_2bed_barcelona_eixample",
+  "id": "eu_es_2bed_seville_triana",
   "metadata": {
     "region": "europe",
     "country": "Spain",
-    "city_inspiration": "Barcelona",
+    "city_inspiration": "Seville",
     "size_label": "piso 2 dormitorios",
     "size_band": "2bed",
     "total_area_sqm": 65,
     "bedrooms": 2,
     "bathrooms": 2,
-    "style": "Barcelona Eixample piso 2 dormitorios (modernisme Cerdà grid)",
-    "description": "Un piso de 2 dormitorios en el Eixample de Barcelona — el barrio modernista de la cuadrícula de Ildefons Cerdà, con la Sagrada Família y la Pedrera, piso de principios del siglo XX en edificio modernista con galería, ~65 m². Recibidor, Salón, Cocina, Baño, Aseo, Dormitorio Principal, Dormitorio 2. Source: Idealista.es / Habitaclia Barcelona Eixample 08009.",
+    "style": "Sevilla Triana piso 2 dormitorios (barrio flamenco orilla del Guadalquivir)",
+    "description": "Un piso de 2 dormitorios en el barrio de Triana, Sevilla — el popular barrio flamenco a orillas del Guadalquivir con la cerámica sevillana y la Plaza del Altozano, piso en edificio de principios del siglo XX, ~65 m². Recibidor, Salón, Cocina, Baño, Aseo, Dormitorio Principal, Dormitorio 2. Source: Idealista.es / Pisos.com Sevilla Triana 41010.",
     "suitable_for": ["couple", "young_family"],
-    "tags": ["spain", "barcelona", "eixample", "modernisme", "2bed", "single_floor", "historic", "cerda"]
+    "tags": ["spain", "seville", "triana", "guadalquivir", "flamenco", "2bed", "single_floor", "historic"]
   },
   "boundary": {
     "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
-    "wall_thickness_mm": 380,
-    "ceiling_height_mm": 3200
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3000
   },
   "rooms": [
     { "id": "r_recibidor", "name": "Recibidor", "type": "entry",

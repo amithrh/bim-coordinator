@@ -1,0 +1,56 @@
+{
+  "id": "eu_ch_2bed_geneva_plainpalais",
+  "metadata": {
+    "region": "europe",
+    "country": "Switzerland",
+    "city_inspiration": "Geneva",
+    "size_label": "3.5 Zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Genève Plainpalais 3.5-pièces (quartier des arts MAMCO)",
+    "description": "Un appartement de 3.5 pièces à Plainpalais, Genève — le quartier des arts et de la culture avec le MAMCO et les cafés du boulevard du Pont-d'Arve, immeuble de l'entre-deux-guerres rénové, ~65 m². Entrée, Séjour, Cuisine, Salle de bain, WC, Chambre principale, Chambre 2. Source: Homegate.ch / ImmoScout24 Genève Plainpalais 1205.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["switzerland", "geneva", "plainpalais", "mamco", "2bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_sdb", "name": "Salle de bain", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_chambre1", "name": "Chambre principale", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,3], "width_mm": 700 },
+    { "from": "r_sdb", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_chambre2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_chambre1", "to": "r_chambre2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_chambre1", "position": [2,5.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cuisine", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_chambre1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_chambre2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [0,4], "width_mm": 600 }
+  ]
+}

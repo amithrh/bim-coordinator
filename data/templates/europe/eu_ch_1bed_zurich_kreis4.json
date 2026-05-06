@@ -1,0 +1,49 @@
+{
+  "id": "eu_ch_1bed_zurich_kreis4",
+  "metadata": {
+    "region": "europe",
+    "country": "Switzerland",
+    "city_inspiration": "Zurich",
+    "size_label": "2.5 Zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Zürich Kreis 4 2.5-Zimmer-Wohnung (Langstrasse Ausgehviertel)",
+    "description": "Eine 2.5-Zimmer-Wohnung im Zürcher Kreis 4 — das lebhafte Ausgehviertel an der Langstrasse mit Bars, Restaurants und Street Art, Altbau der Jahrhundertwende oder Nachkriegsgebäude renoviert, ~55 m². Eingang, Wohnzimmer, Küche, Bad, Schlafzimmer. Source: Homegate.ch / Comparis.ch Zürich Kreis 4 8004.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["switzerland", "zurich", "kreis4", "langstrasse", "1bed", "single_floor", "altbau"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_eingang", "name": "Eingang", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eingang", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_eingang", "to": "r_wohnzimmer", "position": [2,1], "width_mm": 900 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_eingang", "to": "r_bad", "position": [1,2], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer", "position": [5,3], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlafzimmer", "position": [9.5,3], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_schlafzimmer", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_kueche", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_schlafzimmer", "position": [6.5,5], "width_mm": 1800 },
+    { "room": "r_bad", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

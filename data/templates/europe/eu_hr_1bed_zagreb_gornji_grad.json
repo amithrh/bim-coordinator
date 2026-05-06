@@ -1,0 +1,49 @@
+{
+  "id": "eu_hr_1bed_zagreb_gornji_grad",
+  "metadata": {
+    "region": "europe",
+    "country": "Croatia",
+    "city_inspiration": "Zagreb",
+    "size_label": "jednosobni stan",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Zagreb Gornji Grad jednosobni stan (Kaptol i Gradec gornji grad)",
+    "description": "Jednosobni stan u Gornjem Gradu Zagreba — historijsko gornjogradsko naselje s Kaptolom, Lotršćakom i Trgom sv. Marka, obnovljena stambena zgrada s početka 20. stoljeća, ~50 m². Hodnik, Dnevna soba, Kuhinja, Kupaonica, Spavaća soba. Source: Njuškalo.hr / Crozilla Zagreb Gornji Grad 10000.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["croatia", "zagreb", "gornji_grad", "kaptol", "1bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_hodnik", "name": "Hodnik", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_dnevna", "name": "Dnevna soba", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_kuhinja", "name": "Kuhinja", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_kupaonica", "name": "Kupaonica", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_spavaca", "name": "Spavaća soba", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hodnik", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hodnik", "to": "r_dnevna", "position": [2,1], "width_mm": 900 },
+    { "from": "r_dnevna", "to": "r_kuhinja", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_hodnik", "to": "r_kupaonica", "position": [1,2], "width_mm": 700 },
+    { "from": "r_dnevna", "to": "r_spavaca", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_kuhinja", "to": "r_spavaca", "position": [8.5,3], "width_mm": 800 },
+    { "from": "r_kupaonica", "to": "r_spavaca", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_dnevna", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kuhinja", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_spavaca", "position": [6,5], "width_mm": 1800 },
+    { "room": "r_kupaonica", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

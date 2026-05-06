@@ -1,0 +1,49 @@
+{
+  "id": "eu_gr_1bed_athens_monastiraki",
+  "metadata": {
+    "region": "europe",
+    "country": "Greece",
+    "city_inspiration": "Athens",
+    "size_label": "γκαρσονιέρα/2άρι",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Αθήνα Μοναστηράκι διαμέρισμα 2δ (ιστορικό κέντρο Ακρόπολη)",
+    "description": "Ένα 2άρι διαμέρισμα στο Μοναστηράκι της Αθήνας — η ιστορική αγορά κοντά στην Ακρόπολη και την Αρχαία Αγορά, πολυκατοικία της δεκαετίας '60–'70, ~50 τ.μ.. Χολ, Σαλόνι, Κουζίνα, Μπάνιο, Υπνοδωμάτιο. Source: Spitogatos.gr / Xe.gr Αθήνα Μοναστηράκι 10554.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["greece", "athens", "monastiraki", "acropolis", "1bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Χολ", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_saloni", "name": "Σαλόνι", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_kouzina", "name": "Κουζίνα", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_banio", "name": "Μπάνιο", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_bedroom", "name": "Υπνοδωμάτιο", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_saloni", "position": [2,1], "width_mm": 900 },
+    { "from": "r_saloni", "to": "r_kouzina", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_banio", "position": [1,2], "width_mm": 700 },
+    { "from": "r_saloni", "to": "r_bedroom", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_kouzina", "to": "r_bedroom", "position": [8.5,3], "width_mm": 800 },
+    { "from": "r_banio", "to": "r_bedroom", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_saloni", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kouzina", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [6,5], "width_mm": 1800 },
+    { "room": "r_banio", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

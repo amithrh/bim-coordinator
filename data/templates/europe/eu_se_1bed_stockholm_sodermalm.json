@@ -1,0 +1,49 @@
+{
+  "id": "eu_se_1bed_stockholm_sodermalm",
+  "metadata": {
+    "region": "europe",
+    "country": "Sweden",
+    "city_inspiration": "Stockholm",
+    "size_label": "2 rum",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Stockholm Södermalm 2 rum (kreativt södra ön)",
+    "description": "En 2-rumslägenhet på Södermalm i Stockholm — den kreativa och hippiga ön i söder med Fotografiska, Mariatorget och STHLM Food & Drinks, äldre hyreshus från 1930–1950-talen, ~50 m². Hall, Vardagsrum, Kök, Badrum, Sovrum. Source: Hemnet.se / Booli Stockholm Södermalm 11856.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["sweden", "stockholm", "sodermalm", "1bed", "single_floor", "functionalism"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_vardagsrum", "name": "Vardagsrum", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_kok", "name": "Kök", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_badrum", "name": "Badrum", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_sovrum", "name": "Sovrum", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_vardagsrum", "position": [2,1], "width_mm": 900 },
+    { "from": "r_vardagsrum", "to": "r_kok", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_badrum", "position": [1,2], "width_mm": 700 },
+    { "from": "r_vardagsrum", "to": "r_sovrum", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_kok", "to": "r_sovrum", "position": [8.5,3], "width_mm": 800 },
+    { "from": "r_badrum", "to": "r_sovrum", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_vardagsrum", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kok", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_sovrum", "position": [6,5], "width_mm": 1800 },
+    { "room": "r_badrum", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

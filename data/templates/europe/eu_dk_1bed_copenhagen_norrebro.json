@@ -1,0 +1,49 @@
+{
+  "id": "eu_dk_1bed_copenhagen_norrebro",
+  "metadata": {
+    "region": "europe",
+    "country": "Denmark",
+    "city_inspiration": "Copenhagen",
+    "size_label": "2-værelses",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "København Nørrebro 2-værelses (multikulturelt hipsterkvarter)",
+    "description": "En 2-værelses lejlighed på Nørrebro i København — det multikulturelle og trendy kvarter med Superkilen park, Blågårds Plads og Sankt Hans Torv, ældre beboelsesejendom fra tidligt 1900-tal, ~50 m². Gang, Stue, Køkken, Badeværelse, Soveværelse. Source: Boligsiden.dk / Boligportal.dk København Nørrebro 2200.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["denmark", "copenhagen", "norrebro", "1bed", "single_floor", "altbau"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_gang", "name": "Gang", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_koekken", "name": "Køkken", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_badevarelse", "name": "Badeværelse", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_sovevarelse", "name": "Soveværelse", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_gang", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_gang", "to": "r_stue", "position": [2,1], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_koekken", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_gang", "to": "r_badevarelse", "position": [1,2], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_sovevarelse", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_koekken", "to": "r_sovevarelse", "position": [8.5,3], "width_mm": 800 },
+    { "from": "r_badevarelse", "to": "r_sovevarelse", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_koekken", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_sovevarelse", "position": [6,5], "width_mm": 1800 },
+    { "room": "r_badevarelse", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

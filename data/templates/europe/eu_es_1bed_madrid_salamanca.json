@@ -1,0 +1,49 @@
+{
+  "id": "eu_es_1bed_madrid_salamanca",
+  "metadata": {
+    "region": "europe",
+    "country": "Spain",
+    "city_inspiration": "Madrid",
+    "size_label": "piso 1 dormitorio",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Madrid Salamanca piso 1 dormitorio (barrio de lujo Serrano)",
+    "description": "Un piso de 1 dormitorio en el barrio de Salamanca, Madrid — el exclusivo barrio residencial del 'Barrio de Goya' junto a la calle Serrano y el Museo del Prado, edificio clásico de principios del siglo XX, ~50 m². Recibidor, Salón, Cocina, Baño, Dormitorio. Source: Idealista.es / Fotocasa Madrid Salamanca 28001.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["spain", "madrid", "salamanca", "serrano", "1bed", "single_floor", "historic", "luxury"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_recibidor", "name": "Recibidor", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_salon", "name": "Salón", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_cocina", "name": "Cocina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_bano", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_dormitorio", "name": "Dormitorio", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_recibidor", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_recibidor", "to": "r_salon", "position": [2,1], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_cocina", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_recibidor", "to": "r_bano", "position": [1,2], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_dormitorio", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_cocina", "to": "r_dormitorio", "position": [8.5,3], "width_mm": 800 },
+    { "from": "r_bano", "to": "r_dormitorio", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cocina", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_dormitorio", "position": [6,5], "width_mm": 1800 },
+    { "room": "r_bano", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

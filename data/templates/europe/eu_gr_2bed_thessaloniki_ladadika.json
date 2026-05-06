@@ -1,0 +1,56 @@
+{
+  "id": "eu_gr_2bed_thessaloniki_ladadika",
+  "metadata": {
+    "region": "europe",
+    "country": "Greece",
+    "city_inspiration": "Thessaloniki",
+    "size_label": "3άρι",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Θεσσαλονίκη Λαδάδικα 3άρι (ιστορική συνοικία Βαρδάρης)",
+    "description": "Ένα 3άρι διαμέρισμα στα Λαδάδικα Θεσσαλονίκης — η ιστορική συνοικία με ουζερί και μπαρ κοντά στο λιμάνι και την Πλατεία Αριστοτέλους, ανακαινισμένη πολυκατοικία, ~65 τ.μ.. Χολ, Σαλόνι, Κουζίνα, Μπάνιο, WC, Κύριο Υπνοδωμάτιο, Υπνοδωμάτιο 2. Source: Spitogatos.gr / Xe.gr Θεσσαλονίκη Λαδάδικα 54625.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["greece", "thessaloniki", "ladadika", "port", "2bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Χολ", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_saloni", "name": "Σαλόνι", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kouzina", "name": "Κουζίνα", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_banio", "name": "Μπάνιο", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_ypno1", "name": "Κύριο Υπνοδωμάτιο", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_ypno2", "name": "Υπνοδωμάτιο 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_saloni", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_saloni", "to": "r_kouzina", "position": [7,2], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_banio", "position": [1,3], "width_mm": 700 },
+    { "from": "r_banio", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_saloni", "to": "r_ypno1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kouzina", "to": "r_ypno2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_ypno1", "to": "r_ypno2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_ypno1", "position": [2,5.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_saloni", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kouzina", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_ypno1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_ypno2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_banio", "position": [0,4], "width_mm": 600 }
+  ]
+}

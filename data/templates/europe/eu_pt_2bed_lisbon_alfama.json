@@ -1,0 +1,56 @@
+{
+  "id": "eu_pt_2bed_lisbon_alfama",
+  "metadata": {
+    "region": "europe",
+    "country": "Portugal",
+    "city_inspiration": "Lisbon",
+    "size_label": "T2",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Lisboa Alfama T2 (mais antigo bairro mourisco)",
+    "description": "Um T2 no Alfama de Lisboa — o mais antigo bairro da cidade com becos de origem mourisca, o Castelo de São Jorge e as casas de fado ao vivo, prédio pombalino pós-terramoto do século XVIII, ~65 m². Entrada, Sala, Cozinha, Casa de Banho, WC, Quarto Principal, Quarto 2. Source: Idealista.pt / Imovirtual Lisboa Alfama 1100.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["portugal", "lisbon", "alfama", "fado", "moorish", "2bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_entrada", "name": "Entrada", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_casa_banho", "name": "Casa de Banho", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_quarto1", "name": "Quarto Principal", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_quarto2", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrada", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entrada", "to": "r_sala", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entrada", "to": "r_casa_banho", "position": [1,3], "width_mm": 700 },
+    { "from": "r_casa_banho", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_quarto1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_quarto2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_quarto1", "to": "r_quarto2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_quarto1", "position": [2,5.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cozinha", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_quarto1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_quarto2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_casa_banho", "position": [0,4], "width_mm": 600 }
+  ]
+}
