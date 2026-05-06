@@ -1,0 +1,59 @@
+{
+  "id": "eu_es_2bed_alicante_centro",
+  "metadata": {
+    "region": "europe",
+    "country": "Spain",
+    "city_inspiration": "Alicante",
+    "size_label": "piso",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Alicante Centro piso con terraza (Costa Blanca capital)",
+    "description": "A Alicante Centro piso con terraza — Costa Blanca capital below the Castillo de Santa Bárbara, ~70 m². Recibidor, Salón, Cocina, Baño, Pasillo, two Habitaciones, Terraza. Source: Idealista Alicante Centro 03001.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["spain", "alicante", "costa_blanca", "terraza", "2bed", "single_floor", "mediterranean"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7],[0,7]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2750
+  },
+  "rooms": [
+    { "id": "r_recibidor", "name": "Recibidor", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_salon", "name": "Salón", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_cocina", "name": "Cocina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bano", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_pasillo", "name": "Pasillo", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_hab1", "name": "Habitación 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_hab2", "name": "Habitación 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6],[6,6]], "area_sqm": 8 },
+    { "id": "r_terraza", "name": "Terraza", "type": "balcony",
+      "polygon": [[6,6],[10,6],[10,7],[6,7]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_recibidor", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_recibidor", "to": "r_salon", "position": [2,2], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_cocina", "position": [7,2], "width_mm": 900 },
+    { "from": "r_recibidor", "to": "r_bano", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bano", "to": "r_pasillo", "position": [1,6], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_hab1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_cocina", "to": "r_hab2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_hab1", "to": "r_hab2", "position": [6,5], "width_mm": 800 },
+    { "from": "r_hab2", "to": "r_terraza", "position": [8,6], "width_mm": 1500 },
+    { "from": "r_pasillo", "to": "r_hab1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 2100 },
+    { "room": "r_cocina", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_hab1", "position": [4,7], "width_mm": 1800 },
+    { "room": "r_terraza", "position": [8,7], "width_mm": 2000 },
+    { "room": "r_bano", "position": [0,5], "width_mm": 600 }
+  ]
+}

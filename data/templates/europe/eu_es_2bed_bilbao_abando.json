@@ -1,0 +1,56 @@
+{
+  "id": "eu_es_2bed_bilbao_abando",
+  "metadata": {
+    "region": "europe",
+    "country": "Spain",
+    "city_inspiration": "Bilbao",
+    "size_label": "piso",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Bilbao Abando piso vasco (Ensanche central)",
+    "description": "A Bilbao Abando piso vasco — the Basque city's early-20th-century Ensanche expansion near the Guggenheim, ~80 m². Recibidor, Salón-Comedor, Cocina, Baño, Aseo, two Habitaciones. Source: Idealista Bilbao Abando 48009.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["spain", "bilbao", "abando", "basque", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_recibidor", "name": "Recibidor", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_salon", "name": "Salón-Comedor", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_cocina", "name": "Cocina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bano", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_aseo", "name": "Aseo", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 },
+    { "id": "r_hab1", "name": "Habitación 1", "type": "master_bedroom",
+      "polygon": [[2,5],[7,5],[7,8],[2,8]], "area_sqm": 15 },
+    { "id": "r_hab2", "name": "Habitación 2", "type": "bedroom",
+      "polygon": [[7,5],[10,5],[10,8],[7,8]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_recibidor", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_recibidor", "to": "r_salon", "position": [2,2], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_cocina", "position": [7,2.5], "width_mm": 900 },
+    { "from": "r_recibidor", "to": "r_bano", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bano", "to": "r_aseo", "position": [1,6], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_hab1", "position": [4.5,5], "width_mm": 900 },
+    { "from": "r_cocina", "to": "r_hab2", "position": [8.5,5], "width_mm": 900 },
+    { "from": "r_hab1", "to": "r_hab2", "position": [7,6.5], "width_mm": 800 },
+    { "from": "r_aseo", "to": "r_hab1", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 2100 },
+    { "room": "r_cocina", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_hab1", "position": [4.5,8], "width_mm": 1800 },
+    { "room": "r_hab2", "position": [8.5,8], "width_mm": 1500 },
+    { "room": "r_bano", "position": [0,5], "width_mm": 600 }
+  ]
+}

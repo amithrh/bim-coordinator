@@ -1,0 +1,59 @@
+{
+  "id": "in_2bhk_dehradun_rajpur_road",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Dehradun",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 84,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Dehradun Rajpur Road 2 BHK (Doon Valley Uttarakhand capital)",
+    "description": "A Dehradun Rajpur Road 2 BHK — Uttarakhand's gateway capital in the Doon Valley foothills of the Himalaya, Rajpur Road is the most prestigious residential corridor, ~84 m². Entrance, Drawing-Dining, Kitchen, Utility, Common Bathroom, Pooja Room, Master Bedroom, Bedroom 2. Source: 99acres Dehradun Rajpur Road 248001.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["india", "dehradun", "uttarakhand", "rajpur_road", "apartment_indian", "2bed", "pooja_room", "hill_station"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,7],[0,7]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_entrance", "name": "Entrance", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living", "name": "Drawing-Dining", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,3],[8,3]], "area_sqm": 12 },
+    { "id": "r_utility", "name": "Utility", "type": "utility",
+      "polygon": [[8,3],[12,3],[12,4],[8,4]], "area_sqm": 4 },
+    { "id": "r_bathroom", "name": "Common Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_pooja", "name": "Pooja Room", "type": "store",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,7],[7,7]], "area_sqm": 15 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrance", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrance", "to": "r_living", "position": [2,2], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [8,2], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility", "position": [10,3], "width_mm": 800 },
+    { "from": "r_entrance", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_pooja", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_utility", "to": "r_bed2", "position": [10,4], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bed2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_pooja", "to": "r_master", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [10,0], "width_mm": 1200 },
+    { "room": "r_master", "position": [4.5,7], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [9.5,7], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}

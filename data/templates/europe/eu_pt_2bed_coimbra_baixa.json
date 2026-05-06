@@ -1,0 +1,53 @@
+{
+  "id": "eu_pt_2bed_coimbra_baixa",
+  "metadata": {
+    "region": "europe",
+    "country": "Portugal",
+    "city_inspiration": "Coimbra",
+    "size_label": "apartamento T2",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Coimbra Baixa T2 (university city Mondego river)",
+    "description": "A Coimbra Baixa T2 — Portugal's oldest university city on the Mondego, historic baixa below the medieval Alta, ~72 m². Entrada, Sala, Cozinha, Casa de Banho, two Quartos. Source: Imovirtual Coimbra Baixa 3000.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["portugal", "coimbra", "baixa", "university_city", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_entrada", "name": "Entrada", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16 },
+    { "id": "r_cdb", "name": "Casa de Banho", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_quarto1", "name": "Quarto 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_quarto2", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,6],[7,6]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrada", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrada", "to": "r_sala", "position": [2,2], "width_mm": 900 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [8,2], "width_mm": 900 },
+    { "from": "r_entrada", "to": "r_cdb", "position": [1,4], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_quarto1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_quarto2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_quarto1", "to": "r_quarto2", "position": [7,5], "width_mm": 800 },
+    { "from": "r_cdb", "to": "r_quarto1", "position": [2,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [5,0], "width_mm": 2400 },
+    { "room": "r_cozinha", "position": [10,0], "width_mm": 1800 },
+    { "room": "r_quarto1", "position": [4.5,6], "width_mm": 1800 },
+    { "room": "r_quarto2", "position": [9.5,6], "width_mm": 1800 },
+    { "room": "r_cdb", "position": [0,5], "width_mm": 600 }
+  ]
+}

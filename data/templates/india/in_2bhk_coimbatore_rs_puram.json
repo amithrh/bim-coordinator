@@ -1,0 +1,59 @@
+{
+  "id": "in_2bhk_coimbatore_rs_puram",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Coimbatore",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Coimbatore RS Puram 2 BHK (Manchester of South India premium zone)",
+    "description": "A Coimbatore RS Puram 2 BHK — Tamil Nadu's industrial and IT capital, RS Puram is the city's most prestigious address near Race Course, ~80 m². Entrance, Drawing-Dining, Kitchen, Utility, Common Bathroom, Pooja Room, Master Bedroom, Bedroom 2. Source: 99acres Coimbatore RS Puram 641002.",
+    "suitable_for": ["young_family", "couple"],
+    "tags": ["india", "coimbatore", "tamil_nadu", "rs_puram", "apartment_indian", "2bed", "current_2020plus", "pooja_room"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2850
+  },
+  "rooms": [
+    { "id": "r_entrance", "name": "Entrance", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living", "name": "Drawing-Dining", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_utility", "name": "Utility", "type": "utility",
+      "polygon": [[7,4],[10,4],[10,5],[7,5]], "area_sqm": 3 },
+    { "id": "r_bathroom", "name": "Common Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_pooja", "name": "Pooja Room", "type": "store",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[7,5],[7,8],[2,8]], "area_sqm": 15 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,5],[10,5],[10,8],[7,8]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrance", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrance", "to": "r_living", "position": [2,2], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility", "position": [8.5,4], "width_mm": 800 },
+    { "from": "r_entrance", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_pooja", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [4.5,5], "width_mm": 900 },
+    { "from": "r_utility", "to": "r_bed2", "position": [8.5,5], "width_mm": 800 },
+    { "from": "r_master", "to": "r_bed2", "position": [7,6.5], "width_mm": 800 },
+    { "from": "r_pooja", "to": "r_master", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_master", "position": [4.5,8], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [8.5,8], "width_mm": 1200 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}

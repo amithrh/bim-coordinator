@@ -1,0 +1,60 @@
+{
+  "id": "eu_pt_3bed_braga_centro",
+  "metadata": {
+    "region": "europe",
+    "country": "Portugal",
+    "city_inspiration": "Braga",
+    "size_label": "apartamento T3",
+    "size_band": "3bed",
+    "total_area_sqm": 95,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Braga Centro T3 (Portuguese Rome Minho city)",
+    "description": "A Braga Centro T3 — the 'Portuguese Rome', oldest city in Portugal, Minho region Bom Jesus shrine, ~95 m². Entrada, Sala-Jantar, Cozinha, two Casas de Banho, three Quartos. Source: Imovirtual Braga Centro 4700.",
+    "suitable_for": ["family", "extended_family"],
+    "tags": ["portugal", "braga", "minho", "3bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[14,0],[14,7],[0,7]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_entrada", "name": "Entrada", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sala", "name": "Sala-Jantar", "type": "living",
+      "polygon": [[2,0],[9,0],[9,4],[2,4]], "area_sqm": 28 },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[9,0],[14,0],[14,4],[9,4]], "area_sqm": 20 },
+    { "id": "r_cdb1", "name": "Casa de Banho 1", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_cdb2", "name": "Casa de Banho 2", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_quarto1", "name": "Quarto 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_quarto2", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[7,4],[11,4],[11,7],[7,7]], "area_sqm": 12 },
+    { "id": "r_quarto3", "name": "Quarto 3", "type": "bedroom",
+      "polygon": [[11,4],[14,4],[14,7],[11,7]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrada", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrada", "to": "r_sala", "position": [2,2], "width_mm": 1000 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [9,2], "width_mm": 1000 },
+    { "from": "r_entrada", "to": "r_cdb1", "position": [1,4], "width_mm": 700 },
+    { "from": "r_cdb1", "to": "r_cdb2", "position": [1,6], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_quarto1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_quarto3", "position": [12,4], "width_mm": 900 },
+    { "from": "r_quarto1", "to": "r_quarto2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_quarto2", "to": "r_quarto3", "position": [11,5.5], "width_mm": 800 },
+    { "from": "r_cdb2", "to": "r_quarto1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [5.5,0], "width_mm": 2400 },
+    { "room": "r_cozinha", "position": [11.5,0], "width_mm": 2000 },
+    { "room": "r_quarto1", "position": [4.5,7], "width_mm": 1800 },
+    { "room": "r_quarto2", "position": [9,7], "width_mm": 1800 },
+    { "room": "r_quarto3", "position": [12.5,7], "width_mm": 1500 },
+    { "room": "r_cdb1", "position": [0,5], "width_mm": 600 }
+  ]
+}

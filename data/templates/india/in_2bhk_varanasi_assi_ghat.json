@@ -1,0 +1,56 @@
+{
+  "id": "in_2bhk_varanasi_assi_ghat",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Varanasi",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Varanasi Assi Ghat 2 BHK (sacred Ganges ghats BHU academic quarter)",
+    "description": "A Varanasi Assi Ghat 2 BHK — one of Hinduism's holiest cities, Assi Ghat is the southernmost major ghat near BHU, popular with academics, ~72 m². Entrance, Drawing-Dining, Kitchen, Common Bathroom, Pooja Room, two Bedrooms. Source: 99acres Varanasi Assi 221005.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["india", "varanasi", "uttar_pradesh", "ghat_quarter", "apartment_indian", "2bed", "pooja_room"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2750
+  },
+  "rooms": [
+    { "id": "r_entrance", "name": "Entrance", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Drawing-Dining", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16 },
+    { "id": "r_bathroom", "name": "Common Bathroom", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_pooja", "name": "Pooja Room", "type": "store",
+      "polygon": [[0,5],[2,5],[2,6],[0,6]], "area_sqm": 2 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,6],[7,6]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrance", "position": [0,1.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrance", "to": "r_living", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [8,2], "width_mm": 900 },
+    { "from": "r_entrance", "to": "r_bathroom", "position": [1,3], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_pooja", "position": [1,5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bed1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [7,5], "width_mm": 800 },
+    { "from": "r_pooja", "to": "r_bed1", "position": [2,5.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [10,0], "width_mm": 1500 },
+    { "room": "r_bed1", "position": [4.5,6], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [9.5,6], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,4], "width_mm": 600 }
+  ]
+}
