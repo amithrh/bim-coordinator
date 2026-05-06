@@ -1,0 +1,52 @@
+{
+  "id": "gl_au_1bed_perth_subiaco",
+  "metadata": {
+    "region": "global",
+    "country": "Australia",
+    "city_inspiration": "Perth",
+    "size_label": "1-bedroom apartment",
+    "size_band": "1bed",
+    "total_area_sqm": 60,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Perth Subiaco 1BR (Hay Street village boutique apartment)",
+    "description": "A Perth Subiaco 1BR apartment — the cosmopolitan village suburb of Hay Street café strip, Subi Farmers Market and King's Park proximity, low-rise boutique apartment buildings from the 2000s–2020s, ~60 m². Entry, Living Room, Kitchen-Dining, Bathroom, Laundry, Bedroom. Source: REIWA / Realestateview.com.au Perth Subiaco 6008.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["australia", "perth", "subiaco", "boutique", "1bed", "single_floor", "inner_suburb"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6],[0,6]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_entry", "name": "Entry", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen-Dining", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_laundry", "name": "Laundry", "type": "utility",
+      "polygon": [[0,5],[2,5],[2,6],[0,6]], "area_sqm": 2 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[10,4],[10,6],[2,6]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entry", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entry", "to": "r_living", "position": [2,1], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entry", "to": "r_bathroom", "position": [1,2], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_laundry", "position": [1,5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bedroom", "position": [5,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_bathroom", "to": "r_bedroom", "position": [2,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [6,6], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

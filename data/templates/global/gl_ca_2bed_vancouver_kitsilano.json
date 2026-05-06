@@ -1,0 +1,56 @@
+{
+  "id": "gl_ca_2bed_vancouver_kitsilano",
+  "metadata": {
+    "region": "global",
+    "country": "Canada",
+    "city_inspiration": "Vancouver",
+    "size_label": "2-bedroom suite",
+    "size_band": "2bed",
+    "total_area_sqm": 84,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Vancouver Kitsilano 2BR (West 4th Ave heritage low-rise suite)",
+    "description": "A Vancouver Kitsilano 2BR suite — West Side character building near Kits Beach and Granville Island, typical 1970s–1990s low-rise concrete frame with laminate floors and gas fireplace, ~84 m². Foyer, Living Room, Kitchen-Dining, Full Bathroom, Half Bath, Primary Bedroom, Bedroom 2. Source: Zolo / Realtor.ca Vancouver Kitsilano V6J.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["canada", "vancouver", "kitsilano", "low_rise", "2bed", "single_floor", "west_side"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,7],[0,7]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2440
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen-Dining", "type": "kitchen",
+      "polygon": [[7,0],[12,0],[12,4],[7,4]], "area_sqm": 20 },
+    { "id": "r_bathroom", "name": "Full Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_halfbath", "name": "Half Bath", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_primary", "name": "Primary Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,7],[7,7]], "area_sqm": 15 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,2], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,2], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_halfbath", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_primary", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_primary", "to": "r_bedroom2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_halfbath", "to": "r_primary", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [9.5,0], "width_mm": 1500 },
+    { "room": "r_primary", "position": [4,7], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [9.5,7], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}

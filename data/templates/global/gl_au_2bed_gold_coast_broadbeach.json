@@ -1,0 +1,56 @@
+{
+  "id": "gl_au_2bed_gold_coast_broadbeach",
+  "metadata": {
+    "region": "global",
+    "country": "Australia",
+    "city_inspiration": "Gold Coast",
+    "size_label": "2-bedroom apartment",
+    "size_band": "2bed",
+    "total_area_sqm": 84,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Gold Coast Broadbeach 2BR (beachside high-rise apartment)",
+    "description": "A Gold Coast Broadbeach 2BR apartment — luxury beachside high-rise with Coral Sea views, resort facilities pool and gym, walkable to Pacific Fair shopping centre and GCH Light Rail, ~84 m². Entry, Living Room, Kitchen-Dining, Bathroom, Laundry, Primary Bedroom, Bedroom 2. Source: REIQ / Domain.com.au Gold Coast Broadbeach 4218.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["australia", "gold_coast", "broadbeach", "high_rise", "beachside", "2bed", "single_floor", "luxury"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,7],[0,7]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_entry", "name": "Entry", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen-Dining", "type": "kitchen",
+      "polygon": [[7,0],[12,0],[12,4],[7,4]], "area_sqm": 20 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_laundry", "name": "Laundry", "type": "utility",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_primary", "name": "Primary Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,7],[7,7]], "area_sqm": 15 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entry", "position": [0,2], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entry", "to": "r_living", "position": [2,2], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entry", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_laundry", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_primary", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_primary", "to": "r_bedroom2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_laundry", "to": "r_primary", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 2100 },
+    { "room": "r_kitchen", "position": [9.5,0], "width_mm": 1800 },
+    { "room": "r_primary", "position": [4,7], "width_mm": 2100 },
+    { "room": "r_bedroom2", "position": [9.5,7], "width_mm": 1800 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}
