@@ -1,0 +1,51 @@
+{
+  "id": "eu_uk_2bed_plymouth_edwardian_terrace",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Plymouth",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Plymouth Edwardian terrace (Naval city)",
+    "description": "A Plymouth 2-bed Edwardian terrace — naval city modest terrace near Devonport, ~75 m². Hallway, Living, Dining-Kitchen, two Bedrooms, Bathroom. Source: Rightmove Plymouth PL1.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["united_kingdom", "plymouth", "vintage_traditional", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[15,0],[15,5],[0,5]],
+    "wall_thickness_mm": 270,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_dining_kitchen", "name": "Dining-Kitchen", "type": "kitchen",
+      "polygon": [[8,0],[15,0],[15,3],[8,3]], "area_sqm": 21 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,3],[8,3],[8,5],[2,5]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[8,3],[12,3],[12,5],[8,5]], "area_sqm": 8 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[12,3],[15,3],[15,5],[12,5]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,2.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,1.5], "width_mm": 800 },
+    { "from": "r_living", "to": "r_dining_kitchen", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bed1", "position": [2,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [8,4], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bath", "position": [12,4], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_dining_kitchen", "position": [11.5,0], "width_mm": 2100 },
+    { "room": "r_bed1", "position": [5,5], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [10,5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [13.5,5], "width_mm": 600 }
+  ]
+}

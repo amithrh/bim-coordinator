@@ -1,0 +1,60 @@
+{
+  "id": "eu_fr_3bed_grenoble_isere",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Grenoble",
+    "size_label": "T4",
+    "size_band": "3bed",
+    "total_area_sqm": 90,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Grenoble T4 mountain-view (Alps university city)",
+    "description": "A Grenoble T4 apartment — Alps university city Chartreuse-view, ~90 m². Entrée, Grand séjour, Cuisine, SDB, WC, three Chambres. Source: SeLoger Grenoble 38000.",
+    "suitable_for": ["family", "young_family"],
+    "tags": ["france", "grenoble", "modernist_1970s", "3bed", "single_floor", "balkon"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[15,0],[15,6],[0,6]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sejour", "name": "Grand Séjour", "type": "living",
+      "polygon": [[2,0],[9,0],[9,4],[2,4]], "area_sqm": 28 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[9,0],[12,0],[12,4],[9,4]], "area_sqm": 12 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[12,0],[15,0],[15,4],[12,4]], "area_sqm": 12 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_chambre1", "name": "Chambre 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[7,4],[11,4],[11,6],[7,6]], "area_sqm": 8 },
+    { "id": "r_chambre3", "name": "Chambre 3", "type": "bedroom",
+      "polygon": [[11,4],[15,4],[15,6],[11,6]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,2], "width_mm": 1000 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [9,2], "width_mm": 1000 },
+    { "from": "r_cuisine", "to": "r_sdb", "position": [12,2], "width_mm": 800 },
+    { "from": "r_entree", "to": "r_wc", "position": [1,4], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_chambre2", "position": [9,4], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_chambre3", "position": [13.5,4], "width_mm": 900 },
+    { "from": "r_chambre1", "to": "r_chambre2", "position": [7,5], "width_mm": 800 },
+    { "from": "r_chambre2", "to": "r_chambre3", "position": [11,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [5.5,0], "width_mm": 2400 },
+    { "room": "r_cuisine", "position": [10.5,0], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [13.5,0], "width_mm": 900 },
+    { "room": "r_chambre1", "position": [4.5,6], "width_mm": 1800 },
+    { "room": "r_chambre2", "position": [9,6], "width_mm": 1500 },
+    { "room": "r_chambre3", "position": [13,6], "width_mm": 1500 }
+  ]
+}

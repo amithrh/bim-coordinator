@@ -1,0 +1,44 @@
+{
+  "id": "eu_de_2zimmer_rostock_gruenderzeit",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Rostock",
+    "size_label": "2-Zimmer",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Rostock Gründerzeit 2-Zimmer (Baltic Sea port city)",
+    "description": "A Rostock Stadtmitte Gründerzeit 2-Zimmer apartment — Baltic Sea port city open-plan, ~55 m². Flur, Wohnküche, Bad, Schlafzimmer. Source: Immowelt Rostock Stadtmitte.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["germany", "rostock", "altbau_high_ceilings", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_wohnkueche", "name": "Wohnküche", "type": "living",
+      "polygon": [[2,0],[9,0],[9,5],[2,5]], "area_sqm": 35 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "bedroom",
+      "polygon": [[9,0],[11,0],[11,5],[9,5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0,1.5], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnkueche", "position": [2,1.5], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_bad", "position": [1,3], "width_mm": 800 },
+    { "from": "r_wohnkueche", "to": "r_schlafzimmer", "position": [9,2.5], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_wohnkueche", "position": [5,0], "width_mm": 2400 },
+    { "room": "r_wohnkueche", "position": [5.5,5], "width_mm": 1800 },
+    { "room": "r_schlafzimmer", "position": [11,2.5], "width_mm": 1200 },
+    { "room": "r_bad", "position": [0,4], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "eu_it_1bed_venezia_cannaregio",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Venice",
+    "size_label": "bilocale",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Venezia Cannaregio bilocale (car-free island life)",
+    "description": "A Venezia Cannaregio bilocale — car-free canal island sestiere, Gothic and Byzantine narrow calle block, ~55 m². Portego, Soggiorno, Cucina, Bagno, Camera. Source: Immobiliare.it Venezia VE30121.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["italy", "venezia", "altbau_high_ceilings", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_portego", "name": "Portego", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_camera", "name": "Camera da letto", "type": "bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_portego", "position": [0,1.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_portego", "to": "r_soggiorno", "position": [2,1.5], "width_mm": 1000 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [8,1.5], "width_mm": 1000 },
+    { "from": "r_portego", "to": "r_bagno", "position": [1,3], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera", "position": [5,3], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera", "position": [9.5,3], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [5,0], "width_mm": 2400 },
+    { "room": "r_cucina", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_camera", "position": [6.5,5], "width_mm": 2400 },
+    { "room": "r_bagno", "position": [0,4], "width_mm": 600 }
+  ]
+}

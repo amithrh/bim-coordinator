@@ -1,0 +1,51 @@
+{
+  "id": "eu_uk_2bed_portsmouth_terraced",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Portsmouth",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Portsmouth 1950s naval terrace",
+    "description": "A Portsmouth 2-bed 1950s post-war terraced house — naval garrison city compact terrace, ~65 m². Hallway, Living, Kitchen-Diner, two Bedrooms, Bathroom. Source: Rightmove Portsmouth PO1.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["united_kingdom", "portsmouth", "modernist_1970s", "2bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[13,0],[13,5],[0,5]],
+    "wall_thickness_mm": 260,
+    "ceiling_height_mm": 2450
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
+      "polygon": [[8,0],[13,0],[13,3],[8,3]], "area_sqm": 15 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,3],[8,3],[8,5],[2,5]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[8,3],[11,3],[11,5],[8,5]], "area_sqm": 6 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[11,3],[13,3],[13,5],[11,5]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [1,0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,1.5], "width_mm": 800 },
+    { "from": "r_living", "to": "r_kitchen", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bed1", "position": [2,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [8,4], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bath", "position": [11,4], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [10.5,0], "width_mm": 1500 },
+    { "room": "r_bed1", "position": [5,5], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [9.5,5], "width_mm": 1200 },
+    { "room": "r_bath", "position": [12,5], "width_mm": 600 }
+  ]
+}

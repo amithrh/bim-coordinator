@@ -1,0 +1,43 @@
+{
+  "id": "eu_fr_1bed_rennes_intramuros",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Rennes",
+    "size_label": "T2",
+    "size_band": "1bed",
+    "total_area_sqm": 45,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Rennes Intramuros T2 (Breton half-timber)",
+    "description": "A Rennes Intramuros T2 apartment — Breton half-timbered historic centre, ~45 m². Entrée, Séjour-Cuisine, Chambre, Salle de bains. Source: SeLoger Rennes 35000.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["france", "rennes", "altbau_high_ceilings", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_sejour_cuisine", "name": "Séjour-Cuisine", "type": "living",
+      "polygon": [[2,0],[9,0],[9,3],[2,3]], "area_sqm": 21 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_chambre", "name": "Chambre", "type": "bedroom",
+      "polygon": [[2,3],[9,3],[9,5],[2,5]], "area_sqm": 14 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [1,0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour_cuisine", "position": [2,1], "width_mm": 1000 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,2], "width_mm": 700 },
+    { "from": "r_sejour_cuisine", "to": "r_chambre", "position": [5.5,3], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_sejour_cuisine", "position": [5.5,0], "width_mm": 2400 },
+    { "room": "r_chambre", "position": [5.5,5], "width_mm": 2400 },
+    { "room": "r_sdb", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

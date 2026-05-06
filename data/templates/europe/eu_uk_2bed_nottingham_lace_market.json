@@ -1,0 +1,52 @@
+{
+  "id": "eu_uk_2bed_nottingham_lace_market",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Nottingham",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Nottingham Lace Market industrial loft conversion",
+    "description": "A Nottingham Lace Market 2-bed loft conversion — former Victorian lace warehouse open-plan, ~70 m². Hallway, Store, open-plan Kitchen-Living-Dining, two Bedrooms, Bathroom. Source: Rightmove Nottingham NG1.",
+    "suitable_for": ["couple", "young_professional"],
+    "tags": ["united_kingdom", "nottingham", "vintage_traditional", "2bed", "single_floor", "open_plan", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 320,
+    "ceiling_height_mm": 3600
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_store", "name": "Store", "type": "store",
+      "polygon": [[0,3],[2,3],[2,4],[0,4]], "area_sqm": 2 },
+    { "id": "r_open_plan", "name": "Kitchen-Living-Dining", "type": "living",
+      "polygon": [[2,0],[12,0],[12,4],[2,4]], "area_sqm": 40 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[0,4],[6,4],[6,6],[0,6]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6],[6,6]], "area_sqm": 8 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[10,4],[12,4],[12,6],[10,6]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,1.5], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_open_plan", "position": [2,1.5], "width_mm": 1100 },
+    { "from": "r_hallway", "to": "r_store", "position": [1,3], "width_mm": 800 },
+    { "from": "r_store", "to": "r_bed1", "position": [1,4], "width_mm": 800 },
+    { "from": "r_open_plan", "to": "r_bed1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_open_plan", "to": "r_bed2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_open_plan", "to": "r_bath", "position": [11,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [6,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_open_plan", "position": [7,0], "width_mm": 3000 },
+    { "room": "r_bed1", "position": [3,6], "width_mm": 2400 },
+    { "room": "r_bed2", "position": [8,6], "width_mm": 1500 },
+    { "room": "r_bath", "position": [12,5], "width_mm": 600 }
+  ]
+}

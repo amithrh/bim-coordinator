@@ -1,0 +1,60 @@
+{
+  "id": "eu_uk_3bed_coventry_postwar_semi",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Coventry",
+    "size_label": "3bed",
+    "size_band": "3bed",
+    "total_area_sqm": 88,
+    "bedrooms": 3,
+    "bathrooms": 1,
+    "style": "Coventry post-war semi-detached (blitz rebuild)",
+    "description": "A Coventry 3-bed post-war semi-detached — blitz-rebuild 1950s council semi, Cheylesmore area, ~88 m². Hallway, Living, Dining-Kitchen, three Bedrooms, Bathroom. Source: Rightmove Coventry CV3.",
+    "suitable_for": ["family", "young_family"],
+    "tags": ["united_kingdom", "coventry", "modernist_1970s", "3bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,8],[0,8]],
+    "wall_thickness_mm": 260,
+    "ceiling_height_mm": 2450
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_dining_kitchen", "name": "Dining-Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[11,0],[11,4],[7,4]], "area_sqm": 16 },
+    { "id": "r_bed1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[7,4],[11,4],[11,6],[7,6]], "area_sqm": 8 },
+    { "id": "r_bed3", "name": "Bedroom 3", "type": "bedroom",
+      "polygon": [[2,6],[7,6],[7,8],[2,8]], "area_sqm": 10 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[7,6],[11,6],[11,8],[7,8]], "area_sqm": 8 },
+    { "id": "r_landing", "name": "Landing", "type": "corridor",
+      "polygon": [[0,5],[2,5],[2,8],[0,8]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [1,0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,2], "width_mm": 800 },
+    { "from": "r_living", "to": "r_dining_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_landing", "position": [1,5], "width_mm": 800 },
+    { "from": "r_living", "to": "r_bed1", "position": [4.5,4], "width_mm": 800 },
+    { "from": "r_dining_kitchen", "to": "r_bed2", "position": [9,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed3", "position": [4.5,6], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bath", "position": [9,6], "width_mm": 800 },
+    { "from": "r_landing", "to": "r_bed3", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_dining_kitchen", "position": [9,0], "width_mm": 1500 },
+    { "room": "r_bed1", "position": [4.5,6], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [9,6], "width_mm": 1200 },
+    { "room": "r_bed3", "position": [4.5,8], "width_mm": 1500 },
+    { "room": "r_bath", "position": [9,8], "width_mm": 900 },
+    { "room": "r_landing", "position": [0,6.5], "width_mm": 600 }
+  ]
+}

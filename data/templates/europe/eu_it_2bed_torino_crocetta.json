@@ -1,0 +1,56 @@
+{
+  "id": "eu_it_2bed_torino_crocetta",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Turin",
+    "size_label": "trilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Torino Crocetta trilocale Liberty (Art Nouveau)",
+    "description": "A Torino Crocetta trilocale — Fiat-era Liberty Art Nouveau block in prestigious Crocetta, ~80 m². Ingresso, Soggiorno, Cucina, Bagno, two Camere, Corridoio. Source: Immobiliare.it Torino Crocetta TO10133.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["italy", "torino", "altbau_high_ceilings", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3300
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_camera1", "name": "Camera da letto 1", "type": "master_bedroom",
+      "polygon": [[2,5],[7,5],[7,8],[2,8]], "area_sqm": 15 },
+    { "id": "r_camera2", "name": "Camera da letto 2", "type": "bedroom",
+      "polygon": [[7,5],[10,5],[10,8],[7,8]], "area_sqm": 9 },
+    { "id": "r_corridoio", "name": "Corridoio", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,2], "width_mm": 1000 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [7,2.5], "width_mm": 1000 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bagno", "to": "r_corridoio", "position": [1,6], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera1", "position": [4.5,5], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera2", "position": [8.5,5], "width_mm": 900 },
+    { "from": "r_camera1", "to": "r_camera2", "position": [7,6.5], "width_mm": 800 },
+    { "from": "r_corridoio", "to": "r_camera1", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [4.5,0], "width_mm": 2400 },
+    { "room": "r_cucina", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_camera1", "position": [4.5,8], "width_mm": 1800 },
+    { "room": "r_camera2", "position": [8.5,8], "width_mm": 1500 },
+    { "room": "r_bagno", "position": [0,5], "width_mm": 600 }
+  ]
+}

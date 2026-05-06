@@ -1,0 +1,61 @@
+{
+  "id": "eu_it_3bed_trieste_borgo_teresiano",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Trieste",
+    "size_label": "quadrilocale",
+    "size_band": "3bed",
+    "total_area_sqm": 100,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Trieste Borgo Teresiano quadrilocale (Habsburg bourgeois)",
+    "description": "A Trieste Borgo Teresiano quadrilocale — Habsburg Empire port city Austrian-Italian bourgeois apartment, ~100 m². Ingresso, Soggiorno, Cucina, Bagno, WC, three Camere. Source: Immobiliare.it Trieste TS34121.",
+    "suitable_for": ["family", "extended_family"],
+    "tags": ["italy", "trieste", "altbau_high_ceilings", "3bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,10],[0,10]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3500
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[8,0],[8,5],[2,5]], "area_sqm": 30 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[8,0],[10,0],[10,5],[8,5]], "area_sqm": 10 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,5],[3,5],[3,7],[0,7]], "area_sqm": 6 },
+    { "id": "r_camera1", "name": "Camera da letto 1", "type": "master_bedroom",
+      "polygon": [[3,5],[8,5],[8,8],[3,8]], "area_sqm": 15 },
+    { "id": "r_camera2", "name": "Camera da letto 2", "type": "bedroom",
+      "polygon": [[8,5],[10,5],[10,8],[8,8]], "area_sqm": 6 },
+    { "id": "r_camera3", "name": "Camera da letto 3", "type": "bedroom",
+      "polygon": [[3,8],[10,8],[10,10],[3,10]], "area_sqm": 14 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,7],[3,7],[3,10],[0,10]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,2.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,2.5], "width_mm": 1000 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [8,2.5], "width_mm": 1000 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,5], "width_mm": 800 },
+    { "from": "r_bagno", "to": "r_wc", "position": [1.5,7], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_camera3", "position": [3,9], "width_mm": 800 },
+    { "from": "r_soggiorno", "to": "r_camera1", "position": [5.5,5], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera2", "position": [9,5], "width_mm": 900 },
+    { "from": "r_camera1", "to": "r_camera2", "position": [8,6.5], "width_mm": 800 },
+    { "from": "r_camera1", "to": "r_camera3", "position": [5.5,8], "width_mm": 900 },
+    { "from": "r_camera2", "to": "r_camera3", "position": [9,8], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [5,0], "width_mm": 3000 },
+    { "room": "r_cucina", "position": [9,0], "width_mm": 1200 },
+    { "room": "r_camera1", "position": [5.5,8], "width_mm": 2100 },
+    { "room": "r_camera2", "position": [9,8], "width_mm": 1200 },
+    { "room": "r_camera3", "position": [6.5,10], "width_mm": 2400 },
+    { "room": "r_bagno", "position": [0,6], "width_mm": 600 }
+  ]
+}

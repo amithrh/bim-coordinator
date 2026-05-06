@@ -1,0 +1,62 @@
+{
+  "id": "eu_de_3bed_wuppertal_barmen",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Wuppertal",
+    "size_label": "4-Zimmer",
+    "size_band": "3bed",
+    "total_area_sqm": 84,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Wuppertal Barmen 4-Zimmer Gründerzeit (Suspension Railway quarter)",
+    "description": "A Wuppertal Barmen 4-Zimmer Gründerzeit apartment — Schwebebahn district industrial loft conversion, ~84 m². Flur, Wohnzimmer, Küche, Bad, WC, three Schlafzimmer. Source: Immowelt Wuppertal Barmen.",
+    "suitable_for": ["family"],
+    "tags": ["germany", "wuppertal", "altbau_high_ceilings", "3bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,7],[0,7]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3400
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[9,0],[9,4],[2,4]], "area_sqm": 28 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[9,0],[12,0],[12,4],[9,4]], "area_sqm": 12 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,4],[3,4],[3,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "Gäste-WC", "type": "wc",
+      "polygon": [[0,6],[3,6],[3,7],[0,7]], "area_sqm": 3 },
+    { "id": "r_schlafzimmer1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[3,4],[7,4],[7,7],[3,7]], "area_sqm": 12 },
+    { "id": "r_schlafzimmer2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[7,4],[9,4],[9,7],[7,7]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer3", "name": "Schlafzimmer 3", "type": "bedroom",
+      "polygon": [[9,4],[12,4],[12,7],[9,7]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0,2], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnzimmer", "position": [2,2], "width_mm": 1500 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [9,2], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_bad", "position": [1.5,4], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_wc", "position": [1.5,6], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer1", "position": [5,4], "width_mm": 900 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlafzimmer3", "position": [10.5,4], "width_mm": 900 },
+    { "from": "r_schlafzimmer1", "to": "r_schlafzimmer2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_schlafzimmer2", "to": "r_schlafzimmer3", "position": [9,5.5], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_schlafzimmer1", "position": [3,5], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_schlafzimmer1", "position": [3,6.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [5.5,0], "width_mm": 2400 },
+    { "room": "r_kueche", "position": [10.5,0], "width_mm": 1500 },
+    { "room": "r_schlafzimmer1", "position": [5,7], "width_mm": 1800 },
+    { "room": "r_schlafzimmer2", "position": [8,7], "width_mm": 1200 },
+    { "room": "r_schlafzimmer3", "position": [10.5,7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0,5], "width_mm": 600 }
+  ]
+}

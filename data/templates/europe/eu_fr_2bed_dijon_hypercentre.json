@@ -1,0 +1,58 @@
+{
+  "id": "eu_fr_2bed_dijon_hypercentre",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Dijon",
+    "size_label": "T3",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Dijon Hypercentre T3 (Burgundy stone)",
+    "description": "A Dijon Hypercentre T3 apartment — Burgundy Golden Stone bourgeois block near Palais des Ducs, ~72 m². Entrée, Salon, Salle à manger, Cuisine, SDB, WC, two Chambres. Source: SeLoger Dijon 21000.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["france", "dijon", "altbau_high_ceilings", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_salle_manger", "name": "Salle à manger", "type": "dining",
+      "polygon": [[7,0],[12,0],[12,3],[7,3]], "area_sqm": 15 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[7,3],[12,3],[12,5],[7,5]], "area_sqm": 10 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_chambre1", "name": "Chambre 1", "type": "master_bedroom",
+      "polygon": [[2,3],[7,3],[7,6],[2,6]], "area_sqm": 15 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[7,5],[10,5],[10,6],[7,6]], "area_sqm": 3 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[10,5],[12,5],[12,6],[10,6]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_salon", "position": [2,1.5], "width_mm": 1000 },
+    { "from": "r_salon", "to": "r_salle_manger", "position": [7,1.5], "width_mm": 1000 },
+    { "from": "r_salle_manger", "to": "r_cuisine", "position": [9.5,3], "width_mm": 900 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,4], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_chambre1", "position": [4.5,3], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_wc", "position": [8.5,5], "width_mm": 700 },
+    { "from": "r_cuisine", "to": "r_chambre2", "position": [11,5], "width_mm": 700 },
+    { "from": "r_chambre1", "to": "r_wc", "position": [7,5.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_salle_manger", "position": [9.5,0], "width_mm": 1800 },
+    { "room": "r_chambre1", "position": [4.5,6], "width_mm": 1800 },
+    { "room": "r_chambre2", "position": [11,6], "width_mm": 1200 },
+    { "room": "r_sdb", "position": [0,5], "width_mm": 600 }
+  ]
+}

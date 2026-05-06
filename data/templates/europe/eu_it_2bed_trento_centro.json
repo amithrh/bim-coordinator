@@ -1,0 +1,56 @@
+{
+  "id": "eu_it_2bed_trento_centro",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Trento",
+    "size_label": "trilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 84,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Trento Centro trilocale (Trentino-Alto Adige Dolomites city)",
+    "description": "A Trento Centro trilocale — Trentino Austrian-Italian border city at Dolomites gateway, ~84 m². Ingresso, Soggiorno, Cucina, Bagno, WC, two Camere. Source: Immobiliare.it Trento TN38122.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["italy", "trento", "altbau_high_ceilings", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,7],[0,7]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_camera1", "name": "Camera da letto 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_camera2", "name": "Camera da letto 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,7],[7,7]], "area_sqm": 15 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,2], "width_mm": 1000 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [8,2], "width_mm": 1000 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bagno", "to": "r_wc", "position": [1,6], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_camera1", "to": "r_camera2", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_camera1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [5,0], "width_mm": 2400 },
+    { "room": "r_cucina", "position": [10,0], "width_mm": 1500 },
+    { "room": "r_camera1", "position": [4.5,7], "width_mm": 1800 },
+    { "room": "r_camera2", "position": [9.5,7], "width_mm": 1800 },
+    { "room": "r_bagno", "position": [0,5], "width_mm": 600 }
+  ]
+}

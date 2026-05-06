@@ -1,0 +1,57 @@
+{
+  "id": "eu_de_3zimmer_erfurt_altstadt",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Erfurt",
+    "size_label": "3-Zimmer",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Erfurt Altstadt 3-Zimmer Fachwerkhaus (Thuringia half-timber)",
+    "description": "An Erfurt Altstadt 3-Zimmer apartment — Thuringian half-timbered Fachwerkhaus, ~80 m². Flur, Wohnzimmer, Küche, Bad, Korridor, two Schlafzimmer. Source: ImmobilienScout24 Erfurt Andreasquartier.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["germany", "erfurt", "altbau_high_ceilings", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_schlafzimmer1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,8],[2,8]], "area_sqm": 12 },
+    { "id": "r_schlafzimmer2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,8],[6,8]], "area_sqm": 12 },
+    { "id": "r_korridor", "name": "Korridor", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0,2], "width_mm": 1100, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnzimmer", "position": [2,2], "width_mm": 1100 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [7,2.5], "width_mm": 1100 },
+    { "from": "r_flur", "to": "r_bad", "position": [1,4], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_korridor", "position": [1,6], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer1", "position": [4,5], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlafzimmer2", "position": [8.5,5], "width_mm": 900 },
+    { "from": "r_schlafzimmer1", "to": "r_schlafzimmer2", "position": [6,6.5], "width_mm": 800 },
+    { "from": "r_korridor", "to": "r_schlafzimmer1", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [4.5,0], "width_mm": 2400 },
+    { "room": "r_kueche", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_schlafzimmer1", "position": [4,8], "width_mm": 1800 },
+    { "room": "r_schlafzimmer2", "position": [8,8], "width_mm": 1800 },
+    { "room": "r_bad", "position": [0,5], "width_mm": 600 },
+    { "room": "r_korridor", "position": [0,7], "width_mm": 600 }
+  ]
+}

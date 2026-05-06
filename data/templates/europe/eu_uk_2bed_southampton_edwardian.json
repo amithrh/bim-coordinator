@@ -1,0 +1,56 @@
+{
+  "id": "eu_uk_2bed_southampton_edwardian",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Southampton",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 80,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Southampton Edwardian semi-detached (port city)",
+    "description": "A Southampton 2-bed Edwardian semi-detached — Titanic port city Shirley neighbourhood, ~80 m². Hallway, Bay-window Living, Dining, Kitchen, two Bedrooms, Bathroom. Source: Rightmove Southampton SO15.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["united_kingdom", "southampton", "vintage_traditional", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,8],[0,8]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_dining", "name": "Dining Room", "type": "dining",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,4],[10,4],[10,8],[7,8]], "area_sqm": 12 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[2,6],[7,6],[7,8],[2,8]], "area_sqm": 10 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,5],[2,5],[2,8],[0,8]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [1,0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,2], "width_mm": 800 },
+    { "from": "r_living", "to": "r_dining", "position": [7,2], "width_mm": 900 },
+    { "from": "r_dining", "to": "r_kitchen", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bath", "position": [1,5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bed1", "position": [4.5,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_kitchen", "position": [7,5], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [4.5,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 2100 },
+    { "room": "r_dining", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [10,6], "width_mm": 1500 },
+    { "room": "r_bed1", "position": [4.5,6], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [4.5,8], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0,6.5], "width_mm": 600 }
+  ]
+}

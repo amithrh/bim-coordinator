@@ -1,0 +1,55 @@
+{
+  "id": "eu_uk_2bed_birmingham_jewellery_quarter",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Birmingham",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Birmingham Jewellery Quarter Victorian terrace",
+    "description": "A Birmingham Jewellery Quarter 2-bed Victorian terrace — former craftsman's workshop converted to residential, ~75 m². Hallway, Living, Dining, Kitchen, two Bedrooms, Bathroom. Source: Rightmove Birmingham JQ.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["united_kingdom", "birmingham", "vintage_traditional", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[15,0],[15,5],[0,5]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,5],[0,5]], "area_sqm": 10 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_dining", "name": "Dining Room", "type": "dining",
+      "polygon": [[7,0],[11,0],[11,3],[7,3]], "area_sqm": 12 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[11,0],[15,0],[15,3],[11,3]], "area_sqm": 12 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,3],[8,3],[8,5],[2,5]], "area_sqm": 12 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[8,3],[12,3],[12,5],[8,5]], "area_sqm": 8 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[12,3],[15,3],[15,5],[12,5]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,2.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,1.5], "width_mm": 800 },
+    { "from": "r_living", "to": "r_dining", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_dining", "to": "r_kitchen", "position": [11,1.5], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bed1", "position": [2,4], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [8,4], "width_mm": 800 },
+    { "from": "r_bed2", "to": "r_bath", "position": [12,4], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_dining", "position": [9,0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [13,0], "width_mm": 1500 },
+    { "room": "r_bed1", "position": [5,5], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [10,5], "width_mm": 1500 },
+    { "room": "r_bath", "position": [13.5,5], "width_mm": 600 }
+  ]
+}

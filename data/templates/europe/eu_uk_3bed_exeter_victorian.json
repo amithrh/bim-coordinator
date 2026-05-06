@@ -1,0 +1,69 @@
+{
+  "id": "eu_uk_3bed_exeter_victorian",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Exeter",
+    "size_label": "3bed",
+    "size_band": "3bed",
+    "total_area_sqm": 100,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "style": "Exeter Victorian semi-detached (Cathedral city)",
+    "description": "An Exeter 3-bed Victorian semi-detached — Devon cathedral city near university, ~100 m². Hallway, Living, Dining, Kitchen, Utility, three Bedrooms, Bathroom, En-suite. Source: Rightmove Exeter EX1.",
+    "suitable_for": ["family", "young_family"],
+    "tags": ["united_kingdom", "exeter", "vintage_traditional", "3bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,10],[0,10]],
+    "wall_thickness_mm": 280,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,6],[0,6]], "area_sqm": 12 },
+    { "id": "r_living", "name": "Living Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_dining", "name": "Dining Room", "type": "dining",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,4],[10,4],[10,7],[7,7]], "area_sqm": 9 },
+    { "id": "r_utility", "name": "Utility", "type": "store",
+      "polygon": [[7,7],[10,7],[10,9],[7,9]], "area_sqm": 6 },
+    { "id": "r_bed1", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,7],[2,7]], "area_sqm": 15 },
+    { "id": "r_ensuite", "name": "En-suite", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,8],[0,8]], "area_sqm": 4 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[2,7],[7,7],[7,9],[2,9]], "area_sqm": 10 },
+    { "id": "r_bed3", "name": "Bedroom 3", "type": "bedroom",
+      "polygon": [[2,9],[7,9],[7,10],[2,10]], "area_sqm": 5 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,8],[2,8],[2,10],[0,10]], "area_sqm": 4 },
+    { "id": "r_landing", "name": "Landing", "type": "corridor",
+      "polygon": [[7,9],[10,9],[10,10],[7,10]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [1,0], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_living", "position": [2,2], "width_mm": 800 },
+    { "from": "r_living", "to": "r_dining", "position": [7,2], "width_mm": 900 },
+    { "from": "r_dining", "to": "r_kitchen", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_utility", "position": [8.5,7], "width_mm": 800 },
+    { "from": "r_utility", "to": "r_landing", "position": [8.5,9], "width_mm": 800 },
+    { "from": "r_hallway", "to": "r_ensuite", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bed1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_bed1", "to": "r_kitchen", "position": [7,5.5], "width_mm": 800 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [4.5,7], "width_mm": 800 },
+    { "from": "r_ensuite", "to": "r_bath", "position": [1,8], "width_mm": 700 },
+    { "from": "r_bed2", "to": "r_bed3", "position": [4.5,9], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_dining", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_utility", "position": [10,8], "width_mm": 1200 },
+    { "room": "r_bed1", "position": [4.5,7], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [4.5,9], "width_mm": 1500 },
+    { "room": "r_bed3", "position": [4.5,10], "width_mm": 1200 },
+    { "room": "r_bath", "position": [0,9], "width_mm": 600 }
+  ]
+}

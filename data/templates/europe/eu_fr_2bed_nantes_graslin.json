@@ -1,0 +1,56 @@
+{
+  "id": "eu_fr_2bed_nantes_graslin",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Nantes",
+    "size_label": "T3",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Nantes Quartier Graslin T3 (Loire city bourgeois)",
+    "description": "A Nantes Graslin T3 apartment — Loire-Atlantique bourgeois 19th-century quarter, ~72 m². Entrée, Séjour, Cuisine, Salle de bains, WC, two Chambres. Source: SeLoger Nantes 44000.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["france", "nantes", "altbau_high_ceilings", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[0,4],[3,4],[3,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[3,4],[5,4],[5,6],[3,6]], "area_sqm": 4 },
+    { "id": "r_chambre1", "name": "Chambre 1", "type": "master_bedroom",
+      "polygon": [[5,4],[9,4],[9,6],[5,6]], "area_sqm": 8 },
+    { "id": "r_chambre2", "name": "Chambre 2", "type": "bedroom",
+      "polygon": [[9,4],[12,4],[12,6],[9,6]], "area_sqm": 6 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,2], "width_mm": 1000 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [8,2], "width_mm": 1000 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1.5,4], "width_mm": 800 },
+    { "from": "r_sdb", "to": "r_wc", "position": [3,5], "width_mm": 700 },
+    { "from": "r_wc", "to": "r_chambre1", "position": [5,5], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre1", "position": [7,4], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_chambre2", "position": [10.5,4], "width_mm": 900 },
+    { "from": "r_chambre1", "to": "r_chambre2", "position": [9,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [5,0], "width_mm": 2400 },
+    { "room": "r_cuisine", "position": [10,0], "width_mm": 1500 },
+    { "room": "r_chambre1", "position": [7,6], "width_mm": 1500 },
+    { "room": "r_chambre2", "position": [10.5,6], "width_mm": 1200 },
+    { "room": "r_sdb", "position": [0,5], "width_mm": 600 }
+  ]
+}

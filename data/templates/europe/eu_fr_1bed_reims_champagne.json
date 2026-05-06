@@ -1,0 +1,43 @@
+{
+  "id": "eu_fr_1bed_reims_champagne",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Reims",
+    "size_label": "T2",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Reims T2 Champagne (Cathedral city Art Deco)",
+    "description": "A Reims T2 apartment — Champagne cathedral city Art Deco block near Notre-Dame, ~50 m². Entrée, Séjour-Cuisine, Chambre, Salle de bains. Source: SeLoger Reims 51100.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["france", "reims", "altbau_high_ceilings", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_sejour", "name": "Séjour-Cuisine", "type": "living",
+      "polygon": [[2,0],[10,0],[10,3],[2,3]], "area_sqm": 24 },
+    { "id": "r_sdb", "name": "Salle de bains", "type": "bathroom",
+      "polygon": [[0,3],[3,3],[3,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_chambre", "name": "Chambre", "type": "bedroom",
+      "polygon": [[3,3],[10,3],[10,5],[3,5]], "area_sqm": 14 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [1,0], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,1.5], "width_mm": 1000 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,3], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre", "position": [6.5,3], "width_mm": 900 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [6,0], "width_mm": 2400 },
+    { "room": "r_chambre", "position": [6.5,5], "width_mm": 2400 },
+    { "room": "r_sdb", "position": [0,4], "width_mm": 600 }
+  ]
+}
