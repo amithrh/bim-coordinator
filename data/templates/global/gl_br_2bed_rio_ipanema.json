@@ -1,0 +1,56 @@
+{
+  "id": "gl_br_2bed_rio_ipanema",
+  "metadata": {
+    "region": "global",
+    "country": "Brazil",
+    "city_inspiration": "Rio de Janeiro",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Rio de Janeiro Ipanema 2-bed apartamento (praia burguesa zona sul)",
+    "description": "Um apartamento de 2 dormitórios em Ipanema, Rio de Janeiro — o bairro chique da zona sul com a famosa praia, a feira hippie e a vista para o Arpoador, edifício moderno dos anos 1970–80, ~75 m². Hall, Sala, Cozinha, Banheiro, WC, Quarto Principal, Quarto 2. Source: Zap Imóveis / QuintoAndar Rio de Janeiro Ipanema.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["brazil", "rio_de_janeiro", "ipanema", "2bed", "zona_sul", "beach"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4.5],[7,4.5]], "area_sqm": 13.5 },
+    { "id": "r_banheiro", "name": "Banheiro", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5.5],[0,5.5]], "area_sqm": 7 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5.5],[2,5.5],[2,7.5],[0,7.5]], "area_sqm": 4 },
+    { "id": "r_quarto1", "name": "Quarto Principal", "type": "master_bedroom",
+      "polygon": [[2,4.5],[6,4.5],[6,7.5],[2,7.5]], "area_sqm": 12 },
+    { "id": "r_quarto2", "name": "Quarto 2", "type": "bedroom",
+      "polygon": [[6,4.5],[10,4.5],[10,7.5],[6,7.5]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_sala", "position": [2,1], "width_mm": 900 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [7,2.25], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_banheiro", "position": [1,2], "width_mm": 700 },
+    { "from": "r_banheiro", "to": "r_wc", "position": [1,5.5], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_quarto1", "position": [4,4.5], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_quarto2", "position": [8.5,4.5], "width_mm": 900 },
+    { "from": "r_quarto1", "to": "r_quarto2", "position": [6,6], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_quarto1", "position": [2,6.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cozinha", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_quarto1", "position": [4,7.5], "width_mm": 1500 },
+    { "room": "r_quarto2", "position": [8,7.5], "width_mm": 1500 },
+    { "room": "r_banheiro", "position": [0,3.75], "width_mm": 600 }
+  ]
+}

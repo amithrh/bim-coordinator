@@ -1,0 +1,56 @@
+{
+  "id": "gl_pk_2bed_islamabad_f7",
+  "metadata": {
+    "region": "global",
+    "country": "Pakistan",
+    "city_inspiration": "Islamabad",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Islamabad F-7 Markaz 2-bed apartment (diplomatic zone leafy suburb)",
+    "description": "An Islamabad F-7 Markaz 2-bed apartment — the leafy diplomatic-zone sector near Jinnah Super Market and the Margalla Hills foothills, mid-rise gated apartment block, ~75 m². Foyer, Drawing-Dining, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: Zameen.com / Graana Islamabad F-7.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["pakistan","islamabad","f7","2bed","current_2020plus","diplomatic_zone"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_living", "name": "Drawing-Dining", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4.5],[7,4.5]], "area_sqm": 13.5 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5.5],[0,5.5]], "area_sqm": 7 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5.5],[2,5.5],[2,7.5],[0,7.5]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4.5],[6,4.5],[6,7.5],[2,7.5]], "area_sqm": 12 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,4.5],[10,4.5],[10,7.5],[6,7.5]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,1], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2.25], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [1,2], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_wc", "position": [1,5.5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [4,4.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom2", "position": [8.5,4.5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bedroom2", "position": [6,6], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_master", "position": [2,6.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_master", "position": [4,7.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8,7.5], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0,3.75], "width_mm": 600 }
+  ]
+}

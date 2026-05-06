@@ -1,0 +1,53 @@
+{
+  "id": "gl_ar_1bed_buenos_aires_palermo",
+  "metadata": {
+    "region": "global",
+    "country": "Argentina",
+    "city_inspiration": "Buenos Aires",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 48,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Buenos Aires Palermo 1-bed departamento (barrio chic palermitano)",
+    "description": "A Buenos Aires Palermo 1-bed departamento — the chic barrio of Palermo Soho and Palermo Hollywood near the Parque Tres de Febrero and the Buenos Aires Zoo, PH or modern apartment, ~48 m². Foyer, Living-Comedor, Cocina, Baño, Dormitorio, Balcón. Source: Zonaprop / Argenprop Buenos Aires Palermo.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["argentina","buenos_aires","palermo","1bed","current_2020plus"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,6],[0,6]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_living", "name": "Living-Comedor", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4],[2,4]], "area_sqm": 16 },
+    { "id": "r_kitchen", "name": "Cocina", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_bath", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_bedroom", "name": "Dormitorio", "type": "master_bedroom",
+      "polygon": [[2,4],[8,4],[8,6],[2,6]], "area_sqm": 12 },
+    { "id": "r_balcony", "name": "Balcón", "type": "balcony",
+      "polygon": [[0,5],[2,5],[2,6],[0,6]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,1], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [6,2], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [1,2], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bedroom", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [7,4], "width_mm": 800 },
+    { "from": "r_bath", "to": "r_bedroom", "position": [2,4.5], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_balcony", "position": [1,5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8,2], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [5,6], "width_mm": 1800 },
+    { "room": "r_balcony", "position": [1,6], "width_mm": 1200 },
+    { "room": "r_bath", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "gl_br_1bed_sao_paulo_vila_madalena",
+  "metadata": {
+    "region": "global",
+    "country": "Brazil",
+    "city_inspiration": "São Paulo",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 48,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "São Paulo Vila Madalena 1-bed apartamento (vila boêmia grafite)",
+    "description": "Um apartamento de 1 dormitório na Vila Madalena de São Paulo — o bairro boêmio de galerias de arte, bares e o Beco do Batman com murais de grafite, próximo ao metrô Faria Lima, edifício moderno, ~48 m². Hall, Sala, Cozinha, Banheiro, Quarto, Varanda. Source: Zap Imóveis / Viva Real São Paulo Vila Madalena.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["brazil", "sao_paulo", "vila_madalena", "1bed", "current_2020plus", "bohemian"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[8,0],[8,6],[0,6]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_sala", "name": "Sala", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4],[2,4]], "area_sqm": 16 },
+    { "id": "r_cozinha", "name": "Cozinha", "type": "kitchen",
+      "polygon": [[6,0],[8,0],[8,4],[6,4]], "area_sqm": 8 },
+    { "id": "r_banheiro", "name": "Banheiro", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_quarto", "name": "Quarto", "type": "master_bedroom",
+      "polygon": [[2,4],[8,4],[8,6],[2,6]], "area_sqm": 12 },
+    { "id": "r_varanda", "name": "Varanda", "type": "balcony",
+      "polygon": [[0,5],[2,5],[2,6],[0,6]], "area_sqm": 2 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_sala", "position": [2,1], "width_mm": 900 },
+    { "from": "r_sala", "to": "r_cozinha", "position": [6,2], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_banheiro", "position": [1,2], "width_mm": 700 },
+    { "from": "r_sala", "to": "r_quarto", "position": [4,4], "width_mm": 900 },
+    { "from": "r_cozinha", "to": "r_quarto", "position": [7,4], "width_mm": 800 },
+    { "from": "r_banheiro", "to": "r_quarto", "position": [2,4.5], "width_mm": 700 },
+    { "from": "r_banheiro", "to": "r_varanda", "position": [1,5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_sala", "position": [4,0], "width_mm": 1800 },
+    { "room": "r_cozinha", "position": [8,2], "width_mm": 1200 },
+    { "room": "r_quarto", "position": [5,6], "width_mm": 1800 },
+    { "room": "r_varanda", "position": [1,6], "width_mm": 1200 },
+    { "room": "r_banheiro", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

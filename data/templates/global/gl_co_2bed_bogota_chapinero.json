@@ -1,0 +1,56 @@
+{
+  "id": "gl_co_2bed_bogota_chapinero",
+  "metadata": {
+    "region": "global",
+    "country": "Colombia",
+    "city_inspiration": "Bogotá",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Bogotá Chapinero 2-bed apartamento (barrio universitario bohemio)",
+    "description": "A Bogotá Chapinero 2-bed apartamento — the vibrant bohemian university quarter of carrera 7 and calle 63 with art-house cinemas and craft-beer bars, modern apartment in mid-rise building, ~75 m². Foyer, Living-Comedor, Cocina, Baño, WC, Habitación Principal, Habitación 2. Source: FincaRaíz / Metrocuadrado Bogotá Chapinero.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["colombia","bogota","chapinero","2bed","current_2020plus"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 150,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_living", "name": "Living-Comedor", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+    { "id": "r_kitchen", "name": "Cocina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4.5],[7,4.5]], "area_sqm": 13.5 },
+    { "id": "r_bath", "name": "Baño", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5.5],[0,5.5]], "area_sqm": 7 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5.5],[2,5.5],[2,7.5],[0,7.5]], "area_sqm": 4 },
+    { "id": "r_master", "name": "Habitación Principal", "type": "master_bedroom",
+      "polygon": [[2,4.5],[6,4.5],[6,7.5],[2,7.5]], "area_sqm": 12 },
+    { "id": "r_bedroom2", "name": "Habitación 2", "type": "bedroom",
+      "polygon": [[6,4.5],[10,4.5],[10,7.5],[6,7.5]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,1], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2.25], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [1,2], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_wc", "position": [1,5.5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [4,4.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom2", "position": [8.5,4.5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bedroom2", "position": [6,6], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_master", "position": [2,6.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_master", "position": [4,7.5], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8,7.5], "width_mm": 1500 },
+    { "room": "r_bath", "position": [0,3.75], "width_mm": 600 }
+  ]
+}
