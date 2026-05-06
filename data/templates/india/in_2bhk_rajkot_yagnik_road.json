@@ -1,0 +1,56 @@
+{
+  "id": "in_2bhk_rajkot_yagnik_road",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Rajkot",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Rajkot Yagnik Road 2 BHK (Saurashtra capital Gandhi's youth city)",
+    "description": "A Rajkot Yagnik Road 2 BHK — Saurashtra's commercial capital and Mahatma Gandhi's boyhood home, Yagnik Road is the main residential corridor, ~75 m². Entrance, Drawing-Dining, Kitchen, Bathroom, Pooja Room, Master Bedroom, Bedroom 2. Source: 99acres Rajkot Yagnik Road 360001.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["india", "rajkot", "gujarat", "saurashtra", "yagnik_road", "apartment_indian", "2bed", "pooja_room"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2850
+  },
+  "rooms": [
+    { "id": "r_entrance", "name": "Entrance", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_living", "name": "Drawing-Dining", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_pooja", "name": "Pooja Room", "type": "store",
+      "polygon": [[0,6],[2,6],[2,7.5],[0,7.5]], "area_sqm": 3 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7.5],[2,7.5]], "area_sqm": 14 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,7.5],[6,7.5]], "area_sqm": 14 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrance", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrance", "to": "r_living", "position": [2,2], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entrance", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_pooja", "position": [1,6], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bed2", "position": [6,6], "width_mm": 800 },
+    { "from": "r_pooja", "to": "r_master", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_master", "position": [4,7.5], "width_mm": 1500 },
+    { "room": "r_bed2", "position": [8,7.5], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}

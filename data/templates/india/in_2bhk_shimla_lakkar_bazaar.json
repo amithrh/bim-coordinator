@@ -1,0 +1,56 @@
+{
+  "id": "in_2bhk_shimla_lakkar_bazaar",
+  "metadata": {
+    "region": "india",
+    "country": "India",
+    "city_inspiration": "Shimla",
+    "size_label": "2bhk",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Shimla Lakkar Bazaar 2 BHK (Himalayan hill capital British colonial)",
+    "description": "A Shimla Lakkar Bazaar 2 BHK — Himachal Pradesh's colonial hill capital and former British India summer seat, compact apartments on steep Himalayan slopes near The Ridge and Mall Road, ~65 m². Entrance, Living, Kitchen, Bathroom, Store, two Bedrooms. Source: 99acres Shimla Lakkar Bazaar 171001.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["india", "shimla", "himachal_pradesh", "hill_station", "apartment_indian", "2bed", "compact"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 230,
+    "ceiling_height_mm": 2750
+  },
+  "rooms": [
+    { "id": "r_entrance", "name": "Entrance", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Living", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_store", "name": "Store Room", "type": "store",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_bed1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entrance", "position": [0,1.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entrance", "to": "r_living", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entrance", "to": "r_bathroom", "position": [1,3], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_store", "position": [1,5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_bed1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_bed1", "to": "r_bed2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_store", "to": "r_bed1", "position": [2,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_bed1", "position": [4,6.5], "width_mm": 1200 },
+    { "room": "r_bed2", "position": [8,6.5], "width_mm": 1200 },
+    { "room": "r_bathroom", "position": [0,4], "width_mm": 600 }
+  ]
+}
