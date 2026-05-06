@@ -1,0 +1,49 @@
+{
+  "id": "eu_cz_1bed_brno_zabovresky",
+  "metadata": {
+    "region": "europe",
+    "country": "Czech Republic",
+    "city_inspiration": "Brno",
+    "size_label": "byt 1+1",
+    "size_band": "1bed",
+    "total_area_sqm": 45,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Brno Žabovřesky 1+1 (Moravian capital premium inter-war district)",
+    "description": "A Brno Žabovřesky 1+1 byt — the Moravian capital and Špilberk fortress city, Žabovřesky is Brno's prime residential district with functionalist and Bauhaus-influenced buildings from the 1920s, ~45 m². Předsíň, Obývací pokoj, Kuchyně, Koupelna+WC, Ložnice. Source: Sreality.cz Brno Žabovřesky 616.",
+    "suitable_for": ["couple", "single"],
+    "tags": ["czech_republic", "brno", "zabovresky", "functionalism", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[9,0],[9,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_predsinen", "name": "Předsíň", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_obyvak", "name": "Obývací pokoj", "type": "living",
+      "polygon": [[2,0],[6,0],[6,4],[2,4]], "area_sqm": 16 },
+    { "id": "r_kuchyne", "name": "Kuchyně", "type": "kitchen",
+      "polygon": [[6,0],[9,0],[9,4],[6,4]], "area_sqm": 12 },
+    { "id": "r_koupelna", "name": "Koupelna", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_loznice", "name": "Ložnice", "type": "master_bedroom",
+      "polygon": [[2,4],[9,4],[9,5],[2,5]], "area_sqm": 7 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_predsinen", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_predsinen", "to": "r_obyvak", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_obyvak", "to": "r_kuchyne", "position": [6,2], "width_mm": 900 },
+    { "from": "r_predsinen", "to": "r_koupelna", "position": [1,3], "width_mm": 700 },
+    { "from": "r_obyvak", "to": "r_loznice", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kuchyne", "to": "r_loznice", "position": [7.5,4], "width_mm": 800 },
+    { "from": "r_koupelna", "to": "r_loznice", "position": [2,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_obyvak", "position": [4,0], "width_mm": 1500 },
+    { "room": "r_kuchyne", "position": [7.5,0], "width_mm": 1200 },
+    { "room": "r_loznice", "position": [5.5,5], "width_mm": 1500 },
+    { "room": "r_koupelna", "position": [0,4], "width_mm": 600 }
+  ]
+}

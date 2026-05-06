@@ -1,0 +1,53 @@
+{
+  "id": "eu_hu_2bed_budapest_ferencvaros",
+  "metadata": {
+    "region": "europe",
+    "country": "Hungary",
+    "city_inspiration": "Budapest",
+    "size_label": "2 szobás lakás",
+    "size_band": "2bed",
+    "total_area_sqm": 60,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Budapest Ferencváros 2 szobás (IX. kerület ruin-bar revival bérház)",
+    "description": "A Budapest Ferencváros 2 szobás lakás — the 9th district transforming from working-class to ruin-bar capital, eclectic bérház (rental building) from the 1890–1910 Austro-Hungarian Belle Époque near Ráday utca, ~60 m². Előszoba, Nappali, Konyha, Fürdőszoba, two Hálószoba. Source: Ingatlan.com Budapest IX. kerület 1092.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["hungary", "budapest", "ferencvaros", "berhas", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6],[0,6]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3100
+  },
+  "rooms": [
+    { "id": "r_eloszoba", "name": "Előszoba", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_nappali", "name": "Nappali", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_konyha", "name": "Konyha", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_furdoszoba", "name": "Fürdőszoba", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_haloszoba1", "name": "Hálószoba 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6],[2,6]], "area_sqm": 8 },
+    { "id": "r_haloszoba2", "name": "Hálószoba 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6],[6,6]], "area_sqm": 8 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eloszoba", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_eloszoba", "to": "r_nappali", "position": [2,2], "width_mm": 900 },
+    { "from": "r_nappali", "to": "r_konyha", "position": [7,2], "width_mm": 900 },
+    { "from": "r_eloszoba", "to": "r_furdoszoba", "position": [1,4], "width_mm": 700 },
+    { "from": "r_nappali", "to": "r_haloszoba1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_konyha", "to": "r_haloszoba2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_haloszoba1", "to": "r_haloszoba2", "position": [6,5], "width_mm": 800 },
+    { "from": "r_furdoszoba", "to": "r_haloszoba1", "position": [2,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_nappali", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_konyha", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_haloszoba1", "position": [4,6], "width_mm": 1500 },
+    { "room": "r_haloszoba2", "position": [8,6], "width_mm": 1500 },
+    { "room": "r_furdoszoba", "position": [0,5], "width_mm": 600 }
+  ]
+}

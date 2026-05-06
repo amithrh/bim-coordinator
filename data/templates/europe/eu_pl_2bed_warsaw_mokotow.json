@@ -1,0 +1,56 @@
+{
+  "id": "eu_pl_2bed_warsaw_mokotow",
+  "metadata": {
+    "region": "europe",
+    "country": "Poland",
+    "city_inspiration": "Warsaw",
+    "size_label": "mieszkanie 3-pokojowe",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Warszawa Mokotów 3-pokojowe (upscale interwar kamienica)",
+    "description": "A Warszawa Mokotów 3-pokojowe mieszkanie — Warsaw's most prestigious residential district, interwar kamienica (tenement) buildings from the 1920s–30s near Puławska street, ~65 m². Przedpokój, Salon, Kuchnia, Łazienka, WC, two Sypialnie. Source: Otodom.pl Warszawa Mokotów 02.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["poland", "warsaw", "mokotow", "kamienica", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_przedpokoj", "name": "Przedpokój", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kuchnia", "name": "Kuchnia", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_lazienka", "name": "Łazienka", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_sypialnia1", "name": "Sypialnia 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_sypialnia2", "name": "Sypialnia 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_przedpokoj", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_przedpokoj", "to": "r_salon", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_kuchnia", "position": [7,2], "width_mm": 900 },
+    { "from": "r_przedpokoj", "to": "r_lazienka", "position": [1,3], "width_mm": 700 },
+    { "from": "r_lazienka", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_sypialnia1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kuchnia", "to": "r_sypialnia2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_sypialnia1", "to": "r_sypialnia2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_sypialnia1", "position": [2,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kuchnia", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_sypialnia1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_sypialnia2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_lazienka", "position": [0,4], "width_mm": 600 }
+  ]
+}

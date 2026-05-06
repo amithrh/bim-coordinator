@@ -1,0 +1,56 @@
+{
+  "id": "eu_cz_2bed_prague_vinohrady",
+  "metadata": {
+    "region": "europe",
+    "country": "Czech Republic",
+    "city_inspiration": "Prague",
+    "size_label": "byt 2+kk",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Praha Vinohrady 2+kk (Art Nouveau Secession vineyard quarter)",
+    "description": "A Praha Vinohrady 2+kk byt — the city's most prestigious residential neighborhood, built on former royal vineyards, Art Nouveau and Secession apartment blocks from 1890–1914 near náměstí Míru, ~65 m². Předsíň, Obývací pokoj, Kuchyně, Koupelna, WC, two Ložnice. Source: Sreality.cz Praha Vinohrady 120.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["czech_republic", "prague", "vinohrady", "secession", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_predsinen", "name": "Předsíň", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_obyvak", "name": "Obývací pokoj", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kuchyne", "name": "Kuchyně", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_koupelna", "name": "Koupelna", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_loznice1", "name": "Ložnice 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_loznice2", "name": "Ložnice 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_predsinen", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_predsinen", "to": "r_obyvak", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_obyvak", "to": "r_kuchyne", "position": [7,2], "width_mm": 900 },
+    { "from": "r_predsinen", "to": "r_koupelna", "position": [1,3], "width_mm": 700 },
+    { "from": "r_koupelna", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_obyvak", "to": "r_loznice1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kuchyne", "to": "r_loznice2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_loznice1", "to": "r_loznice2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_loznice1", "position": [2,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_obyvak", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kuchyne", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_loznice1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_loznice2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_koupelna", "position": [0,4], "width_mm": 600 }
+  ]
+}

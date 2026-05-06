@@ -1,0 +1,56 @@
+{
+  "id": "eu_ro_2bed_bucharest_floreasca",
+  "metadata": {
+    "region": "europe",
+    "country": "Romania",
+    "city_inspiration": "Bucharest",
+    "size_label": "apartament 2 camere",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "București Floreasca 2 camere (Herăstrău lake upscale villa quarter)",
+    "description": "A București Floreasca 2 camere apartament — the capital's most prestigious upscale address near Herăstrău Park and Lake Floreasca, interwar villa architecture and modern buildings, ~65 m². Hol, Living, Bucătărie, Baie, WC, two Dormitoare. Source: Imobiliare.ro București Floreasca sector 1.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["romania", "bucharest", "floreasca", "herastrau", "2bed", "single_floor", "modern"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Hol", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_living", "name": "Living", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_bucatarie", "name": "Bucătărie", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_baie", "name": "Baie", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_dormitor1", "name": "Dormitor 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_dormitor2", "name": "Dormitor 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_living", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_living", "to": "r_bucatarie", "position": [7,2], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_baie", "position": [1,3], "width_mm": 700 },
+    { "from": "r_baie", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_living", "to": "r_dormitor1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_bucatarie", "to": "r_dormitor2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_dormitor1", "to": "r_dormitor2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_dormitor1", "position": [2,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_bucatarie", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_dormitor1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_dormitor2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_baie", "position": [0,4], "width_mm": 600 }
+  ]
+}
