@@ -1,0 +1,53 @@
+{
+  "id": "eu_se_2bed_stockholm_sodermalm",
+  "metadata": {
+    "region": "europe",
+    "country": "Sweden",
+    "city_inspiration": "Stockholm",
+    "size_label": "3 rum och kök",
+    "size_band": "2bed",
+    "total_area_sqm": 72,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Stockholm Södermalm 3rok (bohemian Gamla Stan south island)",
+    "description": "A Stockholm Södermalm 3 rum och kök — the iconic bohemian island south of Gamla Stan, a labyrinth of steep streets and 19th-century tenement blocks, ~72 m². Hall, Vardagsrum, Kök, Badrum, two Sovrum. Source: Hemnet Stockholm Södermalm 118.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["sweden", "stockholm", "sodermalm", "scandinavian_modern", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[12,0],[12,6],[0,6]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_vardagsrum", "name": "Vardagsrum", "type": "living",
+      "polygon": [[2,0],[8,0],[8,4],[2,4]], "area_sqm": 24 },
+    { "id": "r_kok", "name": "Kök", "type": "kitchen",
+      "polygon": [[8,0],[12,0],[12,4],[8,4]], "area_sqm": 16 },
+    { "id": "r_badrum", "name": "Badrum", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_sovrum1", "name": "Sovrum 1", "type": "master_bedroom",
+      "polygon": [[2,4],[7,4],[7,6],[2,6]], "area_sqm": 10 },
+    { "id": "r_sovrum2", "name": "Sovrum 2", "type": "bedroom",
+      "polygon": [[7,4],[12,4],[12,6],[7,6]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0,2], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_vardagsrum", "position": [2,2], "width_mm": 900 },
+    { "from": "r_vardagsrum", "to": "r_kok", "position": [8,2], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_badrum", "position": [1,4], "width_mm": 700 },
+    { "from": "r_vardagsrum", "to": "r_sovrum1", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_kok", "to": "r_sovrum2", "position": [9.5,4], "width_mm": 900 },
+    { "from": "r_sovrum1", "to": "r_sovrum2", "position": [7,5], "width_mm": 800 },
+    { "from": "r_badrum", "to": "r_sovrum1", "position": [2,5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_vardagsrum", "position": [5,0], "width_mm": 2100 },
+    { "room": "r_kok", "position": [10,0], "width_mm": 1500 },
+    { "room": "r_sovrum1", "position": [4.5,6], "width_mm": 1500 },
+    { "room": "r_sovrum2", "position": [9.5,6], "width_mm": 1500 },
+    { "room": "r_badrum", "position": [0,5], "width_mm": 600 }
+  ]
+}

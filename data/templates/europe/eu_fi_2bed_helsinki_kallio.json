@@ -1,0 +1,56 @@
+{
+  "id": "eu_fi_2bed_helsinki_kallio",
+  "metadata": {
+    "region": "europe",
+    "country": "Finland",
+    "city_inspiration": "Helsinki",
+    "size_label": "3h+k",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Helsinki Kallio 3h+k (bohemian working-class jugendstil quarter)",
+    "description": "A Helsinki Kallio 3h+k — the city's bohemian, creative working-class district near Senate Square, stone apartment buildings (kivitalo) from the 1910s–1930s Jugendstil era, ~65 m². Eteinen, Olohuone, Keittiö, Kylpyhuone, WC, two Makuuhuone. Source: Etuovi.com Helsinki Kallio 00530.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["finland", "helsinki", "kallio", "jugendstil", "kivitalo", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_eteinen", "name": "Eteinen", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_olohuone", "name": "Olohuone", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_keittio", "name": "Keittiö", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_kylpyhuone", "name": "Kylpyhuone", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_mh1", "name": "Makuuhuone 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_mh2", "name": "Makuuhuone 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eteinen", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_eteinen", "to": "r_olohuone", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_olohuone", "to": "r_keittio", "position": [7,2], "width_mm": 900 },
+    { "from": "r_eteinen", "to": "r_kylpyhuone", "position": [1,3], "width_mm": 700 },
+    { "from": "r_kylpyhuone", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_olohuone", "to": "r_mh1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_keittio", "to": "r_mh2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_mh1", "to": "r_mh2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_mh1", "position": [2,6], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_olohuone", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_keittio", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_mh1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_mh2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_kylpyhuone", "position": [0,4], "width_mm": 600 }
+  ]
+}

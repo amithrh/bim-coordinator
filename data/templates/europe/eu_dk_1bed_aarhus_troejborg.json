@@ -1,0 +1,49 @@
+{
+  "id": "eu_dk_1bed_aarhus_troejborg",
+  "metadata": {
+    "region": "europe",
+    "country": "Denmark",
+    "city_inspiration": "Aarhus",
+    "size_label": "2-værelses lejlighed",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Aarhus Trøjborg 2-værelses (university city arts quarter murstensbyggeri)",
+    "description": "An Aarhus Trøjborg 2-værelses lejlighed — the alternative, artsy neighborhood near Aarhus University and ARoS art museum, red-brick murstensbyggeri from the 1920s, ~55 m². Entre, Stue, Køkken, Badeværelse, Soveværelse. Source: Boligsiden.dk Aarhus Trøjborg 8000.",
+    "suitable_for": ["couple", "single"],
+    "tags": ["denmark", "aarhus", "troejborg", "murstensbyggeri", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_entre", "name": "Entre", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kokken", "name": "Køkken", "type": "kitchen",
+      "polygon": [[7,0],[11,0],[11,4],[7,4]], "area_sqm": 16 },
+    { "id": "r_badevaer", "name": "Badeværelse", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_sovevaer", "name": "Soveværelse", "type": "master_bedroom",
+      "polygon": [[2,4],[11,4],[11,5],[2,5]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entre", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entre", "to": "r_stue", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_kokken", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entre", "to": "r_badevaer", "position": [1,3], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_sovevaer", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_kokken", "to": "r_sovevaer", "position": [9,4], "width_mm": 800 },
+    { "from": "r_badevaer", "to": "r_sovevaer", "position": [2,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kokken", "position": [9,0], "width_mm": 1200 },
+    { "room": "r_sovevaer", "position": [6.5,5], "width_mm": 1500 },
+    { "room": "r_badevaer", "position": [0,4], "width_mm": 600 }
+  ]
+}

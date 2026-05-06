@@ -1,0 +1,49 @@
+{
+  "id": "eu_no_1bed_oslo_grunerloekka",
+  "metadata": {
+    "region": "europe",
+    "country": "Norway",
+    "city_inspiration": "Oslo",
+    "size_label": "2-roms leilighet",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Oslo Grünerløkka 2-roms leilighet (hip inner-east Jugend quarter)",
+    "description": "An Oslo Grünerløkka 2-roms leilighet — the city's most fashionable inner-east neighborhood, former working-class now bohemian, Jugend apartment buildings from 1890–1920, ~55 m². Gang, Stue, Kjøkken, Bad, Soverom. Source: FINN.no Oslo Grünerløkka 0555.",
+    "suitable_for": ["couple", "single"],
+    "tags": ["norway", "oslo", "grunerloekka", "jugend", "1bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_gang", "name": "Gang", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kjokken", "name": "Kjøkken", "type": "kitchen",
+      "polygon": [[7,0],[11,0],[11,4],[7,4]], "area_sqm": 16 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_soverom", "name": "Soverom", "type": "master_bedroom",
+      "polygon": [[2,4],[11,4],[11,5],[2,5]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_gang", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_gang", "to": "r_stue", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_kjokken", "position": [7,2], "width_mm": 900 },
+    { "from": "r_gang", "to": "r_bad", "position": [1,3], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_soverom", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_kjokken", "to": "r_soverom", "position": [9,4], "width_mm": 800 },
+    { "from": "r_bad", "to": "r_soverom", "position": [2,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kjokken", "position": [9,0], "width_mm": 1200 },
+    { "room": "r_soverom", "position": [6.5,5], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0,4], "width_mm": 600 }
+  ]
+}

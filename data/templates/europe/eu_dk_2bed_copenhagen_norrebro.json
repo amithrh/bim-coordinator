@@ -1,0 +1,56 @@
+{
+  "id": "eu_dk_2bed_copenhagen_norrebro",
+  "metadata": {
+    "region": "europe",
+    "country": "Denmark",
+    "city_inspiration": "Copenhagen",
+    "size_label": "3-værelses lejlighed",
+    "size_band": "2bed",
+    "total_area_sqm": 75,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "København Nørrebro 3-værelses (multicultural murstensbyggeri)",
+    "description": "A København Nørrebro 3-værelses lejlighed — the city's most diverse and vibrant quarter, historic red-brick murstensbyggeri from 1890–1910 near Assistens Kirkegård and Dronning Louises Bro, ~75 m². Entre, Stue, Køkken, Badeværelse, Gang, two Soveværelse. Source: Boligsiden.dk København Nørrebro 2200.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["denmark", "copenhagen", "norrebro", "murstensbyggeri", "2bed", "single_floor", "altbau_high_ceilings"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 2700
+  },
+  "rooms": [
+    { "id": "r_entre", "name": "Entre", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_stue", "name": "Stue", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kokken", "name": "Køkken", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_badevaer", "name": "Badeværelse", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_gang", "name": "Gang", "type": "corridor",
+      "polygon": [[0,6],[2,6],[2,7.5],[0,7.5]], "area_sqm": 3 },
+    { "id": "r_sovevaer1", "name": "Soveværelse 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7.5],[2,7.5]], "area_sqm": 14 },
+    { "id": "r_sovevaer2", "name": "Soveværelse 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,7.5],[6,7.5]], "area_sqm": 14 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entre", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_entre", "to": "r_stue", "position": [2,2], "width_mm": 900 },
+    { "from": "r_stue", "to": "r_kokken", "position": [7,2], "width_mm": 900 },
+    { "from": "r_entre", "to": "r_badevaer", "position": [1,4], "width_mm": 700 },
+    { "from": "r_badevaer", "to": "r_gang", "position": [1,6], "width_mm": 700 },
+    { "from": "r_stue", "to": "r_sovevaer1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kokken", "to": "r_sovevaer2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_sovevaer1", "to": "r_sovevaer2", "position": [6,6], "width_mm": 800 },
+    { "from": "r_gang", "to": "r_sovevaer1", "position": [2,7], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_stue", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kokken", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_sovevaer1", "position": [4,7.5], "width_mm": 1500 },
+    { "room": "r_sovevaer2", "position": [8,7.5], "width_mm": 1500 },
+    { "room": "r_badevaer", "position": [0,5], "width_mm": 600 }
+  ]
+}

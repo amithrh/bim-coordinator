@@ -1,0 +1,56 @@
+{
+  "id": "eu_fi_2bed_tampere_tammela",
+  "metadata": {
+    "region": "europe",
+    "country": "Finland",
+    "city_inspiration": "Tampere",
+    "size_label": "3h+k",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "style": "Tampere Tammela 3h+k (Tammerkoski rapids historic worker district)",
+    "description": "A Tampere Tammela 3h+k — Finland's second city, the Nordic Manchester built around the Tammerkoski rapids, Tammela is the oldest residential district with red-brick tenement buildings, ~70 m². Eteinen, Olohuone, Keittiö, Kylpyhuone, Kodinhoitohuone, two Makuuhuone. Source: Etuovi.com Tampere Tammela 33500.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["finland", "tampere", "tammela", "punatiilitalo", "2bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7],[0,7]],
+    "wall_thickness_mm": 360,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_eteinen", "name": "Eteinen", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_olohuone", "name": "Olohuone", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_keittio", "name": "Keittiö", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_kylpyhuone", "name": "Kylpyhuone", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_kodinhoit", "name": "Kodinhoitohuone", "type": "utility",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_mh1", "name": "Makuuhuone 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_mh2", "name": "Makuuhuone 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,7],[6,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_eteinen", "position": [0,2], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_eteinen", "to": "r_olohuone", "position": [2,2], "width_mm": 900 },
+    { "from": "r_olohuone", "to": "r_keittio", "position": [7,2], "width_mm": 900 },
+    { "from": "r_eteinen", "to": "r_kylpyhuone", "position": [1,4], "width_mm": 700 },
+    { "from": "r_kylpyhuone", "to": "r_kodinhoit", "position": [1,6], "width_mm": 700 },
+    { "from": "r_olohuone", "to": "r_mh1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_keittio", "to": "r_mh2", "position": [8.5,4], "width_mm": 900 },
+    { "from": "r_mh1", "to": "r_mh2", "position": [6,5.5], "width_mm": 800 },
+    { "from": "r_kodinhoit", "to": "r_mh1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_olohuone", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_keittio", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_mh1", "position": [4,7], "width_mm": 1500 },
+    { "room": "r_mh2", "position": [8,7], "width_mm": 1500 },
+    { "room": "r_kylpyhuone", "position": [0,5], "width_mm": 600 }
+  ]
+}

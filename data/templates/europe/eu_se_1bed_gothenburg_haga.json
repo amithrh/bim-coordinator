@@ -1,0 +1,49 @@
+{
+  "id": "eu_se_1bed_gothenburg_haga",
+  "metadata": {
+    "region": "europe",
+    "country": "Sweden",
+    "city_inspiration": "Gothenburg",
+    "size_label": "2 rum och kök",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Göteborg Haga 2rok (historic wooden quarter Landshövdingehus)",
+    "description": "A Göteborg Haga 2 rum och kök — the historic district of wooden Landshövdingehus (ground-floor brick, upper floors wood) near the Kungsportsavenyn, ~55 m². Hall, Vardagsrum, Kök, Badrum, Sovrum. Source: Hemnet Göteborg Haga 413.",
+    "suitable_for": ["couple", "single"],
+    "tags": ["sweden", "gothenburg", "haga", "landshövdingehus", "1bed", "single_floor", "vintage_traditional"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2600
+  },
+  "rooms": [
+    { "id": "r_hall", "name": "Hall", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_vardagsrum", "name": "Vardagsrum", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kok", "name": "Kök", "type": "kitchen",
+      "polygon": [[7,0],[11,0],[11,4],[7,4]], "area_sqm": 16 },
+    { "id": "r_badrum", "name": "Badrum", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_sovrum", "name": "Sovrum", "type": "master_bedroom",
+      "polygon": [[2,4],[11,4],[11,5],[2,5]], "area_sqm": 9 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hall", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hall", "to": "r_vardagsrum", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_vardagsrum", "to": "r_kok", "position": [7,2], "width_mm": 900 },
+    { "from": "r_hall", "to": "r_badrum", "position": [1,3], "width_mm": 700 },
+    { "from": "r_vardagsrum", "to": "r_sovrum", "position": [4.5,4], "width_mm": 900 },
+    { "from": "r_kok", "to": "r_sovrum", "position": [9,4], "width_mm": 800 },
+    { "from": "r_badrum", "to": "r_sovrum", "position": [2,4.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_vardagsrum", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kok", "position": [9,0], "width_mm": 1200 },
+    { "room": "r_sovrum", "position": [6.5,5], "width_mm": 1500 },
+    { "room": "r_badrum", "position": [0,4], "width_mm": 600 }
+  ]
+}
