@@ -6,7 +6,7 @@ See `Day-Zero-Build-Plan-v3.2.docx` for the full spec.
 
 ## Template Library
 
-**300 hand-curated templates, all 35/35 IFC-verified.** Real-listing-grounded room programs with cited source URLs spanning 50+ countries across Europe, India, USA, Asia-Pacific, Africa, MENA, and Latin America.
+**500 hand-curated templates, all 36/36 IFC-verified.** Real-listing-grounded room programs with cited source URLs spanning 50+ countries across Europe, India, USA, Asia-Pacific, Africa, MENA, and Latin America.
 
 ### Coverage (50+ countries)
 
@@ -88,9 +88,9 @@ bim-coordinator/
 │   ├── _schema.json              # Template JSON schema
 │   ├── tag_vocabulary.json       # Controlled tag vocabulary (10 facets)
 │   ├── templates/
-│   │   ├── europe/               # 158 European templates
-│   │   ├── india/                # 25 Indian templates
-│   │   └── global/               # 7 global templates (US/JP/AU/etc.)
+│   │   ├── europe/               # 322 European templates
+│   │   ├── india/                # 74 Indian templates
+│   │   └── global/               # 104 global templates (US/JP/AU/etc.)
 │   ├── build/                    # Generated IFCs
 │   ├── svg/                      # Generated SVGs
 │   └── research/                 # Research source data (.md files)
