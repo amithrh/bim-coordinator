@@ -31,3 +31,10 @@ npm-debug.log*
 .env
 .env.local
 .env*.local
+
+# Training pipeline artifacts (large; rebuild from scripts)
+training/data/raw/
+training/data/processed/
+training/data/stats.json
+training/checkpoints/
+training/data_test/
