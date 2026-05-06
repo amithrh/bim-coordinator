@@ -1,0 +1,56 @@
+{
+  "id": "gl_sa_2bed_riyadh_diplomatic",
+  "metadata": {
+    "region": "global",
+    "country": "Saudi Arabia",
+    "city_inspiration": "Riyadh",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Riyadh Diplomatic Quarter 2-bed villa apartment (embassies enclave)",
+    "description": "A Riyadh Diplomatic Quarter 2-bed apartment — the lush, pedestrian-friendly enclave of embassies and international organizations near Wadi Hanifa, low-density compound-style, ~90 m² (969 sqft). Foyer, Majlis/Living, Kitchen, Bathroom, WC, Master Bedroom, Bedroom 2. Source: Aqar.sa / Wasalt Riyadh Diplomatic Quarter.",
+    "suitable_for": ["couple", "young_family", "expat"],
+    "tags": ["saudi_arabia", "riyadh", "diplomatic_quarter", "2bed", "compound", "expat"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_majlis", "name": "Majlis", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_bath_common", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,9],[0,9]], "area_sqm": 6 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_bed2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,9],[6,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,1.5], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_majlis", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_majlis", "to": "r_kitchen", "position": [7,2.5], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath_common", "position": [1,3], "width_mm": 700 },
+    { "from": "r_bath_common", "to": "r_wc", "position": [1,6], "width_mm": 700 },
+    { "from": "r_majlis", "to": "r_master", "position": [4,5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bed2", "position": [8,5], "width_mm": 900 },
+    { "from": "r_master", "to": "r_bed2", "position": [6,7], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_master", "position": [2,7.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_majlis", "position": [4.5,0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_master", "position": [4,9], "width_mm": 1800 },
+    { "room": "r_bed2", "position": [8,9], "width_mm": 1800 },
+    { "room": "r_bath_common", "position": [0,4.5], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "gl_tr_2bed_istanbul_besiktas",
+  "metadata": {
+    "region": "global",
+    "country": "Turkey",
+    "city_inspiration": "Istanbul",
+    "size_label": "2bed",
+    "size_band": "2bed",
+    "total_area_sqm": 90,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Istanbul Beşiktaş 2+1 daire (Avrupa yakası Bosphorus)",
+    "description": "Istanbul Beşiktaş'ta 2+1 daire — Boğaz kıyısı ve Dolmabahçe Sarayı'na yakın Avrupa yakasının gözde semtinde, metro ve vapur erişimiyle merkezi konum, yenileme görmüş daire, ~90 m². Hol, Salon, Mutfak, Banyo, WC, Yatak Odası, Çocuk Odası. Source: Sahibinden.com / Emlakjet Istanbul Beşiktaş.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["turkey", "istanbul", "besiktas", "2bed", "current_2020plus", "bosphorus", "european_side"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,9],[0,9]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Hol", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[7,0],[7,5],[2,5]], "area_sqm": 25 },
+    { "id": "r_mutfak", "name": "Mutfak", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,5],[7,5]], "area_sqm": 15 },
+    { "id": "r_banyo", "name": "Banyo", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,6],[0,6]], "area_sqm": 6 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,9],[0,9]], "area_sqm": 6 },
+    { "id": "r_yatak", "name": "Yatak Odası", "type": "master_bedroom",
+      "polygon": [[2,5],[6,5],[6,9],[2,9]], "area_sqm": 16 },
+    { "id": "r_cocuk", "name": "Çocuk Odası", "type": "bedroom",
+      "polygon": [[6,5],[10,5],[10,9],[6,9]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_salon", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_mutfak", "position": [7,2.5], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_banyo", "position": [1,3], "width_mm": 700 },
+    { "from": "r_banyo", "to": "r_wc", "position": [1,6], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_yatak", "position": [4,5], "width_mm": 900 },
+    { "from": "r_mutfak", "to": "r_cocuk", "position": [8,5], "width_mm": 900 },
+    { "from": "r_yatak", "to": "r_cocuk", "position": [6,7], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_yatak", "position": [2,7.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [4.5,0], "width_mm": 2400 },
+    { "room": "r_mutfak", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_yatak", "position": [4,9], "width_mm": 1800 },
+    { "room": "r_cocuk", "position": [8,9], "width_mm": 1800 },
+    { "room": "r_banyo", "position": [0,4.5], "width_mm": 600 }
+  ]
+}

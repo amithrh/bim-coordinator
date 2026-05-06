@@ -1,0 +1,49 @@
+{
+  "id": "gl_tr_1bed_istanbul_kadikoy",
+  "metadata": {
+    "region": "global",
+    "country": "Turkey",
+    "city_inspiration": "Istanbul",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Istanbul Kadıköy 1+1 daire (Anadolu yakası bohemian)",
+    "description": "Istanbul Kadıköy'de 1+1 daire — Moda ve Moda Caddesi'nin Boğaz'a bakan bohemian semtinde, Marmaray ve metro erişimiyle Anadolu yakasının kalbinde, yenileme görmüş çok katlı bina, ~55 m². Hol, Salon, Mutfak, Banyo, Yatak Odası. Source: Sahibinden.com / Emlakjet Istanbul Kadıköy.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["turkey", "istanbul", "kadikoy", "1bed", "current_2020plus", "bohemian", "asian_side"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 250,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hol", "name": "Hol", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_salon", "name": "Salon", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_mutfak", "name": "Mutfak", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_banyo", "name": "Banyo", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_yatak", "name": "Yatak Odası", "type": "master_bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hol", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hol", "to": "r_salon", "position": [2,1], "width_mm": 900 },
+    { "from": "r_salon", "to": "r_mutfak", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_hol", "to": "r_banyo", "position": [1,2], "width_mm": 700 },
+    { "from": "r_salon", "to": "r_yatak", "position": [5,3], "width_mm": 900 },
+    { "from": "r_mutfak", "to": "r_yatak", "position": [9.5,3], "width_mm": 800 },
+    { "from": "r_banyo", "to": "r_yatak", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_salon", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_mutfak", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_yatak", "position": [6.5,5], "width_mm": 1800 },
+    { "room": "r_banyo", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

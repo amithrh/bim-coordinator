@@ -1,0 +1,53 @@
+{
+  "id": "gl_sa_1bed_riyadh_olaya",
+  "metadata": {
+    "region": "global",
+    "country": "Saudi Arabia",
+    "city_inspiration": "Riyadh",
+    "size_label": "1bed",
+    "size_band": "1bed",
+    "total_area_sqm": 75,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Riyadh Olaya 1-bed apartment (Al-Hamra finance tower district)",
+    "description": "A Riyadh Olaya 1-bed apartment — the upmarket residential-commercial district along King Fahd Road near Al-Faisaliah Tower and Kingdom Centre, modern high-rise, ~75 m² (807 sqft). Foyer, Living-Dining, Kitchen, Bathroom, Master Bedroom, Store Room. Source: Aqar.sa / Wasalt Riyadh Olaya.",
+    "suitable_for": ["single_professional", "couple"],
+    "tags": ["saudi_arabia", "riyadh", "olaya", "1bed", "current_2020plus", "high_rise"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7.5],[0,7.5]],
+    "wall_thickness_mm": 200,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_foyer", "name": "Foyer", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_living", "name": "Living-Dining", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4.5],[2,4.5]], "area_sqm": 22.5 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4.5],[7,4.5]], "area_sqm": 13.5 },
+    { "id": "r_bath", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,6],[0,6]], "area_sqm": 8 },
+    { "id": "r_master", "name": "Master Bedroom", "type": "master_bedroom",
+      "polygon": [[2,4.5],[10,4.5],[10,7.5],[2,7.5]], "area_sqm": 24 },
+    { "id": "r_store", "name": "Store Room", "type": "utility",
+      "polygon": [[0,6],[2,6],[2,7.5],[0,7.5]], "area_sqm": 3 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_foyer", "position": [0,1], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_foyer", "to": "r_living", "position": [2,1], "width_mm": 900 },
+    { "from": "r_living", "to": "r_kitchen", "position": [7,2.25], "width_mm": 900 },
+    { "from": "r_foyer", "to": "r_bath", "position": [1,2], "width_mm": 700 },
+    { "from": "r_living", "to": "r_master", "position": [5,4.5], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_master", "position": [8.5,4.5], "width_mm": 900 },
+    { "from": "r_bath", "to": "r_master", "position": [2,5.25], "width_mm": 700 },
+    { "from": "r_bath", "to": "r_store", "position": [1,6], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_living", "position": [4.5,0], "width_mm": 2400 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1500 },
+    { "room": "r_master", "position": [6,7.5], "width_mm": 2400 },
+    { "room": "r_store", "position": [1,7.5], "width_mm": 600 },
+    { "room": "r_bath", "position": [0,4], "width_mm": 600 }
+  ]
+}
