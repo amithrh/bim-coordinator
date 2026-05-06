@@ -1,0 +1,49 @@
+{
+  "id": "eu_fr_1bed_nice_vieux_nice",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Nice",
+    "size_label": "T2 (2 pièces)",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Nice Vieux-Nice T2 (vieille ville baroque méditerranéenne)",
+    "description": "Un appartement T2 dans le Vieux-Nice — le quartier baroque de la vieille ville niçoise avec la Cours Saleya, le marché aux fleurs et les façades ocre-rouge, immeuble baroque du XVIIe–XVIIIe siècle sur la Côte d'Azur, ~50 m². Entrée, Séjour, Cuisine, Salle de bain, Chambre. Source: SeLoger.com / PAP.fr Nice Vieux-Nice 06300.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["france", "nice", "vieux_nice", "baroque", "cote_dazur", "1bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_sdb", "name": "Salle de bain", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_chambre", "name": "Chambre", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,1], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,2], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre", "position": [5,3], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_chambre", "position": [8.5,3], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_chambre", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cuisine", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_chambre", "position": [6,5], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

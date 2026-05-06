@@ -1,0 +1,49 @@
+{
+  "id": "eu_fr_1bed_paris_marais",
+  "metadata": {
+    "region": "europe",
+    "country": "France",
+    "city_inspiration": "Paris",
+    "size_label": "T2 (2 pièces)",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Paris Marais T2 Haussmann (3e-4e arrondissement hôtel particulier)",
+    "description": "Un appartement T2 dans le Marais — le 3e et 4e arrondissement de Paris avec le Centre Pompidou, la Place des Vosges et les galeries de la rue de Bretagne, typique immeuble haussmannien avec parquet chevron et moulures, ~50 m². Entrée, Séjour, Cuisine, Salle de bain, Chambre. Source: SeLoger.com / PAP.fr Paris Marais 75004.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["france", "paris", "marais", "haussmann", "1bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_entree", "name": "Entrée", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_sejour", "name": "Séjour", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_cuisine", "name": "Cuisine", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_sdb", "name": "Salle de bain", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_chambre", "name": "Chambre", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_entree", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_entree", "to": "r_sejour", "position": [2,1], "width_mm": 900 },
+    { "from": "r_sejour", "to": "r_cuisine", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_entree", "to": "r_sdb", "position": [1,2], "width_mm": 700 },
+    { "from": "r_sejour", "to": "r_chambre", "position": [5,3], "width_mm": 900 },
+    { "from": "r_cuisine", "to": "r_chambre", "position": [8.5,3], "width_mm": 900 },
+    { "from": "r_sdb", "to": "r_chambre", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_sejour", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cuisine", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_chambre", "position": [6,5], "width_mm": 1500 },
+    { "room": "r_sdb", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eu_it_2bed_naples_chiaia",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Naples",
+    "size_label": "trilocale",
+    "size_band": "2bed",
+    "total_area_sqm": 65,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Napoli Chiaia trilocale (borghese lungomare Caracciolo)",
+    "description": "Un trilocale nel quartiere Chiaia di Napoli — il raffinato quartiere borghese lungo il Lungomare Caracciolo e Villa Pignatelli, palazzo liberty di inizio Novecento o costruzione postbellica ristrutturata, ~65 m². Ingresso, Soggiorno, Cucina, Bagno, WC, Camera da letto, Camera 2. Source: Immobiliare.it / Idealista.it Napoli Chiaia 80121.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["italy", "naples", "chiaia", "lungomare", "liberty", "2bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,6.5],[0,6.5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,3],[0,3]], "area_sqm": 6 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,3],[2,3],[2,5],[0,5]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,5],[2,5],[2,6.5],[0,6.5]], "area_sqm": 3 },
+    { "id": "r_camera1", "name": "Camera da letto", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,6.5],[2,6.5]], "area_sqm": 10 },
+    { "id": "r_camera2", "name": "Camera 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,6.5],[6,6.5]], "area_sqm": 10 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,1.5], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,1.5], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [7,2], "width_mm": 900 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,3], "width_mm": 700 },
+    { "from": "r_bagno", "to": "r_wc", "position": [1,5], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_camera1", "to": "r_camera2", "position": [6,5.25], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_camera1", "position": [2,5.75], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_cucina", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_camera1", "position": [4,6.5], "width_mm": 1500 },
+    { "room": "r_camera2", "position": [8,6.5], "width_mm": 1500 },
+    { "room": "r_bagno", "position": [0,4], "width_mm": 600 }
+  ]
+}

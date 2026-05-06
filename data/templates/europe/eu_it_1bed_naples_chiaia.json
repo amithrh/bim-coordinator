@@ -1,0 +1,49 @@
+{
+  "id": "eu_it_1bed_naples_chiaia",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Naples",
+    "size_label": "bilocale",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Napoli Chiaia bilocale (borghese lungomare Caracciolo)",
+    "description": "Un bilocale nel quartiere Chiaia di Napoli — il raffinato quartiere borghese lungo il Lungomare Caracciolo e Villa Pignatelli, con boutique di Via Chiaia e i caffè di Piazza dei Martiri, palazzo liberty o edificio del dopoguerra, ~55 m². Ingresso, Soggiorno, Cucina, Bagno, Camera. Source: Immobiliare.it / Idealista.it Napoli Chiaia 80121.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["italy", "naples", "chiaia", "lungomare", "liberty", "1bed", "single_floor", "historic"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 3200
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_camera", "name": "Camera", "type": "master_bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,1], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,2], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera", "position": [5,3], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera", "position": [9.5,3], "width_mm": 900 },
+    { "from": "r_bagno", "to": "r_camera", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_cucina", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_camera", "position": [6.5,5], "width_mm": 1800 },
+    { "room": "r_bagno", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

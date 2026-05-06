@@ -1,0 +1,49 @@
+{
+  "id": "eu_it_1bed_milan_navigli",
+  "metadata": {
+    "region": "europe",
+    "country": "Italy",
+    "city_inspiration": "Milan",
+    "size_label": "bilocale",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Milano Navigli bilocale (canali alzaia Naviglio Grande)",
+    "description": "Un bilocale ai Navigli di Milano — il quartiere dei canali storici dell'Alzaia Naviglio Grande e Naviglio Pavese, gallerie d'arte, vintage shops e aperitivo milanese, casa di ringhiera o palazzina anni '50–'70 ristrutturata, ~55 m². Ingresso, Soggiorno, Cucina, Bagno, Camera. Source: Immobiliare.it / Casa.it Milano Navigli 20144.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["italy", "milan", "navigli", "canali", "1bed", "single_floor", "aperitivo"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 350,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_ingresso", "name": "Ingresso", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_soggiorno", "name": "Soggiorno", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_cucina", "name": "Cucina", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_bagno", "name": "Bagno", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_camera", "name": "Camera", "type": "master_bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_ingresso", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_ingresso", "to": "r_soggiorno", "position": [2,1], "width_mm": 900 },
+    { "from": "r_soggiorno", "to": "r_cucina", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_ingresso", "to": "r_bagno", "position": [1,2], "width_mm": 700 },
+    { "from": "r_soggiorno", "to": "r_camera", "position": [5,3], "width_mm": 900 },
+    { "from": "r_cucina", "to": "r_camera", "position": [9.5,3], "width_mm": 900 },
+    { "from": "r_bagno", "to": "r_camera", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_soggiorno", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_cucina", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_camera", "position": [6.5,5], "width_mm": 1800 },
+    { "room": "r_bagno", "position": [0,3.5], "width_mm": 600 }
+  ]
+}
