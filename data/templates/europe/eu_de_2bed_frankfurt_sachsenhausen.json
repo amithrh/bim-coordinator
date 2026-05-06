@@ -1,0 +1,56 @@
+{
+  "id": "eu_de_2bed_frankfurt_sachsenhausen",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Frankfurt",
+    "size_label": "2-Zimmer-Wohnung",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Frankfurt Sachsenhausen 2-Zimmer (Museumsufer Apfelwein-Viertel)",
+    "description": "Eine Frankfurt Sachsenhausen 2-Zimmer-Wohnung — das beliebte Apfelwein-Viertel am Museumsufer mit Schweizer Straße, Städel-Museum und der Skyline-Silhouette, gründerzeitliche Mehrfamilienhäuser und sanierte Altbauten, ~70 m². Flur, Wohnzimmer, Küche, Bad, WC, zwei Schlafzimmer. Source: ImmobilienScout24.de Frankfurt Sachsenhausen 60594.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["germany", "frankfurt", "sachsenhausen", "altbau", "museumsufer", "2bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7],[0,7]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 2900
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_schlafzimmer1", "name": "Schlafzimmer 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_schlafzimmer2", "name": "Schlafzimmer 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,7],[6,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0,2], "width_mm": 1000, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnzimmer", "position": [2,2], "width_mm": 900 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [7,2], "width_mm": 900 },
+    { "from": "r_flur", "to": "r_bad", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bad", "to": "r_wc", "position": [1,6], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlafzimmer2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_schlafzimmer1", "to": "r_schlafzimmer2", "position": [6,5.5], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_schlafzimmer1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kueche", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_schlafzimmer1", "position": [4,7], "width_mm": 1500 },
+    { "room": "r_schlafzimmer2", "position": [8,7], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0,5], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "eu_gb_2bed_bristol_clifton",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Bristol",
+    "size_label": "2-bedroom flat",
+    "size_band": "2bed",
+    "total_area_sqm": 70,
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "style": "Bristol Clifton 2BR flat (Georgian terrace conversion)",
+    "description": "A Bristol Clifton 2BR flat — Pembroke Road and Clifton Park Georgian terrace conversion with period features, proximity to Clifton Down shopping and the Observatory above the Gorge, ~70 m². Hallway, Sitting Room, Kitchen-Diner, Bathroom, WC, Bedroom 1, Bedroom 2. Source: Rightmove / Zoopla Bristol Clifton BS8.",
+    "suitable_for": ["couple", "young_family"],
+    "tags": ["uk", "bristol", "clifton", "georgian", "terrace", "2bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,7],[0,7]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2800
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,4],[0,4]], "area_sqm": 8 },
+    { "id": "r_sitting", "name": "Sitting Room", "type": "living",
+      "polygon": [[2,0],[7,0],[7,4],[2,4]], "area_sqm": 20 },
+    { "id": "r_kitchen", "name": "Kitchen-Diner", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,4],[7,4]], "area_sqm": 12 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,4],[2,4],[2,6],[0,6]], "area_sqm": 4 },
+    { "id": "r_wc", "name": "WC", "type": "wc",
+      "polygon": [[0,6],[2,6],[2,7],[0,7]], "area_sqm": 2 },
+    { "id": "r_bedroom1", "name": "Bedroom 1", "type": "master_bedroom",
+      "polygon": [[2,4],[6,4],[6,7],[2,7]], "area_sqm": 12 },
+    { "id": "r_bedroom2", "name": "Bedroom 2", "type": "bedroom",
+      "polygon": [[6,4],[10,4],[10,7],[6,7]], "area_sqm": 12 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,2], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_sitting", "position": [2,2], "width_mm": 900 },
+    { "from": "r_sitting", "to": "r_kitchen", "position": [7,2], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bathroom", "position": [1,4], "width_mm": 700 },
+    { "from": "r_bathroom", "to": "r_wc", "position": [1,6], "width_mm": 700 },
+    { "from": "r_sitting", "to": "r_bedroom1", "position": [4,4], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom2", "position": [8,4], "width_mm": 900 },
+    { "from": "r_bedroom1", "to": "r_bedroom2", "position": [6,5.5], "width_mm": 800 },
+    { "from": "r_wc", "to": "r_bedroom1", "position": [2,6.5], "width_mm": 800 }
+  ],
+  "windows": [
+    { "room": "r_sitting", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_bedroom1", "position": [4,7], "width_mm": 1500 },
+    { "room": "r_bedroom2", "position": [8,7], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,5], "width_mm": 600 }
+  ]
+}

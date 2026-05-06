@@ -1,0 +1,49 @@
+{
+  "id": "eu_gb_1bed_london_shoreditch",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "London",
+    "size_label": "1-bedroom flat",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "London Shoreditch 1BR flat (East End creative quarter conversion)",
+    "description": "A London Shoreditch 1BR flat — Brick Lane, Old Street and Spitalfields market: London's creative tech hub of startup offices, Banksy murals and Vietnamese street food, typically a 1990s–2010s warehouse conversion or purpose-built block, ~50 m². Hallway, Lounge, Kitchen, Bathroom, Bedroom. Source: Rightmove / Zoopla London Shoreditch E1 6.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["uk", "london", "shoreditch", "conversion", "1bed", "single_floor", "east_end"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 2400
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_lounge", "name": "Lounge", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_lounge", "position": [2,1], "width_mm": 900 },
+    { "from": "r_lounge", "to": "r_kitchen", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bathroom", "position": [1,2], "width_mm": 700 },
+    { "from": "r_lounge", "to": "r_bedroom", "position": [5,3], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [8.5,3], "width_mm": 900 },
+    { "from": "r_bathroom", "to": "r_bedroom", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_lounge", "position": [4.5,0], "width_mm": 1500 },
+    { "room": "r_kitchen", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [6,5], "width_mm": 1500 },
+    { "room": "r_bathroom", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

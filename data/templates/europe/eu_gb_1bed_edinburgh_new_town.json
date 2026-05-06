@@ -1,0 +1,49 @@
+{
+  "id": "eu_gb_1bed_edinburgh_new_town",
+  "metadata": {
+    "region": "europe",
+    "country": "United Kingdom",
+    "city_inspiration": "Edinburgh",
+    "size_label": "1-bedroom flat",
+    "size_band": "1bed",
+    "total_area_sqm": 55,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Edinburgh New Town 1BR flat (Georgian tenement conversion)",
+    "description": "An Edinburgh New Town 1BR flat — James Craig's UNESCO-listed Georgian grid of Charlotte Square, George Street and Princes Street Gardens, converted Georgian tenement with original sash windows and corniced ceilings, ~55 m². Hallway, Reception Room, Kitchen, Bathroom, Bedroom. Source: Rightmove / ESPC Edinburgh New Town EH2.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["uk", "edinburgh", "new_town", "georgian", "tenement", "1bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[11,0],[11,5],[0,5]],
+    "wall_thickness_mm": 300,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_hallway", "name": "Hallway", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_reception", "name": "Reception Room", "type": "living",
+      "polygon": [[2,0],[8,0],[8,3],[2,3]], "area_sqm": 18 },
+    { "id": "r_kitchen", "name": "Kitchen", "type": "kitchen",
+      "polygon": [[8,0],[11,0],[11,3],[8,3]], "area_sqm": 9 },
+    { "id": "r_bathroom", "name": "Bathroom", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_bedroom", "name": "Bedroom", "type": "master_bedroom",
+      "polygon": [[2,3],[11,3],[11,5],[2,5]], "area_sqm": 18 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_hallway", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_hallway", "to": "r_reception", "position": [2,1], "width_mm": 900 },
+    { "from": "r_reception", "to": "r_kitchen", "position": [8,1.5], "width_mm": 900 },
+    { "from": "r_hallway", "to": "r_bathroom", "position": [1,2], "width_mm": 700 },
+    { "from": "r_reception", "to": "r_bedroom", "position": [5,3], "width_mm": 900 },
+    { "from": "r_kitchen", "to": "r_bedroom", "position": [9.5,3], "width_mm": 900 },
+    { "from": "r_bathroom", "to": "r_bedroom", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_reception", "position": [5,0], "width_mm": 1800 },
+    { "room": "r_kitchen", "position": [9.5,0], "width_mm": 1200 },
+    { "room": "r_bedroom", "position": [6.5,5], "width_mm": 1800 },
+    { "room": "r_bathroom", "position": [0,3.5], "width_mm": 600 }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "eu_de_1bed_hamburg_eppendorf",
+  "metadata": {
+    "region": "europe",
+    "country": "Germany",
+    "city_inspiration": "Hamburg",
+    "size_label": "1-Zimmer-Wohnung",
+    "size_band": "1bed",
+    "total_area_sqm": 50,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "style": "Hamburg Eppendorf 1-Zimmer (Gründerzeit Villenviertel)",
+    "description": "Eine Hamburg Eppendorf 1-Zimmer-Wohnung — das wohlhabende Villenquartier nahe der Alster mit der Eppendorfer Baum-Einkaufsstrasse und dem UKE-Krankenhaus, Gründerzeit-Mehrfamilienhaus aus den 1895–1920er Jahren, ~50 m². Flur, Wohnzimmer, Küche, Bad, Schlafzimmer. Source: Immowelt.de / ImmobilienScout24.de Hamburg Eppendorf 20249.",
+    "suitable_for": ["single", "couple"],
+    "tags": ["germany", "hamburg", "eppendorf", "altbau", "villenviertel", "1bed", "single_floor"]
+  },
+  "boundary": {
+    "polygon": [[0,0],[10,0],[10,5],[0,5]],
+    "wall_thickness_mm": 380,
+    "ceiling_height_mm": 3000
+  },
+  "rooms": [
+    { "id": "r_flur", "name": "Flur", "type": "entry",
+      "polygon": [[0,0],[2,0],[2,2],[0,2]], "area_sqm": 4 },
+    { "id": "r_wohnzimmer", "name": "Wohnzimmer", "type": "living",
+      "polygon": [[2,0],[7,0],[7,3],[2,3]], "area_sqm": 15 },
+    { "id": "r_kueche", "name": "Küche", "type": "kitchen",
+      "polygon": [[7,0],[10,0],[10,3],[7,3]], "area_sqm": 9 },
+    { "id": "r_bad", "name": "Bad", "type": "bathroom",
+      "polygon": [[0,2],[2,2],[2,5],[0,5]], "area_sqm": 6 },
+    { "id": "r_schlafzimmer", "name": "Schlafzimmer", "type": "master_bedroom",
+      "polygon": [[2,3],[10,3],[10,5],[2,5]], "area_sqm": 16 }
+  ],
+  "doors": [
+    { "from": "outside", "to": "r_flur", "position": [0,1], "width_mm": 900, "is_main_entry": true },
+    { "from": "r_flur", "to": "r_wohnzimmer", "position": [2,1], "width_mm": 900 },
+    { "from": "r_wohnzimmer", "to": "r_kueche", "position": [7,1.5], "width_mm": 900 },
+    { "from": "r_flur", "to": "r_bad", "position": [1,2], "width_mm": 700 },
+    { "from": "r_wohnzimmer", "to": "r_schlafzimmer", "position": [5,3], "width_mm": 900 },
+    { "from": "r_kueche", "to": "r_schlafzimmer", "position": [8.5,3], "width_mm": 900 },
+    { "from": "r_bad", "to": "r_schlafzimmer", "position": [2,3.5], "width_mm": 700 }
+  ],
+  "windows": [
+    { "room": "r_wohnzimmer", "position": [4.5,0], "width_mm": 1800 },
+    { "room": "r_kueche", "position": [8.5,0], "width_mm": 1200 },
+    { "room": "r_schlafzimmer", "position": [6,5], "width_mm": 1500 },
+    { "room": "r_bad", "position": [0,3.5], "width_mm": 600 }
+  ]
+}
