@@ -190,31 +190,89 @@ class RenderRequest(BaseModel):
     width: int = 768
     height: int = 512
     steps: int = 2
+    mode: str = "stylistic"  # 'stylistic' (prompt-only, fast) | 'faithful' (depth-conditioned, layout-accurate)
+    view: str = "interior"  # only meaningful in 'faithful' mode: 'interior' (one room from inside) | 'dollhouse' (whole apartment cutaway from above)
+    controlnet_scale: float | None = None  # default depends on view (0.55 interior, 0.65 dollhouse)
+    wall_height_factor: float = 1.0  # dollhouse only — <1 reduces walls so rooms read better from above
 
 
 @app.get("/api/render/warmup")
-def render_warmup():
-    """Pre-warm the SDXL-turbo pipeline. Call this on demo startup."""
+def render_warmup(controlnet: bool = False):
+    """Pre-warm the SDXL-turbo pipeline. Call this on demo startup.
+
+    Pass ?controlnet=true to also pre-load the depth-conditioned pipeline
+    used by /api/render?mode=faithful (extra ~30s cold-load + ~1GB RAM).
+    """
     from backend.app.image_renderer import warmup
-    return warmup()
+    return warmup(include_controlnet=controlnet)
 
 
 @app.post("/api/render")
 def render_endpoint(req: RenderRequest):
     """Live photorealistic render — SDXL-turbo on Apple Silicon.
 
+    Two modes:
+      - mode='stylistic' (default): prompt-only, ~1.5-3s/image. Builds a
+        photo from BIM metadata (country style, room type, ceiling).
+        Looks great but doesn't strictly match the floor plan layout.
+      - mode='faithful': depth-conditioned via Depth ControlNet, ~3-5s/image.
+        Builds a 3D scene from the template walls/floor/ceiling, raycasts
+        a depth map, conditions SDXL on it. Result: an interior photo
+        whose room proportions match the actual BIM geometry.
+
     Either pass template_id (we'll build a prompt from BIM metadata) OR
     a free-form prompt. Returns binary PNG.
 
-    Performance: ~1.5-3s per image after warmup, ~30-60s cold start.
-    Call /api/render/warmup at server boot to make first user-facing render fast.
+    Performance: ~30-60s cold start; call /api/render/warmup at server
+    boot. For faithful mode, also call /api/render/warmup?controlnet=true.
     """
     from backend.app.image_renderer import (
         render_from_prompt, render_from_template,
+        render_faithful_from_template,
+        render_faithful_dollhouse_from_template,
     )
 
-    if req.template_id:
-        # Look up the template (curated or modified registry)
+    extra_headers: dict[str, str] = {}
+
+    if req.mode == "faithful":
+        if not req.template_id:
+            raise HTTPException(
+                400, "mode='faithful' requires template_id (depth needs the BIM scene)"
+            )
+        template = storage.by_id(req.template_id) or _modified_registry.get(req.template_id)
+        if template is None:
+            raise HTTPException(404, f"unknown template {req.template_id}")
+
+        if req.view == "dollhouse":
+            cn_scale = req.controlnet_scale if req.controlnet_scale is not None else 0.65
+            out = render_faithful_dollhouse_from_template(
+                template,
+                width=req.width, height=req.height, steps=max(req.steps, 4),
+                controlnet_scale=cn_scale,
+                wall_height_factor=req.wall_height_factor,
+            )
+            extra_headers["X-Render-View"] = "dollhouse"
+            extra_headers["X-Render-Rooms-Count"] = str(out.get("rooms_count") or 0)
+            extra_headers["X-Render-Boundary-W"] = f"{out.get('boundary_w', 0.0):.2f}"
+            extra_headers["X-Render-Boundary-D"] = f"{out.get('boundary_d', 0.0):.2f}"
+            extra_headers["X-Render-Ceiling-M"] = f"{out.get('ceiling_height_m', 0.0):.2f}"
+        else:
+            cn_scale = req.controlnet_scale if req.controlnet_scale is not None else 0.55
+            out = render_faithful_from_template(
+                template,
+                focus_room_type=req.focus_room_type,
+                width=req.width, height=req.height, steps=max(req.steps, 4),
+                controlnet_scale=cn_scale,
+            )
+            extra_headers["X-Render-View"] = "interior"
+            extra_headers["X-Render-Focus-Room"] = (out.get("focus_room_name") or "")[:100]
+            extra_headers["X-Render-Focus-Type"] = (out.get("focus_room_type") or "")[:50]
+            extra_headers["X-Render-Focus-Area"] = str(out.get("focus_room_area") or 0)
+            extra_headers["X-Render-Ceiling-M"] = f"{out.get('ceiling_height_m', 0.0):.2f}"
+        result = out["result"]
+        if out.get("fallback"):
+            extra_headers["X-Render-Fallback"] = out["fallback"]
+    elif req.template_id:
         template = storage.by_id(req.template_id) or _modified_registry.get(req.template_id)
         if template is None:
             raise HTTPException(404, f"unknown template {req.template_id}")
@@ -239,7 +297,55 @@ def render_endpoint(req: RenderRequest):
         headers={
             "X-Render-Latency-S": f"{result.latency_s:.3f}",
             "X-Render-Backend": result.backend,
+            "X-Render-Mode": req.mode,
             "X-Render-Prompt": result.prompt[:500],
+            **extra_headers,
+        },
+    )
+
+
+@app.get("/api/render/depth/{template_id}")
+def render_depth_only(template_id: str, view: str = "interior"):
+    """Return just the depth map for a template — useful for the demo UI
+    to show 'see what the BIM scene looks like to ControlNet' alongside the
+    photorealistic render.
+
+    Pass ?view=dollhouse for the full-apartment cutaway depth.
+    """
+    from backend.app.depth_renderer import (
+        render_template_depth, render_template_dollhouse_depth,
+    )
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+
+    import io
+    buf = io.BytesIO()
+    if view == "dollhouse":
+        info = render_template_dollhouse_depth(template)
+        info["depth_image"].save(buf, format="PNG")
+        return Response(
+            content=buf.getvalue(),
+            media_type="image/png",
+            headers={
+                "X-Depth-View": "dollhouse",
+                "X-Depth-Rooms-Count": str(info.get("rooms_count") or 0),
+                "X-Depth-Boundary-W": f"{info.get('boundary_w', 0.0):.2f}",
+                "X-Depth-Boundary-D": f"{info.get('boundary_d', 0.0):.2f}",
+                "X-Depth-Ceiling-M": f"{info.get('ceiling_height_m', 0.0):.2f}",
+            },
+        )
+    info = render_template_depth(template)
+    info["depth_image"].save(buf, format="PNG")
+    return Response(
+        content=buf.getvalue(),
+        media_type="image/png",
+        headers={
+            "X-Depth-View": "interior",
+            "X-Depth-Focus-Room": (info.get("focus_room_name") or "")[:100],
+            "X-Depth-Focus-Type": (info.get("focus_room_type") or "")[:50],
+            "X-Depth-Focus-Area": str(info.get("focus_room_area") or 0),
+            "X-Depth-Ceiling-M": f"{info.get('ceiling_height_m', 0.0):.2f}",
         },
     )
 
