@@ -192,7 +192,7 @@ _CEIL_MM_RE = re.compile(r"(\d{4})\s*mm", re.IGNORECASE)
 _ROT_RE = re.compile(r"rotate\s*(?:by\s*)?(\d{1,3})", re.IGNORECASE)
 
 
-def _extract_slots(request: str, base_area_sqm: float) -> dict[str, Any]:
+def _extract_slots(request: str, base_area_sqm: float, template: dict | None = None) -> dict[str, Any]:
     """Pull mods from common phrasings without needing the LLM.
 
     Examples it handles:
@@ -203,6 +203,8 @@ def _extract_slots(request: str, base_area_sqm: float) -> dict[str, Any]:
       "3200mm" → ceiling_height_mm 3200
       "rotate 90" → rotation_deg 90
       "Altbau ceilings" → ceiling_height_mm 3300 (heuristic)
+      "add a balcony" → add_balcony {from_room: <largest>, depth_m: 1.2}
+      "swap kitchen and living" → swap_rooms {a, b} (template provided)
     """
     out: dict[str, Any] = {}
     txt = request.lower()
@@ -289,6 +291,83 @@ def _extract_slots(request: str, base_area_sqm: float) -> dict[str, Any]:
         elif "flip" in txt or "rotate 180" in txt:
             out["rotation_deg"] = 180
 
+    # ---- Add balcony ----
+    if template is not None and (
+        "add a balcony" in txt or "add balcony" in txt
+        or ("add" in txt and "balcony" in txt)
+        or "add a terrace" in txt or "add terrace" in txt
+    ):
+        # Extract optional depth
+        depth = 1.2
+        depth_match = re.search(r"(\d+(?:\.\d+)?)\s*m\s*(?:deep|wide)?\s*balcony", txt)
+        if depth_match:
+            try:
+                d = float(depth_match.group(1))
+                if 0.8 <= d <= 2.0:
+                    depth = d
+            except ValueError:
+                pass
+        # Default: pick the largest non-bath/wc/entry/balcony room
+        from_room = None
+        rooms = template.get("rooms", [])
+        # Try to match a room mentioned in the request
+        for r in rooms:
+            name_lower = r["name"].lower()
+            if name_lower in txt and r.get("type") not in ("bathroom", "wc", "entry", "balcony"):
+                from_room = r["id"]
+                break
+        if from_room is None:
+            candidates = [r for r in rooms if r.get("type") in ("living", "master_bedroom", "bedroom")]
+            if candidates:
+                from_room = max(candidates, key=lambda r: r.get("area_sqm", 0))["id"]
+        if from_room:
+            out["add_balcony"] = {"from_room": from_room, "depth_m": depth}
+
+    # ---- Swap rooms ----
+    if template is not None and ("swap" in txt or "switch" in txt):
+        # Common words → match rooms whose name OR type contains the word
+        TYPE_KEYWORDS = {
+            "kitchen": ("kitchen",),
+            "living": ("living",),
+            "lounge": ("living",),
+            "bedroom": ("master_bedroom", "bedroom"),
+            "master": ("master_bedroom",),
+            "bathroom": ("bathroom",),
+            "bath": ("bathroom",),
+            "wc": ("wc",),
+            "toilet": ("wc",),
+            "study": ("bedroom",),
+            "office": ("bedroom",),
+            "balcony": ("balcony",),
+            "dining": ("dining", "living"),
+        }
+
+        rooms = template.get("rooms", [])
+        mentioned: list[dict] = []
+        for kw, type_set in TYPE_KEYWORDS.items():
+            if kw in txt:
+                # Find first matching room not already mentioned
+                for r in rooms:
+                    if r in mentioned:
+                        continue
+                    if r.get("type", "") in type_set or kw in r["name"].lower():
+                        mentioned.append(r)
+                        break
+                if len(mentioned) == 2:
+                    break
+        if len(mentioned) == 2:
+            out["swap_rooms"] = {"a": mentioned[0]["id"], "b": mentioned[1]["id"]}
+            # Don't apply other mods that the keyword false-matched
+            for k in ("ceiling_height_mm", "rotation_deg", "area_scale"):
+                # If the user only said swap, drop spurious extracts. We keep
+                # them only if the request explicitly mentions them.
+                if k == "ceiling_height_mm" and "ceiling" not in txt and "altbau" not in txt and "high ceiling" not in txt:
+                    out.pop(k, None)
+                if k == "rotation_deg" and "rotat" not in txt and "flip" not in txt:
+                    out.pop(k, None)
+                if k == "area_scale" and not any(w in txt for w in ("bigger", "smaller", "larger", "double", "half", "%", "sqm", "m²")):
+                    out.pop(k, None)
+
     return out
 
 
@@ -324,7 +403,7 @@ def suggest_mods(request: str, template: dict, max_tokens: int = 200) -> ModSugg
 
     # ---- Path 1: deterministic slot extraction ----
     t0 = time.time()
-    slot_mods = _extract_slots(request, base_area)
+    slot_mods = _extract_slots(request, base_area, template=template)
     if slot_mods:
         return ModSuggestion(
             mods=slot_mods,

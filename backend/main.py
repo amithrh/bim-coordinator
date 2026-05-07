@@ -183,6 +183,60 @@ def generate_endpoint(req: GenerateRequest):
     }
 
 
+class GenerateTowerRequest(BaseModel):
+    brief: str  # natural-language tower brief
+
+
+@app.post("/api/generate_tower")
+def generate_tower_endpoint(req: GenerateTowerRequest):
+    """LEVEL 5: Multi-story residential tower generation.
+
+    Takes a brief like "Design a 20-story tower in Dubai inspired by Zaha Hadid"
+    and produces a fully-validated multi-floor IFC with:
+      - Lobby + amenity ground floor
+      - N typical floors with K apartments each
+      - Optional stepped massing at top (Zaha-inspired)
+      - Penthouse on top floor
+
+    Each floor is independently validated and the aggregated multi-story IFC
+    passes the same 35-check pipeline as our curated 500 templates.
+    """
+    import time as _time
+    from backend.app.tower_generator import parse_tower_brief, generate_tower
+
+    t0 = _time.time()
+    spec = parse_tower_brief(req.brief)
+    template = generate_tower(spec)
+    template["id"] = f"mod_{uuid.uuid4().hex[:8]}_tower"
+    _modified_registry[template["id"]] = template
+    ifc_out = MODIFIED_DIR / f"{template['id']}.ifc"
+    try:
+        build(template, ifc_out)
+    except Exception as e:
+        raise HTTPException(500, f"Failed to build tower IFC: {e}")
+    return {
+        "ok": True,
+        "modified_id": template["id"],
+        "spec": {
+            "n_floors": spec.n_floors,
+            "units_per_typical_floor": spec.units_per_typical_floor,
+            "country": spec.country,
+            "city": spec.city,
+            "inspiration_architect": spec.inspiration_architect,
+            "has_penthouse": spec.has_penthouse,
+            "setback_top_n": spec.setback_top_n,
+        },
+        "metadata": template["metadata"],
+        "n_floors": len(template["floors"]),
+        "n_rooms_total": sum(len(f["rooms"]) for f in template["floors"]),
+        "n_doors_total": sum(len(f["doors"]) for f in template["floors"]),
+        "n_windows_total": sum(len(f["windows"]) for f in template["floors"]),
+        "ifc_url": f"/api/modified/{template['id']}/ifc",
+        "json_url": f"/api/modified/{template['id']}/json",
+        "latency_s": round(_time.time() - t0, 4),
+    }
+
+
 class GenerateAlternativesRequest(BaseModel):
     brief: str
     n: int = 3

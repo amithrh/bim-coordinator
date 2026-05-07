@@ -2,7 +2,14 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "FloorPlanTemplate",
   "type": "object",
-  "required": ["id", "metadata", "boundary", "rooms", "doors", "windows"],
+  "required": [
+    "id",
+    "metadata",
+    "boundary",
+    "rooms",
+    "doors",
+    "windows"
+  ],
   "properties": {
     "id": {
       "type": "string",
@@ -10,28 +17,94 @@
     },
     "metadata": {
       "type": "object",
-      "required": ["region", "country", "size_label", "total_area_sqm",
-                   "bedrooms", "bathrooms", "style", "description",
-                   "suitable_for", "tags"],
+      "required": [
+        "region",
+        "country",
+        "size_label",
+        "total_area_sqm",
+        "bedrooms",
+        "bathrooms",
+        "style",
+        "description",
+        "suitable_for",
+        "tags"
+      ],
       "properties": {
-        "region": { "enum": ["india", "europe", "global"] },
-        "country": { "type": "string" },
-        "city_inspiration": { "type": "string" },
-        "size_label": { "type": "string" },
-        "total_area_sqm": { "type": "number", "minimum": 15, "maximum": 400 },
-        "bedrooms": { "type": "integer", "minimum": 0, "maximum": 6 },
-        "bathrooms": { "type": "number", "minimum": 0, "maximum": 5 },
-        "style": { "type": "string" },
-        "description": { "type": "string", "minLength": 30 },
-        "suitable_for": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-        "tags": { "type": "array", "items": { "type": "string" } },
-        "vastu_compliant": { "type": "boolean" },
-        "kitchen_facing": { "enum": ["N","S","E","W","NE","NW","SE","SW"] }
+        "region": {
+          "enum": [
+            "india",
+            "europe",
+            "global"
+          ]
+        },
+        "country": {
+          "type": "string"
+        },
+        "city_inspiration": {
+          "type": "string"
+        },
+        "size_label": {
+          "type": "string"
+        },
+        "total_area_sqm": {
+          "type": "number",
+          "minimum": 15,
+          "maximum": 50000
+        },
+        "bedrooms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 250
+        },
+        "bathrooms": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 250
+        },
+        "style": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 30
+        },
+        "suitable_for": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vastu_compliant": {
+          "type": "boolean"
+        },
+        "kitchen_facing": {
+          "enum": [
+            "N",
+            "S",
+            "E",
+            "W",
+            "NE",
+            "NW",
+            "SE",
+            "SW"
+          ]
+        }
       }
     },
     "boundary": {
       "type": "object",
-      "required": ["polygon", "wall_thickness_mm", "ceiling_height_mm"],
+      "required": [
+        "polygon",
+        "wall_thickness_mm",
+        "ceiling_height_mm"
+      ],
       "properties": {
         "polygon": {
           "type": "array",
@@ -40,12 +113,24 @@
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": { "type": "number" }
+            "items": {
+              "type": "number"
+            }
           }
         },
-        "wall_thickness_mm": { "type": "integer", "minimum": 100, "maximum": 400 },
-        "ceiling_height_mm": { "type": "integer", "minimum": 2200, "maximum": 4000 },
-        "orientation_north_deg": { "type": "number" }
+        "wall_thickness_mm": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 400
+        },
+        "ceiling_height_mm": {
+          "type": "integer",
+          "minimum": 2200,
+          "maximum": 4500
+        },
+        "orientation_north_deg": {
+          "type": "number"
+        }
       }
     },
     "rooms": {
@@ -54,16 +139,43 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "type", "polygon"],
+        "required": [
+          "id",
+          "name",
+          "type",
+          "polygon"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^r_[a-z0-9_]+$" },
-          "name": { "type": "string" },
+          "id": {
+            "type": "string",
+            "pattern": "^r_[a-z0-9_]+$"
+          },
+          "name": {
+            "type": "string"
+          },
           "type": {
-            "enum": ["living","kitchen","bedroom","master_bedroom",
-                     "bathroom","wc","dining","study","balcony",
-                     "utility","pooja","store","corridor","entry",
-                     "wardrobe","stairs","parking","kochnische",
-                     "diele","abstellraum"]
+            "enum": [
+              "living",
+              "kitchen",
+              "bedroom",
+              "master_bedroom",
+              "bathroom",
+              "wc",
+              "dining",
+              "study",
+              "balcony",
+              "utility",
+              "pooja",
+              "store",
+              "corridor",
+              "entry",
+              "wardrobe",
+              "stairs",
+              "parking",
+              "kochnische",
+              "diele",
+              "abstellraum"
+            ]
           },
           "polygon": {
             "type": "array",
@@ -72,11 +184,17 @@
               "type": "array",
               "minItems": 2,
               "maxItems": 2,
-              "items": { "type": "number" }
+              "items": {
+                "type": "number"
+              }
             }
           },
-          "area_sqm": { "type": "number" },
-          "notes": { "type": "string" }
+          "area_sqm": {
+            "type": "number"
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       }
     },
@@ -84,20 +202,48 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["from", "to", "position", "width_mm"],
+        "required": [
+          "from",
+          "to",
+          "position",
+          "width_mm"
+        ],
         "properties": {
-          "from": { "type": "string" },
-          "to": { "type": "string" },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
           "position": {
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": { "type": "number" }
+            "items": {
+              "type": "number"
+            }
           },
-          "width_mm": { "type": "integer", "minimum": 600, "maximum": 3000 },
-          "height_mm": { "type": "integer", "default": 2100 },
-          "swing": { "enum": ["in", "out", "slide"], "default": "in" },
-          "is_main_entry": { "type": "boolean", "default": false }
+          "width_mm": {
+            "type": "integer",
+            "minimum": 600,
+            "maximum": 3000
+          },
+          "height_mm": {
+            "type": "integer",
+            "default": 2100
+          },
+          "swing": {
+            "enum": [
+              "in",
+              "out",
+              "slide"
+            ],
+            "default": "in"
+          },
+          "is_main_entry": {
+            "type": "boolean",
+            "default": false
+          }
         }
       }
     },
@@ -105,18 +251,36 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["room", "position", "width_mm"],
+        "required": [
+          "room",
+          "position",
+          "width_mm"
+        ],
         "properties": {
-          "room": { "type": "string" },
+          "room": {
+            "type": "string"
+          },
           "position": {
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
-            "items": { "type": "number" }
+            "items": {
+              "type": "number"
+            }
           },
-          "width_mm": { "type": "integer", "minimum": 400, "maximum": 3000 },
-          "height_mm": { "type": "integer", "default": 1200 },
-          "sill_mm": { "type": "integer", "default": 900 }
+          "width_mm": {
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 3000
+          },
+          "height_mm": {
+            "type": "integer",
+            "default": 1200
+          },
+          "sill_mm": {
+            "type": "integer",
+            "default": 900
+          }
         }
       }
     },
@@ -125,11 +289,24 @@
       "minItems": 2,
       "items": {
         "type": "object",
-        "required": ["name", "rooms", "doors", "windows"],
+        "required": [
+          "name",
+          "rooms",
+          "doors",
+          "windows"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "elevation_mm": { "type": "integer" },
-          "ceiling_height_mm": { "type": "integer", "minimum": 2200, "maximum": 4000 },
+          "name": {
+            "type": "string"
+          },
+          "elevation_mm": {
+            "type": "integer"
+          },
+          "ceiling_height_mm": {
+            "type": "integer",
+            "minimum": 2200,
+            "maximum": 4000
+          },
           "boundary_polygon": {
             "type": "array",
             "minItems": 3,
@@ -137,15 +314,24 @@
               "type": "array",
               "minItems": 2,
               "maxItems": 2,
-              "items": { "type": "number" }
+              "items": {
+                "type": "number"
+              }
             }
           },
-          "rooms": { "type": "array", "minItems": 1 },
-          "doors": { "type": "array" },
-          "windows": { "type": "array" }
+          "rooms": {
+            "type": "array",
+            "minItems": 1
+          },
+          "doors": {
+            "type": "array"
+          },
+          "windows": {
+            "type": "array"
+          }
         }
       },
-      "description": "Multi-floor templates (duplex/townhouse). When present, top-level rooms/doors/windows must NOT be set — the per-floor arrays replace them."
+      "description": "Multi-floor templates (duplex/townhouse). When present, top-level rooms/doors/windows must NOT be set \u2014 the per-floor arrays replace them."
     }
   }
 }

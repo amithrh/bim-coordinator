@@ -159,11 +159,17 @@ def verify(template_path: Path, ifc_path: Path,
         chk(f"Top z reaches expected ~{expected_height:.2f} (cumulative across floors)",
             abs(max(all_z) - expected_height) < 0.10, f"max z={max(all_z):.3f}")
 
-    # Placement diversity
+    # Placement diversity — include z so multi-story towers don't false-fail.
+    # On a single-floor template all walls have z=0 and we still want the
+    # ≥70% unique XY guarantee. On a multi-story tower the same XY placement
+    # at different storey elevations counts as distinct (which it is in
+    # absolute world coordinates).
     wall_positions = []
     for w in m.by_type("IfcWall"):
         mat = ifcopenshell.util.placement.get_local_placement(w.ObjectPlacement)
-        wall_positions.append((round(mat[0, 3], 3), round(mat[1, 3], 3)))
+        wall_positions.append(
+            (round(mat[0, 3], 3), round(mat[1, 3], 3), round(mat[2, 3], 3))
+        )
     if wall_positions:
         unique = len(set(wall_positions))
         chk(f"Walls have distinct placements ({unique}/{len(wall_positions)})",

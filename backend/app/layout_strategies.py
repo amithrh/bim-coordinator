@@ -716,10 +716,104 @@ def public_private_layout(program: TemplateProgram,
 # Strategy registry + scoring
 # --------------------------------------------------------------------------- #
 
+def linear_shotgun_layout(program: TemplateProgram,
+                          dims: tuple[float, float] | None = None) -> dict:
+    """All rooms in one strip from front to back, no central corridor.
+
+    Layout (looking front to back, narrow apartment):
+      +---+---+---+---+---+---+
+      | E | K | L | B | M | b |
+      +---+---+---+---+---+---+
+
+    Common in: NYC railroad apartments, Chicago bungalows, narrow Hong Kong
+    flats, compact studios. Doors connect consecutive rooms — you walk
+    through one to reach the next.
+    """
+    total = program.total_area_sqm
+    if dims:
+        length, depth = dims
+    else:
+        length, depth = _pick_dimensions(total, prefer_aspect=2.5)
+
+    # Order rooms front-to-back: entry → public → private → outdoor
+    order_key = lambda r: (
+        0 if r.room_type == "entry" else
+        1 if r.room_type == "kitchen" else
+        2 if r.room_type == "dining" else
+        3 if r.room_type == "living" else
+        4 if r.room_type == "bathroom" else
+        5 if r.room_type == "wc" else
+        6 if r.room_type == "master_bedroom" else
+        7 if r.room_type == "bedroom" else
+        8 if r.room_type == "balcony" else 5
+    )
+    ordered = sorted(program.rooms, key=order_key)
+    if not ordered:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0, 0], [1, 0], [1, 1], [0, 1]], "wall_thickness_mm": 230, "ceiling_height_mm": 2700}, "rooms": [], "doors": [], "windows": []}
+
+    widths = _split_by_area_with_min(ordered, length, depth)
+    if widths is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0, 0], [1, 0], [1, 1], [0, 1]], "wall_thickness_mm": 230, "ceiling_height_mm": 2700}, "rooms": [], "doors": [], "windows": []}
+
+    used_ids: set[str] = set()
+    rooms_out: list[dict] = []
+    x = 0.0
+    for r, w in zip(ordered, widths):
+        polygon = [[x, 0], [x + w, 0], [x + w, depth], [x, depth]]
+        rooms_out.append({
+            "id": _slug(r.name, used_ids),
+            "name": r.name, "type": r.room_type, "polygon": polygon,
+            "area_sqm": round(w * depth, 2),
+        })
+        x += w
+
+    # Doors: outside → first room (entry), then each room → next
+    doors = [{
+        "from": "outside", "to": rooms_out[0]["id"],
+        "position": [0, round(depth / 2, 2)],
+        "width_mm": 1000, "is_main_entry": True,
+    }]
+    for a, b in zip(rooms_out, rooms_out[1:]):
+        seam_x = a["polygon"][1][0]  # right edge of a, left edge of b
+        # Vertical shared edge — overlap is full depth
+        doors.append({
+            "from": a["id"], "to": b["id"],
+            "position": [seam_x, round(depth / 2, 2)],
+            "width_mm": 800,
+        })
+
+    # Windows: each non-entry room gets a window on the bottom (front facade)
+    # OR top (back facade) — alternate so we have both sides lit
+    windows: list[dict] = []
+    for i, r in enumerate(rooms_out):
+        if r["type"] == "entry":
+            continue
+        if r["polygon"][1][0] - r["polygon"][0][0] < 1.6:
+            continue
+        edge = "bottom" if i % 2 == 0 else "top"
+        w = _exterior_window(r, edge, length, depth)
+        if w:
+            windows.append(w)
+
+    return {
+        "id": f"{_country_prefix(program.region)}_linear_shotgun_placeholder",
+        "metadata": _make_metadata(program, length, depth, "linear_shotgun", len(rooms_out)),
+        "boundary": {
+            "polygon": [[0, 0], [length, 0], [length, depth], [0, depth]],
+            "wall_thickness_mm": program.wall_thickness_mm,
+            "ceiling_height_mm": program.ceiling_height_mm,
+        },
+        "rooms": rooms_out,
+        "doors": doors,
+        "windows": windows,
+    }
+
+
 STRATEGIES = {
     "two_strip": two_strip_layout,
     "central_corridor": central_corridor_layout,
     "public_private": public_private_layout,
+    "linear_shotgun": linear_shotgun_layout,
 }
 
 
@@ -826,8 +920,11 @@ def generate_alternatives(
     """
     valid: list[tuple[str, dict, list[str], float]] = []
     for name, fn in STRATEGIES.items():
-        # Central corridor needs more elongated footprints
-        sweep = ASPECT_SWEEP_CORRIDOR if name == "central_corridor" else ASPECT_SWEEP
+        # Strategies that benefit from elongated footprints
+        if name in ("central_corridor", "linear_shotgun"):
+            sweep = ASPECT_SWEEP_CORRIDOR
+        else:
+            sweep = ASPECT_SWEEP
         result = _try_strategy_with_sweep(name, fn, program, aspects=sweep)
         if result is not None:
             valid.append(result)
