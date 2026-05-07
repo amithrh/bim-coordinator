@@ -225,34 +225,81 @@ def parse_tower_brief(brief: str) -> TowerSpec:
         "tadao ando": "Tadao Ando", "ando": "Tadao Ando",
         "i.m. pei": "I.M. Pei", "im pei": "I.M. Pei", "pei": "I.M. Pei",
     }
+    detected_architect = None
     for kw, name in architects.items():
         if kw in txt:
-            spec.inspiration_architect = name
-            spec.style = f"{name}-inspired residential tower"
-            # Apply the architect's GEOMETRIC profile to the spec.
-            profile = ARCHITECT_PROFILES.get(name)
-            if profile is not None:
-                spec.profile = profile
-                spec.floor_height_mm = profile.floor_height_mm
-                spec.typical_unit_area_sqm = profile.typical_unit_area_sqm
-                spec.units_per_typical_floor = profile.units_per_typical_floor
-                # Setback parameters depend on pattern
-                if profile.setback_pattern == "stepped":
-                    spec.setback_top_n = profile.setback_n
-                    spec.setback_amount_m = profile.setback_amount_m
-                elif profile.setback_pattern == "none":
-                    spec.setback_top_n = 0
-                    spec.setback_amount_m = 0.0
-                elif profile.setback_pattern == "pyramid":
-                    spec.setback_top_n = profile.setback_n
-                    spec.setback_amount_m = profile.setback_amount_m
-                elif profile.setback_pattern == "inverse_taper":
-                    spec.setback_top_n = 0  # base is wider, tower is uniform
-                    spec.setback_amount_m = 0.0
-                elif profile.setback_pattern == "mid_setback":
-                    spec.setback_top_n = 0
-                    spec.setback_amount_m = 0.0
+            detected_architect = name
             break
+
+    # Also try Codex if we got a name OR if no hardcoded match but the brief
+    # contains a name-like token (e.g. "inspired by Sou Fujimoto").
+    codex_query = detected_architect
+    if codex_query is None:
+        # Look for "inspired by <Name>" — handles ALL CAPS firms (MAD, OMA, SOM,
+        # SHoP, BIG, MVRDV) AND title case architects (Sou Fujimoto, Kengo Kuma).
+        m = re.search(
+            r"(?:inspired\s+by|style\s+of|à\s+la|like)\s+"
+            r"([A-Z][A-Za-z][A-Za-z]+(?:\s+(?:[A-Z][a-z]+|[A-Z]+)){0,2})",
+            brief,
+        )
+        if m:
+            codex_query = m.group(1).strip()
+
+    spec.inspiration_architect = codex_query or ""
+    if not codex_query:
+        return spec
+
+    spec.style = f"{codex_query}-inspired residential tower"
+
+    # Try Codex CLI first (true AI interpretation, supports any architect)
+    try:
+        from .codex_client import interpret_architect
+        interp = interpret_architect(codex_query)
+    except Exception:
+        interp = None
+
+    if interp and interp.backend in ("codex", "codex_cache") and interp.spec:
+        # Build profile from the AI-generated spec
+        s = interp.spec
+        ai_profile = ArchitectProfile(
+            setback_pattern=s["setback_pattern"],
+            setback_n=s["n_setbacks"],
+            setback_amount_m=s["setback_amount_m"],
+            n_amenity_floors=s["n_amenity_floors"],
+            sky_lobby_relative=s.get("sky_lobby_relative", 0.5),
+            floor_height_mm=s["floor_height_mm"],
+            typical_unit_area_sqm=s["typical_unit_area_sqm"],
+            units_per_typical_floor=s["units_per_typical_floor"],
+            footprint_aspect=s["footprint_aspect"],
+            asymmetric_units=s.get("asymmetric_units", False),
+        )
+        spec.profile = ai_profile
+        spec.floor_height_mm = ai_profile.floor_height_mm
+        spec.typical_unit_area_sqm = ai_profile.typical_unit_area_sqm
+        spec.units_per_typical_floor = ai_profile.units_per_typical_floor
+        if ai_profile.setback_pattern in ("stepped", "pyramid"):
+            spec.setback_top_n = ai_profile.setback_n
+            spec.setback_amount_m = ai_profile.setback_amount_m
+        else:
+            spec.setback_top_n = 0
+            spec.setback_amount_m = 0.0
+        # Note the source for downstream observability
+        spec.style += f" [AI-interpreted: {interp.rationale[:80]}]"
+        return spec
+
+    # Fall back to hardcoded profile if Codex failed or architect unknown
+    profile = ARCHITECT_PROFILES.get(detected_architect or "") if detected_architect else None
+    if profile is not None:
+        spec.profile = profile
+        spec.floor_height_mm = profile.floor_height_mm
+        spec.typical_unit_area_sqm = profile.typical_unit_area_sqm
+        spec.units_per_typical_floor = profile.units_per_typical_floor
+        if profile.setback_pattern in ("stepped", "pyramid"):
+            spec.setback_top_n = profile.setback_n
+            spec.setback_amount_m = profile.setback_amount_m
+        else:
+            spec.setback_top_n = 0
+            spec.setback_amount_m = 0.0
 
     # Penthouse / amenity hints
     if "no penthouse" in txt:
