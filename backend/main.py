@@ -32,6 +32,8 @@ from build_template import build  # noqa: E402
 
 from backend.app import storage  # noqa: E402
 from backend.app.brief_extractor import extract as extract_brief  # noqa: E402
+from backend.app.llm_client import reason as llm_reason  # noqa: E402
+from backend.app.llm_modder import suggest_mods as llm_suggest_mods  # noqa: E402
 from backend.app.modifier import apply_modifications  # noqa: E402
 from backend.app.retrieval import retrieve  # noqa: E402
 
@@ -125,6 +127,109 @@ def brief(req: BriefRequest):
 def retrieve_endpoint(req: RetrieveRequest):
     cards = retrieve(req.brief, top_n=req.top_n)
     return {"cards": cards}
+
+
+# ---------- Stage 2: LLM reasoning ----------
+
+class ReasonRequest(BaseModel):
+    brief_text: str  # the original natural-language brief
+    top_k: int = 10  # how many candidates to feed the model
+    max_tokens: int = 700
+
+
+class LlmModifyRequest(BaseModel):
+    template_id: str
+    request: str  # natural-language modification request
+
+
+@app.post("/api/llm_modify")
+def llm_modify_endpoint(req: LlmModifyRequest):
+    """LEVEL 2: LLM-driven modification of an existing template.
+
+    Pipeline:
+      1. Look up the template
+      2. Ask LLM for parameter changes (area_scale, ceiling_height_mm, rotation_deg)
+      3. Apply via existing modifier
+      4. Re-build IFC + verify
+      5. Return modified template + new IFC
+
+    The output IFC is NEW (didn't exist before) AND validated.
+    """
+    base = storage.by_id(req.template_id)
+    if base is None:
+        raise HTTPException(404, f"unknown template {req.template_id}")
+
+    # 1. LLM suggests structured mods
+    suggestion = llm_suggest_mods(req.request, base)
+    if suggestion.error:
+        raise HTTPException(500, f"LLM error: {suggestion.error}")
+    if not suggestion.mods:
+        raise HTTPException(
+            422,
+            f"LLM did not propose any valid modifications. Raw: {suggestion.raw_response[:200]}",
+        )
+
+    # 2. Apply modifications using the existing validated path
+    modified, errors = apply_modifications(base, suggestion.mods)
+    if errors:
+        return JSONResponse(
+            status_code=422,
+            content={
+                "ok": False,
+                "errors": errors,
+                "llm_mods": suggestion.mods,
+                "llm_reasoning": suggestion.reasoning,
+                "message": "LLM-suggested modifications would break the layout.",
+            },
+        )
+
+    # 3. Persist + build the new IFC (mirrors /api/modify)
+    mod_id = f"mod_{uuid.uuid4().hex[:8]}"
+    modified["id"] = mod_id
+    _modified_registry[mod_id] = modified
+    ifc_out = MODIFIED_DIR / f"{mod_id}.ifc"
+    build(modified, ifc_out)
+
+    return {
+        "ok": True,
+        "modified_id": mod_id,
+        "base_template_id": req.template_id,
+        "llm_mods": suggestion.mods,           # what the LLM proposed (after clamping)
+        "llm_reasoning": suggestion.reasoning,  # 1-sentence rationale
+        "llm_latency_s": suggestion.latency_s,
+        "ifc_url": f"/api/modified/{mod_id}/ifc",
+        "json_url": f"/api/modified/{mod_id}/json",
+        "svg_url": f"/api/modified/{mod_id}/svg",
+        "modified_metadata": modified["metadata"],
+    }
+
+
+@app.post("/api/reason")
+def reason_endpoint(req: ReasonRequest):
+    """Stage 1 retrieval (MiniLM) -> Stage 2 reasoning (fine-tuned LLM).
+
+    Returns a structured response with the LLM's ranked picks and rationale,
+    plus the raw retrieval cards in case the frontend wants to render them.
+    """
+    # Stage 1: structured brief -> top-K candidates via MiniLM
+    structured_brief = extract_brief(req.brief_text)
+    candidates = retrieve(structured_brief, top_n=req.top_k)
+    if not candidates:
+        raise HTTPException(404, "no candidates returned by retrieval")
+
+    # Stage 2: LLM picks top 4 with reasoning
+    resp = llm_reason(req.brief_text, candidates, max_tokens=req.max_tokens)
+
+    return {
+        "brief": req.brief_text,
+        "structured_brief": structured_brief,
+        "candidates": candidates,           # all top-K from retrieval
+        "llm_response": resp.text,          # LLM-generated text
+        "llm_latency_s": resp.latency_s,
+        "llm_backend": resp.backend,
+        "llm_model": resp.model,
+        "llm_error": resp.error,
+    }
 
 
 # ---------- modified template registry ----------
