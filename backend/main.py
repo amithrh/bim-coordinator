@@ -140,22 +140,16 @@ class ReasonRequest(BaseModel):
 
 class GenerateRequest(BaseModel):
     brief: str
-    backend: str = "auto"        # "auto" | "claude_api" | "local_mlx"
+    backend: str = "auto"        # "auto" | "claude_api" | "local_mlx" | "rules"
     max_attempts: int = 3
 
 
 @app.post("/api/generate")
 def generate_endpoint(req: GenerateRequest):
-    """LEVEL 4: Free-form template generation from a brief.
+    """LEVEL 4: Free-form template generation from a brief (single best layout).
 
-    Pipeline:
-      1. LLM proposes a high-level program (rooms, areas, style)
-      2. Procedural code lays out polygons (2-strip rectangular tiling)
-      3. Validator gates the output (35 checks)
-      4. If errors, retry up to N times with feedback to the LLM
-      5. Build IFC, persist, return URLs
-
-    The IFC produced is brand-new (never in the curated 500) AND verified.
+    The IFC produced is brand-new (never in the curated 500) AND verified
+    by the same 35-check pipeline as the curated library.
     """
     result = llm_generate(req.brief, backend=req.backend, max_attempts=req.max_attempts)
     if not result.success or not result.template:
@@ -169,7 +163,6 @@ def generate_endpoint(req: GenerateRequest):
             "message": "Could not produce a valid template after retries.",
         })
 
-    # Persist + build IFC for the new template
     template = result.template
     template["id"] = f"mod_{uuid.uuid4().hex[:8]}_ai"
     _modified_registry[template["id"]] = template
@@ -187,6 +180,69 @@ def generate_endpoint(req: GenerateRequest):
         "ifc_url": f"/api/modified/{template['id']}/ifc",
         "json_url": f"/api/modified/{template['id']}/json",
         "svg_url": f"/api/modified/{template['id']}/svg",
+    }
+
+
+class GenerateAlternativesRequest(BaseModel):
+    brief: str
+    n: int = 3
+
+
+@app.post("/api/generate/alternatives")
+def generate_alternatives_endpoint(req: GenerateAlternativesRequest):
+    """LEVEL 4 (richer): generate N distinct layout strategies for the SAME brief.
+
+    Returns N validated, geometrically-distinct layouts:
+      - two_strip:        wet on top, dry on bottom
+      - public_private:   vertical wing split
+      - central_corridor: hallway down the middle (e.g. Berliner Korridor)
+
+    Each is a brand-new IFC that wasn't in the curated 500. Each passes 35/35
+    verification. They look visibly different and reflect different
+    architectural traditions.
+    """
+    import time as _time
+    from backend.app.layout_strategies import generate_alternatives
+    from backend.app.template_generator import TemplateProgram
+    from backend.app.program_extractor import extract_program
+
+    t0 = _time.time()
+    program_dict = extract_program(req.brief)
+    program = TemplateProgram.from_dict(program_dict)
+    alternatives = generate_alternatives(program, n=req.n)
+
+    if not alternatives:
+        raise HTTPException(422, "No layout strategy could produce a valid template")
+
+    out = []
+    for strategy_name, template, _errs, score in alternatives:
+        template["id"] = f"mod_{uuid.uuid4().hex[:8]}_ai"
+        _modified_registry[template["id"]] = template
+        ifc_out = MODIFIED_DIR / f"{template['id']}.ifc"
+        try:
+            build(template, ifc_out)
+        except Exception as e:
+            # Skip this alternative if IFC build fails
+            continue
+        out.append({
+            "strategy": strategy_name,
+            "score": score,
+            "modified_id": template["id"],
+            "metadata": template["metadata"],
+            "ifc_url": f"/api/modified/{template['id']}/ifc",
+            "json_url": f"/api/modified/{template['id']}/json",
+            "svg_url": f"/api/modified/{template['id']}/svg",
+            "n_rooms": len(template["rooms"]),
+            "n_doors": len(template["doors"]),
+            "n_windows": len(template["windows"]),
+        })
+
+    return {
+        "ok": True,
+        "brief": req.brief,
+        "program": program_dict,
+        "alternatives": out,
+        "total_latency_s": round(_time.time() - t0, 4),
     }
 
 
