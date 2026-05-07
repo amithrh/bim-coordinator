@@ -68,7 +68,8 @@ train_lora() {
   local rank="$5"
   local lora_layers="$6"
 
-  local run_name="${model_short,,}-real-r${rank}-iters${iters}-$(date +%s)"
+  local lower_short=$(echo "$model_short" | tr '[:upper:]' '[:lower:]')
+  local run_name="${lower_short}-real-r${rank}-iters${iters}-$(date +%s)"
   local adapter_path="$REPO_ROOT/training/checkpoints/$run_name"
   local config_path="$adapter_path/config.yaml"
   mkdir -p "$adapter_path"
@@ -136,15 +137,51 @@ run_eval() {
 }
 
 # -----------------------------------------------------------------------------
-# Gemma availability check
+# Gemma availability checks: prefer bf16 (best quality), fall back to 4-bit.
 # -----------------------------------------------------------------------------
 
-gemma_ready() {
+gemma_bf16_ready() {
   local size="$1"  # e2b or e4b
   local need
   if [ "$size" = "e2b" ]; then need=3; else need=4; fi
   local count=$(ls ~/.cache/huggingface/hub/models--mlx-community--gemma-4-${size}-it-bf16/snapshots/*/model-*.safetensors 2>/dev/null | wc -l | tr -d ' ')
   [ "$count" -ge "$need" ]
+}
+
+gemma_4bit_ready() {
+  local size="$1"
+  # 4-bit models are typically a single .safetensors file
+  ls ~/.cache/huggingface/hub/models--mlx-community--gemma-4-${size}-it-4bit/snapshots/*/model.safetensors 2>/dev/null | head -1 | grep -q safetensors
+}
+
+# Returns the best available model path, or empty if none ready
+gemma_best_path() {
+  local size="$1"
+  if gemma_bf16_ready "$size"; then
+    echo "mlx-community/gemma-4-${size}-it-bf16"
+    return 0
+  fi
+  if gemma_4bit_ready "$size"; then
+    echo "mlx-community/gemma-4-${size}-it-4bit"
+    return 0
+  fi
+  echo ""
+  return 1
+}
+
+# Wait up to N seconds for ANY Gemma version to be ready
+wait_for_gemma() {
+  local size="$1"
+  local timeout="${2:-1800}"   # default 30 min
+  local elapsed=0
+  while [ "$elapsed" -lt "$timeout" ]; do
+    if [ -n "$(gemma_best_path $size)" ]; then
+      return 0
+    fi
+    sleep 60
+    elapsed=$((elapsed + 60))
+  done
+  return 1
 }
 
 # -----------------------------------------------------------------------------
@@ -169,49 +206,47 @@ if [ -f "$LOG_DIR/.last_adapter_LLAMA32.path" ]; then
       "--adapter-path $llama_adapter"
 fi
 
-# Step 3: If Gemma E2B downloaded, baseline + fine-tune
-if gemma_ready "e2b"; then
-  log "Gemma E2B is downloaded — baseline + fine-tune"
+# Step 3: Gemma E2B — wait up to 30 min for ANY version (bf16 or 4-bit)
+log "Checking Gemma E2B availability (wait up to 30 min for download)..."
+if wait_for_gemma "e2b" 1800; then
+  e2b_path=$(gemma_best_path "e2b")
+  log "Gemma E2B available at: $e2b_path"
   run_step "eval_gemma_e2b_stock" \
-    run_eval "baseline_gemma-e2b" \
-      "mlx-community/gemma-4-e2b-it-bf16" \
-      ""
+    run_eval "baseline_gemma-e2b" "$e2b_path" ""
 
   run_step "train_gemma_e2b" \
-    train_lora "GEMMA_E2B" "mlx-community/gemma-4-e2b-it-bf16" 1500 2 32 16
+    train_lora "GEMMA_E2B" "$e2b_path" 1500 2 32 16
 
   if [ -f "$LOG_DIR/.last_adapter_GEMMA_E2B.path" ]; then
     e2b_adapter=$(cat "$LOG_DIR/.last_adapter_GEMMA_E2B.path")
     run_step "eval_gemma_e2b_finetuned" \
-      run_eval "finetuned_gemma-e2b" \
-        "mlx-community/gemma-4-e2b-it-bf16" \
+      run_eval "finetuned_gemma-e2b" "$e2b_path" \
         "--adapter-path $e2b_adapter"
   fi
 else
-  log "[skip] Gemma E2B not downloaded yet — using Llama as primary"
+  log "[skip] Gemma E2B not downloaded after 30 min — sticking with Llama"
 fi
 
-# Step 4: If Gemma E4B downloaded AND we have memory headroom, fine-tune
-if gemma_ready "e4b"; then
-  log "Gemma E4B is downloaded — baseline + fine-tune"
+# Step 4: Gemma E4B — wait up to 30 min, prefer bf16, fall back to 4-bit
+log "Checking Gemma E4B availability (wait up to 30 min for download)..."
+if wait_for_gemma "e4b" 1800; then
+  e4b_path=$(gemma_best_path "e4b")
+  log "Gemma E4B available at: $e4b_path"
   run_step "eval_gemma_e4b_stock" \
-    run_eval "baseline_gemma-e4b" \
-      "mlx-community/gemma-4-e4b-it-bf16" \
-      ""
+    run_eval "baseline_gemma-e4b" "$e4b_path" ""
 
-  # E4B needs more memory — use batch_size=1 to be safe
+  # E4B is 2x bigger - use batch_size=1 for memory safety
   run_step "train_gemma_e4b" \
-    train_lora "GEMMA_E4B" "mlx-community/gemma-4-e4b-it-bf16" 1500 1 32 12
+    train_lora "GEMMA_E4B" "$e4b_path" 1500 1 32 12
 
   if [ -f "$LOG_DIR/.last_adapter_GEMMA_E4B.path" ]; then
     e4b_adapter=$(cat "$LOG_DIR/.last_adapter_GEMMA_E4B.path")
     run_step "eval_gemma_e4b_finetuned" \
-      run_eval "finetuned_gemma-e4b" \
-        "mlx-community/gemma-4-e4b-it-bf16" \
+      run_eval "finetuned_gemma-e4b" "$e4b_path" \
         "--adapter-path $e4b_adapter"
   fi
 else
-  log "[skip] Gemma E4B not downloaded yet"
+  log "[skip] Gemma E4B not downloaded after 30 min"
 fi
 
 # Step 5: Pick winner and quantize

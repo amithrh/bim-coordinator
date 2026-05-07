@@ -16,6 +16,8 @@ frontend/next-env.d.ts
 data/ifc_samples/*.ifc
 data/svg_plans/*.svg
 data/fragments/
+# Pre-built IFCs from the batch validation runs (regenerable from templates)
+data/build/*.ifc
 
 # Editor / OS
 .DS_Store
@@ -38,3 +40,6 @@ training/data/processed/
 training/data/stats.json
 training/checkpoints/
 training/data_test/
+# Overnight orchestrator output — auto-generated, regenerable
+training/overnight_logs/
+MORNING_STATUS.md
