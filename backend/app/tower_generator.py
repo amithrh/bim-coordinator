@@ -258,7 +258,7 @@ def parse_tower_brief(brief: str) -> TowerSpec:
     except Exception:
         interp = None
 
-    if interp and interp.backend in ("codex", "codex_cache") and interp.spec:
+    if interp and interp.backend in ("trained_llama", "codex", "codex_cache") and interp.spec:
         # Build profile from the AI-generated spec
         s = interp.spec
         ai_profile = ArchitectProfile(
