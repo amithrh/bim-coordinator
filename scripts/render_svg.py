@@ -1,9 +1,8 @@
 """Render 2D floor plan SVG for every template.
 
-Per build plan §6.3, the production renderer goes JSON-direct (skipping
-IfcConvert) — the JSON renderer produces nicer output for our use case
-(room colors, centroid labels, door arcs) and avoids IfcConvert's known
-SVG quirks.
+Now delegates to the architectural-grade renderer in
+`backend.app.floorplan_renderer`, which adds wall thickness,
+door swings, window glyphs, and room fixtures (sinks, beds, sofas, etc).
 
 Usage:
     python render_svg.py                    # render every template
@@ -21,6 +20,12 @@ import svgwrite
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = REPO_ROOT / "data" / "templates"
 SVG_OUT_DIR = REPO_ROOT / "data" / "svg_plans"
+
+# Make backend importable when this script is invoked directly
+sys.path.insert(0, str(REPO_ROOT))
+from backend.app.floorplan_renderer import (  # noqa: E402
+    render_template_svg as _render_template_svg_arch,
+)
 
 COLOR_BY_TYPE = {
     "kitchen": "#FFF3CD", "kochnische": "#FFF3CD",
@@ -87,15 +92,34 @@ def _render_floor_panel(dwg, boundary, rooms, doors, windows,
 
 
 def render_one(template_path: Path, svg_path: Path, size: int = 1024, pad: int = 40):
-    template = json.loads(template_path.read_text())
+    """Render a single template using the architectural-grade renderer.
 
+    Falls back to the legacy basic renderer (kept below as
+    `_render_one_basic`) if the architectural one fails — multi-floor
+    templates take the legacy path until the new renderer adds floor
+    stacking.
+    """
+    template = json.loads(template_path.read_text())
+    if template.get("floors"):
+        # Multi-floor — use the legacy basic renderer (architectural one
+        # is single-floor for now; multi-floor stack is a follow-up).
+        return _render_one_basic(template, svg_path, size=size, pad=pad)
+    try:
+        _render_template_svg_arch(template, str(svg_path), size=size)
+    except Exception as e:
+        print(f"[render_svg] arch renderer failed for {template_path.name}: "
+              f"{e!r} — falling back to basic", file=sys.stderr)
+        _render_one_basic(template, svg_path, size=size, pad=pad)
+
+
+def _render_one_basic(template: dict, svg_path: Path, size: int = 1024, pad: int = 40):
+    """Legacy basic renderer (rectangles + dots). Kept as fallback."""
     floors = template.get("floors")
     dwg = svgwrite.Drawing(str(svg_path), size=(size, size),
                             viewBox=f"0 0 {size} {size}")
     dwg.add(dwg.rect((0, 0), (size, size), fill="#FAFAFA"))
 
     if floors:
-        # Stack floors vertically — each gets half the canvas
         n = len(floors)
         panel_h = (size - 2 * pad) / n
         boundary_default = template["boundary"]["polygon"]
