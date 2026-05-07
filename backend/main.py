@@ -33,6 +33,7 @@ from build_template import build  # noqa: E402
 from backend.app import storage  # noqa: E402
 from backend.app.brief_extractor import extract as extract_brief  # noqa: E402
 from backend.app.llm_client import reason as llm_reason  # noqa: E402
+from backend.app.llm_generator import generate_from_brief as llm_generate  # noqa: E402
 from backend.app.llm_modder import suggest_mods as llm_suggest_mods  # noqa: E402
 from backend.app.modifier import apply_modifications  # noqa: E402
 from backend.app.retrieval import retrieve  # noqa: E402
@@ -135,6 +136,58 @@ class ReasonRequest(BaseModel):
     brief_text: str  # the original natural-language brief
     top_k: int = 10  # how many candidates to feed the model
     max_tokens: int = 700
+
+
+class GenerateRequest(BaseModel):
+    brief: str
+    backend: str = "auto"        # "auto" | "claude_api" | "local_mlx"
+    max_attempts: int = 3
+
+
+@app.post("/api/generate")
+def generate_endpoint(req: GenerateRequest):
+    """LEVEL 4: Free-form template generation from a brief.
+
+    Pipeline:
+      1. LLM proposes a high-level program (rooms, areas, style)
+      2. Procedural code lays out polygons (2-strip rectangular tiling)
+      3. Validator gates the output (35 checks)
+      4. If errors, retry up to N times with feedback to the LLM
+      5. Build IFC, persist, return URLs
+
+    The IFC produced is brand-new (never in the curated 500) AND verified.
+    """
+    result = llm_generate(req.brief, backend=req.backend, max_attempts=req.max_attempts)
+    if not result.success or not result.template:
+        return JSONResponse(status_code=422, content={
+            "ok": False,
+            "backend": result.backend,
+            "attempts": result.attempts,
+            "latency_s": result.latency_s,
+            "errors_per_attempt": result.errors_per_attempt,
+            "last_raw_response": result.raw_responses[-1] if result.raw_responses else "",
+            "message": "Could not produce a valid template after retries.",
+        })
+
+    # Persist + build IFC for the new template
+    template = result.template
+    template["id"] = f"mod_{uuid.uuid4().hex[:8]}_ai"
+    _modified_registry[template["id"]] = template
+    ifc_out = MODIFIED_DIR / f"{template['id']}.ifc"
+    build(template, ifc_out)
+
+    return {
+        "ok": True,
+        "modified_id": template["id"],
+        "backend": result.backend,
+        "attempts": result.attempts,
+        "latency_s": result.latency_s,
+        "program": result.program,
+        "metadata": template["metadata"],
+        "ifc_url": f"/api/modified/{template['id']}/ifc",
+        "json_url": f"/api/modified/{template['id']}/json",
+        "svg_url": f"/api/modified/{template['id']}/svg",
+    }
 
 
 class LlmModifyRequest(BaseModel):
