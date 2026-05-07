@@ -32,6 +32,125 @@ from typing import Any
 # ---------------------------------------------------------------------------
 
 @dataclass
+class ArchitectProfile:
+    """Real architectural signature parameters per starchitect.
+
+    Each architect has a different geometric signature that produces a
+    visibly distinct tower form. Not a label — actual geometry differs.
+    """
+    setback_pattern: str = "stepped"
+    # Patterns:
+    #   "none"           - uniform tower, all floors identical (Foster, Pei)
+    #   "stepped"        - top N floors progressively smaller (Zaha, Gehry)
+    #   "pyramid"        - all floors above N progressively smaller (BIG)
+    #   "inverse_taper"  - wide base for first M floors, then constant (Calatrava)
+    #   "mid_setback"    - setback in the middle (Koolhaas-style void)
+    setback_n: int = 2              # number of stepped floors (for stepped/pyramid)
+    setback_amount_m: float = 2.0   # how much each step recedes
+    setback_start_relative: float = 0.85  # for "stepped"/"pyramid": where to start
+    base_extension_floors: int = 2  # for "inverse_taper": extra-wide floors at base
+    base_extension_m: float = 3.0
+    n_amenity_floors: int = 1       # ground only (1) or ground + sky lobby (2)
+    sky_lobby_relative: float = 0.5  # if 2 amenity floors, second is at this height
+    floor_height_mm: int = 3200
+    typical_unit_area_sqm: float = 70.0
+    units_per_typical_floor: int = 4
+    footprint_aspect: float = 1.4   # L:D ratio
+    asymmetric_units: bool = False  # vary unit widths per floor (Gehry)
+    penthouse_style: str = "luxury"
+
+
+# Real architectural signatures — each produces a visibly distinct tower.
+ARCHITECT_PROFILES: dict[str, ArchitectProfile] = {
+    "Zaha Hadid": ArchitectProfile(
+        # Multiple small setbacks at top — stepped/tapered crown
+        setback_pattern="stepped",
+        setback_n=4,
+        setback_amount_m=1.5,
+        floor_height_mm=3200,
+        footprint_aspect=1.6,
+        penthouse_style="terraced_luxury",
+    ),
+    "Norman Foster": ArchitectProfile(
+        # Uniform tower with sky lobby — high-tech rationalist (Hearst, 30 St Mary Axe)
+        setback_pattern="none",
+        setback_n=0,
+        n_amenity_floors=2,
+        sky_lobby_relative=0.55,  # mid-tower sky lobby
+        floor_height_mm=3500,     # generous heights
+        footprint_aspect=1.0,     # square
+        units_per_typical_floor=4,
+        penthouse_style="grand_pavilion",
+    ),
+    "Bjarke Ingels": ArchitectProfile(
+        # Mountain / pyramid form (8 House, VIA 57 West)
+        setback_pattern="pyramid",
+        setback_n=10,             # many small setbacks
+        setback_amount_m=0.8,
+        setback_start_relative=0.35,  # start early
+        n_amenity_floors=1,
+        floor_height_mm=3000,
+        penthouse_style="peak",
+    ),
+    "Rem Koolhaas": ArchitectProfile(
+        # Programmatic stacking with mid void (CCTV, De Rotterdam)
+        setback_pattern="mid_setback",
+        setback_n=0,
+        n_amenity_floors=2,       # ground + mid programmatic floor
+        sky_lobby_relative=0.4,
+        floor_height_mm=3300,
+        units_per_typical_floor=6,  # denser
+        penthouse_style="loft",
+    ),
+    "Frank Gehry": ArchitectProfile(
+        # Asymmetric units — sculpted, irregular (8 Spruce Street)
+        setback_pattern="stepped",
+        setback_n=3,
+        setback_amount_m=2.5,     # bolder steps
+        n_amenity_floors=1,
+        floor_height_mm=3200,
+        asymmetric_units=True,    # different unit widths per floor
+        penthouse_style="sculpted",
+    ),
+    "Santiago Calatrava": ArchitectProfile(
+        # Inverse-taper: wide base for civic presence, narrow tower
+        setback_pattern="inverse_taper",
+        base_extension_floors=3,
+        base_extension_m=3.0,
+        n_amenity_floors=1,
+        floor_height_mm=3400,
+        footprint_aspect=1.2,
+        penthouse_style="spire",
+    ),
+    "Tadao Ando": ArchitectProfile(
+        # Minimalist concrete — uniform, square, fewer larger units
+        setback_pattern="none",
+        n_amenity_floors=1,
+        floor_height_mm=3000,
+        footprint_aspect=1.0,     # square (minimalist symmetry)
+        units_per_typical_floor=3,
+        typical_unit_area_sqm=110.0,
+        penthouse_style="minimalist",
+    ),
+    "I.M. Pei": ArchitectProfile(
+        # Geometric, symmetrical, simple modernist
+        setback_pattern="stepped",
+        setback_n=2,
+        setback_amount_m=2.0,
+        n_amenity_floors=1,
+        floor_height_mm=3300,
+        footprint_aspect=1.0,     # square
+        penthouse_style="geometric",
+    ),
+    "BIG": None,   # alias to Bjarke Ingels (filled below)
+    "OMA": None,   # alias to Rem Koolhaas
+}
+# Aliases
+ARCHITECT_PROFILES["BIG"] = ARCHITECT_PROFILES["Bjarke Ingels"]
+ARCHITECT_PROFILES["OMA"] = ARCHITECT_PROFILES["Rem Koolhaas"]
+
+
+@dataclass
 class TowerSpec:
     n_floors: int = 20
     units_per_typical_floor: int = 4
@@ -39,13 +158,15 @@ class TowerSpec:
     floor_height_mm: int = 3200
     country: str = "United Arab Emirates"
     city: str = "Dubai"
-    style: str = "Zaha-inspired residential tower"
+    style: str = "Modern residential tower"
     has_penthouse: bool = True
     has_amenity_floor: bool = True
-    setback_top_n: int = 2     # top N floors are stepped in
+    setback_top_n: int = 2
     setback_amount_m: float = 2.0
-    inspiration_architect: str = "Zaha Hadid"
+    inspiration_architect: str = ""
     wall_thickness_mm: int = 250
+    # Architectural profile — populated from ARCHITECT_PROFILES if architect detected
+    profile: ArchitectProfile = field(default_factory=ArchitectProfile)
 
 
 # ---------------------------------------------------------------------------
@@ -92,19 +213,45 @@ def parse_tower_brief(brief: str) -> TowerSpec:
         }
         spec.city = country_to_city.get(country, country)
 
-    # Architect inspiration
+    # Architect inspiration — detect and APPLY the matching geometric profile.
     architects = {
         "zaha hadid": "Zaha Hadid", "hadid": "Zaha Hadid",
         "norman foster": "Norman Foster", "foster": "Norman Foster",
         "rem koolhaas": "Rem Koolhaas", "koolhaas": "Rem Koolhaas",
         "frank gehry": "Frank Gehry", "gehry": "Frank Gehry",
-        "bjarke ingels": "Bjarke Ingels", "big": "BIG",
-        "calatrava": "Santiago Calatrava",
+        "bjarke ingels": "Bjarke Ingels", "ingels": "Bjarke Ingels",
+        "big-bjarke": "Bjarke Ingels",
+        "calatrava": "Santiago Calatrava", "santiago": "Santiago Calatrava",
+        "tadao ando": "Tadao Ando", "ando": "Tadao Ando",
+        "i.m. pei": "I.M. Pei", "im pei": "I.M. Pei", "pei": "I.M. Pei",
     }
     for kw, name in architects.items():
         if kw in txt:
             spec.inspiration_architect = name
             spec.style = f"{name}-inspired residential tower"
+            # Apply the architect's GEOMETRIC profile to the spec.
+            profile = ARCHITECT_PROFILES.get(name)
+            if profile is not None:
+                spec.profile = profile
+                spec.floor_height_mm = profile.floor_height_mm
+                spec.typical_unit_area_sqm = profile.typical_unit_area_sqm
+                spec.units_per_typical_floor = profile.units_per_typical_floor
+                # Setback parameters depend on pattern
+                if profile.setback_pattern == "stepped":
+                    spec.setback_top_n = profile.setback_n
+                    spec.setback_amount_m = profile.setback_amount_m
+                elif profile.setback_pattern == "none":
+                    spec.setback_top_n = 0
+                    spec.setback_amount_m = 0.0
+                elif profile.setback_pattern == "pyramid":
+                    spec.setback_top_n = profile.setback_n
+                    spec.setback_amount_m = profile.setback_amount_m
+                elif profile.setback_pattern == "inverse_taper":
+                    spec.setback_top_n = 0  # base is wider, tower is uniform
+                    spec.setback_amount_m = 0.0
+                elif profile.setback_pattern == "mid_setback":
+                    spec.setback_top_n = 0
+                    spec.setback_amount_m = 0.0
             break
 
     # Penthouse / amenity hints
@@ -146,11 +293,20 @@ def _typical_floor_dims(spec: TowerSpec) -> tuple[float, float]:
 def _gen_typical_floor(
     spec: TowerSpec, fi: int, elevation_mm: int, footprint_polygon: list[list[float]]
 ) -> dict:
-    """Generate one typical floor with 4 units (or N) + corridor + core."""
+    """Generate one typical floor with 4 units (or N) + corridor + core.
+
+    Handles arbitrary polygon origin (not just (0,0)) by using min_x/min_y
+    as the offset for all room placements. This lets pyramid + inverse_taper
+    setbacks center the floor on the building axis.
+    """
+    bx_min = min(p[0] for p in footprint_polygon)
+    by_min = min(p[1] for p in footprint_polygon)
     bx_max = max(p[0] for p in footprint_polygon)
     by_max = max(p[1] for p in footprint_polygon)
-    L = bx_max
-    D = by_max
+    L = bx_max - bx_min   # local-coordinate length
+    D = by_max - by_min   # local-coordinate depth
+    ox = bx_min           # x offset for room placements
+    oy = by_min           # y offset
 
     # Split units into top and bottom rows so both rows tile the full main_length
     n_top = math.ceil(spec.units_per_typical_floor / 2)
@@ -182,18 +338,24 @@ def _gen_typical_floor(
         used_ids.add(candidate)
         return candidate
 
+    # All room polygons + door/window positions are offset by (ox, oy) so a
+    # non-(0,0)-origin footprint (e.g. centered pyramid setback) tiles correctly.
+    def shift(pt):
+        return [round(pt[0] + ox, 2), round(pt[1] + oy, 2)]
+
     # Stair core (full height, on the left)
     core_id = slug("stair_core")
     rooms.append({
         "id": core_id, "name": "Stair & Lift Core", "type": "stairs",
-        "polygon": [[0, 0], [core_w, 0], [core_w, D], [0, D]],
+        "polygon": [shift([0, 0]), shift([core_w, 0]),
+                    shift([core_w, D]), shift([0, D])],
         "area_sqm": round(core_w * D, 2),
     })
 
     # Corridor (horizontal, between top and bottom unit rows)
     corridor_id = slug("corridor")
-    corridor_poly = [[core_w, corridor_y0], [L, corridor_y0],
-                     [L, corridor_y1], [core_w, corridor_y1]]
+    corridor_poly = [shift([core_w, corridor_y0]), shift([L, corridor_y0]),
+                     shift([L, corridor_y1]), shift([core_w, corridor_y1])]
     rooms.append({
         "id": corridor_id, "name": f"Corridor F{fi}", "type": "corridor",
         "polygon": corridor_poly,
@@ -203,30 +365,30 @@ def _gen_typical_floor(
     # Door from core → corridor (shared edge at x=core_w, between y0..y1)
     doors.append({
         "from": core_id, "to": corridor_id,
-        "position": [core_w, round((corridor_y0 + corridor_y1) / 2, 2)],
+        "position": shift([core_w, (corridor_y0 + corridor_y1) / 2]),
         "width_mm": 1000,
     })
 
     # Top units (above corridor) — tile main_length using top_unit_width
     for u in range(n_top):
         x0 = core_w + u * top_unit_width
-        x1 = x0 + top_unit_width if u < n_top - 1 else L  # last unit eats remainder
+        x1 = x0 + top_unit_width if u < n_top - 1 else L
         unit_label = chr(ord('A') + u)
         unit_id = slug(f"unit_{unit_label}")
         rooms.append({
             "id": unit_id, "name": f"Apt {unit_label} (F{fi})", "type": "living",
-            "polygon": [[x0, corridor_y1], [x1, corridor_y1],
-                        [x1, D], [x0, D]],
+            "polygon": [shift([x0, corridor_y1]), shift([x1, corridor_y1]),
+                        shift([x1, D]), shift([x0, D])],
             "area_sqm": round((x1 - x0) * unit_depth, 2),
         })
         doors.append({
             "from": corridor_id, "to": unit_id,
-            "position": [round((x0 + x1) / 2, 2), corridor_y1],
+            "position": shift([(x0 + x1) / 2, corridor_y1]),
             "width_mm": 900,
         })
         windows.append({
             "room": unit_id,
-            "position": [round((x0 + x1) / 2, 2), D],
+            "position": shift([(x0 + x1) / 2, D]),
             "width_mm": 1800,
         })
 
@@ -238,25 +400,25 @@ def _gen_typical_floor(
         unit_id = slug(f"unit_{unit_label}")
         rooms.append({
             "id": unit_id, "name": f"Apt {unit_label} (F{fi})", "type": "living",
-            "polygon": [[x0, 0], [x1, 0],
-                        [x1, corridor_y0], [x0, corridor_y0]],
+            "polygon": [shift([x0, 0]), shift([x1, 0]),
+                        shift([x1, corridor_y0]), shift([x0, corridor_y0])],
             "area_sqm": round((x1 - x0) * unit_depth, 2),
         })
         doors.append({
             "from": corridor_id, "to": unit_id,
-            "position": [round((x0 + x1) / 2, 2), corridor_y0],
+            "position": shift([(x0 + x1) / 2, corridor_y0]),
             "width_mm": 900,
         })
         windows.append({
             "room": unit_id,
-            "position": [round((x0 + x1) / 2, 2), 0],
+            "position": shift([(x0 + x1) / 2, 0]),
             "width_mm": 1800,
         })
 
     # Window on stair core's left exterior wall
     windows.append({
         "room": core_id,
-        "position": [0, round(D / 2, 2)],
+        "position": shift([0, D / 2]),
         "width_mm": 1500,
     })
 
@@ -336,10 +498,16 @@ def _gen_penthouse_floor(spec: TowerSpec, fi: int, elevation_mm: int,
     """Top floor: single luxury penthouse spanning the (possibly stepped)
     floor plate. Includes living, master bedroom, bedroom 2, bath, en-suite,
     kitchen, and terrace."""
+    bx_min = min(p[0] for p in footprint_polygon)
+    by_min = min(p[1] for p in footprint_polygon)
     bx_max = max(p[0] for p in footprint_polygon)
     by_max = max(p[1] for p in footprint_polygon)
-    L = bx_max
-    D = by_max
+    L = bx_max - bx_min
+    D = by_max - by_min
+    ox = bx_min
+    oy = by_min
+    def shift(pt):
+        return [round(pt[0] + ox, 2), round(pt[1] + oy, 2)]
     used_ids: set[str] = set()
     def slug(name: str) -> str:
         base = re.sub(r"[^a-z0-9_]+", "_", name.lower()).strip("_") or "r"
@@ -367,7 +535,8 @@ def _gen_penthouse_floor(spec: TowerSpec, fi: int, elevation_mm: int,
     rooms = [
         {"id": slug("stair_core"), "name": "Stair & Lift Core",
          "type": "stairs",
-         "polygon": [[0, 0], [core_w, 0], [core_w, D], [0, D]],
+         "polygon": [shift([0, 0]), shift([core_w, 0]),
+                     shift([core_w, D]), shift([0, D])],
          "area_sqm": round(core_w * D, 2)},
     ]
     x = core_w
@@ -381,7 +550,8 @@ def _gen_penthouse_floor(spec: TowerSpec, fi: int, elevation_mm: int,
         w = round(w, 2)
         rooms.append({
             "id": slug(name), "name": name, "type": rtype,
-            "polygon": [[x, dry_d], [x + w, dry_d], [x + w, D], [x, D]],
+            "polygon": [shift([x, dry_d]), shift([x + w, dry_d]),
+                        shift([x + w, D]), shift([x, D])],
             "area_sqm": round(w * wet_d, 2),
         })
         x += w
@@ -403,99 +573,101 @@ def _gen_penthouse_floor(spec: TowerSpec, fi: int, elevation_mm: int,
         w = round(w, 2)
         rooms.append({
             "id": slug(name), "name": name, "type": rtype,
-            "polygon": [[x, 0], [x + w, 0], [x + w, dry_d], [x, dry_d]],
+            "polygon": [shift([x, 0]), shift([x + w, 0]),
+                        shift([x + w, dry_d]), shift([x, dry_d])],
             "area_sqm": round(w * dry_d, 2),
         })
         x += w
 
-    # Doors
+    # Doors — note: room polygons are already shifted; door positions need to
+    # use polygon-derived x and shifted y when based on raw constants.
     core = rooms[0]
     living = next(r for r in rooms if r["type"] == "living")
     doors = [
-        # Stair core → Living (entry into penthouse)
         {"from": core["id"], "to": living["id"],
-         "position": [core_w, round(dry_d * 0.5, 2)], "width_mm": 1100},
+         "position": shift([core_w, dry_d * 0.5]), "width_mm": 1100},
     ]
-    # Living → kitchen
     kitchen = next(r for r in rooms if r["type"] == "kitchen")
     ov_x = (max(living["polygon"][0][0], kitchen["polygon"][0][0]),
             min(living["polygon"][1][0], kitchen["polygon"][1][0]))
     if ov_x[1] - ov_x[0] >= 0.7:
         doors.append({
             "from": living["id"], "to": kitchen["id"],
-            "position": [round(sum(ov_x) / 2, 2), dry_d], "width_mm": 1200,
+            "position": [round(sum(ov_x) / 2, 2), round(dry_d + oy, 2)],
+            "width_mm": 1200,
         })
-    # Living → master, master → en-suite, etc.
     master = next(r for r in rooms if r["type"] == "master_bedroom")
     ov = (max(living["polygon"][0][0], master["polygon"][0][0]),
           min(living["polygon"][1][0], master["polygon"][1][0]))
-    if ov[1] - ov[0] >= 0.7:
-        doors.append({
-            "from": living["id"], "to": master["id"],
-            "position": [round(sum(ov) / 2, 2),
-                         round(dry_d / 2, 2) if False else master["polygon"][0][0]],
-            "width_mm": 900,
-        })
-    # Connect living → bedroom 2 (vertical seam)
+    # Skip horizontal-seam door and use vertical seam (between living & master)
     bed2 = next(r for r in rooms if r["type"] == "bedroom")
+    # Master → bedroom 2 (vertical seam between them)
     seam = bed2["polygon"][0][0]
     doors.append({
         "from": master["id"], "to": bed2["id"],
-        "position": [seam, round(dry_d / 2, 2)], "width_mm": 850,
+        "position": [seam, round(dry_d / 2 + oy, 2)], "width_mm": 850,
     })
-    # Terrace door
+    # Living → master via vertical seam
+    seam_lm = master["polygon"][0][0]
+    doors.append({
+        "from": living["id"], "to": master["id"],
+        "position": [seam_lm, round(dry_d / 2 + oy, 2)], "width_mm": 900,
+    })
     terrace = next(r for r in rooms if r["type"] == "balcony")
     seam = terrace["polygon"][0][0]
     doors.append({
         "from": bed2["id"], "to": terrace["id"],
-        "position": [seam, round(dry_d / 2, 2)], "width_mm": 900,
+        "position": [seam, round(dry_d / 2 + oy, 2)], "width_mm": 900,
     })
-    # Wet doors: living → bathroom (via shared edge at y=dry_d)
     bath = next(r for r in rooms if r["name"] == "Bathroom")
     ov = (max(living["polygon"][0][0], bath["polygon"][0][0]),
           min(living["polygon"][1][0], bath["polygon"][1][0]))
     if ov[1] - ov[0] >= 0.7:
         doors.append({
             "from": living["id"], "to": bath["id"],
-            "position": [round(sum(ov) / 2, 2), dry_d], "width_mm": 800,
+            "position": [round(sum(ov) / 2, 2), round(dry_d + oy, 2)],
+            "width_mm": 800,
         })
-    # Master → ensuite
     ensuite = next(r for r in rooms if r["name"] == "En-suite")
     ov = (max(master["polygon"][0][0], ensuite["polygon"][0][0]),
           min(master["polygon"][1][0], ensuite["polygon"][1][0]))
     if ov[1] - ov[0] >= 0.7:
         doors.append({
             "from": master["id"], "to": ensuite["id"],
-            "position": [round(sum(ov) / 2, 2), dry_d], "width_mm": 800,
+            "position": [round(sum(ov) / 2, 2), round(dry_d + oy, 2)],
+            "width_mm": 800,
         })
-    # WC accessible from corridor area (kitchen → WC is awkward; living → wc)
     wc = next(r for r in rooms if r["type"] == "wc")
     ov = (max(living["polygon"][0][0], wc["polygon"][0][0]),
           min(living["polygon"][1][0], wc["polygon"][1][0]))
     if ov[1] - ov[0] >= 0.7:
         doors.append({
             "from": living["id"], "to": wc["id"],
-            "position": [round(sum(ov) / 2, 2), dry_d], "width_mm": 700,
+            "position": [round(sum(ov) / 2, 2), round(dry_d + oy, 2)],
+            "width_mm": 700,
         })
 
-    # Windows on top + bottom + left exteriors
+    # Windows on top + bottom + left exteriors (boundary edges, in absolute coords)
     windows = []
     for r in rooms:
         if r["type"] == "stairs":
-            windows.append({"room": r["id"], "position": [0, round(D / 2, 2)], "width_mm": 1500})
+            windows.append({"room": r["id"], "position": shift([0, D / 2]),
+                            "width_mm": 1500})
             continue
-        # Bottom edge
-        if r["polygon"][0][1] == 0 and (r["polygon"][1][0] - r["polygon"][0][0]) >= 1.6:
+        # Bottom edge of the floor (absolute y == oy + 0)
+        if abs(r["polygon"][0][1] - oy) < 0.01 and (r["polygon"][1][0] - r["polygon"][0][0]) >= 1.6:
             windows.append({
                 "room": r["id"],
-                "position": [round((r["polygon"][0][0] + r["polygon"][1][0]) / 2, 2), 0],
+                "position": [round((r["polygon"][0][0] + r["polygon"][1][0]) / 2, 2),
+                              round(oy, 2)],
                 "width_mm": 2000 if r["type"] in ("living", "balcony") else 1200,
             })
-        # Top edge
-        if r["polygon"][3][1] == D and (r["polygon"][1][0] - r["polygon"][0][0]) >= 1.6:
+        # Top edge of the floor (absolute y == oy + D)
+        if abs(r["polygon"][3][1] - (oy + D)) < 0.01 and (r["polygon"][1][0] - r["polygon"][0][0]) >= 1.6:
             windows.append({
                 "room": r["id"],
-                "position": [round((r["polygon"][0][0] + r["polygon"][1][0]) / 2, 2), D],
+                "position": [round((r["polygon"][0][0] + r["polygon"][1][0]) / 2, 2),
+                              round(oy + D, 2)],
                 "width_mm": 1500 if r["type"] in ("kitchen",) else 800,
             })
 
@@ -514,50 +686,181 @@ def _gen_penthouse_floor(spec: TowerSpec, fi: int, elevation_mm: int,
 # Main entry
 # ---------------------------------------------------------------------------
 
+def _floor_polygon(spec: TowerSpec, base_L: float, D: float, fi: int,
+                    is_setback: bool, step_idx: int = 0) -> list[list[float]]:
+    """Compute a floor's footprint polygon based on the architect's setback pattern."""
+    if not is_setback:
+        return [[0, 0], [base_L, 0], [base_L, D], [0, D]]
+    # Setback applied — depends on pattern
+    pat = spec.profile.setback_pattern
+    if pat == "stepped":
+        # Top setbacks: each step recedes from one side
+        cut = spec.profile.setback_amount_m * (step_idx + 1)
+        new_L = max(base_L - cut, 8.0)
+        return [[0, 0], [new_L, 0], [new_L, D], [0, D]]
+    if pat == "pyramid":
+        # Each floor progressively smaller from BOTH sides (mountain form)
+        cut = spec.profile.setback_amount_m * (step_idx + 1)
+        new_L = max(base_L - cut, 8.0)
+        # Center the smaller plate
+        offset = (base_L - new_L) / 2.0
+        return [[offset, 0], [offset + new_L, 0],
+                [offset + new_L, D], [offset, D]]
+    return [[0, 0], [base_L, 0], [base_L, D], [0, D]]
+
+
+def _gen_amenity_floor(spec: TowerSpec, fi: int, elevation: int,
+                        footprint: list[list[float]], label: str = "Sky Lobby") -> dict:
+    """A non-residential amenity floor (sky lobby, gym, lounge, programmatic)."""
+    bx_max = max(p[0] for p in footprint)
+    by_max = max(p[1] for p in footprint)
+    L = bx_max
+    D = by_max
+    used: set[str] = set()
+    def slug(name: str) -> str:
+        base = re.sub(r"[^a-z0-9_]+", "_", name.lower()).strip("_") or "r"
+        c = f"r_{base}_f{fi}"
+        n = 2
+        while c in used:
+            c = f"r_{base}_f{fi}_{n}"; n += 1
+        used.add(c); return c
+
+    core_w = 4.0
+    rooms = [
+        {"id": slug("stair_core"), "name": "Stair & Lift Core", "type": "stairs",
+         "polygon": [[0, 0], [core_w, 0], [core_w, D], [0, D]],
+         "area_sqm": round(core_w * D, 2)},
+        {"id": slug(label), "name": label, "type": "living",
+         "polygon": [[core_w, 0], [L, 0], [L, D * 0.55], [core_w, D * 0.55]],
+         "area_sqm": round((L - core_w) * D * 0.55, 2)},
+        {"id": slug("gym"), "name": "Gym & Wellness", "type": "living",
+         "polygon": [[core_w, D * 0.55], [L, D * 0.55], [L, D], [core_w, D]],
+         "area_sqm": round((L - core_w) * D * 0.45, 2)},
+    ]
+    rooms = [{**r, "polygon": [[round(c, 2) for c in p] for p in r["polygon"]]}
+             for r in rooms]
+    doors = [
+        {"from": rooms[0]["id"], "to": rooms[1]["id"],
+         "position": [core_w, round(D * 0.275, 2)], "width_mm": 1500},
+        {"from": rooms[1]["id"], "to": rooms[2]["id"],
+         "position": [round((core_w + L) / 2, 2), round(D * 0.55, 2)],
+         "width_mm": 1500},
+    ]
+    windows = [
+        {"room": rooms[0]["id"], "position": [0, round(D / 2, 2)], "width_mm": 1500},
+        {"room": rooms[1]["id"], "position": [round((core_w + L) / 2, 2), 0],
+         "width_mm": 2500},
+        {"room": rooms[2]["id"], "position": [round((core_w + L) / 2, 2), D],
+         "width_mm": 2500},
+    ]
+    return {"name": f"{label} (Floor {fi})", "elevation_mm": elevation,
+            "rooms": rooms, "doors": doors, "windows": windows,
+            "boundary_polygon": footprint}
+
+
 def generate_tower(spec: TowerSpec) -> dict:
     """Build a multi-story residential tower template ready for build_template."""
     L, D = _typical_floor_dims(spec)
-    full_polygon = [[0, 0], [L, 0], [L, D], [0, D]]
     floors = []
     elevation = 0
     f_height = spec.floor_height_mm
+    profile = spec.profile
 
-    # Ground floor: Lobby
-    floors.append(_gen_lobby_floor(spec, fi=0))
-    elevation += f_height
+    # Compute the overall building footprint (may be wider for inverse_taper)
+    base_L = L
+    if profile.setback_pattern == "inverse_taper":
+        base_L = L + profile.base_extension_m
+    full_polygon = [[0, 0], [base_L, 0], [base_L, D], [0, D]]
 
-    # Typical floors
-    n_typical = spec.n_floors - (1 + (1 if spec.has_penthouse else 0))
-    n_setback = min(spec.setback_top_n, n_typical - 1)
-    n_full_typical = n_typical - n_setback
+    # Plan all floor types up front
+    n_floors = spec.n_floors
+    n_penthouse = 1 if spec.has_penthouse else 0
+    sky_lobby_floor: int | None = None
+    if profile.n_amenity_floors >= 2:
+        sky_lobby_floor = 1 + int((n_floors - 2) * profile.sky_lobby_relative)
 
-    for fi in range(1, 1 + n_full_typical):
-        floors.append(_gen_typical_floor(spec, fi, elevation, full_polygon))
-        elevation += f_height
+    for fi in range(n_floors):
+        is_lobby = (fi == 0)
+        is_penthouse = (fi == n_floors - 1) and spec.has_penthouse
+        is_sky_lobby = (fi == sky_lobby_floor)
 
-    # Setback floors (smaller plate)
-    for step in range(n_setback):
-        fi = 1 + n_full_typical + step
-        # Reduce footprint by setback_amount per step on the right edge
-        cut = spec.setback_amount_m * (step + 1)
-        new_L = max(L - cut, 8.0)
-        if new_L < L:
-            # Reduce also units_per_typical_floor for stepped floors
-            stepped_spec = TowerSpec(**vars(spec))
-            stepped_spec.units_per_typical_floor = max(2, spec.units_per_typical_floor - 1 - step)
-            stepped_polygon = [[0, 0], [new_L, 0], [new_L, D], [0, D]]
-            floors.append(_gen_typical_floor(stepped_spec, fi, elevation, stepped_polygon))
+        if is_lobby:
+            floors.append(_gen_lobby_floor(spec, fi=fi))
+            elevation += f_height
+            continue
+        if is_sky_lobby:
+            floors.append(_gen_amenity_floor(spec, fi, elevation,
+                                              full_polygon, label="Sky Lobby"))
+            elevation += f_height
+            continue
+        if is_penthouse:
+            # Penthouse footprint based on architect's setback pattern at top
+            if profile.setback_pattern in ("stepped", "pyramid"):
+                ph_cut = profile.setback_amount_m * profile.setback_n
+                ph_L = max(base_L - ph_cut, 10.0)
+                if profile.setback_pattern == "pyramid":
+                    offset = (base_L - ph_L) / 2.0
+                    ph_polygon = [[offset, 0], [offset + ph_L, 0],
+                                  [offset + ph_L, D], [offset, D]]
+                else:
+                    ph_polygon = [[0, 0], [ph_L, 0], [ph_L, D], [0, D]]
+            else:
+                ph_polygon = full_polygon
+            floors.append(_gen_penthouse_floor(spec, fi, elevation, ph_polygon))
+            elevation += f_height
+            continue
+
+        # Determine if this is a setback floor based on the pattern
+        n_typical_total = n_floors - 1 - n_penthouse
+        if sky_lobby_floor is not None:
+            n_typical_total -= 1
+        relative_floor = (fi - 1) / max(1, n_typical_total)
+        is_setback = False
+        step_idx = 0
+
+        if profile.setback_pattern == "stepped":
+            # Top N floors are setback
+            setback_start = n_floors - n_penthouse - profile.setback_n
+            if fi >= setback_start:
+                is_setback = True
+                step_idx = fi - setback_start
+        elif profile.setback_pattern == "pyramid":
+            # Above the start_relative threshold, setback every floor
+            setback_start = max(2, int(n_floors * profile.setback_start_relative))
+            if fi >= setback_start:
+                is_setback = True
+                step_idx = fi - setback_start
+        elif profile.setback_pattern == "inverse_taper":
+            # First base_extension_floors are wider; rest are normal
+            if fi <= profile.base_extension_floors:
+                # wider polygon — full base_L
+                pass  # full_polygon already used below
+            else:
+                # narrower (the regular L)
+                pass
+
+        # Build the floor
+        if profile.setback_pattern == "inverse_taper" and fi > profile.base_extension_floors:
+            # Narrower upper floors — center them on the base
+            offset = (base_L - L) / 2.0
+            footprint = [[offset, 0], [offset + L, 0],
+                         [offset + L, D], [offset, D]]
         else:
-            floors.append(_gen_typical_floor(spec, fi, elevation, full_polygon))
-        elevation += f_height
+            footprint = _floor_polygon(spec, base_L, D, fi, is_setback, step_idx)
 
-    # Penthouse on top
-    if spec.has_penthouse:
-        fi = spec.n_floors - 1
-        # Penthouse uses smaller (more set-back) footprint
-        ph_L = max(L - (spec.setback_amount_m * spec.setback_top_n), 10.0)
-        ph_polygon = [[0, 0], [ph_L, 0], [ph_L, D], [0, D]]
-        floors.append(_gen_penthouse_floor(spec, fi, elevation, ph_polygon))
+        # If setback reduced the floor, also reduce unit count
+        if is_setback:
+            # Reduce units proportional to setback severity
+            stepped_spec = TowerSpec(**{k: v for k, v in vars(spec).items() if k != 'profile'})
+            stepped_spec.profile = profile
+            reduction = step_idx + 1
+            stepped_spec.units_per_typical_floor = max(
+                2, spec.units_per_typical_floor - reduction
+            )
+            floors.append(_gen_typical_floor(stepped_spec, fi, elevation, footprint))
+        else:
+            floors.append(_gen_typical_floor(spec, fi, elevation, footprint))
+        elevation += f_height
 
     # Compute totals
     total_area = sum(
