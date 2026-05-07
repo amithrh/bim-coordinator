@@ -116,6 +116,94 @@ def _shapely_polygon(pts: np.ndarray):
     return Polygon(pts)
 
 
+def _windows_for_room(template: dict, room_id: str) -> list[dict]:
+    """Return all window dicts assigned to this room id."""
+    return [w for w in (template.get("windows") or [])
+            if w.get("room") == room_id]
+
+
+def _classify_window_wall(room_poly: np.ndarray, win_pos: tuple[float, float]
+                            ) -> str | None:
+    """Return one of 'N','S','E','W' (or None) for which axis-aligned wall
+    of the room polygon a window at `win_pos` lies on. Uses a 0.2m tolerance.
+    """
+    minp = room_poly.min(axis=0)
+    maxp = room_poly.max(axis=0)
+    x, y = win_pos
+    tol = 0.2
+    on_left   = abs(x - minp[0]) < tol
+    on_right  = abs(x - maxp[0]) < tol
+    on_bottom = abs(y - minp[1]) < tol
+    on_top    = abs(y - maxp[1]) < tol
+    if on_top:    return "N"   # +Y
+    if on_bottom: return "S"   # -Y
+    if on_right:  return "E"   # +X
+    if on_left:   return "W"   # -X
+    return None
+
+
+def _camera_for_focus_room(focus_room: dict, template: dict
+                              ) -> tuple[np.ndarray, np.ndarray, str]:
+    """Pick a camera position + look-at target inside `focus_room`.
+
+    Strategy: aim the camera AT the wall that has windows in the BIM.
+    SDXL always paints windows on the wall it's looking at, so this
+    aligns the rendered windows with where the BIM says they should be.
+    Falls back to long-axis if no windows are tagged for this room.
+    Returns (cam_pos, target, strategy_tag).
+    """
+    poly = np.array(focus_room["polygon"], dtype=float)
+    minp = poly.min(axis=0)
+    maxp = poly.max(axis=0)
+    cx, cy = poly.mean(axis=0)
+
+    windows = _windows_for_room(template, focus_room.get("id", ""))
+    walls_with_windows: dict[str, int] = {}
+    for w in windows:
+        pos = w.get("position")
+        if not pos or len(pos) != 2:
+            continue
+        wall = _classify_window_wall(poly, tuple(pos))
+        if wall:
+            walls_with_windows[wall] = walls_with_windows.get(wall, 0) + 1
+
+    cam_z = 1.65   # human eye height
+    target_z = 1.4  # slightly downward gaze
+
+    if walls_with_windows:
+        # Pick the wall with the most windows (largest sun exposure).
+        target_wall = max(walls_with_windows, key=walls_with_windows.get)
+        if target_wall == "N":
+            cam_pos_xy = (cx, minp[1] + 0.6)
+            target_xy  = (cx, maxp[1])
+        elif target_wall == "S":
+            cam_pos_xy = (cx, maxp[1] - 0.6)
+            target_xy  = (cx, minp[1])
+        elif target_wall == "E":
+            cam_pos_xy = (minp[0] + 0.6, cy)
+            target_xy  = (maxp[0], cy)
+        else:  # W
+            cam_pos_xy = (maxp[0] - 0.6, cy)
+            target_xy  = (minp[0], cy)
+        strategy = f"window-wall-{target_wall}"
+    else:
+        # No windows tagged — fall back to long axis, camera at the short
+        # edge looking down the long axis (old behaviour).
+        w = maxp[0] - minp[0]
+        h = maxp[1] - minp[1]
+        if w >= h:
+            cam_pos_xy = (minp[0] + 0.6, cy)
+            target_xy  = (maxp[0], cy)
+        else:
+            cam_pos_xy = (cx, minp[1] + 0.6)
+            target_xy  = (cx, maxp[1])
+        strategy = "long-axis"
+
+    cam_pos = np.array([cam_pos_xy[0], cam_pos_xy[1], cam_z])
+    target  = np.array([target_xy[0],  target_xy[1],  target_z])
+    return cam_pos, target, strategy
+
+
 def build_scene(template: dict, focus_room_idx: int = 0) -> dict[str, Any]:
     """Build a 3D scene + camera positioned inside a chosen room.
 
@@ -149,32 +237,13 @@ def build_scene(template: dict, focus_room_idx: int = 0) -> dict[str, Any]:
     parts = [m for m in (walls, floors_ceilings) if not m.is_empty]
     scene_mesh = trimesh.util.concatenate(parts) if parts else trimesh.Trimesh()
 
-    # Position camera inside focus room, facing the long axis
-    poly = np.array(focus_room["polygon"], dtype=float)
-    cx, cy = poly.mean(axis=0)
-    minp = poly.min(axis=0)
-    maxp = poly.max(axis=0)
-    w = maxp[0] - minp[0]
-    h = maxp[1] - minp[1]
-    # Camera at one short edge looking toward the opposite short edge
-    if w >= h:
-        # Wide room — camera at left, looking right
-        cam_x = minp[0] + 0.6
-        cam_y = (minp[1] + maxp[1]) / 2
-        target_x = maxp[0]
-        target_y = cam_y
-    else:
-        # Tall room — camera at bottom, looking up
-        cam_x = (minp[0] + maxp[0]) / 2
-        cam_y = minp[1] + 0.6
-        target_x = cam_x
-        target_y = maxp[1]
-    cam_z = 1.65   # human eye height
-    target_z = 1.4  # slightly downward gaze
+    # Position camera so it LOOKS AT the wall that has windows in the BIM.
+    # SDXL paints windows on the wall it's facing, so this aligns the
+    # rendered window-wall with the BIM window-wall — which keeps the
+    # sofa/seating from always landing against an arbitrary boundary.
+    cam_pos, target, strategy = _camera_for_focus_room(focus_room, template)
 
     # Build look-at transform
-    cam_pos = np.array([cam_x, cam_y, cam_z])
-    target = np.array([target_x, target_y, target_z])
     forward = target - cam_pos
     forward = forward / np.linalg.norm(forward)
     up = np.array([0, 0, 1])
@@ -194,6 +263,7 @@ def build_scene(template: dict, focus_room_idx: int = 0) -> dict[str, Any]:
         "focal_length": 500.0,
         "focus_room": focus_room,
         "ceiling_height": ceiling_h,
+        "camera_strategy": strategy,
     }
 
 
