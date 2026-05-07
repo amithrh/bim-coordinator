@@ -183,6 +183,67 @@ def generate_endpoint(req: GenerateRequest):
     }
 
 
+class RenderRequest(BaseModel):
+    template_id: str | None = None  # render an existing template (curated or modified)
+    prompt: str | None = None        # OR pass a free-form photo prompt
+    focus_room_type: str | None = None  # 'living' | 'kitchen' | 'master_bedroom' | etc
+    width: int = 768
+    height: int = 512
+    steps: int = 2
+
+
+@app.get("/api/render/warmup")
+def render_warmup():
+    """Pre-warm the SDXL-turbo pipeline. Call this on demo startup."""
+    from backend.app.image_renderer import warmup
+    return warmup()
+
+
+@app.post("/api/render")
+def render_endpoint(req: RenderRequest):
+    """Live photorealistic render — SDXL-turbo on Apple Silicon.
+
+    Either pass template_id (we'll build a prompt from BIM metadata) OR
+    a free-form prompt. Returns binary PNG.
+
+    Performance: ~1.5-3s per image after warmup, ~30-60s cold start.
+    Call /api/render/warmup at server boot to make first user-facing render fast.
+    """
+    from backend.app.image_renderer import (
+        render_from_prompt, render_from_template,
+    )
+
+    if req.template_id:
+        # Look up the template (curated or modified registry)
+        template = storage.by_id(req.template_id) or _modified_registry.get(req.template_id)
+        if template is None:
+            raise HTTPException(404, f"unknown template {req.template_id}")
+        result = render_from_template(
+            template,
+            focus_room_type=req.focus_room_type,
+            width=req.width, height=req.height, steps=req.steps,
+        )
+    elif req.prompt:
+        result = render_from_prompt(
+            req.prompt, width=req.width, height=req.height, steps=req.steps,
+        )
+    else:
+        raise HTTPException(400, "must provide template_id or prompt")
+
+    if result.error:
+        raise HTTPException(500, f"render failed: {result.error}")
+
+    return Response(
+        content=result.image_bytes,
+        media_type="image/png",
+        headers={
+            "X-Render-Latency-S": f"{result.latency_s:.3f}",
+            "X-Render-Backend": result.backend,
+            "X-Render-Prompt": result.prompt[:500],
+        },
+    )
+
+
 class GenerateTowerRequest(BaseModel):
     brief: str  # natural-language tower brief
 
