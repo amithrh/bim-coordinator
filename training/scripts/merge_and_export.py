@@ -29,16 +29,44 @@ def _resolve_repo_root() -> Path:
 
 
 def _find_llamacpp() -> Path | None:
-    """Look in common spots for llama.cpp's convert script."""
+    """Look in common spots for llama.cpp's convert script.
+
+    Returns a path that contains both convert_hf_to_gguf.py and llama-quantize.
+    Supports: source checkouts, /opt/llama.cpp, brew install (Cellar).
+    """
     candidates = [
         Path.home() / "src" / "llama.cpp",
         Path.home() / "code" / "llama.cpp",
         Path.home() / "llama.cpp",
         Path("/opt/llama.cpp"),
     ]
+    # Brew install: /opt/homebrew/Cellar/llama.cpp/<version>/bin
+    cellar = Path("/opt/homebrew/Cellar/llama.cpp")
+    if cellar.exists():
+        for ver in sorted(cellar.iterdir(), reverse=True):
+            if (ver / "bin" / "convert_hf_to_gguf.py").exists():
+                candidates.append(ver / "bin")  # both tools live in /bin
+    # /opt/homebrew/bin symlinks
+    if Path("/opt/homebrew/bin/convert_hf_to_gguf.py").exists():
+        candidates.append(Path("/opt/homebrew/bin"))
+
     for c in candidates:
         if (c / "convert_hf_to_gguf.py").exists():
             return c
+    return None
+
+
+def _find_quantize_bin(llamacpp_dir: Path) -> Path | None:
+    """Locate the llama-quantize binary given a llama.cpp dir."""
+    for path in [
+        llamacpp_dir / "build" / "bin" / "llama-quantize",
+        llamacpp_dir / "llama-quantize",
+        llamacpp_dir / "build_x86" / "bin" / "llama-quantize",
+        llamacpp_dir / "bin" / "llama-quantize",
+        Path("/opt/homebrew/bin/llama-quantize"),
+    ]:
+        if path.exists():
+            return path
     return None
 
 
@@ -105,19 +133,11 @@ def convert_to_gguf(
     subprocess.run(cmd, check=True)
 
     # Step 2: Quantize
-    quantize_bin = llamacpp_dir / "build" / "bin" / "llama-quantize"
-    if not quantize_bin.exists():
-        # Try alternative locations
-        for alt in [llamacpp_dir / "llama-quantize",
-                    llamacpp_dir / "build_x86" / "bin" / "llama-quantize"]:
-            if alt.exists():
-                quantize_bin = alt
-                break
-        else:
-            raise SystemExit(
-                f"llama-quantize not found in {llamacpp_dir}/build/bin/ - "
-                "build llama.cpp first (`cd llama.cpp && cmake -B build && cmake --build build -j`)"
-            )
+    quantize_bin = _find_quantize_bin(llamacpp_dir)
+    if not quantize_bin:
+        raise SystemExit(
+            f"llama-quantize not found. Install with: brew install llama.cpp"
+        )
 
     cmd = [str(quantize_bin), str(intermediate_gguf), str(gguf_path), quant_type]
     print(f"[quantize] {' '.join(cmd)}")

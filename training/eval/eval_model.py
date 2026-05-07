@@ -170,11 +170,21 @@ GenerateFn = Callable[[list[dict[str, str]]], str]
 """A backend takes a chat-formatted message list and returns the assistant text."""
 
 
-def make_mlx_backend(model_path: str, max_tokens: int = 768) -> GenerateFn:
-    """Load an MLX model and return a generate function."""
+def make_mlx_backend(
+    model_path: str,
+    max_tokens: int = 768,
+    adapter_path: str | None = None,
+) -> GenerateFn:
+    """Load an MLX model and return a generate function.
+
+    If adapter_path is provided, the LoRA adapter is loaded on top of the base.
+    """
     from mlx_lm import generate, load
 
-    model, tokenizer = load(model_path)
+    if adapter_path:
+        model, tokenizer = load(model_path, adapter_path=adapter_path)
+    else:
+        model, tokenizer = load(model_path)
 
     def fn(messages: list[dict[str, str]]) -> str:
         prompt = tokenizer.apply_chat_template(
@@ -359,6 +369,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--backend", choices=["mlx", "openai", "claude"], required=True)
     parser.add_argument("--model", required=True, help="MLX model path/id or model name")
+    parser.add_argument("--adapter-path", help="LoRA adapter path (mlx backend only)")
     parser.add_argument("--base-url", help="For openai backend")
     parser.add_argument("--api-key", default="anything", help="For openai backend")
     parser.add_argument("--test", default="training/data/processed/test.jsonl")
@@ -368,7 +379,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.backend == "mlx":
-        backend = make_mlx_backend(args.model, max_tokens=args.max_tokens)
+        backend = make_mlx_backend(
+            args.model,
+            max_tokens=args.max_tokens,
+            adapter_path=args.adapter_path,
+        )
     elif args.backend == "openai":
         if not args.base_url:
             sys.exit("--base-url required for openai backend")

@@ -1,0 +1,327 @@
+{
+  "scorecard": {
+    "n_examples": 20,
+    "n_errors": 0,
+    "top1_acc": 0.45,
+    "top4_acc": 0.85,
+    "mention_acc": 0.85,
+    "format_valid": 1.0,
+    "faithful": 1.0,
+    "latency_p50_s": 4.416246056556702,
+    "latency_p95_s": 4.91088775396347,
+    "avg_response_chars": 2517.9,
+    "per_persona_top4": {
+      "growing_family": 1.0,
+      "young_family": 0.6,
+      "couple": 1.0,
+      "academic": 1.0,
+      "single": 0.0,
+      "family": 1.0,
+      "creative_artist": 1.0,
+      "executive_pied_a_terre": 1.0,
+      "single_professional": 1.0
+    }
+  },
+  "samples": [
+    {
+      "target": "eu_uk_3bed_london_duplex_townhouse",
+      "persona": "growing_family",
+      "picks": [
+        "eu_uk_3bed_blackheath_modernist_span",
+        "eu_uk_3bed_london_duplex_townhouse",
+        "eu_nl_3bed_rotterdam_kralingen_rijtjeshuis",
+        "eu_de_5zimmer_hannover_doppelhaus"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.372,
+      "response_excerpt": "Based on the provided candidate templates, I have selected the top 4 best fits for the brief. Here are my recommendations:\n\n**Top Pick:**\neu_uk_3bed_blackheath_modernist_span\nid: eu_uk_3bed_blackheath_modernist_span\nlocation: London, United Kingdom\nsize: 3bed (100.0 sqm, 3-bed/1-bath)\nstyle: Blackhe",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_trichy_ponnagar",
+      "persona": "young_family",
+      "picks": [
+        "in_2bhk_nagpur_dharampeth",
+        "in_3bhk_kerala_nadumuttam",
+        "eu_at_3zimmer_wien_altbau_gruenderzeit",
+        "eu_uk_2bed_southampton_edwardian"
+      ],
+      "top4_correct": false,
+      "faithful": true,
+      "latency_s": 4.528,
+      "response_excerpt": "Based on the provided candidate templates, I have selected the top 4 best fits for a 2BHK apartment in North India, with a size of 65-90 sqm. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\nin_2bhk_nagpur_dharampeth (id: in_2bhk_nagpur_dharampeth)\n",
+      "error": null
+    },
+    {
+      "target": "eu_es_2bed_sevilla_triana",
+      "persona": "couple",
+      "picks": [
+        "eu_es_2bed_barcelona_eixample",
+        "eu_es_2bed_sevilla_triana",
+        "eu_uk_2bed_leicester_stoneygate",
+        "eu_es_2bed_malaga_centro"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.692,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a 2BHK in Europe, single-floor. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\neu_es_2bed_barcelona_eixample\nid: eu_es_2bed_barcelona_eixample\nlocatio",
+      "error": null
+    },
+    {
+      "target": "eu_hr_2bed_zagreb_secesija",
+      "persona": "young_family",
+      "picks": [
+        "eu_hr_2bed_zagreb_secesija",
+        "eu_pt_2bed_lisbon_alfama",
+        "gl_ar_2bed_buenos_aires_porteno",
+        "eu_es_2bed_bilbao_basque"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.337,
+      "response_excerpt": "Based on the provided candidate templates, I recommend the following top 4 candidates that best fit the brief:\n\n**Top Pick:**\neu_hr_2bed_zagreb_secesija\n\nThis template is the strongest match for the brief, as it meets the specific requirements of a 2-bedroom apartment in Zagreb, Croatia, with a balc",
+      "error": null
+    },
+    {
+      "target": "eu_hu_2bed_budapest_neoklassicista",
+      "persona": "academic",
+      "picks": [
+        "eu_hu_2bed_budapest_neoklassicista",
+        "eu_de_2zimmer_nuremberg_altstadt",
+        "eu_hu_2bed_budapest_ferencvaros",
+        "eu_de_3zimmer_mainz_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.314,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\neu_hu_2bed_budapest_neoklassicista\n\nThis template is the best fit for the brief, as it meets the specific requirements of a 2-bedroom apartment in Budapest, Hung",
+      "error": null
+    },
+    {
+      "target": "eu_de_2zimmer_nuremberg_altstadt",
+      "persona": "single",
+      "picks": [
+        "eu_gb_1bed_bristol_clifton",
+        "eu_de_2zimmer_kiel_kuste",
+        "eu_es_2bed_bilbao_abando",
+        "eu_uk_1bed_london_modern_flat"
+      ],
+      "top4_correct": false,
+      "faithful": true,
+      "latency_s": 4.733,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a small one-bedroom apartment in a European city, all on one level, and with a size of 40-65 sqm. Here are my top picks, along with the architectural reasoning for each:\n\n**Top Pick:**\neu_gb_1bed_bristol",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_ranchi_morabadi",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_chennai_tnagar_pooja",
+        "in_2bhk_nashik_gangapur_road",
+        "in_ahmedabad_3bed_pol_house",
+        "in_2bhk_ranchi_morabadi"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.135,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a young couple looking for a 2-bedroom apartment in North India. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\nin_2bhk_chennai_tnagar_pooja\n\nThis tem",
+      "error": null
+    },
+    {
+      "target": "eu_fr_3bed_grenoble_isere",
+      "persona": "family",
+      "picks": [
+        "eu_fr_3bed_brittany_longere",
+        "eu_fr_3bed_annecy_chalet",
+        "eu_fr_3bed_grenoble_isere",
+        "eu_de_3zimmer_berlin_mitte_gartengeschoss"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.855,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\neu_fr_3bed_brittany_longere (id: eu_fr_3bed_brittany_longere)\nLocation: Bretagne, France\nSize: longere (132.0 sqm, 3-bed/2-bath)\nStyle: Brittany Long\u00e8re renov\u00e9e ",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_bhopal_arera_colony",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_varanasi_assi_ghat",
+        "in_2bhk_agra_sikandra",
+        "in_3bhk_kerala_nadumuttam",
+        "in_2bhk_bhopal_arera_colony"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.856,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\n\n[1] in_2bhk_varanasi_assi_ghat\nid: in_2bhk_varanasi_assi_ghat\nlocation: Varanasi, India\nsize: 2bhk (72.0 sqm, 2-bed/1-bath)\nstyle: Varanasi Assi Ghat 2 BHK (sac",
+      "error": null
+    },
+    {
+      "target": "eu_de_6zimmer_munich_villa",
+      "persona": "family",
+      "picks": [
+        "eu_de_6zimmer_munich_villa",
+        "eu_de_5zimmer_nurda_stadthaus_s150",
+        "eu_uk_4bed_edinburgh_newtown",
+        "in_5bhk_delhi_premium_villa"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.652,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\neu_de_6zimmer_munich_villa (id: eu_de_6zimmer_munich_villa)\n\nThis template is the best fit for the brief, as it meets the requirements of 4+ bedrooms, a closed k",
+      "error": null
+    },
+    {
+      "target": "eu_ge_2bed_tbilisi_traditional",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_ge_2bed_tbilisi_traditional",
+        "in_1bhk_thiruvananthapuram_pattom",
+        "eu_fr_2pieces_bordeaux_echoppe",
+        "eu_nl_2bed_rotterdam_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.91,
+      "response_excerpt": "Based on the provided templates, I recommend the following top 4 candidates that best fit the brief:\n\n**Top Pick:**\neu_ge_2bed_tbilisi_traditional (id: eu_ge_2bed_tbilisi_traditional)\nLocation: Tbilisi, Georgia\nSize: 2bed (75.0 sqm, 2-bed/1-bath)\nStyle: Tbilisi Old Town 2-bed (Sololaki traditional w",
+      "error": null
+    },
+    {
+      "target": "eu_nl_3bed_rotterdam_kralingen_rijtjeshuis",
+      "persona": "young_family",
+      "picks": [
+        "eu_nl_3bed_amsterdam_grachtenpand",
+        "eu_nl_3bed_rotterdam_kralingen_rijtjeshuis",
+        "eu_nl_3bed_utrecht_jaren30",
+        "eu_nl_2bed_rotterdam_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.46,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a 3BHK with outdoor space matters in a Dutch city. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\neu_nl_3bed_amsterdam_grachtenpand (id: eu_nl_3bed_am",
+      "error": null
+    },
+    {
+      "target": "eu_uk_4bed_devon_dartmoor_longhouse",
+      "persona": "growing_family",
+      "picks": [
+        "eu_uk_4bed_devon_dartmoor_longhouse",
+        "eu_fr_4bed_provence_mas",
+        "eu_ie_4bed_dublin_georgian_terrace",
+        "eu_uk_4bed_kent_oast_house"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.339,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\neu_uk_4bed_devon_dartmoor_longhouse\nid: eu_uk_4bed_devon_dartmoor_longhouse\nlocation: Widecombe, United Kingdom\nsize: 4bed (200.0 sqm, 4-bed/2-bath)\nstyle: Devon",
+      "error": null
+    },
+    {
+      "target": "eu_de_3zimmer_koln_lindenthal",
+      "persona": "young_family",
+      "picks": [
+        "eu_de_2bed_munich_schwabing",
+        "eu_de_4zimmer_dresden_altbau",
+        "eu_de_2bed_cologne_nippes",
+        "gl_se_1bed_swedish_sommarstuga"
+      ],
+      "top4_correct": false,
+      "faithful": true,
+      "latency_s": 3.497,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\n[1] eu_de_2bed_munich_schwabing\n\nThis template is a perfect fit for the brief, as it meets the requirements of a 2-bedroom apartment with no stairs, a separate k",
+      "error": null
+    },
+    {
+      "target": "eu_de_4zimmer_dusseldorf_pempelfort_neubau",
+      "persona": "executive_pied_a_terre",
+      "picks": [
+        "eu_de_4zimmer_dusseldorf_pempelfort_neubau",
+        "eu_de_3zimmer_berlin_neubau",
+        "eu_it_2bed_genova_albaro",
+        "eu_de_5zimmer_freiburg_passivhaus"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.772,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief for a small executive-style flat in D\u00fcsseldorf with a 3BHK, flowing layout, and balcony. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\neu_de_4zimmer_dus",
+      "error": null
+    },
+    {
+      "target": "eu_it_3bed_sicily_palazzotto",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_it_3bed_sicily_palazzotto",
+        "eu_it_3bed_firenze_palazzo",
+        "eu_at_3zimmer_wien_altbau_gruenderzeit",
+        "eu_uk_3bed_hebden_bridge_yorkshire_stone"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.922,
+      "response_excerpt": "Based on the provided templates, I recommend the following top 4 candidates that best fit the brief:\n\n**Top Pick:**\n[3] eu_it_3bed_sicily_palazzotto\nid: eu_it_3bed_sicily_palazzotto\nlocation: Noto, Italy\nsize: 3bed (130.0 sqm, 3-bed/2-bath)\nstyle: Sicily Palazzotto / casa nobile (Noto/Modica Baroque",
+      "error": null
+    },
+    {
+      "target": "eu_de_2bed_berlin_prenzlauer_berg",
+      "persona": "couple",
+      "picks": [
+        "eu_de_4zimmer_munich_maisonette",
+        "eu_de_3zimmer_augsburg_genossenschaft",
+        "eu_de_2bed_berlin_prenzlauer_berg",
+        "eu_de_3bed_freiburg_passive"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.802,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a two-bedroom apartment in a European city, all on one level. Here are my top picks, along with the architectural reasoning for each:\n\n**Top Pick:**\neu_de_4zimmer_munich_maisonette (id: eu_de_4zimmer_mun",
+      "error": null
+    },
+    {
+      "target": "eu_es_2bed_sevilla_triana",
+      "persona": "young_family",
+      "picks": [
+        "eu_es_2bed_sevilla_triana",
+        "eu_es_3bed_seville_andalusian",
+        "gl_co_2bed_bogota_chapinero",
+        "eu_ge_2bed_tbilisi_traditional"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.91,
+      "response_excerpt": "Based on the provided templates, I have selected the top 4 candidates that best fit the brief of a 2-bedroom apartment in a Spanish city. Here are my top picks, along with 2-4 sentences of architectural reasoning for each:\n\n**Top Pick:**\neu_es_2bed_sevilla_triana\nid: eu_es_2bed_sevilla_triana\nlocati",
+      "error": null
+    },
+    {
+      "target": "gl_ca_1bed_calgary_beltline",
+      "persona": "couple",
+      "picks": [
+        "gl_ca_1bed_vancouver_kitsilano",
+        "gl_ca_1bed_montreal_plateau",
+        "gl_ca_1bed_calgary_beltline",
+        "gl_ca_2bed_ottawa_westboro"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.548,
+      "response_excerpt": "Based on the provided templates, I've selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\n[3] gl_ca_1bed_vancouver_kitsilano\nid: gl_ca_1bed_vancouver_kitsilano\nlocation: Vancouver, Canada\nsize: 1-bedroom suite (60.0 sqm, 1-bed/1-bath)\nstyle: Vancouver K",
+      "error": null
+    },
+    {
+      "target": "gl_pk_1bed_karachi_dha",
+      "persona": "single_professional",
+      "picks": [
+        "gl_pk_1bed_karachi_dha",
+        "in_1bhk_mumbai_andheri_budget",
+        "in_1bhk_delhi_lajpat_nagar",
+        "eu_al_1bed_tirana_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 3.679,
+      "response_excerpt": "Based on the provided templates, I've selected the top 4 candidates that best fit the brief. Here are my recommendations:\n\n**Top Pick:**\n[7] gl_pk_1bed_karachi_dha\n\nThis 1-bedroom apartment in Karachi, Pakistan, is an excellent fit for a single professional who wants a balcony and a compact living s",
+      "error": null
+    }
+  ]
+}

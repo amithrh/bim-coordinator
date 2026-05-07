@@ -1,0 +1,779 @@
+{
+  "scorecard": {
+    "n_examples": 50,
+    "n_errors": 0,
+    "top1_acc": 0.5,
+    "top4_acc": 0.96,
+    "mention_acc": 0.96,
+    "format_valid": 1.0,
+    "faithful": 1.0,
+    "latency_p50_s": 4.862486362457275,
+    "latency_p95_s": 5.336859393119812,
+    "avg_response_chars": 1396.02,
+    "per_persona_top4": {
+      "growing_family": 1.0,
+      "young_family": 1.0,
+      "couple": 0.9285714285714286,
+      "academic": 1.0,
+      "single": 1.0,
+      "family": 1.0,
+      "creative_artist": 1.0,
+      "executive_pied_a_terre": 1.0,
+      "single_professional": 0.6666666666666666,
+      "large_family": 1.0,
+      "student": 1.0
+    }
+  },
+  "samples": [
+    {
+      "target": "eu_uk_3bed_london_duplex_townhouse",
+      "persona": "growing_family",
+      "picks": [
+        "eu_uk_3bed_london_duplex_townhouse",
+        "eu_uk_3bed_blackheath_modernist_span",
+        "eu_uk_3bed_birmingham_1930s_semi",
+        "eu_ch_3zimmer_zurich_altbau"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.821,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. London 3-bed duplex townhouse, two floors** (`eu_uk_3bed_london_duplex_townhouse`)\nThis is a 3-bed (122 m\u00b2) in London, United Kingdom, in the London 3-bed duplex townhouse, two floors style. The 2700mm ceilings are",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_trichy_ponnagar",
+      "persona": "young_family",
+      "picks": [
+        "in_2bhk_trichy_ponnagar",
+        "in_2bhk_nagpur_dharampeth",
+        "in_2bhk_bangalore_vastu",
+        "in_3bhk_kerala_nadumuttam"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.908,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Trichy Ponnagar 2 BHK** (`in_2bhk_trichy_ponnagar`)\nThis is a 2-bed (75 m\u00b2) in Tiruchirappalli, India, in the Trichy Ponnagar 2 BHK style. Layout: Foyer \u2192 Living/Dining / Kitchen \u2192 Ba",
+      "error": null
+    },
+    {
+      "target": "eu_es_2bed_sevilla_triana",
+      "persona": "couple",
+      "picks": [
+        "eu_es_2bed_malaga_centro",
+        "eu_es_2bed_sevilla_triana",
+        "eu_es_2bed_barcelona_eixample",
+        "eu_es_3bed_valencia_ensanche_modernista"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.767,
+      "response_excerpt": "Reading your brief, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. M\u00e1laga Centro piso** (`eu_es_2bed_malaga_centro`)\nThis is a 2-bed (66 m\u00b2) in M\u00e1laga, Spain, in the M\u00e1laga Centro piso style. Layout: Recibidor \u2192 Cocina \u2192 Sal\u00f3n, Ba\u00f1o, Habitaci\u00f3n 1, Habitaci\u00f3n 2. Th",
+      "error": null
+    },
+    {
+      "target": "eu_hr_2bed_zagreb_secesija",
+      "persona": "young_family",
+      "picks": [
+        "eu_hr_2bed_zagreb_secesija",
+        "eu_pt_2bed_lisbon_alfama",
+        "eu_es_2bed_bilbao_basque",
+        "eu_hr_1bed_zagreb_gornji_grad"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.722,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Zagreb Secesija** (`eu_hr_2bed_zagreb_secesija`)\nThis is a 2-bed (76 m\u00b2) in Zagreb, Croatia, in the Zagreb Secesija style. Layout: Predsoblje, Dnevni boravak, Kuhinja, WC, Kupaonica. The 3300mm ceili",
+      "error": null
+    },
+    {
+      "target": "eu_hu_2bed_budapest_neoklassicista",
+      "persona": "academic",
+      "picks": [
+        "eu_hu_2bed_budapest_ferencvaros",
+        "eu_hu_2bed_budapest_neoklassicista",
+        "in_2bhk_thiruvananthapuram_kowdiar",
+        "eu_de_2zimmer_nuremberg_altstadt"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.861,
+      "response_excerpt": "Given your needs, you want quiet, lots of wall space, and a proper study area.\n\n**Top 4 matches:**\n\n**1. Budapest Ferencv\u00e1ros 2 szob\u00e1s** (`eu_hu_2bed_budapest_ferencvaros`)\nThis is a 2-bed (60 m\u00b2) in Budapest, Hungary, in the Budapest Ferencv\u00e1ros 2 szob\u00e1s style. Layout: El\u0151szoba, Nappali, Konyha, F\u00fc",
+      "error": null
+    },
+    {
+      "target": "eu_de_2zimmer_nuremberg_altstadt",
+      "persona": "single",
+      "picks": [
+        "eu_uk_1bed_london_modern_flat",
+        "eu_gb_1bed_bristol_clifton",
+        "eu_de_2zimmer_nuremberg_altstadt",
+        "eu_de_2zimmer_kiel_kuste"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.544,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Modern London 1-bed new-build with balcony** (`eu_uk_1bed_london_modern_flat`)\nThis is a 1-bed (52 m\u00b2) in London, United Kingdom, in the Modern London 1-bed new-build with balcony style. Layout: Hall",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_ranchi_morabadi",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_chennai_tnagar_pooja",
+        "in_2bhk_nashik_gangapur_road",
+        "in_2bhk_ranchi_morabadi",
+        "eu_nl_2bed_rotterdam_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.786,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Chennai T Nagar 2 BHK with Pooja** (`in_2bhk_chennai_tnagar_pooja`)\nThis is a 2-bed (100 m\u00b2) in Chennai, India, in the Chennai T Nagar 2 BHK with Pooja style. Layout: Foyer \u2192 Hall (Living) / Kitchen ",
+      "error": null
+    },
+    {
+      "target": "eu_fr_3bed_grenoble_isere",
+      "persona": "family",
+      "picks": [
+        "eu_fr_3bed_annecy_chalet",
+        "eu_fr_3bed_brittany_longere",
+        "eu_fr_3bed_grenoble_isere",
+        "eu_fr_2bed_paris_marais"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.292,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Annecy Chalet** (`eu_fr_3bed_annecy_chalet`)\nThis is a 3-bed (99 m\u00b2) in Annecy, France, in the Annecy Chalet style. Layout: Vestiaire, S\u00e9jour-Cuisine, Storage, Buanderie, Salle de Bains. The 2700mm ceilings are sta",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_bhopal_arera_colony",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_agra_sikandra",
+        "in_2bhk_bhopal_arera_colony",
+        "in_2bhk_varanasi_assi_ghat",
+        "eu_it_2bed_florence_oltrarno"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.977,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Agra Sikandra 2 BHK** (`in_2bhk_agra_sikandra`)\nThis is a 2-bed (75 m\u00b2) in Agra, India, in the Agra Sikandra 2 BHK style. Layout: Foyer \u2192 Living/Dining / Kitchen \u2192 Bathroom, WC, Master Bedroom, Bedro",
+      "error": null
+    },
+    {
+      "target": "eu_de_6zimmer_munich_villa",
+      "persona": "family",
+      "picks": [
+        "eu_de_6zimmer_munich_villa",
+        "eu_de_6zimmer_nurda_stadthaus_s190",
+        "in_5bhk_delhi_premium_villa",
+        "eu_uk_4bed_edinburgh_newtown"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.063,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Munich Gr\u00fcnwald premium villa \u2014 6-Zimmer ground floor with master suite** (`eu_de_6zimmer_munich_villa`)\nThis is a 4-bed (208 m\u00b2) in Munich, Germany, in the Munich Gr\u00fcnwald premium villa style. Layout: Diele \u2192 Wohn",
+      "error": null
+    },
+    {
+      "target": "eu_ge_2bed_tbilisi_traditional",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_ge_2bed_tbilisi_traditional",
+        "eu_hr_2bed_zagreb_secesija",
+        "eu_nl_2bed_rotterdam_modern",
+        "in_1bhk_thiruvananthapuram_pattom"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.584,
+      "response_excerpt": "Given your needs, natural light and a flexible work corner are non-negotiable.\n\n**Top 4 matches:**\n\n**1. Tbilisi Old Town 2-bed** (`eu_ge_2bed_tbilisi_traditional`)\nThis is a 2-bed (75 m\u00b2) in Tbilisi, Georgia, in the Tbilisi Old Town 2-bed style. Layout: \u10d3\u10d4\u10e0\u10d4\u10e4\u10d0\u10dc\u10d8, \u10db\u10d8\u10e1\u10d0\u10e6\u10d4\u10d1\u10d8, \u10e1\u10d0\u10db\u10d6\u10d0\u10e0\u10d4\u10e3\u10da\u10dd, \u10e2\u10e3\u10d0\u10da\u10d4\u10e2\u10d8, \u10d0\u10d1\u10d0\u10d6",
+      "error": null
+    },
+    {
+      "target": "eu_nl_3bed_rotterdam_kralingen_rijtjeshuis",
+      "persona": "young_family",
+      "picks": [
+        "eu_nl_3bed_rotterdam_kralingen_rijtjeshuis",
+        "eu_nl_3bed_amsterdam_grachtenpand",
+        "eu_nl_3bed_utrecht_jaren30",
+        "eu_dk_2bed_aarhus_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.681,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Rotterdam Kralingen Rijtjeshuis** (`eu_nl_3bed_rotterdam_kralingen_rijtjeshuis`)\nThis is a 3-bed (110 m\u00b2) in Rotterdam, Netherlands, in the Rotterdam Kralingen Rijtjeshuis style. Layout: Hal, Woonkamer, Open Keuken",
+      "error": null
+    },
+    {
+      "target": "eu_uk_4bed_devon_dartmoor_longhouse",
+      "persona": "growing_family",
+      "picks": [
+        "eu_uk_4bed_devon_dartmoor_longhouse",
+        "eu_uk_4bed_kent_oast_house",
+        "eu_uk_4bed_london_hampstead_villa",
+        "eu_fr_4bed_provence_mas"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.0,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Devon Dartmoor Longhouse Farmhouse 4-bed** (`eu_uk_4bed_devon_dartmoor_longhouse`)\nThis is a 4-bed (200 m\u00b2) in Widecombe, United Kingdom, in the Devon Dartmoor Longhouse Farmhouse 4-bed style. Layout: Drawing Room ",
+      "error": null
+    },
+    {
+      "target": "eu_de_3zimmer_koln_lindenthal",
+      "persona": "young_family",
+      "picks": [
+        "eu_de_2bed_cologne_nippes",
+        "eu_de_2bed_munich_schwabing",
+        "eu_de_3zimmer_koln_lindenthal",
+        "eu_cy_2bed_limassol_coastal"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.98,
+      "response_excerpt": "Looking at what you described, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. K\u00f6ln Nippes 2-Zimmer** (`eu_de_2bed_cologne_nippes`)\nThis is a 2-bed (70 m\u00b2) in Cologne, Germany, in the K\u00f6ln Nippes 2-Zimmer style. Layout: Wohnzimmer / K\u00fcche \u2192 Flur, Bad, WC, Schlafzim",
+      "error": null
+    },
+    {
+      "target": "eu_de_4zimmer_dusseldorf_pempelfort_neubau",
+      "persona": "executive_pied_a_terre",
+      "picks": [
+        "eu_de_4zimmer_dusseldorf_pempelfort_neubau",
+        "eu_de_5zimmer_stuttgart_doppelhaus",
+        "eu_de_3zimmer_berlin_prenzlauer_eisenbahnwohnung",
+        "eu_de_3zimmer_berlin_neubau"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.298,
+      "response_excerpt": "Given your needs, you want a polished city flat that you only occupy part-time.\n\n**Top 4 matches:**\n\n**1. D\u00fcsseldorf Pempelfort 4-Zi Neubau mit Loggia** (`eu_de_4zimmer_dusseldorf_pempelfort_neubau`)\nThis is a 3-bed (110 m\u00b2) in D\u00fcsseldorf, Germany, in the D\u00fcsseldorf Pempelfort 4-Zi Neubau mit Loggia",
+      "error": null
+    },
+    {
+      "target": "eu_it_3bed_sicily_palazzotto",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_it_3bed_sicily_palazzotto",
+        "eu_it_3bed_firenze_palazzo",
+        "eu_it_3bed_venice_palazzo",
+        "eu_it_2bed_napoli_quartieri_spagnoli"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.255,
+      "response_excerpt": "Given your needs, you want a polished city flat that you only occupy part-time.\n\n**Top 4 matches:**\n\n**1. Sicily Palazzotto / casa nobile** (`eu_it_3bed_sicily_palazzotto`)\nThis is a 3-bed (130 m\u00b2) in Noto, Italy, in the Sicily Palazzotto / casa nobile style. Layout: Salone di rappresentanza / Cucin",
+      "error": null
+    },
+    {
+      "target": "eu_de_2bed_berlin_prenzlauer_berg",
+      "persona": "couple",
+      "picks": [
+        "eu_de_4zimmer_munich_maisonette",
+        "eu_de_3bed_freiburg_passive",
+        "eu_de_3zimmer_bremen_bremerhaus",
+        "eu_de_3zimmer_augsburg_genossenschaft"
+      ],
+      "top4_correct": false,
+      "faithful": true,
+      "latency_s": 4.633,
+      "response_excerpt": "Looking at what you described, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Munich Maisonette \u2014 2-floor apartment with internal stairs** (`eu_de_4zimmer_munich_maisonette`)\nThis is a 3-bed (105 m\u00b2) in Munich, Germany, in the Munich Maisonette sty",
+      "error": null
+    },
+    {
+      "target": "eu_es_2bed_sevilla_triana",
+      "persona": "young_family",
+      "picks": [
+        "eu_es_2bed_sevilla_triana",
+        "eu_es_2bed_alicante_centro",
+        "eu_es_2bed_seville_triana",
+        "eu_ge_2bed_tbilisi_traditional"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.637,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Sevilla Triana piso andaluz** (`eu_es_2bed_sevilla_triana`)\nThis is a 2-bed (70 m\u00b2) in Seville, Spain, in the Sevilla Triana piso andaluz style. Layout: Recibidor \u2192 Cocina \u2192 Sal\u00f3n, Ba",
+      "error": null
+    },
+    {
+      "target": "gl_ca_1bed_calgary_beltline",
+      "persona": "couple",
+      "picks": [
+        "gl_ca_1bed_vancouver_kitsilano",
+        "gl_ca_1bed_montreal_plateau",
+        "gl_ca_1bed_calgary_beltline",
+        "gl_ca_2bed_ottawa_westboro"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.243,
+      "response_excerpt": "Based on your brief, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Vancouver Kitsilano 1BR** (`gl_ca_1bed_vancouver_kitsilano`)\nThis is a 1-bed (60 m\u00b2) in Vancouver, Canada, in the Vancouver Kitsilano 1BR style. Layout: Foyer \u2192 Living Room / Kitchen-Dining \u2192 Bath",
+      "error": null
+    },
+    {
+      "target": "gl_pk_1bed_karachi_dha",
+      "persona": "single_professional",
+      "picks": [
+        "gl_pk_1bed_karachi_dha",
+        "in_1bhk_delhi_lajpat_nagar",
+        "in_1bhk_mumbai_andheri_budget",
+        "gl_ph_2bed_manila_condo"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.723,
+      "response_excerpt": "Given your needs, you want a clean professional flat that supports work-life balance.\n\n**Top 4 matches:**\n\n**1. Karachi DHA Phase 5 1-bed apartment** (`gl_pk_1bed_karachi_dha`)\nThis is a 1-bed (48 m\u00b2) in Karachi, Pakistan, in the Karachi DHA Phase 5 1-bed apartment style. Layout: Lobby \u2192 Drawing Roo",
+      "error": null
+    },
+    {
+      "target": "eu_at_3zimmer_wien_altbau_gruenderzeit",
+      "persona": "executive_pied_a_terre",
+      "picks": [
+        "eu_at_3zimmer_salzburg_buergerhaus",
+        "eu_at_3zimmer_wien_altbau_gruenderzeit",
+        "eu_at_2bed_salzburg_baroque",
+        "in_2bhk_navi_mumbai_kharghar"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.02,
+      "response_excerpt": "Given your needs, you want a polished city flat that you only occupy part-time.\n\n**Top 4 matches:**\n\n**1. Salzburg B\u00fcrgerhaus Altstadt** (`eu_at_3zimmer_salzburg_buergerhaus`)\nThis is a 3-bed (110 m\u00b2) in Salzburg, Austria, in the Salzburg B\u00fcrgerhaus Altstadt style. Layout: Wohnzimmer / K\u00fcche \u2192 Vorra",
+      "error": null
+    },
+    {
+      "target": "gl_us_4bed_suburban_colonial",
+      "persona": "executive_pied_a_terre",
+      "picks": [
+        "gl_us_4bed_suburban_colonial",
+        "gl_us_3bed_suburban_ranch",
+        "eu_ie_4bed_dublin_georgian_terrace",
+        "eu_ch_3bed_engadinerhaus"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.888,
+      "response_excerpt": "Given your needs, you want a polished city flat that you only occupy part-time.\n\n**Top 4 matches:**\n\n**1. US Suburban Colonial** (`gl_us_4bed_suburban_colonial`)\nThis is a 4-bed (165 m\u00b2) in Suburban Northeast, USA, in the US Suburban Colonial style. Layout: Foyer \u2192 Living Room / Formal Dining / Kitc",
+      "error": null
+    },
+    {
+      "target": "eu_it_3bed_firenze_palazzo",
+      "persona": "executive_pied_a_terre",
+      "picks": [
+        "eu_it_3bed_firenze_palazzo",
+        "eu_it_3bed_venice_palazzo",
+        "eu_it_3bed_trieste_borgo_teresiano",
+        "eu_ch_3zimmer_zurich_altbau"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.348,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Firenze Centro Storico palazzo apartment** (`eu_it_3bed_firenze_palazzo`)\nThis is a 3-bed (144 m\u00b2) in Firenze, Italy, in the Firenze Centro Storico palazzo apartment style. Layout: Ingresso \u2192 Salone doppio / Cucina",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_vadodara_alkapuri",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_vadodara_alkapuri",
+        "in_2bhk_nagpur_dharampeth",
+        "in_2bhk_bangalore_whitefield_premium",
+        "eu_lu_2bed_luxembourg_townhouse"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.942,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Vadodara Alkapuri 2 BHK** (`in_2bhk_vadodara_alkapuri`)\nThis is a 2-bed (84 m\u00b2) in Vadodara, India, in the Vadodara Alkapuri 2 BHK style. Layout: Drawing-Dining / Kitchen \u2192 Entrance, Utility Verandah",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_vijayawada_benz_circle",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_visakhapatnam_mvp_colony",
+        "in_2bhk_vijayawada_benz_circle",
+        "in_2bhk_nagpur_dharampeth",
+        "eu_it_3vani_milano_liberty"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.101,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Visakhapatnam MVP Colony 2 BHK** (`in_2bhk_visakhapatnam_mvp_colony`)\nThis is a 2-bed (90 m\u00b2) in Visakhapatnam, India, in the Visakhapatnam MVP Colony 2 BHK style. Layout: Drawing-Dining / Kitchen \u2192 ",
+      "error": null
+    },
+    {
+      "target": "eu_gb_2bed_bristol_clifton",
+      "persona": "couple",
+      "picks": [
+        "eu_uk_2bed_cardiff_bay_apartment",
+        "eu_uk_2bed_glasgow_tenement",
+        "eu_gb_2bed_bristol_clifton",
+        "eu_uk_3bed_birmingham_1930s_semi"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.482,
+      "response_excerpt": "Reading your brief, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Cardiff Bay 2-bed** (`eu_uk_2bed_cardiff_bay_apartment`)\nThis is a 2-bed (80 m\u00b2) in Cardiff, United Kingdom, in the Cardiff Bay 2-bed style. Layout: Hall \u2192 Living-Diner / Kitchen \u2192 Bath, Utility, M",
+      "error": null
+    },
+    {
+      "target": "in_1bhk_mumbai_andheri_budget",
+      "persona": "single_professional",
+      "picks": [
+        "in_1bhk_ranchi_harmu_colony",
+        "in_1bhk_mumbai_andheri_budget",
+        "in_1bhk_vadodara_alkapuri",
+        "in_2bhk_kolkata_salt_lake"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.611,
+      "response_excerpt": "Given your needs, you want a clean professional flat that supports work-life balance.\n\n**Top 4 matches:**\n\n**1. Ranchi Harmu Colony 1 BHK** (`in_1bhk_ranchi_harmu_colony`)\nThis is a 1-bed (50 m\u00b2) in Ranchi, India, in the Ranchi Harmu Colony 1 BHK style. Layout: Foyer \u2192 Living/Dining / Kitchen \u2192 Bath",
+      "error": null
+    },
+    {
+      "target": "eu_ie_4bed_dublin_georgian_terrace",
+      "persona": "large_family",
+      "picks": [
+        "eu_ie_4bed_dublin_georgian_terrace",
+        "eu_uk_4bed_cotswolds_country",
+        "in_4bhk_hyderabad_banjara_hills",
+        "eu_ie_3bed_galway_cottage"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.979,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Dublin Georgian Terrace 4-bed** (`eu_ie_4bed_dublin_georgian_terrace`)\nThis is a 4-bed (196 m\u00b2) in Dublin, Ireland, in the Dublin Georgian Terrace 4-bed style. Layout: Hall \u2192 Drawing Room / Dining Room / Kitchen \u2192 ",
+      "error": null
+    },
+    {
+      "target": "eu_at_3zimmer_salzburg_buergerhaus",
+      "persona": "academic",
+      "picks": [
+        "eu_at_3zimmer_wien_altbau_gruenderzeit",
+        "eu_at_3zimmer_salzburg_buergerhaus",
+        "eu_de_3zimmer_hamburg_eimsbuettel_dachgeschoss",
+        "eu_at_3bed_tirolerhaus"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.136,
+      "response_excerpt": "Given your needs, you want quiet, lots of wall space, and a proper study area.\n\n**Top 4 matches:**\n\n**1. Wien Altbau Gr\u00fcnderzeit** (`eu_at_3zimmer_wien_altbau_gruenderzeit`)\nThis is a 3-bed (102 m\u00b2) in Wien, Austria, in the Wien Altbau Gr\u00fcnderzeit style. Layout: Salon / K\u00fcche \u2192 Speisezimmer, Vorraum",
+      "error": null
+    },
+    {
+      "target": "in_pune_2bed_koregaon_park",
+      "persona": "young_family",
+      "picks": [
+        "in_2bhk_bangalore_whitefield_premium",
+        "in_pune_2bed_koregaon_park",
+        "in_2bhk_bangalore_vastu",
+        "in_1bhk_bangalore_whitefield"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.495,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Bangalore Whitefield premium 2 BHK** (`in_2bhk_bangalore_whitefield_premium`)\nThis is a 2-bed (80 m\u00b2) in Bangalore, India, in the Bangalore Whitefield premium 2 BHK style. Layout: Liv",
+      "error": null
+    },
+    {
+      "target": "eu_uk_2bed_liverpool_georgian",
+      "persona": "couple",
+      "picks": [
+        "eu_uk_2bed_belfast_edwardian",
+        "eu_uk_2bed_liverpool_georgian",
+        "eu_ru_2bed_moscow_stalinka",
+        "eu_cy_2bed_limassol_coastal"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.051,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Belfast Edwardian 2-bed Terrace** (`eu_uk_2bed_belfast_edwardian`)\nThis is a 2-bed (70 m\u00b2) in Belfast, United Kingdom, in the Belfast Edwardian 2-bed Terrace style. Layout: Hall \u2192 Living-Dining (open",
+      "error": null
+    },
+    {
+      "target": "eu_uk_3bed_hebden_bridge_yorkshire_stone",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_uk_3bed_manchester_edwardian",
+        "eu_uk_3bed_hebden_bridge_yorkshire_stone",
+        "eu_uk_terraced_2bed",
+        "eu_uk_1bed_manchester_deansgate_highrise"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.842,
+      "response_excerpt": "Looking at what you described, natural light and a flexible work corner are non-negotiable.\n\n**Top 4 matches:**\n\n**1. Manchester Edwardian semi-detached** (`eu_uk_3bed_manchester_edwardian`)\nThis is a 3-bed (112 m\u00b2) in Manchester, United Kingdom, in the Manchester Edwardian semi-detached style. Layo",
+      "error": null
+    },
+    {
+      "target": "gl_ca_2bed_vancouver_kitsilano",
+      "persona": "couple",
+      "picks": [
+        "gl_ca_2bed_vancouver_kitsilano",
+        "gl_ca_2bed_ottawa_westboro",
+        "gl_ca_2bed_montreal_plateau",
+        "gl_ca_3bed_toronto_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.611,
+      "response_excerpt": "Based on your brief, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Vancouver Kitsilano 2BR** (`gl_ca_2bed_vancouver_kitsilano`)\nThis is a 2-bed (84 m\u00b2) in Vancouver, Canada, in the Vancouver Kitsilano 2BR style. Layout: Foyer \u2192 Living Room / Kitchen-Dining \u2192 Full",
+      "error": null
+    },
+    {
+      "target": "gl_us_2bed_boston_brownstone",
+      "persona": "young_family",
+      "picks": [
+        "gl_us_2bed_dallas_uptown",
+        "gl_us_2bed_nashville_germantown",
+        "gl_us_2bed_boston_brownstone",
+        "gl_us_1bed_dallas_uptown"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.519,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Dallas Uptown 2BR** (`gl_us_2bed_dallas_uptown`)\nThis is a 2-bed (84 m\u00b2) in Dallas, United States, in the Dallas Uptown 2BR style. Layout: Foyer \u2192 Living Room / Kitchen-Dining \u2192 Full ",
+      "error": null
+    },
+    {
+      "target": "gl_cn_2bed_shanghai_jing_an",
+      "persona": "young_family",
+      "picks": [
+        "gl_cn_2bed_shanghai_jing_an",
+        "eu_it_2bed_napoli_quartieri_spagnoli",
+        "gl_us_2bed_new_orleans_garden",
+        "eu_it_2bed_rome_prati"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.849,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Shanghai Jing'an 2-bed apartment** (`gl_cn_2bed_shanghai_jing_an`)\nThis is a 2-bed (75 m\u00b2) in Shanghai, China, in the Shanghai Jing'an 2-bed apartment style. Layout: Foyer \u2192 Living-Di",
+      "error": null
+    },
+    {
+      "target": "eu_dk_2bed_aarhus_modern",
+      "persona": "young_family",
+      "picks": [
+        "eu_dk_2bed_copenhagen_norrebro",
+        "eu_dk_2bed_aarhus_modern",
+        "eu_dk_2bed_copenhagen_klassisk",
+        "eu_dk_1bed_copenhagen_norrebro"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.323,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. K\u00f8benhavn N\u00f8rrebro 3-v\u00e6relses** (`eu_dk_2bed_copenhagen_norrebro`)\nThis is a 2-bed (75 m\u00b2) in Copenhagen, Denmark, in the K\u00f8benhavn N\u00f8rrebro 3-v\u00e6relses style. Layout: Stue \u2192 Entre, K\u00f8",
+      "error": null
+    },
+    {
+      "target": "in_5bhk_bangalore_sarjapur_villa",
+      "persona": "large_family",
+      "picks": [
+        "in_5bhk_mumbai_bandra_seaview",
+        "in_5bhk_bangalore_sarjapur_villa",
+        "in_5bhk_delhi_premium_villa",
+        "eu_uk_5bed_suffolk_victorian_rectory"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.218,
+      "response_excerpt": "Given your needs, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Mumbai Bandra Pali Hill 5 BHK Sea-view** (`in_5bhk_mumbai_bandra_seaview`)\nThis is a 5-bed (196 m\u00b2) in Mumbai, India, in the Mumbai Bandra Pali Hill 5 BHK Sea-view style. Layout: Foyer \u2192 Living (sea-facing) / Forma",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_bangalore_vastu",
+      "persona": "couple",
+      "picks": [
+        "in_2bhk_surat_adajan",
+        "in_kochi_2bed_kerala_modern",
+        "in_2bhk_bangalore_vastu",
+        "eu_de_3zimmer_berlin_neubau"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.763,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Surat Adajan 2 BHK** (`in_2bhk_surat_adajan`)\nThis is a 2-bed (84 m\u00b2) in Surat, India, in the Surat Adajan 2 BHK style. Layout: Living-Dining / Kitchen \u2192 Entrance, Utility, Common Bathroom, Master Be",
+      "error": null
+    },
+    {
+      "target": "gl_za_3bed_cape_town_modern",
+      "persona": "family",
+      "picks": [
+        "gl_za_3bed_cape_town_modern",
+        "gl_us_3bed_la_spanish_revival",
+        "eu_uk_3bed_exeter_victorian",
+        "eu_fr_5pieces_paris_haussmannien_familial"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.827,
+      "response_excerpt": "Looking at what you described, you need real family bedrooms, not boxes.\n\n**Top 4 matches:**\n\n**1. Cape Town 3-bed modern** (`gl_za_3bed_cape_town_modern`)\nThis is a 3-bed (130 m\u00b2) in Cape Town, South Africa, in the Cape Town 3-bed modern style. Layout: Foyer \u2192 Living-Dining / Kitchen \u2192 WC, Utility,",
+      "error": null
+    },
+    {
+      "target": "eu_pl_2bed_krakow_old_town",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_pl_2bed_warsaw_mokotow",
+        "eu_pl_2bed_warsaw_kamienica",
+        "eu_pl_2bed_krakow_old_town",
+        "eu_ba_2bed_sarajevo_yugoslav"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.055,
+      "response_excerpt": "Reading your brief, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Warszawa Mokot\u00f3w 3-pokojowe** (`eu_pl_2bed_warsaw_mokotow`)\nThis is a 2-bed (65 m\u00b2) in Warsaw, Poland, in the Warszawa Mokot\u00f3w 3-pokojowe style. Layout: Salon \u2192 Przedpok\u00f3j, Kuchnia, \u0141azienka, WC, S",
+      "error": null
+    },
+    {
+      "target": "eu_fi_2bed_tampere_tammela",
+      "persona": "young_family",
+      "picks": [
+        "eu_fi_2bed_helsinki_kerrostalo",
+        "eu_fi_2bed_tampere_tammela",
+        "eu_fi_2bed_helsinki_kallio",
+        "eu_it_2bed_bologna_saragozza"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 5.306,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Helsinki kerrostalo** (`eu_fi_2bed_helsinki_kerrostalo`)\nThis is a 2-bed (63 m\u00b2) in Helsinki, Finland, in the Helsinki kerrostalo style. Layout: Olohuone \u2192 Eteinen, Keitti\u00f6, Ruokakome",
+      "error": null
+    },
+    {
+      "target": "eu_it_2bed_naples_traditional",
+      "persona": "couple",
+      "picks": [
+        "eu_it_2bed_naples_traditional",
+        "eu_it_2bed_naples_chiaia",
+        "eu_it_2bed_torino_crocetta",
+        "eu_ch_2bed_zurich_modern"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.944,
+      "response_excerpt": "Looking at what you described, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Naples bilocale** (`eu_it_2bed_naples_traditional`)\nThis is a 2-bed (70 m\u00b2) in Naples, Italy, in the Naples bilocale style. Layout: Ingresso \u2192 Soggiorno / Cucina \u2192 WC, Bagno, Camera 1, C",
+      "error": null
+    },
+    {
+      "target": "eu_es_2bed_madrid_lavapies_corrala",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_es_2bed_madrid_lavapies_corrala",
+        "eu_es_2bed_alicante_centro",
+        "eu_es_2bed_sevilla_triana",
+        "eu_es_3bed_valencia_ensanche_modernista"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.864,
+      "response_excerpt": "Looking at what you described, natural light and a flexible work corner are non-negotiable.\n\n**Top 4 matches:**\n\n**1. Madrid Lavapi\u00e9s Corrala** (`eu_es_2bed_madrid_lavapies_corrala`)\nThis is a 2-bed (64 m\u00b2) in Madrid, Spain, in the Madrid Lavapi\u00e9s Corrala style. Layout: Cocina \u2192 Distribuidor, Sal\u00f3n-",
+      "error": null
+    },
+    {
+      "target": "eu_be_2bed_antwerp_diamantwijk",
+      "persona": "couple",
+      "picks": [
+        "eu_be_2bed_brussels_maison_maitre",
+        "eu_be_2bed_antwerp_diamantwijk",
+        "eu_it_2bed_trullo_alberobello",
+        "eu_be_1bed_brussels_ixelles"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.945,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Brussels Maison de Ma\u00eetre** (`eu_be_2bed_brussels_maison_maitre`)\nThis is a 2-bed (96 m\u00b2) in Brussels, Belgium, in the Brussels Maison de Ma\u00eetre style. Layout: Hall \u2192 Salon \u2192 Cuisine, WC, Salle de Ba",
+      "error": null
+    },
+    {
+      "target": "in_1bhk_hyderabad_madhapur",
+      "persona": "single_professional",
+      "picks": [
+        "in_2bhk_bangalore_whitefield_premium",
+        "in_2bhk_rajkot_yagnik_road",
+        "in_1bhk_bangalore_whitefield",
+        "eu_de_3zimmer_bremen_tabakquartier_loft"
+      ],
+      "top4_correct": false,
+      "faithful": true,
+      "latency_s": 4.923,
+      "response_excerpt": "Given your needs, you want a clean professional flat that supports work-life balance.\n\n**Top 4 matches:**\n\n**1. Bangalore Whitefield premium 2 BHK** (`in_2bhk_bangalore_whitefield_premium`)\nThis is a 2-bed (80 m\u00b2) in Bangalore, India, in the Bangalore Whitefield premium 2 BHK style. Layout: Living/D",
+      "error": null
+    },
+    {
+      "target": "eu_by_1bed_minsk_stalinka",
+      "persona": "young_family",
+      "picks": [
+        "eu_by_1bed_minsk_stalinka",
+        "in_1bhk_bangalore_whitefield",
+        "eu_fr_1bed_nice_vieux_nice",
+        "eu_de_1zimmer_berlin_wedding_studio"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.583,
+      "response_excerpt": "Given your needs, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Minsk Stalinka 1-bed** (`eu_by_1bed_minsk_stalinka`)\nThis is a 1-bed (56 m\u00b2) in Minsk, Belarus, in the Minsk Stalinka 1-bed style. Layout: \u041f\u0440\u044b\u0445\u043e\u0436\u0430\u044f, \u0413\u0430\u0441\u0446\u0451\u045e\u043d\u044f, \u041a\u0443\u0445\u043d\u044f, \u0422\u0443\u0430\u043b\u0435\u0442, \u0412\u0430\u043d\u043d\u0430\u044f. The 3200mm ceilin",
+      "error": null
+    },
+    {
+      "target": "eu_cz_2bed_prague_pavlac",
+      "persona": "creative_artist",
+      "picks": [
+        "eu_cz_2bed_prague_pavlac",
+        "eu_cz_2bed_brno_modern",
+        "eu_cz_2bed_prague_vinohrady",
+        "eu_cy_2bed_nicosia_traditional"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.764,
+      "response_excerpt": "Given your needs, natural light and a flexible work corner are non-negotiable.\n\n**Top 4 matches:**\n\n**1. Prague pavla\u010d apartment** (`eu_cz_2bed_prague_pavlac`)\nThis is a 2-bed (72 m\u00b2) in Prague, Czech Republic, in the Prague pavla\u010d apartment style. Layout: Salon \u2192 Hala, Kuchyn\u011b, WC, Koupelna, Master",
+      "error": null
+    },
+    {
+      "target": "eu_uk_2bed_belfast_terrace",
+      "persona": "student",
+      "picks": [
+        "eu_uk_2bed_belfast_terrace",
+        "eu_uk_2bed_newcastle_tyneside_flat",
+        "eu_uk_2bed_portsmouth_terraced",
+        "eu_pt_2bed_coimbra_baixa"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.561,
+      "response_excerpt": "Looking at what you described, you want a well-designed home that fits your lifestyle.\n\n**Top 4 matches:**\n\n**1. Belfast 2-bed** (`eu_uk_2bed_belfast_terrace`)\nThis is a 2-bed (80 m\u00b2) in Belfast, United Kingdom, in the Belfast 2-bed style. Layout: Hall \u2192 Living Room / Kitchen-Diner \u2192 Bath, Utility, ",
+      "error": null
+    },
+    {
+      "target": "eu_tr_2bed_istanbul_bosphorus",
+      "persona": "couple",
+      "picks": [
+        "eu_tr_2bed_istanbul_bosphorus",
+        "gl_tr_2bed_istanbul_besiktas",
+        "gl_tr_1bed_istanbul_kadikoy",
+        "eu_uk_2bed_northumbrian_stone"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.836,
+      "response_excerpt": "Looking at what you described, you want a flat for two with room to cook and entertain.\n\n**Top 4 matches:**\n\n**1. Istanbul Bosphorus 2+1 daire** (`eu_tr_2bed_istanbul_bosphorus`)\nThis is a 2-bed (80 m\u00b2) in Istanbul, Turkey, in the Istanbul Bosphorus 2+1 daire style. Layout: Salon-Mutfak (open) \u2192 Ant",
+      "error": null
+    },
+    {
+      "target": "in_2bhk_kolkata_salt_lake",
+      "persona": "young_family",
+      "picks": [
+        "in_2bhk_kolkata_salt_lake",
+        "in_2bhk_vadodara_race_course",
+        "in_2bhk_ranchi_morabadi",
+        "in_hyderabad_3bed_jubilee_hills"
+      ],
+      "top4_correct": true,
+      "faithful": true,
+      "latency_s": 4.74,
+      "response_excerpt": "Given your needs, you need family-friendly layouts with separated bedrooms and good light.\n\n**Top 4 matches:**\n\n**1. Kolkata Salt Lake Sector 5 2 BHK** (`in_2bhk_kolkata_salt_lake`)\nThis is a 2-bed (81 m\u00b2) in Kolkata, India, in the Kolkata Salt Lake Sector 5 2 BHK style. Layout: Living/Dining / Kitc",
+      "error": null
+    }
+  ]
+}

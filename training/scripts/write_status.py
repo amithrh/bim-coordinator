@@ -32,9 +32,23 @@ def _load_json(path: Path) -> dict | None:
 
 
 def _gemma_status() -> str:
-    e2b_count = len(list((Path.home() / ".cache/huggingface/hub/models--mlx-community--gemma-4-e2b-it-bf16/snapshots").glob("*/model-*.safetensors")))
-    e4b_count = len(list((Path.home() / ".cache/huggingface/hub/models--mlx-community--gemma-4-e4b-it-bf16/snapshots").glob("*/model-*.safetensors")))
-    return f"E2B bf16: {e2b_count}/3 shards, E4B bf16: {e4b_count}/4 shards"
+    """Show what Gemma variants are downloaded."""
+    base = Path.home() / ".cache/huggingface/hub"
+
+    parts = []
+    # E2B bf16 (3 shards expected)
+    e2b_bf16_count = len(list(base.glob("models--mlx-community--gemma-4-e2b-it-bf16/snapshots/*/model-*.safetensors")))
+    parts.append(f"E2B bf16: {e2b_bf16_count}/3" + (" ✅" if e2b_bf16_count >= 3 else ""))
+    # E4B bf16 (4 shards expected)
+    e4b_bf16_count = len(list(base.glob("models--mlx-community--gemma-4-e4b-it-bf16/snapshots/*/model-*.safetensors")))
+    parts.append(f"E4B bf16: {e4b_bf16_count}/4" + (" ✅" if e4b_bf16_count >= 4 else ""))
+    # E2B 4-bit (single file)
+    e2b_4bit = bool(list(base.glob("models--mlx-community--gemma-4-e2b-it-4bit/snapshots/*/model.safetensors")))
+    parts.append(f"E2B 4-bit: {'✅ ready' if e2b_4bit else '⏳ downloading'}")
+    # E4B 4-bit (single file)
+    e4b_4bit = bool(list(base.glob("models--mlx-community--gemma-4-e4b-it-4bit/snapshots/*/model.safetensors")))
+    parts.append(f"E4B 4-bit: {'✅ ready' if e4b_4bit else '⏳ downloading'}")
+    return " · ".join(parts)
 
 
 def _scorecard_table(evals: list[tuple[str, dict]]) -> str:
