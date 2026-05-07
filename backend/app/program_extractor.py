@@ -397,51 +397,53 @@ def extract_program(brief: str) -> dict:
     areas = _allocate_areas(bedrooms, total_area, want_balcony)
     rooms: list[dict] = []
 
+    # Build rooms with EXPLICIT type field — avoids classifier failing on
+    # non-English names (Χολ, Σαλόνι, Κουζίνα etc).
     if bedrooms == 0:
         rooms = [
-            {"name": conv.entry_name, "area_sqm": round(areas["entry"], 1)},
-            {"name": "Studio Living/Sleep", "area_sqm": round(areas["living_sleep"], 1)},
-            {"name": conv.kitchen_name, "area_sqm": round(areas["kitchen"], 1)},
-            {"name": conv.bath_name, "area_sqm": round(areas["bath"], 1)},
+            {"name": conv.entry_name, "type": "entry", "area_sqm": round(areas["entry"], 1)},
+            {"name": "Studio Living/Sleep", "type": "living", "area_sqm": round(areas["living_sleep"], 1)},
+            {"name": conv.kitchen_name, "type": "kitchen", "area_sqm": round(areas["kitchen"], 1)},
+            {"name": conv.bath_name, "type": "bathroom", "area_sqm": round(areas["bath"], 1)},
         ]
         if want_balcony:
-            rooms.append({"name": conv.balcony_name, "area_sqm": round(areas["balcony"], 1)})
+            rooms.append({"name": conv.balcony_name, "type": "balcony", "area_sqm": round(areas["balcony"], 1)})
     elif bedrooms == 1:
         rooms = [
-            {"name": conv.entry_name, "area_sqm": round(areas["entry"], 1)},
-            {"name": conv.living_name, "area_sqm": round(areas["living"], 1)},
-            {"name": conv.kitchen_name, "area_sqm": round(areas["kitchen"], 1)},
-            {"name": conv.bath_name, "area_sqm": round(areas["bath"], 1)},
-            {"name": conv.master_name, "area_sqm": round(areas["master"], 1)},
+            {"name": conv.entry_name, "type": "entry", "area_sqm": round(areas["entry"], 1)},
+            {"name": conv.living_name, "type": "living", "area_sqm": round(areas["living"], 1)},
+            {"name": conv.kitchen_name, "type": "kitchen", "area_sqm": round(areas["kitchen"], 1)},
+            {"name": conv.bath_name, "type": "bathroom", "area_sqm": round(areas["bath"], 1)},
+            {"name": conv.master_name, "type": "master_bedroom", "area_sqm": round(areas["master"], 1)},
         ]
         if want_balcony:
-            rooms.append({"name": conv.balcony_name, "area_sqm": round(areas["balcony"], 1)})
+            rooms.append({"name": conv.balcony_name, "type": "balcony", "area_sqm": round(areas["balcony"], 1)})
     elif bedrooms == 2:
         rooms = [
-            {"name": conv.entry_name, "area_sqm": round(areas["entry"], 1)},
-            {"name": conv.living_name, "area_sqm": round(areas["living"], 1)},
-            {"name": conv.kitchen_name, "area_sqm": round(areas["kitchen"], 1)},
-            {"name": conv.bath_name, "area_sqm": round(areas["bath"], 1)},
-            {"name": conv.wc_name, "area_sqm": round(areas["wc"], 1)},
-            {"name": conv.master_name, "area_sqm": round(areas["master"], 1)},
-            {"name": conv.bedroom2_name, "area_sqm": round(areas["bedroom2"], 1)},
+            {"name": conv.entry_name, "type": "entry", "area_sqm": round(areas["entry"], 1)},
+            {"name": conv.living_name, "type": "living", "area_sqm": round(areas["living"], 1)},
+            {"name": conv.kitchen_name, "type": "kitchen", "area_sqm": round(areas["kitchen"], 1)},
+            {"name": conv.bath_name, "type": "bathroom", "area_sqm": round(areas["bath"], 1)},
+            {"name": conv.wc_name, "type": "wc", "area_sqm": round(areas["wc"], 1)},
+            {"name": conv.master_name, "type": "master_bedroom", "area_sqm": round(areas["master"], 1)},
+            {"name": conv.bedroom2_name, "type": "bedroom", "area_sqm": round(areas["bedroom2"], 1)},
         ]
         if want_balcony:
-            rooms.append({"name": conv.balcony_name, "area_sqm": round(areas["balcony"], 1)})
+            rooms.append({"name": conv.balcony_name, "type": "balcony", "area_sqm": round(areas["balcony"], 1)})
     else:  # 3+ bed
         rooms = [
-            {"name": conv.entry_name, "area_sqm": round(areas["entry"], 1)},
-            {"name": conv.living_name, "area_sqm": round(areas["living"], 1)},
-            {"name": conv.kitchen_name, "area_sqm": round(areas["kitchen"], 1)},
-            {"name": conv.bath_name, "area_sqm": round(areas["bath"], 1)},
-            {"name": "En-suite", "area_sqm": round(areas["bath2"], 1)},
-            {"name": conv.wc_name, "area_sqm": round(areas["wc"], 1)},
-            {"name": conv.master_name, "area_sqm": round(areas["master"], 1)},
-            {"name": conv.bedroom2_name, "area_sqm": round(areas["bedroom2"], 1)},
-            {"name": conv.bedroom3_name, "area_sqm": round(areas["bedroom3"], 1)},
+            {"name": conv.entry_name, "type": "entry", "area_sqm": round(areas["entry"], 1)},
+            {"name": conv.living_name, "type": "living", "area_sqm": round(areas["living"], 1)},
+            {"name": conv.kitchen_name, "type": "kitchen", "area_sqm": round(areas["kitchen"], 1)},
+            {"name": conv.bath_name, "type": "bathroom", "area_sqm": round(areas["bath"], 1)},
+            {"name": "En-suite", "type": "bathroom", "area_sqm": round(areas["bath2"], 1)},
+            {"name": conv.wc_name, "type": "wc", "area_sqm": round(areas["wc"], 1)},
+            {"name": conv.master_name, "type": "master_bedroom", "area_sqm": round(areas["master"], 1)},
+            {"name": conv.bedroom2_name, "type": "bedroom", "area_sqm": round(areas["bedroom2"], 1)},
+            {"name": conv.bedroom3_name, "type": "bedroom", "area_sqm": round(areas["bedroom3"], 1)},
         ]
         if want_balcony:
-            rooms.append({"name": conv.balcony_name, "area_sqm": round(areas["balcony"], 1)})
+            rooms.append({"name": conv.balcony_name, "type": "balcony", "area_sqm": round(areas["balcony"], 1)})
 
     # Adjust style description based on detected keywords
     style_bits = []

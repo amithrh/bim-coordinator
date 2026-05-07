@@ -47,6 +47,76 @@ def _split_by_area(items: list[RoomSpec], total_length: float) -> list[float]:
     return [round(total_length * (r.area_sqm / total_area), 2) for r in items]
 
 
+def _split_by_area_with_min(
+    items: list[RoomSpec],
+    total_length: float,
+    strip_depth: float,
+) -> list[float] | None:
+    """Allocate widths so each room has its area share BUT no width drops below
+    the per-type minimum that would make the resulting room unusable.
+
+    Returns a list of widths summing to total_length, or None if impossible.
+    """
+    from .quality_constraints import MIN_DIM_BY_TYPE, DEFAULT_MIN_DIM
+
+    if not items:
+        return []
+
+    # Per-room minimum width — the wider of (min_short_for_type, min_long_for_type/strip_depth_clamp)
+    # Effectively: ensure resulting rectangle has BOTH sides ≥ MIN_DIM_BY_TYPE.
+    min_widths: list[float] = []
+    for r in items:
+        msh, mlg = MIN_DIM_BY_TYPE.get(r.room_type, DEFAULT_MIN_DIM)
+        # If strip_depth meets long-side min, room only needs short-side width.
+        # Else room needs long-side width.
+        if strip_depth >= mlg - 0.01:
+            min_w = msh
+        elif strip_depth >= msh - 0.01:
+            min_w = mlg
+        else:
+            # strip too shallow for this room type — return None to fail strategy
+            return None
+        min_widths.append(min_w)
+
+    sum_min = sum(min_widths)
+    if sum_min > total_length + 0.01:
+        return None  # not enough length to fit all minimums
+
+    # Start with proportional widths, then enforce minimums + redistribute
+    total_area = sum(r.area_sqm for r in items) or 1.0
+    widths = [(r.area_sqm / total_area) * total_length for r in items]
+
+    # Iteratively raise short rooms to their min; steal from longest rooms
+    for _ in range(20):
+        adjusted = False
+        for i, w in enumerate(widths):
+            if w < min_widths[i] - 0.001:
+                shortfall = min_widths[i] - w
+                widths[i] = min_widths[i]
+                # Steal from the largest non-min rooms proportionally
+                donors = [(j, widths[j] - min_widths[j])
+                          for j in range(len(widths))
+                          if j != i and widths[j] > min_widths[j] + 0.05]
+                donor_total = sum(d[1] for d in donors)
+                if donor_total < shortfall:
+                    return None  # can't satisfy minimums
+                for j, slack in donors:
+                    widths[j] -= shortfall * (slack / donor_total)
+                adjusted = True
+                break
+        if not adjusted:
+            break
+
+    # Final rounding + total preservation
+    widths = [round(w, 2) for w in widths]
+    drift = round(total_length - sum(widths), 2)
+    if drift != 0:
+        # Add drift to the largest room to keep total exact
+        idx = widths.index(max(widths))
+        widths[idx] = round(widths[idx] + drift, 2)
+    return widths
+
+
 def _make_metadata(program: TemplateProgram, length: float, depth: float,
                    strategy_name: str, n_rooms: int) -> dict:
     return {
@@ -85,6 +155,14 @@ def _pick_dimensions(total_area: float, prefer_aspect: float = 1.4) -> tuple[flo
     depth = max(4.0, min(depth, 11.0))
     length = round(total_area / depth, 2)
     return length, depth
+
+
+# Aspect ratio sweep used to escape bad allocations. We try several footprint
+# proportions for each strategy and keep the architecturally-best one.
+ASPECT_SWEEP = (1.2, 1.35, 1.5, 1.7, 1.9, 2.2)
+
+# Central-corridor strategy needs elongated layouts (Eisenbahnwohnung pattern).
+ASPECT_SWEEP_CORRIDOR = (1.4, 1.7, 2.0, 2.4, 2.8, 3.2)
 
 
 # --------------------------------------------------------------------------- #
@@ -164,10 +242,14 @@ def _exterior_window(room: dict, edge: str, length: float, depth: float) -> dict
 # Strategy 1: Two-strip (current default — kept for completeness)
 # --------------------------------------------------------------------------- #
 
-def two_strip_layout(program: TemplateProgram) -> dict:
+def two_strip_layout(program: TemplateProgram,
+                     dims: tuple[float, float] | None = None) -> dict:
     """Wet on top, dry on bottom — the original default."""
     total = program.total_area_sqm
-    length, depth = _pick_dimensions(total, prefer_aspect=1.4)
+    if dims:
+        length, depth = dims
+    else:
+        length, depth = _pick_dimensions(total, prefer_aspect=1.4)
 
     wet = [r for r in program.rooms if r.room_type in WET_TYPES]
     dry = [r for r in program.rooms if r.room_type in DRY_TYPES]
@@ -194,7 +276,9 @@ def two_strip_layout(program: TemplateProgram) -> dict:
         3 if r.room_type == "utility" else
         4 if r.room_type == "store_room" else 5
     ))
-    wet_widths = _split_by_area(wet_ordered, length)
+    wet_widths = _split_by_area_with_min(wet_ordered, length, wet_depth)
+    if wet_widths is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     x = 0.0
     for r, w in zip(wet_ordered, wet_widths):
         polygon = [[x, dry_depth], [x + w, dry_depth], [x + w, depth], [x, depth]]
@@ -212,7 +296,9 @@ def two_strip_layout(program: TemplateProgram) -> dict:
         2 if r.room_type == "master_bedroom" else
         3 if r.room_type == "bedroom" else 4
     ))
-    dry_widths = _split_by_area(dry_ordered, length)
+    dry_widths = _split_by_area_with_min(dry_ordered, length, dry_depth)
+    if dry_widths is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     x = 0.0
     for r, w in zip(dry_ordered, dry_widths):
         polygon = [[x, 0], [x + w, 0], [x + w, dry_depth], [x, dry_depth]]
@@ -289,7 +375,8 @@ def _wire_doors_windows_two_strip(rooms: list[dict], length: float, depth: float
 # Strategy 2: Central Corridor (Berliner Korridor / Indian gallery layout)
 # --------------------------------------------------------------------------- #
 
-def central_corridor_layout(program: TemplateProgram) -> dict:
+def central_corridor_layout(program: TemplateProgram,
+                            dims: tuple[float, float] | None = None) -> dict:
     """Long horizontal corridor down the middle, rooms either side.
 
     Layout:
@@ -305,10 +392,12 @@ def central_corridor_layout(program: TemplateProgram) -> dict:
     long narrow units.
     """
     total = program.total_area_sqm
-    # Long-ish aspect ratio for corridors
-    length, depth = _pick_dimensions(total, prefer_aspect=1.7)
-    if length < 8:  # need length for a corridor to make sense
-        length, depth = _pick_dimensions(total, prefer_aspect=2.0)
+    if dims:
+        length, depth = dims
+    else:
+        length, depth = _pick_dimensions(total, prefer_aspect=1.7)
+        if length < 8:
+            length, depth = _pick_dimensions(total, prefer_aspect=2.0)
 
     corridor_width = 1.2
     entry_width = max(1.5, length * 0.12)
@@ -362,7 +451,9 @@ def central_corridor_layout(program: TemplateProgram) -> dict:
     rooms_out.append(corridor_room)
 
     # Top stripe: bedrooms tiled left to right (right of entry)
-    bedroom_widths = _split_by_area(bedrooms, main_length)
+    bedroom_widths = _split_by_area_with_min(bedrooms, main_length, top_depth)
+    if bedroom_widths is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     x = entry_width
     for r, w in zip(bedrooms, bedroom_widths):
         polygon = [[x, corridor_y1], [x + w, corridor_y1], [x + w, depth], [x, depth]]
@@ -381,7 +472,9 @@ def central_corridor_layout(program: TemplateProgram) -> dict:
         3 if r.room_type == "bathroom" else
         4 if r.room_type == "wc" else 5
     ))
-    bottom_widths = _split_by_area(bottom_ordered, main_length)
+    bottom_widths = _split_by_area_with_min(bottom_ordered, main_length, bot_depth)
+    if bottom_widths is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     x = entry_width
     for r, w in zip(bottom_ordered, bottom_widths):
         polygon = [[x, 0], [x + w, 0], [x + w, bot_depth], [x, bot_depth]]
@@ -458,7 +551,8 @@ def central_corridor_layout(program: TemplateProgram) -> dict:
 # Strategy 3: Public-Private split (vertical wing split)
 # --------------------------------------------------------------------------- #
 
-def public_private_layout(program: TemplateProgram) -> dict:
+def public_private_layout(program: TemplateProgram,
+                          dims: tuple[float, float] | None = None) -> dict:
     """Split into vertical wings: public (left) and private (right).
 
     Layout:
@@ -478,7 +572,10 @@ def public_private_layout(program: TemplateProgram) -> dict:
     Common in: modern open-plan apartments, family homes.
     """
     total = program.total_area_sqm
-    length, depth = _pick_dimensions(total, prefer_aspect=1.4)
+    if dims:
+        length, depth = dims
+    else:
+        length, depth = _pick_dimensions(total, prefer_aspect=1.4)
 
     public = [r for r in program.rooms if r.room_type in
               ("entry", "living", "dining", "kitchen", "balcony")]
@@ -504,7 +601,9 @@ def public_private_layout(program: TemplateProgram) -> dict:
         2 if r.room_type == "dining" else
         3 if r.room_type == "kitchen" else 4
     ))
-    pub_heights = _split_by_area(pub_ordered, depth)  # depth is the dimension we tile
+    pub_heights = _split_by_area_with_min(pub_ordered, depth, pub_width)
+    if pub_heights is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     y = depth
     for r, h in zip(pub_ordered, pub_heights):
         polygon = [[0, y - h], [pub_width, y - h], [pub_width, y], [0, y]]
@@ -522,7 +621,9 @@ def public_private_layout(program: TemplateProgram) -> dict:
         2 if r.room_type == "bathroom" else
         3 if r.room_type == "wc" else 4
     ))
-    priv_heights = _split_by_area(priv_ordered, depth)
+    priv_heights = _split_by_area_with_min(priv_ordered, depth, priv_width)
+    if priv_heights is None:
+        return {"id": "FAIL", "metadata": {}, "boundary": {"polygon": [[0,0],[1,0],[1,1],[0,1]],"wall_thickness_mm":230,"ceiling_height_mm":2700}, "rooms": [], "doors": [], "windows": []}
     y = depth
     for r, h in zip(priv_ordered, priv_heights):
         polygon = [[pub_width, y - h], [length, y - h], [length, y], [pub_width, y]]
@@ -669,35 +770,69 @@ def score_template(template: dict) -> float:
     return score
 
 
-def generate_alternatives(
+def _try_strategy_with_sweep(
+    name: str,
+    fn,
     program: TemplateProgram,
-    n: int = 3,
-) -> list[tuple[str, dict, list[str], float]]:
-    """Try every strategy, return top-N successfully-validated layouts sorted
-    by score. Each tuple is (strategy_name, template, validation_errors, score).
-    Failed strategies are dropped from the result.
-    """
+    aspects: tuple[float, ...] = ASPECT_SWEEP,
+) -> tuple[str, dict, list[str], float] | None:
+    """Try the strategy at multiple boundary aspect ratios; return the best
+    template that (a) passes geometric validation AND (b) has no fatal
+    architectural quality issues, scored by combined geometric+architectural
+    quality. Returns None if every aspect failed."""
     import sys
     from pathlib import Path
     sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
     from validate_template import validate_dict  # noqa: E402
+    from .quality_constraints import quality_score, has_fatal_issues  # noqa: E402
 
-    candidates: list[tuple[str, dict, list[str], float]] = []
-    for name, fn in STRATEGIES.items():
+    total = program.total_area_sqm
+    best: tuple[str, dict, list[str], float] | None = None
+
+    for aspect in aspects:
+        depth = round(math.sqrt(total / aspect), 2)
+        depth = max(4.0, min(depth, 11.0))
+        length = round(total / depth, 2)
         try:
-            template = fn(program)
-        except Exception as e:
-            candidates.append((name, {}, [f"strategy {name} crashed: {e!r}"], 0.0))
+            template = fn(program, dims=(length, depth))
+        except Exception:
             continue
+        # Geometric validation gates
         errors = validate_dict(template)
         if errors:
-            candidates.append((name, template, errors, 0.0))
             continue
-        score = score_template(template)
-        candidates.append((name, template, [], score))
+        # Architectural quality gate: no fatal issues
+        if has_fatal_issues(template):
+            continue
+        qscore, _ = quality_score(template)
+        # Combined score: layout score (0..130) + quality score (0..100)
+        layout_score = score_template(template)
+        combined = layout_score * 0.4 + qscore * 0.6
+        if best is None or combined > best[3]:
+            best = (name, template, [], combined)
 
-    # Drop invalids, sort by score
-    valid = [c for c in candidates if not c[2]]
+    return best
+
+
+def generate_alternatives(
+    program: TemplateProgram,
+    n: int = 3,
+) -> list[tuple[str, dict, list[str], float]]:
+    """Try every strategy across an aspect-ratio sweep, return top-N validated
+    layouts that pass BOTH geometric and architectural quality gates.
+
+    Each tuple is (strategy_name, template, validation_errors, combined_score).
+    Strategies that can't produce a quality layout for this program are dropped.
+    """
+    valid: list[tuple[str, dict, list[str], float]] = []
+    for name, fn in STRATEGIES.items():
+        # Central corridor needs more elongated footprints
+        sweep = ASPECT_SWEEP_CORRIDOR if name == "central_corridor" else ASPECT_SWEEP
+        result = _try_strategy_with_sweep(name, fn, program, aspects=sweep)
+        if result is not None:
+            valid.append(result)
+
+    # Sort by combined score, return top N
     valid.sort(key=lambda c: c[3], reverse=True)
     return valid[:n]
 
