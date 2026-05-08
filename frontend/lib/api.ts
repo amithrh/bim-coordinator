@@ -120,13 +120,34 @@ export function splatUrl(template_id: string): string {
 }
 
 export interface SplatStatus {
+  state: "absent" | "baking" | "ready" | "error";
   available: boolean;
   size_bytes?: number;
   url?: string;
+  // While baking
+  started_at?: number;
+  elapsed_s?: number;
+  phase?: "rendering" | "training";
+  frames_rendered?: number;
+  transforms_written?: boolean;
+  pointcloud_written?: boolean;
+  splat_ready?: boolean;
+  // On error
+  error?: string;
+  log_tail?: string;
 }
 
 export async function getSplatStatus(template_id: string): Promise<SplatStatus> {
   return jsonFetch<SplatStatus>(`${BASE}/templates/${template_id}/splat/status`);
+}
+
+/** Kick off a splat bake (render dataset + train). Idempotent. */
+export async function startSplatBake(template_id: string): Promise<SplatStatus> {
+  const res = await fetch(`${BASE}/templates/${template_id}/splat/bake`, {
+    method: "POST",
+  });
+  if (!res.ok) throw new Error(`bake start failed: ${res.status}`);
+  return res.json();
 }
 
 /** Manifest of the 6 photoreal cubemap faces for a room. First call

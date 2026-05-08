@@ -299,16 +299,24 @@ export default function Walkthrough({ template, prewarm, onClose }: Props) {
           }}
           title="Matterport-style 360° tour — photoreal cubemaps per room"
         >✨ Photoreal walk</button>
-        <button
-          onClick={() => setMode("splat")}
-          style={{
-            background: mode === "splat" ? "#FFC83D" : "transparent",
-            color: mode === "splat" ? "#1a1a1a" : "#bbb",
-            border: "none", padding: "6px 14px", borderRadius: 6,
-            fontSize: 13, fontWeight: 600, cursor: "pointer",
-          }}
-          title="Free-walk through a 3D Gaussian Splat trained on synthetic SDXL views"
-        >🪐 Splat walk</button>
+        {/* 🪐 Splat walk — hidden from main demo. Quality from synthetic
+            SDXL views isn't multi-view consistent enough for clean
+            reconstruction; it ends up as fluff. The code path stays
+            functional for post-demo iteration (see scripts/render_splat_dataset.py
+            and msplat training in scripts/train_splat.py).
+            Append ?splat to the URL to re-enable for engineering tests. */}
+        {typeof window !== "undefined" && window.location.search.includes("splat") && (
+          <button
+            onClick={() => setMode("splat")}
+            style={{
+              background: mode === "splat" ? "#FFC83D" : "transparent",
+              color: mode === "splat" ? "#1a1a1a" : "#bbb",
+              border: "none", padding: "6px 14px", borderRadius: 6,
+              fontSize: 13, fontWeight: 600, cursor: "pointer",
+            }}
+            title="Free-walk through a 3D Gaussian Splat (research preview)"
+          >🪐 Splat walk</button>
+        )}
       </div>
 
       {/* Prewarm progress badge — shown while cubemaps are still rendering */}

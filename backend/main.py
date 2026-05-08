@@ -614,15 +614,167 @@ def template_splat(template_id: str):
     )
 
 
+# Bake-state bookkeeping (per-template). Subprocess-based so we don't
+# accidentally hold the SDXL pipeline lock for 10 minutes inside a request.
+_SPLAT_BAKE_LOCK = _threading.Lock()
+_SPLAT_BAKE: dict[str, dict] = {}
+
+
+def _splat_log_path(template_id: str) -> _pathlib.Path:
+    return _SPLAT_DATASET_DIR / template_id / "bake.log"
+
+
+def _splat_dataset_progress(template_id: str) -> dict:
+    """Inspect the on-disk dataset to estimate bake progress."""
+    d = _SPLAT_DATASET_DIR / template_id
+    img_dir = d / "images"
+    n_frames = len(list(img_dir.glob("*.png"))) if img_dir.exists() else 0
+    has_transforms = (d / "transforms.json").exists()
+    has_pointcloud = (d / "points3D.ply").exists()
+    has_ply = (d / "output.ply").exists()
+    return {
+        "frames_rendered": n_frames,
+        "transforms_written": has_transforms,
+        "pointcloud_written": has_pointcloud,
+        "splat_ready": has_ply,
+    }
+
+
 @app.get("/api/templates/{template_id}/splat/status")
 def template_splat_status(template_id: str):
-    """Report whether a splat is available for this template + size."""
+    """Report bake state: 'absent' | 'baking' | 'ready' | 'error'.
+
+    A single template progresses absent -> baking -> ready. The bake
+    state is observable from disk (frame count, transforms.json,
+    output.ply) plus the in-memory bake registry.
+    """
+    p = _SPLAT_DATASET_DIR / template_id / "output.ply"
+    progress = _splat_dataset_progress(template_id)
+    with _SPLAT_BAKE_LOCK:
+        bake = _SPLAT_BAKE.get(template_id)
+
+    # Total expected frames is currently 28 / habitable room (see
+    # render_splat_dataset.py). For accurate progress we'd need the
+    # template — skip the precision and just report the count.
+    if p.exists():
+        return {
+            "state": "ready",
+            "available": True,
+            "size_bytes": p.stat().st_size,
+            "url": f"/api/templates/{template_id}/splat",
+            **progress,
+        }
+    if bake is not None:
+        proc = bake.get("proc")
+        if proc is not None and proc.poll() is None:
+            return {
+                "state": "baking",
+                "available": False,
+                "started_at": bake.get("started_at"),
+                "elapsed_s": round(time.time() - bake.get("started_at", time.time()), 1),
+                "phase": "training" if progress["transforms_written"]
+                            and not progress["splat_ready"]
+                            else "rendering",
+                **progress,
+            }
+        # Subprocess died without producing output.ply
+        if proc is not None and proc.returncode not in (None, 0):
+            return {
+                "state": "error",
+                "available": False,
+                "error": f"bake exited with code {proc.returncode}",
+                "log_tail": _tail_log(template_id),
+                **progress,
+            }
+
+    # No subprocess registered with us — but if disk shows fresh activity
+    # (frames being written), trust that as "baking" too. This catches
+    # bakes started manually via shell.
+    if progress["frames_rendered"] > 0 and not progress["splat_ready"]:
+        return {
+            "state": "baking",
+            "available": False,
+            "phase": "training" if progress["transforms_written"] else "rendering",
+            "external": True,  # signals "started outside the API"
+            **progress,
+        }
+
+    return {
+        "state": "absent",
+        "available": False,
+        **progress,
+    }
+
+
+def _tail_log(template_id: str, n: int = 40) -> str:
+    """Return the last `n` lines of the bake log for the UI to surface."""
+    p = _splat_log_path(template_id)
+    if not p.exists():
+        return ""
+    try:
+        lines = p.read_text(errors="ignore").splitlines()
+        return "\n".join(lines[-n:])
+    except Exception:
+        return ""
+
+
+@app.post("/api/templates/{template_id}/splat/bake")
+def template_splat_bake(template_id: str):
+    """Trigger an on-demand splat bake (render dataset + train).
+
+    Idempotent: if the splat already exists or a bake is in flight,
+    we don't start a second one. Runs as a subprocess so the FastAPI
+    worker never blocks for the ~10 min wall-clock.
+    """
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+
     p = _SPLAT_DATASET_DIR / template_id / "output.ply"
     if p.exists():
-        size = p.stat().st_size
-        return {"available": True, "size_bytes": size,
+        return {"state": "ready", "available": True,
                 "url": f"/api/templates/{template_id}/splat"}
-    return {"available": False}
+
+    with _SPLAT_BAKE_LOCK:
+        existing = _SPLAT_BAKE.get(template_id)
+        if existing and existing.get("proc") is not None:
+            proc = existing["proc"]
+            if proc.poll() is None:
+                return {
+                    "state": "baking", "available": False,
+                    "started_at": existing.get("started_at"),
+                    "message": "already in progress",
+                }
+
+        # Start subprocess: render + train, sequentially, with logs to disk.
+        log_dir = _SPLAT_DATASET_DIR / template_id
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_path = _splat_log_path(template_id)
+
+        import subprocess
+        repo = _pathlib.Path(__file__).resolve().parents[1]
+        cmd = [
+            "/bin/bash", "-c",
+            f"{repo}/.venv/bin/python {repo}/scripts/render_splat_dataset.py {template_id} "
+            f"&& {repo}/.venv/bin/python {repo}/scripts/train_splat.py {template_id}",
+        ]
+        proc = subprocess.Popen(
+            cmd, cwd=str(repo),
+            stdout=open(log_path, "wb"),
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+        _SPLAT_BAKE[template_id] = {
+            "proc": proc,
+            "started_at": time.time(),
+            "log_path": str(log_path),
+        }
+        print(f"[splat-bake] started bake for {template_id}, pid={proc.pid}, "
+              f"log={log_path}")
+    return {
+        "state": "baking", "available": False,
+        "started_at": _SPLAT_BAKE[template_id]["started_at"],
+    }
 
 
 @app.get("/api/templates/{template_id}/gltf")
