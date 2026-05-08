@@ -197,11 +197,21 @@ def _spawn_point(template: dict) -> tuple[float, float, float, float]:
     return (cx, cy, 1.65, 0.0)
 
 
-def template_to_glb(template: dict) -> bytes:
+def template_to_glb(template: dict, include_ceiling: bool = False,
+                       wall_height: float | None = None) -> bytes:
     """Render the BIM template into a glTF 2.0 binary (GLB) and return
-    the raw bytes. Includes per-room floor materials, walls, ceiling,
-    and a JSON 'extras' payload on the scene with metadata the frontend
-    needs (room polygons for collision/teleport, spawn point, etc).
+    the raw bytes. Includes per-room floor materials, walls, optional
+    ceiling, and a JSON 'extras' payload on the scene with metadata
+    the frontend needs (room polygons for collision/teleport, spawn
+    point, etc).
+
+    Args:
+      include_ceiling: when False (default for 3D walks), skip the
+        ceiling so the sun can light the interior. The result reads
+        as a Sims-style cutaway diorama, which is what we want for a
+        first-person walk in a small apartment without modeled windows.
+      wall_height: override the BIM ceiling height with a shorter wall
+        height. Useful for top-down dollhouse renders.
     """
     rooms = template.get("rooms", []) or []
     if not rooms and template.get("floors"):
@@ -212,6 +222,7 @@ def template_to_glb(template: dict) -> bytes:
 
     boundary = template.get("boundary", {})
     ceiling_h = boundary.get("ceiling_height_mm", 2700) / 1000.0
+    wall_h = float(wall_height) if wall_height is not None else ceiling_h
     wall_t = boundary.get("wall_thickness_mm", 240) / 1000.0
     # Cap visual wall thickness same as the floor-plan renderer does.
     wall_t = min(wall_t, 0.18)
@@ -225,15 +236,14 @@ def template_to_glb(template: dict) -> bytes:
             scene.add_geometry(floor, geom_name=f"floor_{r.get('id', r.get('type','x'))}")
 
     # Walls (one mesh)
-    walls = _walls_mesh(rooms, ceiling_height=ceiling_h, wall_thickness=wall_t)
+    walls = _walls_mesh(rooms, ceiling_height=wall_h, wall_thickness=wall_t)
     if not walls.is_empty:
         scene.add_geometry(walls, geom_name="walls")
 
-    # Ceiling (one mesh, slightly transparent so player can see through? no,
-    # keep solid — looks better)
-    ceil = _ceiling_mesh(rooms, ceiling_height=ceiling_h)
-    if not ceil.is_empty:
-        scene.add_geometry(ceil, geom_name="ceiling")
+    if include_ceiling:
+        ceil = _ceiling_mesh(rooms, ceiling_height=ceiling_h)
+        if not ceil.is_empty:
+            scene.add_geometry(ceil, geom_name="ceiling")
 
     # Spawn point + room metadata for the frontend.
     spawn = _spawn_point(template)

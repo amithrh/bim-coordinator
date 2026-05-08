@@ -307,6 +307,324 @@ def render_endpoint(req: RenderRequest):
     )
 
 
+# ---------------------------------------------------------------------------
+# Photoreal cubemap walkthrough (Path A — Matterport-style)
+# ---------------------------------------------------------------------------
+
+# Disk cache for cubemap faces — they're expensive (12s/room) but
+# deterministic, so we save them and re-serve. Keyed by template+room.
+import pathlib as _pathlib
+import threading as _threading
+import time
+_CUBEMAP_CACHE_DIR = _pathlib.Path("/tmp/bim_cubemap_cache")
+_CUBEMAP_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+# Pre-warm bookkeeping: per template, which rooms are queued / rendering /
+# done. The actual render thread is global (shared with all templates) so
+# it serialises with the SDXL inference lock.
+_PREWARM_LOCK = _threading.Lock()
+_PREWARM_STATE: dict[str, dict] = {}    # template_id -> { rooms, ready, current, started }
+_PREWARM_THREADS: dict[str, _threading.Thread] = {}
+
+
+def _prewarm_room_order(template: dict) -> list[dict]:
+    """Pick which rooms to prewarm and in what order.
+
+    Tour order so the 'walking into the house' feel works:
+      entry/foyer  ->  living  ->  dining  ->  bedrooms  ->  kitchen
+                  ->  office/study  ->  bathrooms
+
+    Skip closets, balconies, stairs (no useful interior to tour).
+    """
+    rooms = template.get("rooms", []) or []
+    if not rooms and template.get("floors"):
+        rooms = []
+        for fl in template["floors"]:
+            rooms.extend(fl.get("rooms", []))
+
+    skip = {"corridor", "stairs", "balcony", "loggia", "terrace",
+              "store", "wardrobe", "abstellraum", "passage"}
+    candidates = [r for r in rooms
+                  if (r.get("type") or "").lower() not in skip
+                  and r.get("polygon")]
+    order = {
+        "entry": 0, "diele": 0, "flur": 0, "foyer": 0,
+        "living": 1, "dining": 2,
+        "master_bedroom": 3, "bedroom": 4,
+        "kitchen": 5, "kueche": 5, "kochnische": 5,
+        "office": 6, "study": 6,
+        "bathroom": 7, "bad": 7, "wc": 8,
+    }
+    candidates.sort(key=lambda r: (
+        order.get((r.get("type") or "").lower(), 9),
+        -(r.get("area_sqm") or 0),
+    ))
+    return candidates
+
+
+def _start_prewarm(template_id: str) -> dict:
+    """Idempotent: if a prewarm is already running for this template,
+    return its current status. Otherwise spawn a worker thread that
+    renders every habitable room's cubemap in tour order."""
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+
+    with _PREWARM_LOCK:
+        existing = _PREWARM_STATE.get(template_id)
+        if existing and not existing.get("done"):
+            return existing  # already running, return current state
+
+        rooms = _prewarm_room_order(template)
+        # Mark already-cached rooms as done up front
+        already = []
+        pending = []
+        for r in rooms:
+            paths_ok = all(
+                _cubemap_face_path(template_id, r["id"], f).exists()
+                for f in ("posx", "negx", "posy", "negy", "posz", "negz")
+            )
+            (already if paths_ok else pending).append(r)
+
+        state = {
+            "template_id": template_id,
+            "total": len(rooms),
+            "ready": [r["id"] for r in already],
+            "pending": [r["id"] for r in pending],
+            "current": None,
+            "current_name": None,
+            "rooms_meta": {
+                r["id"]: {"name": r.get("name", ""),
+                           "type": r.get("type", ""),
+                           "area_sqm": r.get("area_sqm", 0)}
+                for r in rooms
+            },
+            "started_at": time.time(),
+            "done": len(pending) == 0,
+            "errors": [],
+        }
+        _PREWARM_STATE[template_id] = state
+
+        if state["done"]:
+            return state
+
+        def _worker():
+            from backend.app.image_renderer import render_room_cubemap_photoreal
+            for r in pending:
+                with _PREWARM_LOCK:
+                    state["current"] = r["id"]
+                    state["current_name"] = r.get("name", "")
+                try:
+                    out = render_room_cubemap_photoreal(
+                        template, r["id"], face_size=512,
+                    )
+                    for label, img in out["faces"].items():
+                        img.save(_cubemap_face_path(template_id, r["id"], label))
+                    with _PREWARM_LOCK:
+                        state["ready"].append(r["id"])
+                        state["pending"].remove(r["id"])
+                        if out.get("errors"):
+                            state["errors"].extend(out["errors"])
+                except Exception as e:
+                    with _PREWARM_LOCK:
+                        state["errors"].append(f"{r['id']}: {e!r}")
+                        if r["id"] in state["pending"]:
+                            state["pending"].remove(r["id"])
+            with _PREWARM_LOCK:
+                state["current"] = None
+                state["current_name"] = None
+                state["done"] = True
+                state["finished_at"] = time.time()
+
+        thread = _threading.Thread(target=_worker, daemon=True,
+                                      name=f"prewarm-{template_id}")
+        _PREWARM_THREADS[template_id] = thread
+        thread.start()
+        return state
+
+
+def _cubemap_face_path(template_id: str, room_id: str, face: str) -> _pathlib.Path:
+    return _CUBEMAP_CACHE_DIR / f"{template_id}__{room_id}__{face}.png"
+
+
+def _ensure_cubemap_rendered(template_id: str, room_id: str) -> dict:
+    """Render the 6 cubemap faces (or load from disk cache). Returns the
+    metadata dict; faces are written to /tmp/bim_cubemap_cache/."""
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+
+    # Check disk cache first
+    expected_faces = ("posx", "negx", "posy", "negy", "posz", "negz")
+    paths = {f: _cubemap_face_path(template_id, room_id, f) for f in expected_faces}
+    if all(p.exists() for p in paths.values()):
+        # Recover room metadata so we can return it
+        room = next(
+            (r for r in (template.get("rooms") or [])
+                or sum((fl.get("rooms", []) for fl in template.get("floors") or []), [])
+                if r.get("id") == room_id),
+            None,
+        )
+        return {
+            "cached": True,
+            "room_id": room_id,
+            "room_name": (room or {}).get("name", ""),
+            "room_type": (room or {}).get("type", ""),
+            "room_area": (room or {}).get("area_sqm", 0),
+        }
+
+    # Render fresh
+    from backend.app.image_renderer import render_room_cubemap_photoreal
+    out = render_room_cubemap_photoreal(template, room_id, face_size=512)
+    if out.get("errors"):
+        print(f"[cubemap] {room_id} errors: {out['errors']}")
+    for label, img in out["faces"].items():
+        img.save(paths[label])
+    return {
+        "cached": False,
+        "room_id": out.get("room_id", room_id),
+        "room_name": out.get("room_name", ""),
+        "room_type": out.get("room_type", ""),
+        "room_area": out.get("room_area", 0),
+        "latency_s": out.get("latency_s", 0),
+    }
+
+
+@app.post("/api/render/cubemap/{template_id}/prewarm")
+def cubemap_prewarm(template_id: str):
+    """Kick off (or rejoin) a background render of every habitable
+    room's cubemap. Idempotent — calling twice doesn't double the work.
+    Returns the current state immediately; poll /status to track progress."""
+    state = _start_prewarm(template_id)
+    with _PREWARM_LOCK:
+        return _serialize_prewarm_state(state)
+
+
+@app.get("/api/render/cubemap/{template_id}/status")
+def cubemap_status(template_id: str):
+    """Current progress of the cubemap prewarm for this template."""
+    with _PREWARM_LOCK:
+        state = _PREWARM_STATE.get(template_id)
+    if state is None:
+        # Lazily report cached rooms even if no prewarm has run
+        return {"template_id": template_id, "started": False,
+                "total": 0, "ready": [], "pending": [], "done": False,
+                "current": None, "current_name": None,
+                "rooms_meta": {}, "errors": []}
+    with _PREWARM_LOCK:
+        return _serialize_prewarm_state(state)
+
+
+def _serialize_prewarm_state(state: dict) -> dict:
+    # The first room in the original tour-order list is the "entry"
+    # — that's where the user should appear when they first walk in.
+    rooms_meta = state.get("rooms_meta", {})
+    all_ids = state.get("ready", []) + state.get("pending", [])
+    if state.get("current") and state["current"] not in all_ids:
+        all_ids.append(state["current"])
+    # Restore ordering by looking up the meta dict insertion order
+    ordered_ids = [rid for rid in rooms_meta.keys() if rid in all_ids]
+    entry_id = ordered_ids[0] if ordered_ids else None
+    return {
+        "template_id": state["template_id"],
+        "started": True,
+        "total": state["total"],
+        "ready": list(state["ready"]),
+        "pending": list(state["pending"]),
+        "current": state.get("current"),
+        "current_name": state.get("current_name"),
+        "rooms_meta": rooms_meta,
+        "tour_order": ordered_ids,
+        "entry_room_id": entry_id,
+        "done": state.get("done", False),
+        "errors": list(state.get("errors", [])),
+        "elapsed_s": round(time.time() - state.get("started_at", time.time()), 1),
+    }
+
+
+@app.get("/api/render/cubemap/{template_id}/{room_id}")
+def cubemap_manifest(template_id: str, room_id: str):
+    """Return a JSON manifest with the 6 face URLs for a room's cubemap.
+
+    The first call for a (template, room) pair triggers rendering — ~12s
+    on a warm pipeline (6 SDXL+ControlNet faces, serialised by the
+    inference lock). Subsequent calls are instant (disk cache)."""
+    info = _ensure_cubemap_rendered(template_id, room_id)
+    base = f"/api/render/cubemap/{template_id}/{room_id}"
+    return {
+        "template_id": template_id,
+        "room_id": info.get("room_id", room_id),
+        "room_name": info.get("room_name", ""),
+        "room_type": info.get("room_type", ""),
+        "room_area": info.get("room_area", 0),
+        "cached": info.get("cached", False),
+        "latency_s": info.get("latency_s", 0),
+        "faces": {
+            f: f"{base}/face/{f}.png"
+            for f in ("posx", "negx", "posy", "negy", "posz", "negz")
+        },
+    }
+
+
+@app.get("/api/render/cubemap/{template_id}/{room_id}/face/{face}.png")
+def cubemap_face_png(template_id: str, room_id: str, face: str):
+    """Return one cubemap face PNG. If not yet rendered, this triggers
+    the full 6-face render then serves the requested face."""
+    if face not in ("posx", "negx", "posy", "negy", "posz", "negz"):
+        raise HTTPException(400, f"invalid face '{face}'")
+    p = _cubemap_face_path(template_id, room_id, face)
+    if not p.exists():
+        _ensure_cubemap_rendered(template_id, room_id)
+    if not p.exists():
+        raise HTTPException(500, f"face {face} did not render")
+    return Response(
+        content=p.read_bytes(),
+        media_type="image/png",
+        headers={"Cache-Control": "public, max-age=86400"},
+    )
+
+
+# ---------------------------------------------------------------------------
+# Path B: serve the trained Gaussian Splat PLY for the photoreal walk
+# ---------------------------------------------------------------------------
+
+_SPLAT_DATASET_DIR = _pathlib.Path("/tmp/splat_dataset")
+
+
+@app.get("/api/templates/{template_id}/splat")
+def template_splat(template_id: str):
+    """Serve the trained 3D Gaussian Splat PLY for a template.
+
+    Pipeline (one-time, offline):
+      scripts/render_splat_dataset.py  ->  60 SDXL views + transforms.json
+      scripts/train_splat.py           ->  output.ply (~25 MB)
+
+    Returns 404 if the template hasn't been trained yet.
+    """
+    p = _SPLAT_DATASET_DIR / template_id / "output.ply"
+    if not p.exists():
+        raise HTTPException(404, f"splat not trained for {template_id}")
+    return Response(
+        content=p.read_bytes(),
+        media_type="application/octet-stream",
+        headers={
+            "Content-Disposition": f'inline; filename="{template_id}.ply"',
+            "Cache-Control": "public, max-age=86400",
+        },
+    )
+
+
+@app.get("/api/templates/{template_id}/splat/status")
+def template_splat_status(template_id: str):
+    """Report whether a splat is available for this template + size."""
+    p = _SPLAT_DATASET_DIR / template_id / "output.ply"
+    if p.exists():
+        size = p.stat().st_size
+        return {"available": True, "size_bytes": size,
+                "url": f"/api/templates/{template_id}/splat"}
+    return {"available": False}
+
+
 @app.get("/api/templates/{template_id}/gltf")
 def template_gltf(template_id: str):
     """Return the BIM template as a glTF 2.0 binary (GLB) — used by the

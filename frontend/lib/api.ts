@@ -113,3 +113,76 @@ export async function warmupRender(includeControlNet = true): Promise<unknown> {
 export function gltfUrl(template_id: string): string {
   return `${BASE}/templates/${template_id}/gltf`;
 }
+
+/** Trained 3D Gaussian Splat (.ply) for the photoreal walk. */
+export function splatUrl(template_id: string): string {
+  return `${BASE}/templates/${template_id}/splat`;
+}
+
+export interface SplatStatus {
+  available: boolean;
+  size_bytes?: number;
+  url?: string;
+}
+
+export async function getSplatStatus(template_id: string): Promise<SplatStatus> {
+  return jsonFetch<SplatStatus>(`${BASE}/templates/${template_id}/splat/status`);
+}
+
+/** Manifest of the 6 photoreal cubemap faces for a room. First call
+ *  triggers the SDXL+ControlNet render (~12s warm); subsequent calls
+ *  are served from the disk cache. */
+export interface CubemapManifest {
+  template_id: string;
+  room_id: string;
+  room_name: string;
+  room_type: string;
+  room_area: number;
+  cached: boolean;
+  latency_s: number;
+  faces: {
+    posx: string; negx: string;
+    posy: string; negy: string;
+    posz: string; negz: string;
+  };
+}
+
+export async function fetchCubemapManifest(
+  template_id: string, room_id: string,
+): Promise<CubemapManifest> {
+  return jsonFetch<CubemapManifest>(
+    `${BASE}/render/cubemap/${template_id}/${encodeURIComponent(room_id)}`,
+  );
+}
+
+/** Background-rendering progress for a template's photoreal walkthrough.
+ *  Returned by both POST /prewarm and GET /status. */
+export interface PrewarmStatus {
+  template_id: string;
+  started: boolean;
+  total: number;
+  ready: string[];
+  pending: string[];
+  current: string | null;
+  current_name: string | null;
+  rooms_meta: Record<string, { name: string; type: string; area_sqm: number }>;
+  tour_order?: string[];
+  entry_room_id?: string | null;
+  done: boolean;
+  errors: string[];
+  elapsed_s: number;
+}
+
+export async function startCubemapPrewarm(template_id: string): Promise<PrewarmStatus> {
+  const res = await fetch(`${BASE}/render/cubemap/${template_id}/prewarm`, {
+    method: "POST",
+  });
+  if (!res.ok) throw new Error(`prewarm failed: ${res.status}`);
+  return res.json();
+}
+
+export async function getCubemapStatus(template_id: string): Promise<PrewarmStatus> {
+  return jsonFetch<PrewarmStatus>(
+    `${BASE}/render/cubemap/${template_id}/status`,
+  );
+}

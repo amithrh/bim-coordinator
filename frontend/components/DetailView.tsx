@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Template, Vec2 } from "@/lib/types";
-import { postModify, postMoveOpening } from "@/lib/api";
+import { postModify, postMoveOpening,
+          startCubemapPrewarm, getCubemapStatus,
+          PrewarmStatus } from "@/lib/api";
 import Viewer3D from "./Viewer3D";
 import Plan2D from "./Plan2D";
 import AdjustmentPanel from "./AdjustmentPanel";
@@ -30,6 +32,8 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [activeFloor, setActiveFloor] = useState(0);
   const [showWalkthrough, setShowWalkthrough] = useState(false);
+  // Background prewarm state — kicks off on mount, button reflects progress
+  const [prewarm, setPrewarm] = useState<PrewarmStatus | null>(null);
 
   useEffect(() => {
     setCurrent(baseTemplate);
@@ -37,7 +41,48 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
     setError(null);
     setActiveFloor(0);
     setShowWalkthrough(false);
+    setPrewarm(null);
   }, [baseTemplate]);
+
+  // Kick off photoreal-walk prewarm in the background as soon as the
+  // user lands on this template's detail view. By the time they click
+  // "Step inside", every room is already rendered.
+  useEffect(() => {
+    let cancelled = false;
+    let pollTimer: any = null;
+
+    (async () => {
+      try {
+        const initial = await startCubemapPrewarm(baseTemplate.id);
+        if (cancelled) return;
+        setPrewarm(initial);
+        if (initial.done) return;
+
+        // Poll status every 1.5s until done
+        const poll = async () => {
+          if (cancelled) return;
+          try {
+            const s = await getCubemapStatus(baseTemplate.id);
+            if (cancelled) return;
+            setPrewarm(s);
+            if (!s.done) pollTimer = setTimeout(poll, 1500);
+          } catch {
+            if (!cancelled) pollTimer = setTimeout(poll, 3000);
+          }
+        };
+        pollTimer = setTimeout(poll, 1500);
+      } catch (e) {
+        // Ignore — backend may not be reachable; the photo + 3D walk
+        // tabs still work without the photoreal cubemaps.
+        console.warn("[DetailView] prewarm start failed", e);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      if (pollTimer) clearTimeout(pollTimer);
+    };
+  }, [baseTemplate.id]);
 
   async function applyMods(mods: { area_scale?: number; ceiling_height_mm?: number; rotation_deg?: number }) {
     setBusy(true);
@@ -100,13 +145,48 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
               </span>
             )}
           </h2>
-          <button
-            onClick={() => setShowWalkthrough(true)}
-            className="text-sm font-medium text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-lg px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap transition"
-            title="Walk through every room as a photoreal interior"
-          >
-            <span>🚶</span> Virtual walkthrough
-          </button>
+          {(() => {
+            const ready = prewarm?.ready.length ?? 0;
+            const total = prewarm?.total ?? 0;
+            const done = prewarm?.done ?? false;
+            const pct = total > 0 ? Math.round((ready / total) * 100) : 0;
+            const isReady = done || (total === 0 && !prewarm?.started);
+            const stillRunning = prewarm?.started && !done;
+            const label = isReady
+              ? "✨ Step inside"
+              : `Building photoreal tour… ${ready}/${total}`;
+
+            return (
+              <button
+                onClick={() => setShowWalkthrough(true)}
+                className={
+                  isReady
+                    ? "text-sm font-semibold text-amber-900 bg-amber-200 hover:bg-amber-300 border border-amber-400 rounded-lg px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap transition relative overflow-hidden"
+                    : "text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap transition relative overflow-hidden"
+                }
+                title={
+                  isReady
+                    ? "Walk through every room — photoreal cubemaps already rendered"
+                    : "Photoreal cubemap rooms are rendering; click anyway to use Photo / 3D tour while it's building"
+                }
+              >
+                {/* progress bar fill */}
+                {stillRunning && (
+                  <span
+                    aria-hidden
+                    style={{
+                      position: "absolute", left: 0, top: 0, bottom: 0,
+                      width: `${pct}%`,
+                      background: "linear-gradient(90deg, rgba(255,200,61,0.45), rgba(255,200,61,0.15))",
+                      transition: "width 0.4s ease",
+                      pointerEvents: "none",
+                    }}
+                  />
+                )}
+                <span style={{ position: "relative", zIndex: 1 }}>{label}</span>
+              </button>
+            );
+          })()}
           {isModified && (
             <span className="text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
               modified
@@ -126,7 +206,11 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
           }}
         >
           <div style={{ width: "100%", maxWidth: 1280 }}>
-            <Walkthrough template={current} onClose={() => setShowWalkthrough(false)} />
+            <Walkthrough
+              template={current}
+              prewarm={prewarm}
+              onClose={() => setShowWalkthrough(false)}
+            />
           </div>
         </div>
       )}

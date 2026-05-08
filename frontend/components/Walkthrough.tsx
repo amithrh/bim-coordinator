@@ -3,16 +3,20 @@
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Template, Room, Vec2 } from "@/lib/types";
-import { walkthroughRoomUrl, dollhouseUrl } from "@/lib/api";
+import { walkthroughRoomUrl, dollhouseUrl, PrewarmStatus } from "@/lib/api";
 import { translateRoomName } from "@/lib/i18n";
 import { useLang } from "./LanguageContext";
 import type { Walk3DHandle } from "./Walk3D";
+import type { WalkCubemapHandle } from "./WalkCubemap";
+import type { WalkSplatHandle } from "./WalkSplat";
 
-// Dynamic import — playcanvas is a large client-only module, and this
+// Dynamic imports — playcanvas is a large client-only module, and this
 // also avoids any TSX parser ambiguity from `forwardRef<T, P>()`.
 const Walk3D = dynamic(() => import("./Walk3D"), { ssr: false });
+const WalkCubemap = dynamic(() => import("./WalkCubemap"), { ssr: false });
+const WalkSplat = dynamic(() => import("./WalkSplat"), { ssr: false });
 
-type Mode = "photo" | "walk3d";
+type Mode = "photo" | "walk3d" | "photoreal" | "splat";
 
 // Room types we skip in the walkthrough (no useful interior view)
 const SKIP_TYPES = new Set([
@@ -45,6 +49,11 @@ interface Stop {
 
 interface Props {
   template: Template;
+  /** Background prewarm status for the photoreal cubemaps (passed in
+   *  from DetailView). When `done`, the modal opens directly in the
+   *  Photoreal-walk tab starting at the entry room. While still
+   *  rendering, we show progress and let the user use Photo / 3D walk. */
+  prewarm?: PrewarmStatus | null;
   onClose?: () => void;
 }
 
@@ -73,7 +82,11 @@ function pickRooms(template: Template): Room[] {
  * Floor plan with the active room shaded yellow. Lightweight inline
  * SVG (no API call) so the highlight is instant on room change.
  */
-function Minimap({ template, activeRoomId }: { template: Template; activeRoomId: string | null }) {
+function Minimap({ template, activeRoomId, onRoomClick }: {
+  template: Template;
+  activeRoomId: string | null;
+  onRoomClick?: (roomId: string) => void;
+}) {
   const polygon = template.boundary.polygon;
   const rooms = template.rooms ?? [];
   const xs = polygon.map((p) => p[0]);
@@ -99,28 +112,79 @@ function Minimap({ template, activeRoomId }: { template: Template; activeRoomId:
       />
       {rooms.map((r) => {
         const isActive = r.id === activeRoomId;
+        const clickable = onRoomClick != null;
         return (
-          <polygon
-            key={r.id}
-            points={r.polygon.map(tx).join(" ")}
-            fill={isActive ? "rgba(255,200,60,0.55)" : "#f0f0f0"}
-            stroke={isActive ? "#FFC83D" : "#888"}
-            strokeWidth={isActive ? 0.12 : 0.04}
-          />
+          <g key={r.id}>
+            <polygon
+              points={r.polygon.map(tx).join(" ")}
+              fill={isActive ? "rgba(255,200,60,0.55)" : "#f0f0f0"}
+              stroke={isActive ? "#FFC83D" : "#888"}
+              strokeWidth={isActive ? 0.12 : 0.04}
+              style={{ cursor: clickable ? "pointer" : "default",
+                        transition: "fill 0.2s",
+                        pointerEvents: clickable ? "auto" : "none" }}
+              onClick={clickable ? () => onRoomClick!(r.id) : undefined}
+            >
+              {clickable && (
+                <title>{r.name} — click to walk here</title>
+              )}
+            </polygon>
+            {/* Room name label, only on hover via title; here render
+                small label centred for orientation */}
+            {(() => {
+              const cx = r.polygon.reduce((s, p) => s + p[0], 0) / r.polygon.length;
+              const cy = r.polygon.reduce((s, p) => s + p[1], 0) / r.polygon.length;
+              return (
+                <text
+                  x={cx - minX + PAD}
+                  y={vbH - (cy - minY + PAD)}
+                  fontSize="0.32"
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill={isActive ? "#7a5a00" : "#888"}
+                  fontWeight={isActive ? 700 : 500}
+                  style={{ pointerEvents: "none",
+                            fontFamily: "system-ui, sans-serif" }}
+                >
+                  {r.name.length > 12 ? r.name.slice(0, 11) + "…" : r.name}
+                </text>
+              );
+            })()}
+          </g>
         );
       })}
     </svg>
   );
 }
 
-export default function Walkthrough({ template, onClose }: Props) {
+export default function Walkthrough({ template, prewarm, onClose }: Props) {
   const { lang } = useLang();
   const [idx, setIdx] = useState(0);
   const [loaded, setLoaded] = useState<Set<string>>(new Set());
   const [showDollhouse, setShowDollhouse] = useState(false);
-  const [mode, setMode] = useState<Mode>("photo");
+  // If the photoreal cubemaps are already done, open in that tab. Otherwise
+  // start in Photo so the user has something to look at while it builds.
+  const [mode, setMode] = useState<Mode>(
+    prewarm?.done ? "photoreal" : "photo",
+  );
   const [walk3dActiveRoom, setWalk3dActiveRoom] = useState<string | null>(null);
+  const [cubemapActiveRoom, setCubemapActiveRoom] = useState<string | null>(
+    prewarm?.entry_room_id ?? null,
+  );
   const walk3dRef = useRef<Walk3DHandle | null>(null);
+  const cubemapRef = useRef<WalkCubemapHandle | null>(null);
+  const splatRef = useRef<WalkSplatHandle | null>(null);
+
+  // If prewarm completes while modal is open, auto-flip to photoreal tab.
+  // (Only first time it goes from non-done -> done; respect later user clicks.)
+  const autoFlippedRef = useRef(false);
+  useEffect(() => {
+    if (prewarm?.done && !autoFlippedRef.current && mode === "photo") {
+      setMode("photoreal");
+      autoFlippedRef.current = true;
+      if (prewarm.entry_room_id) setCubemapActiveRoom(prewarm.entry_room_id);
+    }
+  }, [prewarm?.done, prewarm?.entry_room_id, mode]);
 
   const stops = useMemo<Stop[]>(() => {
     const dollhouse: Stop = {
@@ -212,16 +276,81 @@ export default function Walkthrough({ template, onClose }: Props) {
             fontSize: 13, fontWeight: 600, cursor: "pointer",
           }}
         >📷 Photo tour</button>
+        {/* 🎮 3D walk hidden — photoreal cubemap walk supersedes it.
+            To re-enable for engineering tests, append ?dev to the URL. */}
+        {typeof window !== "undefined" && window.location.search.includes("dev") && (
+          <button
+            onClick={() => setMode("walk3d")}
+            style={{
+              background: mode === "walk3d" ? "#FFC83D" : "transparent",
+              color: mode === "walk3d" ? "#1a1a1a" : "#bbb",
+              border: "none", padding: "6px 14px", borderRadius: 6,
+              fontSize: 13, fontWeight: 600, cursor: "pointer",
+            }}
+          >🎮 3D walk</button>
+        )}
         <button
-          onClick={() => setMode("walk3d")}
+          onClick={() => setMode("photoreal")}
           style={{
-            background: mode === "walk3d" ? "#FFC83D" : "transparent",
-            color: mode === "walk3d" ? "#1a1a1a" : "#bbb",
+            background: mode === "photoreal" ? "#FFC83D" : "transparent",
+            color: mode === "photoreal" ? "#1a1a1a" : "#bbb",
             border: "none", padding: "6px 14px", borderRadius: 6,
             fontSize: 13, fontWeight: 600, cursor: "pointer",
           }}
-        >🎮 3D walk</button>
+          title="Matterport-style 360° tour — photoreal cubemaps per room"
+        >✨ Photoreal walk</button>
+        <button
+          onClick={() => setMode("splat")}
+          style={{
+            background: mode === "splat" ? "#FFC83D" : "transparent",
+            color: mode === "splat" ? "#1a1a1a" : "#bbb",
+            border: "none", padding: "6px 14px", borderRadius: 6,
+            fontSize: 13, fontWeight: 600, cursor: "pointer",
+          }}
+          title="Free-walk through a 3D Gaussian Splat trained on synthetic SDXL views"
+        >🪐 Splat walk</button>
       </div>
+
+      {/* Prewarm progress badge — shown while cubemaps are still rendering */}
+      {prewarm && prewarm.started && !prewarm.done && (
+        <div style={{
+          position: "absolute", top: 36, right: 64, zIndex: 5,
+          background: "rgba(15,17,21,0.85)", color: "#FFC83D",
+          border: "1px solid #2a2d33", borderRadius: 8,
+          padding: "6px 12px", fontSize: 12, fontWeight: 500,
+          display: "flex", alignItems: "center", gap: 8,
+        }}>
+          <span style={{
+            width: 14, height: 14, borderRadius: "50%",
+            border: "2px solid #444", borderTopColor: "#FFC83D",
+            animation: "spin 1s linear infinite", display: "inline-block",
+          }} />
+          Building photoreal tour…&nbsp;
+          <strong>{prewarm.ready.length}/{prewarm.total}</strong>
+          {prewarm.current_name && (
+            <span style={{ color: "#bbb", fontWeight: 400 }}>
+              · {prewarm.current_name}
+            </span>
+          )}
+        </div>
+      )}
+      {prewarm && prewarm.done && mode !== "photoreal" && (
+        <div style={{
+          position: "absolute", top: 36, right: 64, zIndex: 5,
+          background: "#16331f", color: "#7CE39A",
+          border: "1px solid #1f4a2c", borderRadius: 8,
+          padding: "6px 12px", fontSize: 12, fontWeight: 600,
+          cursor: "pointer",
+        }}
+        onClick={() => setMode("photoreal")}
+        title="Switch to the photoreal cubemap walk"
+        >
+          ✓ Photoreal walk ready · click to enter
+        </div>
+      )}
+      <style jsx>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+      `}</style>
 
       {/* Hero — Photo tour OR 3D walk */}
       <div style={{ position: "relative", aspectRatio: "3/2",
@@ -232,6 +361,22 @@ export default function Walkthrough({ template, onClose }: Props) {
             ref={walk3dRef}
             template={template}
             onActiveRoomChange={setWalk3dActiveRoom}
+          />
+        )}
+
+        {mode === "photoreal" && (
+          <WalkCubemap
+            ref={cubemapRef}
+            template={template}
+            onActiveRoomChange={setCubemapActiveRoom}
+            initialRoomId={prewarm?.entry_room_id ?? cubemapActiveRoom ?? undefined}
+          />
+        )}
+
+        {mode === "splat" && (
+          <WalkSplat
+            ref={splatRef}
+            template={template}
           />
         )}
 
@@ -339,16 +484,36 @@ export default function Walkthrough({ template, onClose }: Props) {
       <aside style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {/* Minimap */}
         <div style={{ background: "#1a1d23", borderRadius: 10, padding: 12 }}>
-          <div style={{ fontSize: 12, color: "#888", marginBottom: 8 }}>
-            You are here
+          <div style={{ fontSize: 12, color: "#888", marginBottom: 8,
+                          display: "flex", justifyContent: "space-between",
+                          alignItems: "center" }}>
+            <span>Floor plan · click any room to walk</span>
+            <span style={{ color: "#FFC83D", fontSize: 11, fontWeight: 600 }}>
+              You are here
+            </span>
           </div>
           <Minimap
             template={template}
             activeRoomId={
               mode === "walk3d"
                 ? walk3dActiveRoom
-                : (cur.kind === "room" ? cur.id : null)
+                : mode === "photoreal"
+                  ? cubemapActiveRoom
+                  : (cur.kind === "room" ? cur.id : null)
             }
+            onRoomClick={(roomId) => {
+              if (mode === "photoreal") {
+                cubemapRef.current?.goToRoom(roomId);
+              } else if (mode === "walk3d") {
+                walk3dRef.current?.teleportToRoom(roomId);
+              } else if (mode === "photo") {
+                // Find this room in the stops list and select it
+                const target = stops.findIndex(
+                  (s) => s.kind === "room" && s.id === roomId,
+                );
+                if (target >= 0) setIdx(target);
+              }
+            }}
           />
         </div>
 
@@ -375,7 +540,9 @@ export default function Walkthrough({ template, onClose }: Props) {
             {stops.map((s, i) => {
               const active = mode === "walk3d"
                 ? walk3dActiveRoom === s.id
-                : i === idx;
+                : mode === "photoreal"
+                  ? cubemapActiveRoom === s.id
+                  : i === idx;
               return (
                 <li
                   key={s.id}
@@ -383,6 +550,8 @@ export default function Walkthrough({ template, onClose }: Props) {
                     setIdx(i);
                     if (mode === "walk3d" && s.kind === "room") {
                       walk3dRef.current?.teleportToRoom(s.id);
+                    } else if (mode === "photoreal" && s.kind === "room") {
+                      cubemapRef.current?.goToRoom(s.id);
                     }
                   }}
                   style={{

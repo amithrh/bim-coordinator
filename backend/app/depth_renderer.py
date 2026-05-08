@@ -350,6 +350,117 @@ def render_depth_map(scene: dict[str, Any]) -> Image.Image:
     return img
 
 
+# ---------------------------------------------------------------------------
+# Cubemap depth rendering — 6 90°-FOV faces from a single point.
+# ---------------------------------------------------------------------------
+
+# Face order matches PlayCanvas / WebGL cubemap convention.
+# label, forward (BIM), up (BIM)
+# After our BIM->world flip in gltf_exporter (BIM_+Y becomes world_-Z):
+#   PC posx = world +X = BIM +X
+#   PC negx = world -X = BIM -X
+#   PC posy = world +Y = BIM +Z (up)
+#   PC negy = world -Y = BIM -Z (down)
+#   PC posz = world +Z = BIM -Y (south)
+#   PC negz = world -Z = BIM +Y (north)
+# So forward + up vectors below are in BIM coords.
+_CUBEMAP_FACES = [
+    ("posx", ( 1,  0,  0), (0, 0,  1)),   # look BIM east, BIM-up is up
+    ("negx", (-1,  0,  0), (0, 0,  1)),
+    ("posy", ( 0,  0,  1), (0, 1,  0)),   # look up, north faces "up" in image
+    ("negy", ( 0,  0, -1), (0, 1,  0)),   # look down
+    ("posz", ( 0, -1,  0), (0, 0,  1)),   # look south
+    ("negz", ( 0,  1,  0), (0, 0,  1)),   # look north
+]
+
+
+def _build_cubemap_scene_for_face(template: dict, position_bim: tuple[float, float, float],
+                                     forward: tuple[float, float, float],
+                                     up: tuple[float, float, float],
+                                     image_size: int = 512,
+                                     include_ceiling: bool = True
+                                     ) -> dict[str, Any]:
+    """Build a 90°-FOV camera scene for one cubemap face."""
+    rooms = template.get("rooms", []) or []
+    if not rooms and template.get("floors"):
+        for fl in template["floors"]:
+            if fl.get("rooms"):
+                rooms = fl["rooms"]
+                break
+
+    boundary = template.get("boundary", {})
+    ceiling_h = boundary.get("ceiling_height_mm", 2700) / 1000.0
+
+    walls = _build_walls_mesh(rooms, ceiling_height=ceiling_h)
+    floors_ceilings = _build_floor_ceiling_mesh(
+        rooms, ceiling_height=ceiling_h, include_ceiling=include_ceiling,
+    )
+    parts = [m for m in (walls, floors_ceilings) if not m.is_empty]
+    scene_mesh = trimesh.util.concatenate(parts) if parts else trimesh.Trimesh()
+
+    # Camera transform — 90° FOV means focal = (image_size/2) / tan(45°) = image_size/2
+    cam_pos = np.array(position_bim, dtype=float)
+    fwd = np.array(forward, dtype=float)
+    fwd = fwd / np.linalg.norm(fwd)
+    upv = np.array(up, dtype=float)
+    upv = upv / np.linalg.norm(upv)
+    right = np.cross(fwd, upv)
+    right = right / np.linalg.norm(right)
+    new_up = np.cross(right, fwd)
+    transform = np.eye(4)
+    transform[:3, 0] = right
+    transform[:3, 1] = new_up
+    transform[:3, 2] = -fwd
+    transform[:3, 3] = cam_pos
+
+    return {
+        "mesh": scene_mesh,
+        "camera_transform": transform,
+        "image_size": (image_size, image_size),
+        "focal_length": image_size / 2.0,  # 90° FOV
+        "ceiling_height": ceiling_h,
+    }
+
+
+def render_room_cubemap_depth(template: dict, room_id: str,
+                                  image_size: int = 512,
+                                  eye_height: float = 1.65) -> dict[str, Any]:
+    """Render the 6 cubemap depth-map faces from a room's centroid at
+    eye height. Returns {face_label: PIL.Image} + metadata.
+    """
+    rooms = template.get("rooms", []) or []
+    if not rooms and template.get("floors"):
+        for fl in template["floors"]:
+            if fl.get("rooms"):
+                rooms = fl["rooms"]
+                break
+    room = next((r for r in rooms if r.get("id") == room_id), None)
+    if room is None:
+        raise ValueError(f"unknown room {room_id}")
+
+    poly = np.array(room["polygon"], dtype=float)
+    cx, cy = poly.mean(axis=0)
+    pos = (float(cx), float(cy), float(eye_height))
+
+    faces = {}
+    for label, fwd, up in _CUBEMAP_FACES:
+        scene = _build_cubemap_scene_for_face(
+            template, pos, fwd, up,
+            image_size=image_size, include_ceiling=True,
+        )
+        faces[label] = render_depth_map(scene)
+
+    return {
+        "faces": faces,
+        "room_id": room_id,
+        "room_name": room.get("name", ""),
+        "room_type": room.get("type", ""),
+        "room_area": room.get("area_sqm", 0),
+        "position_bim": list(pos),
+        "ceiling_height_m": faces and faces["posx"].size,  # for debugging
+    }
+
+
 def render_template_depth(template: dict,
                             focus_room_id: str | None = None,
                             focus_room_type: str | None = None

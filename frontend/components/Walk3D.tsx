@@ -157,35 +157,55 @@ const Walk3D = forwardRef<Walk3DHandle, Props>(function Walk3D(
       });
       app.setCanvasFillMode(pc.FILLMODE_FILL_WINDOW);
       app.setCanvasResolution(pc.RESOLUTION_AUTO);
-      app.scene.ambientLight = new pc.Color(0.32, 0.34, 0.38);
-      // Sky / fog tone
-      app.scene.exposure = 1.0;
+      // Generous ambient + matching gamma so PBR materials read at indoor
+      // light levels. The previous 0.32 was way too dim for a small room
+      // with windows you can't see (since we don't model exterior light).
+      app.scene.ambientLight = new pc.Color(0.55, 0.55, 0.58);
+      app.scene.exposure = 1.2;
+      // gammaCorrection — defaults vary by version; force it on
+      try { (app.scene as any).gammaCorrection = pc.GAMMA_SRGB; } catch {}
+      try { (app.scene as any).toneMapping = pc.TONEMAP_LINEAR; } catch {}
 
-      // Sun (directional light)
+      // Sun (directional light) — strong, angled down INTO the apartment
       const sun = new pc.Entity("sun");
       sun.addComponent("light", {
         type: "directional",
-        color: new pc.Color(1.0, 0.95, 0.85),
-        intensity: 1.4,
+        color: new pc.Color(1.0, 0.97, 0.92),
+        intensity: 2.6,
         castShadows: true,
         shadowDistance: 50,
-        shadowResolution: 2048,
-        shadowBias: 0.05,
-        normalOffsetBias: 0.05,
+        shadowResolution: 1024,
+        shadowBias: 0.08,
+        normalOffsetBias: 0.06,
       });
-      sun.setEulerAngles(45, -35, 0);
+      sun.setEulerAngles(55, 25, 0);
       app.root.addChild(sun);
 
-      // Soft fill from opposite side
+      // Soft fill from the opposite side
       const fill = new pc.Entity("fill");
       fill.addComponent("light", {
         type: "directional",
-        color: new pc.Color(0.65, 0.75, 0.92),
-        intensity: 0.5,
+        color: new pc.Color(0.85, 0.90, 1.0),
+        intensity: 0.9,
         castShadows: false,
       });
-      fill.setEulerAngles(35, 145, 0);
+      fill.setEulerAngles(40, -150, 0);
       app.root.addChild(fill);
+
+      // A bare-bulb omni at the apartment centroid so the back rooms
+      // aren't pitch-dark (single sun + ambient isn't enough for an
+      // interior with no real window light).
+      const apartmentCx = rooms.reduce((s, r) => s + roomCentroid(r).x, 0) / rooms.length;
+      const apartmentCy = rooms.reduce((s, r) => s + roomCentroid(r).y, 0) / rooms.length;
+      const omni = new pc.Entity("omni");
+      omni.addComponent("light", {
+        type: "omni",
+        color: new pc.Color(1.0, 0.96, 0.88),
+        intensity: 1.5,
+        range: 20,
+      });
+      omni.setPosition(apartmentCx, 2.4, -apartmentCy);
+      app.root.addChild(omni);
 
       // Camera
       const camera = new pc.Entity("camera");
@@ -193,12 +213,18 @@ const Walk3D = forwardRef<Walk3DHandle, Props>(function Walk3D(
         clearColor: new pc.Color(0.62, 0.74, 0.88), // soft blue sky
         farClip: 200,
         nearClip: 0.05,
-        fov: 70,
+        fov: 75,
       });
-      // Convert BIM (X, Y) -> world (X, Z); eye height 1.65 on Y axis.
-      const yawDeg = -spawn.yaw * 180 / Math.PI;
-      camera.setPosition(spawn.x, 1.65, -spawn.y);
-      camera.setEulerAngles(0, yawDeg, 0);
+      // World coords: BIM (X, Y) -> world (X, Z) with Z = -Y, eye height
+      // on world Y. Use lookAt() to set the initial direction — bullet-
+      // proof against euler/yaw conversion bugs.
+      const camPos = new pc.Vec3(spawn.x, 1.65, -spawn.y);
+      const lookAhead = 2.0;
+      const targetX = spawn.x + Math.cos(spawn.yaw) * lookAhead;
+      const targetY = spawn.y + Math.sin(spawn.yaw) * lookAhead;
+      const camTgt = new pc.Vec3(targetX, 1.5, -targetY);
+      camera.setPosition(camPos);
+      camera.lookAt(camTgt);
       app.root.addChild(camera);
 
       // Load GLB
@@ -213,12 +239,22 @@ const Walk3D = forwardRef<Walk3DHandle, Props>(function Walk3D(
         }
         const entity = asset.resource.instantiateRenderEntity();
         app.root.addChild(entity);
+        // Compute model bounds for debug
+        try {
+          const aabb = (entity as any).render?.meshInstances?.[0]?.aabb;
+          // eslint-disable-next-line no-console
+          console.log("[Walk3D] model loaded; first AABB:", aabb);
+        } catch (_) { /* ignore */ }
+        // eslint-disable-next-line no-console
+        console.log(`[Walk3D] camera at (${camPos.x.toFixed(2)},${camPos.y.toFixed(2)},${camPos.z.toFixed(2)})  looking toward (${camTgt.x.toFixed(2)},${camTgt.y.toFixed(2)},${camTgt.z.toFixed(2)})`);
         setLoading(false);
       });
 
-      // First-person controls
-      let yawAngle = yawDeg;
-      let pitchAngle = 0;
+      // First-person controls — derive starting yaw/pitch from the
+      // camera's current orientation (set by lookAt above).
+      const initialEuler = camera.getEulerAngles();
+      let yawAngle = initialEuler.y;
+      let pitchAngle = initialEuler.x;
       const moveSpeed = 3.0;
       const sprintMul = 1.8;
 
@@ -264,9 +300,12 @@ const Walk3D = forwardRef<Walk3DHandle, Props>(function Walk3D(
         // Apply look angles to camera
         camera.setLocalEulerAngles(pitchAngle, yawAngle, 0);
 
-        const yawRad = (yawAngle * Math.PI) / 180;
-        const fwd = { x: -Math.sin(yawRad), z: -Math.cos(yawRad) };
-        const right = { x: Math.cos(yawRad), z: -Math.sin(yawRad) };
+        // Use PlayCanvas's camera.forward / camera.right vectors —
+        // bullet-proof against yaw-convention mistakes.
+        const fwdVec = camera.forward;
+        const rightVec = camera.right;
+        const fwd = { x: fwdVec.x, z: fwdVec.z };
+        const right = { x: rightVec.x, z: rightVec.z };
 
         let dx = 0, dz = 0;
         if (keys.forward) { dx += fwd.x; dz += fwd.z; }

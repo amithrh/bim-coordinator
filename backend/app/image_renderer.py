@@ -750,6 +750,140 @@ def render_faithful_from_template(template: dict,
     }
 
 
+# ---------------------------------------------------------------------------
+# Cubemap photoreal — Matterport-style 360° walk per room
+# ---------------------------------------------------------------------------
+
+# Per-face look hints. SDXL paints the back wall the most attention, so we
+# tag what's likely visible looking each direction (purely cosmetic — the
+# depth map enforces geometry).
+_FACE_HINT = {
+    "posx": "looking forward across the room",
+    "negx": "looking back across the room",
+    "posy": "looking up at the ceiling",
+    "negy": "looking down at the floor",
+    "posz": "looking forward to the far wall",
+    "negz": "looking back from the far wall",
+}
+
+
+def _build_cubemap_face_prompt(template: dict, room_type: str,
+                                  face: str, ceiling_m: float) -> str:
+    """Compact CLIP-77 prompt per cubemap face. Same style hint as the
+    interior render, but with a face-specific framing tag so SDXL doesn't
+    repeat the same wall on all 6 sides.
+    """
+    md = template.get("metadata", {})
+    style = _resolve_style(md)
+    rtype = (room_type or "living").lower()
+    room_words = {
+        "living":         "living room, sofa and coffee table",
+        "kitchen":        "kitchen with cabinetry",
+        "kueche":         "kitchen with cabinetry",
+        "kochnische":     "kitchen with cabinetry",
+        "master_bedroom": "master bedroom with bed",
+        "bedroom":        "bedroom with bed",
+        "dining":         "dining area with table",
+        "balcony":        "balcony with view",
+        "office":         "home office",
+        "study":          "home office",
+        "bathroom":       "bathroom with vanity and tub",
+        "bad":            "bathroom with vanity and tub",
+        "wc":             "small bathroom",
+        "diele":          "entry foyer",
+        "flur":           "entry foyer",
+        "entry":          "entry foyer",
+    }
+    room_text = room_words.get(rtype, "interior room")
+
+    # The "looking up/down" faces want different prompts to avoid SDXL
+    # painting a sofa on the ceiling.
+    if face == "posy":
+        face_text = "ceiling view, ornate plaster ceiling, light fixture"
+    elif face == "negy":
+        face_text = "floor view, top-down on rug and floor"
+    else:
+        face_text = f"{room_text}, {_FACE_HINT.get(face, '')}"
+
+    high_ceiling = "high ceilings, " if ceiling_m >= 3.0 else ""
+    return (
+        f"Photorealistic interior, {face_text}. "
+        f"{style}. {high_ceiling}natural daylight, magazine quality."
+    )
+
+
+def render_room_cubemap_photoreal(template: dict, room_id: str,
+                                       face_size: int = 512,
+                                       steps: int = 5,
+                                       controlnet_scale: float = 0.55,
+                                       ) -> dict[str, Any]:
+    """Generate the 6 photoreal cubemap faces for a single room.
+
+    Pipeline per face:
+      1. trimesh raycast → 90°-FOV depth map (face_size × face_size)
+      2. SDXL-turbo + Depth ControlNet → photoreal face
+
+    Total: ~12-15s for a cold room (warm pipeline), serialised by
+    _INFER_LOCK so the GPU never thrashes.
+
+    Returns a dict { "faces": {label: PIL.Image}, "room_*": metadata,
+                     "latency_s": float, "errors": [str, ...] }.
+    """
+    from .depth_renderer import render_room_cubemap_depth
+
+    t0 = time.time()
+    depth_info = render_room_cubemap_depth(template, room_id, image_size=face_size)
+    depth_faces = depth_info["faces"]
+    room_type = depth_info.get("room_type", "")
+    ceiling_m = template.get("boundary", {}).get("ceiling_height_mm", 2700) / 1000.0
+
+    if not _ensure_controlnet_pipeline_loaded():
+        return {
+            "faces": {}, "room_id": room_id,
+            "errors": ["controlnet pipeline failed to load"],
+            "latency_s": time.time() - t0,
+        }
+
+    out_faces: dict[str, Any] = {}
+    errors: list[str] = []
+    for label, depth in depth_faces.items():
+        prompt = _build_cubemap_face_prompt(
+            template, room_type, label, ceiling_m,
+        )
+        # Inline render — sharing the interior pipeline's helper:
+        try:
+            depth_rgb = depth.convert("RGB").resize(
+                (face_size, face_size), depth.BICUBIC
+            ) if hasattr(depth, "BICUBIC") else depth.convert("RGB")
+            with _INFER_LOCK:
+                img = _PIPE_CN(
+                    prompt=prompt,
+                    image=depth_rgb,
+                    num_inference_steps=steps,
+                    guidance_scale=0.0,
+                    controlnet_conditioning_scale=controlnet_scale,
+                    height=face_size, width=face_size,
+                ).images[0]
+            out_faces[label] = img
+        except Exception as e:
+            errors.append(f"{label}: {e!r}")
+            # Fallback: use the depth map as a placeholder so the cubemap
+            # still loads (better than a hole in the skybox).
+            out_faces[label] = depth.convert("RGB")
+
+    return {
+        "faces": out_faces,
+        "room_id": room_id,
+        "room_name": depth_info.get("room_name", ""),
+        "room_type": room_type,
+        "room_area": depth_info.get("room_area", 0),
+        "ceiling_height_m": ceiling_m,
+        "position_bim": depth_info.get("position_bim"),
+        "latency_s": time.time() - t0,
+        "errors": errors,
+    }
+
+
 if __name__ == "__main__":
     import sys
     print("Warming up...")
