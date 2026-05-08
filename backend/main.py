@@ -187,6 +187,7 @@ class RenderRequest(BaseModel):
     template_id: str | None = None  # render an existing template (curated or modified)
     prompt: str | None = None        # OR pass a free-form photo prompt
     focus_room_type: str | None = None  # 'living' | 'kitchen' | 'master_bedroom' | etc
+    focus_room_id: str | None = None    # exact room id (for per-room walkthrough)
     width: int = 768
     height: int = 512
     steps: int = 2
@@ -261,10 +262,12 @@ def render_endpoint(req: RenderRequest):
             out = render_faithful_from_template(
                 template,
                 focus_room_type=req.focus_room_type,
+                focus_room_id=req.focus_room_id,
                 width=req.width, height=req.height, steps=max(req.steps, 4),
                 controlnet_scale=cn_scale,
             )
             extra_headers["X-Render-View"] = "interior"
+            extra_headers["X-Render-Focus-Room-Id"] = (out.get("focus_room_id") or "")[:60]
             extra_headers["X-Render-Focus-Room"] = (out.get("focus_room_name") or "")[:100]
             extra_headers["X-Render-Focus-Type"] = (out.get("focus_room_type") or "")[:50]
             extra_headers["X-Render-Focus-Area"] = str(out.get("focus_room_area") or 0)

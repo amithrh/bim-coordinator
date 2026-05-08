@@ -675,6 +675,7 @@ def render_faithful_dollhouse_from_template(
 
 def render_faithful_from_template(template: dict,
                                    focus_room_type: str | None = None,
+                                   focus_room_id: str | None = None,
                                    width: int = 768, height: int = 512,
                                    steps: int = 5,
                                    controlnet_scale: float = 0.55,
@@ -682,20 +683,25 @@ def render_faithful_from_template(template: dict,
     """Photorealistic render that respects the actual floor plan layout.
 
     Builds a 3D scene from the template (walls/floor/ceiling), positions
-    a camera inside the largest non-circulation room, raycasts a depth
-    map, and uses SDXL + Depth ControlNet to render. The result is an
-    interior photograph whose room proportions and wall angles match the
-    BIM geometry — not just stylistic stock imagery.
+    a camera inside the chosen room (focus_room_id if given, else the
+    largest non-circulation room), raycasts a depth map, and uses
+    SDXL + Depth ControlNet to render. The result is an interior
+    photograph whose room proportions and wall angles match the BIM
+    geometry — not just stylistic stock imagery.
+
+    Pass focus_room_id to render any specific room (used for the
+    per-room virtual walkthrough).
 
     Returns a dict containing the RenderResult plus depth-map metadata
-    (focus room name/type/area, ceiling height) so callers can show the
-    user what room is depicted.
+    (focus room id/name/type/area, ceiling height) so callers can show
+    the user which room is depicted.
     """
     # Tower templates → no usable interior; fall back to stylistic exterior.
     if template.get("metadata", {}).get("tower"):
         result = render_from_template(template, width=width, height=height)
         return {
             "result": result,
+            "focus_room_id": "",
             "focus_room_name": "",
             "focus_room_type": "",
             "focus_room_area": 0,
@@ -705,7 +711,10 @@ def render_faithful_from_template(template: dict,
 
     from .depth_renderer import render_template_depth
 
-    info = render_template_depth(template)
+    info = render_template_depth(
+        template, focus_room_id=focus_room_id,
+        focus_room_type=focus_room_type,
+    )
     depth = info["depth_image"]
     fr_type = info.get("focus_room_type") or focus_room_type or "living"
     prompt = _build_faithful_prompt(
@@ -720,6 +729,7 @@ def render_faithful_from_template(template: dict,
     )
     return {
         "result": result,
+        "focus_room_id": info.get("focus_room_id", ""),
         "focus_room_name": info.get("focus_room_name", ""),
         "focus_room_type": info.get("focus_room_type", ""),
         "focus_room_area": info.get("focus_room_area", 0),

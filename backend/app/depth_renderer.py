@@ -204,8 +204,15 @@ def _camera_for_focus_room(focus_room: dict, template: dict
     return cam_pos, target, strategy
 
 
-def build_scene(template: dict, focus_room_idx: int = 0) -> dict[str, Any]:
+def build_scene(template: dict, focus_room_idx: int = 0,
+                  focus_room_id: str | None = None,
+                  focus_room_type: str | None = None) -> dict[str, Any]:
     """Build a 3D scene + camera positioned inside a chosen room.
+
+    Selection priority for the focus room:
+      1. focus_room_id  — exact room (used for per-room walkthrough)
+      2. focus_room_type — first room of that type
+      3. default        — 'living' if present, else largest non-circulation room
 
     Returns a dict with 'mesh' (combined trimesh), 'camera_transform',
     'image_size', 'focal_length', 'focus_room' info.
@@ -221,13 +228,19 @@ def build_scene(template: dict, focus_room_idx: int = 0) -> dict[str, Any]:
         return {"mesh": trimesh.Trimesh(), "camera_transform": np.eye(4),
                 "image_size": (768, 512), "focus_room": None}
 
-    # Pick focus room — prefer 'living' or largest non-circulation room
-    habitable = [r for r in rooms if r.get("type") not in
-                 ("entry", "stairs", "corridor", "wc")]
-    if not habitable:
-        habitable = rooms
-    living = next((r for r in habitable if r.get("type") == "living"), None)
-    focus_room = living or max(habitable, key=lambda r: r.get("area_sqm", 0))
+    focus_room = None
+    if focus_room_id:
+        focus_room = next((r for r in rooms if r.get("id") == focus_room_id), None)
+    if focus_room is None and focus_room_type:
+        focus_room = next((r for r in rooms if r.get("type") == focus_room_type), None)
+    if focus_room is None:
+        # Default: prefer 'living', else largest non-circulation room
+        habitable = [r for r in rooms if r.get("type") not in
+                     ("entry", "stairs", "corridor", "wc")]
+        if not habitable:
+            habitable = rooms
+        living = next((r for r in habitable if r.get("type") == "living"), None)
+        focus_room = living or max(habitable, key=lambda r: r.get("area_sqm", 0))
 
     boundary = template.get("boundary", {})
     ceiling_h = boundary.get("ceiling_height_mm", 2700) / 1000.0
@@ -337,17 +350,27 @@ def render_depth_map(scene: dict[str, Any]) -> Image.Image:
     return img
 
 
-def render_template_depth(template: dict) -> dict[str, Any]:
+def render_template_depth(template: dict,
+                            focus_room_id: str | None = None,
+                            focus_room_type: str | None = None
+                            ) -> dict[str, Any]:
     """Convenience: build scene + render depth map. Returns dict with image
-    + scene metadata (focus_room name, etc) so prompts can be built."""
-    scene = build_scene(template)
+    + scene metadata (focus_room name, etc) so prompts can be built.
+
+    Pass focus_room_id to render the depth map for a specific room (used
+    for the per-room virtual walkthrough)."""
+    scene = build_scene(template, focus_room_id=focus_room_id,
+                          focus_room_type=focus_room_type)
     img = render_depth_map(scene)
+    fr = scene.get("focus_room") or {}
     return {
         "depth_image": img,
-        "focus_room_name": (scene.get("focus_room") or {}).get("name", ""),
-        "focus_room_type": (scene.get("focus_room") or {}).get("type", ""),
-        "focus_room_area": (scene.get("focus_room") or {}).get("area_sqm", 0),
+        "focus_room_id": fr.get("id", ""),
+        "focus_room_name": fr.get("name", ""),
+        "focus_room_type": fr.get("type", ""),
+        "focus_room_area": fr.get("area_sqm", 0),
         "ceiling_height_m": scene.get("ceiling_height", 2.7),
+        "camera_strategy": scene.get("camera_strategy", ""),
     }
 
 
