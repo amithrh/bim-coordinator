@@ -43,6 +43,13 @@ _PIPE_CN = None
 _PIPE_CN_DEVICE: str = ""
 _PIPE_CN_LOAD_TIME: float = 0.0
 
+# Apple MPS can't actually run multiple SDXL inferences in parallel —
+# concurrent calls all stall and finish at roughly N× single latency,
+# which makes the walkthrough feel hung. Serialize all SDXL calls
+# (both base + ControlNet) through a single inference mutex so each
+# request finishes in ~2s back-to-back instead of all stalling.
+_INFER_LOCK = threading.Lock()
+
 _DEFAULT_MODEL = os.getenv("BIM_RENDER_MODEL", "stabilityai/sdxl-turbo")
 _DEFAULT_DEVICE = os.getenv("BIM_RENDER_DEVICE", "mps")  # mps | cuda | cpu
 _DEFAULT_CONTROLNET = os.getenv(
@@ -384,12 +391,14 @@ def _render(prompt: str, width: int = 768, height: int = 512,
         )
     t0 = time.time()
     try:
-        img = _PIPE(
-            prompt=prompt,
-            num_inference_steps=steps,
-            guidance_scale=0.0,
-            height=height, width=width,
-        ).images[0]
+        # Serialize — see note on _INFER_LOCK above.
+        with _INFER_LOCK:
+            img = _PIPE(
+                prompt=prompt,
+                num_inference_steps=steps,
+                guidance_scale=0.0,
+                height=height, width=width,
+            ).images[0]
     except Exception as e:
         return RenderResult(
             image_bytes=b"", image_format="png", prompt=prompt,
@@ -449,14 +458,17 @@ def _render_with_depth(prompt: str, depth_image, width: int = 768,
 
     t0 = time.time()
     try:
-        img = _PIPE_CN(
-            prompt=prompt,
-            image=depth_image,
-            num_inference_steps=steps,
-            guidance_scale=0.0,
-            controlnet_conditioning_scale=controlnet_scale,
-            height=height, width=width,
-        ).images[0]
+        # Serialize SDXL calls — Apple MPS doesn't multiplex SDXL well,
+        # concurrent calls just stall together. Better to queue them.
+        with _INFER_LOCK:
+            img = _PIPE_CN(
+                prompt=prompt,
+                image=depth_image,
+                num_inference_steps=steps,
+                guidance_scale=0.0,
+                controlnet_conditioning_scale=controlnet_scale,
+                height=height, width=width,
+            ).images[0]
     except Exception as e:
         return RenderResult(
             image_bytes=b"", image_format="png", prompt=prompt,

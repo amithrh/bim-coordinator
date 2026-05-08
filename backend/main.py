@@ -307,6 +307,91 @@ def render_endpoint(req: RenderRequest):
     )
 
 
+@app.get("/api/templates/{template_id}/gltf")
+def template_gltf(template_id: str):
+    """Return the BIM template as a glTF 2.0 binary (GLB) — used by the
+    PlayCanvas-based 3D walkthrough on the frontend.
+
+    The GLB carries:
+      * walls + per-room floor + ceiling meshes
+      * PBR materials per surface (oak parquet for living, tile for
+        kitchen, marble for bath, etc.)
+      * scene `extras` JSON with room polygons, doors, windows, and a
+        sensible spawn point (camera position + yaw) so the viewer can
+        instantly drop the player at the front door looking inward.
+    """
+    from backend.app.gltf_exporter import template_to_glb
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+    glb = template_to_glb(template)
+    return Response(
+        content=glb,
+        media_type="model/gltf-binary",
+        headers={
+            "Content-Disposition": f'inline; filename="{template_id}.glb"',
+            "Cache-Control": "public, max-age=3600",
+        },
+    )
+
+
+@app.get("/api/render/walkthrough/{template_id}")
+def render_walkthrough(template_id: str,
+                          room_id: str | None = None,
+                          view: str = "interior",
+                          width: int = 768,
+                          height: int = 512,
+                          mode: str = "faithful"):
+    """GET wrapper for the photoreal renderer — usable directly from
+    `<img src>` tags. Returns a PNG image.
+
+    Query params:
+      room_id  — exact BIM room id (used for per-room walkthrough). If
+                 omitted, falls back to the default focus room.
+      view     — 'interior' (default) | 'dollhouse'
+      mode     — 'faithful' (default) | 'stylistic'
+    """
+    from backend.app.image_renderer import (
+        render_faithful_from_template,
+        render_faithful_dollhouse_from_template,
+        render_from_template,
+    )
+
+    template = storage.by_id(template_id) or _modified_registry.get(template_id)
+    if template is None:
+        raise HTTPException(404, f"unknown template {template_id}")
+
+    headers: dict[str, str] = {"X-Render-Mode": mode, "X-Render-View": view}
+
+    if mode == "stylistic":
+        result = render_from_template(template, width=width, height=height)
+    elif view == "dollhouse":
+        out = render_faithful_dollhouse_from_template(
+            template, width=width, height=height, steps=5,
+        )
+        result = out["result"]
+        headers["X-Render-Rooms-Count"] = str(out.get("rooms_count") or 0)
+    else:
+        out = render_faithful_from_template(
+            template, focus_room_id=room_id,
+            width=width, height=height, steps=5,
+        )
+        result = out["result"]
+        headers["X-Render-Focus-Room-Id"] = (out.get("focus_room_id") or "")[:60]
+        headers["X-Render-Focus-Room"] = (out.get("focus_room_name") or "")[:100]
+        headers["X-Render-Focus-Type"] = (out.get("focus_room_type") or "")[:50]
+        headers["X-Render-Focus-Area"] = str(out.get("focus_room_area") or 0)
+
+    if result.error:
+        raise HTTPException(500, f"render failed: {result.error}")
+
+    headers["X-Render-Latency-S"] = f"{result.latency_s:.3f}"
+    # Cache for 1h client-side (handy when stepping back/forward in tour)
+    headers["Cache-Control"] = "public, max-age=3600"
+    return Response(content=result.image_bytes, media_type="image/png",
+                      headers=headers)
+
+
 @app.get("/api/render/depth/{template_id}")
 def render_depth_only(template_id: str, view: str = "interior"):
     """Return just the depth map for a template — useful for the demo UI

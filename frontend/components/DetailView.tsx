@@ -7,6 +7,7 @@ import Viewer3D from "./Viewer3D";
 import Plan2D from "./Plan2D";
 import AdjustmentPanel from "./AdjustmentPanel";
 import ActionPanel from "./ActionPanel";
+import Walkthrough from "./Walkthrough";
 import { useLang } from "./LanguageContext";
 import { translateText } from "@/lib/i18n";
 
@@ -28,12 +29,14 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeFloor, setActiveFloor] = useState(0);
+  const [showWalkthrough, setShowWalkthrough] = useState(false);
 
   useEffect(() => {
     setCurrent(baseTemplate);
     setModifiedId(null);
     setError(null);
     setActiveFloor(0);
+    setShowWalkthrough(false);
   }, [baseTemplate]);
 
   async function applyMods(mods: { area_scale?: number; ceiling_height_mm?: number; rotation_deg?: number }) {
@@ -88,8 +91,8 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
       </button>
 
       <div className="bg-white border border-gray-200 rounded-lg p-4">
-        <div className="flex items-baseline justify-between mb-1">
-          <h2 className="text-xl font-bold">
+        <div className="flex items-baseline justify-between mb-1 gap-3">
+          <h2 className="text-xl font-bold flex-1">
             {bedroomLabel(baseTemplate.metadata.bedrooms)} — {baseTemplate.metadata.city_inspiration}
             {baseTemplate.floors && baseTemplate.floors.length > 1 && (
               <span className="ml-2 text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded align-middle">
@@ -97,6 +100,13 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
               </span>
             )}
           </h2>
+          <button
+            onClick={() => setShowWalkthrough(true)}
+            className="text-sm font-medium text-amber-900 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-lg px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap transition"
+            title="Walk through every room as a photoreal interior"
+          >
+            <span>🚶</span> Virtual walkthrough
+          </button>
           {isModified && (
             <span className="text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
               modified
@@ -105,6 +115,21 @@ export default function DetailView({ template: baseTemplate, onBack }: Props) {
         </div>
         <p className="text-sm text-gray-600">{translateText(baseTemplate.metadata.description, lang)}</p>
       </div>
+
+      {showWalkthrough && (
+        <div
+          onClick={(e) => { if (e.target === e.currentTarget) setShowWalkthrough(false); }}
+          style={{
+            position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
+            zIndex: 50, display: "flex", alignItems: "center",
+            justifyContent: "center", padding: 24, overflow: "auto",
+          }}
+        >
+          <div style={{ width: "100%", maxWidth: 1280 }}>
+            <Walkthrough template={current} onClose={() => setShowWalkthrough(false)} />
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Left: 2D — interactive */}

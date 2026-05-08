@@ -68,3 +68,48 @@ export function svgUrl(template_id: string, isModified = false): string {
 export function ifcUrl(template_id: string, isModified = false): string {
   return isModified ? `${BASE}/modified/${template_id}/ifc` : `${BASE}/templates/${template_id}/ifc`;
 }
+
+/**
+ * URL for the per-room photoreal interior render. Pass through
+ * focus_room_id to walk the customer through the apartment.
+ */
+export function walkthroughRoomUrl(
+  template_id: string,
+  room_id: string,
+  width = 768,
+  height = 512,
+): string {
+  const qs = new URLSearchParams({
+    room_id,
+    view: "interior",
+    width: String(width),
+    height: String(height),
+  });
+  return `${BASE}/render/walkthrough/${template_id}?${qs.toString()}`;
+}
+
+/** Whole-flat dollhouse cutaway. */
+export function dollhouseUrl(
+  template_id: string,
+  width = 768,
+  height = 512,
+): string {
+  const qs = new URLSearchParams({
+    view: "dollhouse",
+    width: String(width),
+    height: String(height),
+  });
+  return `${BASE}/render/walkthrough/${template_id}?${qs.toString()}`;
+}
+
+/** Pre-warm both pipelines (call once on app load). */
+export async function warmupRender(includeControlNet = true): Promise<unknown> {
+  const qs = includeControlNet ? "?controlnet=true" : "";
+  const res = await fetch(`${BASE}/render/warmup${qs}`);
+  return res.json();
+}
+
+/** glTF/GLB binary URL for the PlayCanvas 3D walkthrough. */
+export function gltfUrl(template_id: string): string {
+  return `${BASE}/templates/${template_id}/gltf`;
+}
