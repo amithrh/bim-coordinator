@@ -78,6 +78,41 @@ photo content, the ENTRY marker position, the room-area captions) is
 
 ## Stage 1 — image generation (SDXL-turbo)
 
+### Model choice — SDXL-turbo, not Flux
+
+We use **`stabilityai/sdxl-turbo`** (Stability AI's distilled SDXL,
+released Nov 2023). Configured at `backend/app/image_renderer.py:53`:
+
+```python
+_DEFAULT_MODEL = os.getenv("BIM_RENDER_MODEL", "stabilityai/sdxl-turbo")
+```
+
+The env var lets you swap models without code changes, but the default —
+and what every render in the demo runs against — is SDXL-turbo.
+
+**Why not Flux.1 or vanilla SDXL?**
+
+| Property | SDXL-turbo (in use) | Flux.1-dev | Vanilla SDXL |
+|---|---|---|---|
+| Inference steps | **2–4** | 25–50 | 25–50 |
+| Latency per 1536×768 on M4 Max | **~5–6s** warm | ~30–60s | ~10–20s |
+| License | OpenRAIL++ | Non-commercial (`dev` variant) | OpenRAIL++ |
+| Parameter count | 3.5 B (UNet) | 12 B | 3.5 B |
+
+A full bake of all 7 templates is **35 panoramas** (5 rooms × 7 cities).
+At Flux speeds that's 17–35 min per bake; at SDXL-turbo it's ~3 min. The
+quality delta at 1536×768 is real but not enough to justify a 10×
+slowdown for the iteration loop. **No Flux model is loaded anywhere in
+the codebase** (verified by grep).
+
+**Optional Depth ControlNet** (`diffusers/controlnet-depth-sdxl-1.0-small`,
+defined at `image_renderer.py:55`) is wired for a separate
+`render_faithful_from_template()` path that conditions on a BIM-dollhouse
+depth map. **The broker-tour pipeline deliberately does NOT use
+ControlNet** because we want freeform interior compositions per room,
+not strict geometric matching, and ControlNet adds ~2× to render
+latency.
+
 ### Why panoramic 1536×768
 
 SDXL-turbo is trained at 1024×1024 native resolution but handles 1536×768
