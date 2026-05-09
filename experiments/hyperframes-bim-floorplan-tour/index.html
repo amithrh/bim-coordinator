@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: #0a0c10; color: #f5f3ee;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      body {
+        position: relative;
+        background:
+          radial-gradient(circle at 18% 8%, rgba(255, 200, 61, 0.10), transparent 30%),
+          radial-gradient(circle at 84% 92%, rgba(60, 180, 255, 0.10), transparent 32%),
+          linear-gradient(180deg, #0a0c10 0%, #131722 60%, #1a1d28 100%);
+      }
+      #root { position: relative; width: 1080px; height: 1920px; }
+
+      /* ── Top bar ── */
+      .topbar {
+        position: absolute; top: 0; left: 0; right: 0; height: 88px;
+        display: flex; align-items: center; padding: 0 48px;
+        z-index: 10;
+        background: linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+      }
+      .logo { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+      .logo span { color: #FFC83D; }
+      .badge {
+        margin-left: auto; font-size: 18px; font-weight: 600;
+        padding: 8px 14px; border-radius: 999px; letter-spacing: 0.1em;
+        background: rgba(255,200,61,0.12); border: 1px solid rgba(255,200,61,0.4);
+        color: #FFC83D;
+      }
+
+      /* ── Header info ── */
+      .hdr-info {
+        position: absolute; top: 110px; left: 64px; right: 64px;
+        text-align: center;
+      }
+      .hdr-eyebrow {
+        font-size: 18px; font-weight: 700; color: #67e8f9;
+        letter-spacing: 0.28em; text-transform: uppercase;
+      }
+      .hdr-title {
+        margin-top: 12px; font-size: 60px; font-weight: 800;
+        line-height: 1.0; letter-spacing: -0.03em;
+      }
+      .hdr-title span { color: #FFC83D; }
+      .hdr-meta {
+        margin-top: 10px; font-size: 22px; color: rgba(245,243,238,0.6);
+        letter-spacing: 0.04em;
+      }
+
+      /* ── Floor plan stage ── */
+      .plan-stage {
+        position: absolute;
+        top: 360px; left: 64px; right: 64px;
+        height: 460px;
+        background: #fafaf6; border-radius: 28px;
+        padding: 28px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      }
+      .plan-canvas {
+        position: relative;
+        width: 100%; height: 100%;
+        /* No overflow:hidden anymore — needed so the ENTRY marker can sit
+           OUTSIDE the plan rectangle (just below it, pointing up at Flur). */
+      }
+      .room {
+        position: absolute;
+        background: #f4f0e6;
+        border: 3px solid #2a2522;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        font-family: "Georgia", serif;
+        color: #1a1612;
+        text-align: center;
+        transition: none; /* GSAP handles transitions */
+      }
+      .room-name { font-size: 24px; font-weight: 700; line-height: 1.1; }
+      .room-area { font-size: 16px; color: #6a5b48; margin-top: 4px; font-family: "Inter", sans-serif; }
+
+      .room.r-living   { background: #FFEFC2; }
+      .room.r-bedroom  { background: #E0D2F2; }
+      .room.r-kitchen  { background: #FFE9A8; }
+      .room.r-bath     { background: #CCE6F0; }
+      .room.r-foyer    { background: #F0EFE6; }
+
+      /* Yellow highlight overlay per room — opacity animated */
+      .room::after {
+        content: ""; position: absolute; inset: -3px; border-radius: inherit;
+        border: 6px solid #FFC83D;
+        box-shadow:
+          0 0 0 3px rgba(255, 200, 61, 0.4),
+          inset 0 0 24px rgba(255, 200, 61, 0.30);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Stop number badges — broker mode: ALL visible from start showing the
+         tour order. Active stop's badge gets a halo + bigger size. */
+      .stop-badge {
+        position: absolute;
+        width: 38px; height: 38px; border-radius: 999px;
+        background: #1a1612; color: #FFC83D;
+        font-family: "Inter", sans-serif; font-weight: 800;
+        font-size: 18px; line-height: 38px; text-align: center;
+        transform: translate(-50%, -50%) scale(0);
+        z-index: 11;
+        border: 2px solid #FFC83D;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.55);
+        transition: none;
+      }
+      .stop-badge.active {
+        background: #FFC83D; color: #1a1612;
+        box-shadow:
+          0 0 0 6px rgba(255,200,61,0.4),
+          0 0 30px rgba(255,200,61,0.85),
+          0 4px 14px rgba(0,0,0,0.55);
+      }
+
+      /* ENTRY marker — permanent, sits OUTSIDE the building boundary at the
+         BIM main entry door. The four .entry-<edge> classes flip the layout
+         and rotate the arrow to point INTO the plan. */
+      .entry-marker {
+        position: absolute;
+        z-index: 13;
+        opacity: 0;
+        pointer-events: none;
+        display: flex; align-items: center; gap: 4px;
+      }
+      /* SOUTH edge (BIM y≈0) → pill below plan, arrow points UP into plan. */
+      .entry-marker.entry-south {
+        top: calc(100% + 6px);
+        transform: translate(-50%, 0);
+        flex-direction: column;
+      }
+      /* NORTH edge (BIM y≈max) → pill above plan, arrow points DOWN. */
+      .entry-marker.entry-north {
+        bottom: calc(100% + 6px);
+        transform: translate(-50%, 0);
+        flex-direction: column-reverse;
+      }
+      /* WEST edge (BIM x≈0) → pill LEFT of plan, arrow points RIGHT. */
+      .entry-marker.entry-west {
+        right: calc(100% + 6px);
+        transform: translate(0, -50%);
+        flex-direction: row-reverse;
+      }
+      /* EAST edge (BIM x≈max) → pill RIGHT of plan, arrow points LEFT. */
+      .entry-marker.entry-east {
+        left: calc(100% + 6px);
+        transform: translate(0, -50%);
+        flex-direction: row;
+      }
+      /* Default (used when not yet upgraded) — backwards compat with Munich. */
+      .entry-marker:not(.entry-south):not(.entry-north):not(.entry-west):not(.entry-east) {
+        left: 10%;
+        top: calc(100% + 6px);
+        transform: translate(-50%, 0);
+        flex-direction: column;
+      }
+      .entry-arrow {
+        width: 0; height: 0;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+      }
+      /* Default arrow (south-pointing) for backwards compat */
+      .entry-arrow {
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 14px solid #FFC83D;
+      }
+      .entry-marker.entry-north .entry-arrow {
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: none;
+        border-top: 14px solid #FFC83D;       /* points DOWN into plan */
+      }
+      .entry-marker.entry-west .entry-arrow {
+        border-left: 14px solid #FFC83D;      /* points RIGHT into plan */
+        border-right: none;
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent;
+      }
+      .entry-marker.entry-east .entry-arrow {
+        border-left: none;
+        border-right: 14px solid #FFC83D;     /* points LEFT into plan */
+        border-bottom: 10px solid transparent;
+        border-top: 10px solid transparent;
+      }
+      .entry-pill {
+        font-family: "Inter", sans-serif;
+        font-size: 13px; font-weight: 800; letter-spacing: 0.18em;
+        color: #1a1612; background: #FFC83D;
+        padding: 4px 10px; border-radius: 999px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+        white-space: nowrap;
+      }
+
+      /* Trail line (visited path) — drawn as svg */
+      .trail-svg {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;     /* explicit so viewBox transform is correct */
+        pointer-events: none;
+        z-index: 5;
+        overflow: visible;             /* allow stroke half-width past path bounds */
+      }
+      /* Compass — north arrow, BIM convention */
+      .compass {
+        position: absolute; right: 8px; top: 8px;
+        z-index: 6;
+        opacity: 0;
+      }
+      .trail-line {
+        fill: none;
+        stroke: #FFC83D;
+        /* No non-scaling-stroke — that breaks dasharray vs getTotalLength.
+           Stroke-width is in viewBox user units; with asymmetric viewBox→canvas
+           scaling, the stroke is slightly wider horizontally than vertically,
+           which looks fine for a tour-line. */
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.95;
+        filter: drop-shadow(0 0 1.5px rgba(0,0,0,0.85));
+      }
+
+      /* ── Photo cell (lower half) ── */
+      .photo-stage {
+        position: absolute;
+        top: 870px; left: 64px; right: 64px;
+        height: 820px;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+        background: #1a1d28;
+      }
+      /* Connecting beam (link between walker dot on plan and active photo).
+         A vertical gradient strip drawn between top: ~835px (above photo) and
+         bottom: ~plan, animated to "shoot" downward when walker arrives. */
+      .link-beam {
+        position: absolute;
+        left: 0; right: 0; top: 820px;
+        height: 50px;
+        pointer-events: none;
+        z-index: 8;
+        opacity: 0;
+      }
+      .link-beam svg { width: 100%; height: 100%; display: block; }
+      .photo-frame {
+        position: absolute; inset: 0;
+        opacity: 0;
+      }
+      .photo-frame img {
+        width: 100%; height: 100%; object-fit: cover;
+        transform: scale(1.05);
+        will-change: transform;        /* hint the compositor — pan is heavy */
+      }
+      /* 360° LOOK pill — sits top-right of the photo, marks the look-around motion */
+      .photo-frame .look360-pill {
+        position: absolute; top: 24px; right: 24px;
+        z-index: 4;
+        font-family: "Inter", sans-serif;
+        font-size: 14px; font-weight: 800; letter-spacing: 0.18em;
+        color: #1a1612; background: #FFC83D;
+        padding: 6px 12px; border-radius: 999px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        display: flex; align-items: center; gap: 6px;
+      }
+      .photo-frame .look360-pill::before {
+        content: "↻"; font-size: 16px; font-weight: 900;
+      }
+      .photo-overlay {
+        position: absolute; left: 0; right: 0; bottom: 0;
+        padding: 56px 32px 28px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      }
+      .photo-stop {
+        font-size: 16px; font-weight: 700;
+        color: #FFC83D; letter-spacing: 0.28em;
+        text-transform: uppercase; margin-bottom: 12px;
+      }
+      .photo-name {
+        font-size: 56px; font-weight: 800; line-height: 1.0;
+        letter-spacing: -0.03em;
+      }
+      .photo-meta {
+        margin-top: 10px; font-size: 22px;
+        color: rgba(245,243,238,0.78);
+      }
+
+      /* ── Outro overlay ── */
+      .outro {
+        position: absolute; inset: 0;
+        background: rgba(10, 12, 16, 0.95);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 0 80px; text-align: center;
+        opacity: 0;
+        z-index: 30;
+      }
+      .outro-eyebrow {
+        font-size: 22px; font-weight: 700; color: #FFC83D;
+        letter-spacing: 0.32em; text-transform: uppercase;
+      }
+      .outro-title {
+        margin-top: 28px; font-size: 86px; font-weight: 800;
+        line-height: 1.04; letter-spacing: -0.04em;
+      }
+      .outro-title span { color: #FFC83D; }
+      .outro-stat {
+        margin-top: 80px; display: flex; gap: 48px;
+      }
+      .outro-stat-card {
+        flex: 1; padding: 26px 28px;
+        border-radius: 22px; border: 1px solid rgba(255,200,61,0.3);
+        background: rgba(20, 24, 34, 0.88);
+      }
+      .outro-stat-num {
+        font-size: 64px; font-weight: 800; color: #FFC83D;
+        letter-spacing: -0.04em;
+      }
+      .outro-stat-label {
+        margin-top: 6px; font-size: 18px; font-weight: 600;
+        color: rgba(245,243,238,0.6); letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="47"
+      data-width="1080"
+      data-height="1920"
+    >
+
+      <!-- Top bar -->
+      <div class="topbar">
+        <div class="logo">BIM <span>Coordinator</span></div>
+        <div class="badge">ANIMATED TOUR</div>
+      </div>
+
+
+      <!-- Header info -->
+      <div class="hdr-info" id="hdr">
+        <div class="hdr-eyebrow">Munich Schwabing</div>
+        <div class="hdr-title">1 BR <span>Jugendstil</span></div>
+        <div class="hdr-meta">50 m² · 5 rooms · 3.1 m ceiling · IFC valid 35/35</div>
+      </div>
+
+      <!-- Floor plan stage -->
+      <div class="plan-stage">
+        <div class="plan-canvas">
+          <!-- Plan rooms positioned by BIM coords (10m × 5m → percentages)
+               BIM uses (x_east, y_north). Y-percent is inverted because
+               CSS top grows downward but BIM north grows upward. -->
+          <div class="room r-foyer" id="rm-flur"
+               style="left: 0%; top: 60%; width: 20%; height: 40%;">
+            <div class="room-name">Flur</div><div class="room-area">4 m²</div>
+          </div>
+          <div class="room r-living" id="rm-wohnzimmer"
+               style="left: 20%; top: 40%; width: 50%; height: 60%;">
+            <div class="room-name">Wohnzimmer</div><div class="room-area">15 m²</div>
+          </div>
+          <div class="room r-kitchen" id="rm-kueche"
+               style="left: 70%; top: 40%; width: 30%; height: 60%;">
+            <div class="room-name">Küche</div><div class="room-area">9 m²</div>
+          </div>
+          <div class="room r-bath" id="rm-bad"
+               style="left: 0%; top: 0%; width: 20%; height: 60%;">
+            <div class="room-name">Bad</div><div class="room-area">6 m²</div>
+          </div>
+          <div class="room r-bedroom" id="rm-schlafzimmer"
+               style="left: 20%; top: 0%; width: 80%; height: 40%;">
+            <div class="room-name">Schlafzimmer</div><div class="room-area">16 m²</div>
+          </div>
+
+          <!-- North arrow (BIM convention) -->
+          <div class="compass">
+            <svg width="40" height="40" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="18" fill="rgba(26,22,18,0.85)" stroke="#FFC83D" stroke-width="1.5"/>
+              <polygon points="20,6 24,22 20,18 16,22" fill="#FFC83D"/>
+              <text x="20" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#FFC83D">N</text>
+            </svg>
+          </div>
+
+          <!-- Permanent ENTRY marker (outside the plan, aligned with front door / Flur centroid).
+               Arrow on top points UP into the plan, label below. -->
+          <div class="entry-marker" id="entry-marker">
+            <div class="entry-arrow"></div>
+            <div class="entry-pill">Entry</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecting link beam (sits between plan stage and photo stage) -->
+      <div class="link-beam" id="link-beam">
+        <svg viewBox="0 0 1080 50" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="beamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FFC83D" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="#FFC83D" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Two diagonal lines that funnel from walker x-position toward photo -->
+          <path id="beam-path" d="" fill="url(#beamGrad)" />
+        </svg>
+      </div>
+
+      <!-- Photo stage — 5 rooms, fade in/out per stop -->
+      <div class="photo-stage">
+        <div class="photo-frame" id="photo-flur">
+          <img src="assets/room_flur.png" alt="Flur">
+          <div class="look360-pill">360° look</div>
+          <div class="photo-overlay">
+            <div class="photo-stop">Stop 1 / 5 · Entry</div>
+            <div class="photo-name">Flur</div>
+            <div class="photo-meta">4 m² · entry foyer · oak parquet · ornate ceiling</div>
+          </div>
+        </div>
+        <div class="photo-frame" id="photo-wohnzimmer">
+          <img src="assets/room_wohnzimmer.png" alt="Wohnzimmer">
+          <div class="look360-pill">360° look</div>
+          <div class="photo-overlay">
+            <div class="photo-stop">Stop 2 / 5 · Living room</div>
+            <div class="photo-name">Wohnzimmer</div>
+            <div class="photo-meta">15 m² · Jugendstil mouldings · French windows</div>
+          </div>
+        </div>
+        <div class="photo-frame" id="photo-kueche">
+          <img src="assets/room_kueche.png" alt="Küche">
+          <div class="look360-pill">360° look</div>
+          <div class="photo-overlay">
+            <div class="photo-stop">Stop 3 / 5 · Kitchen</div>
+            <div class="photo-name">Küche</div>
+            <div class="photo-meta">9 m² · classic Munich kitchen</div>
+          </div>
+        </div>
+        <div class="photo-frame" id="photo-bad">
+          <img src="assets/room_bad.png" alt="Bad">
+          <div class="look360-pill">360° look</div>
+          <div class="photo-overlay">
+            <div class="photo-stop">Stop 4 / 5 · Bath</div>
+            <div class="photo-name">Bad</div>
+            <div class="photo-meta">6 m² · period bathroom</div>
+          </div>
+        </div>
+        <div class="photo-frame" id="photo-schlafzimmer">
+          <img src="assets/room_schlafzimmer.png" alt="Schlafzimmer">
+          <div class="look360-pill">360° look</div>
+          <div class="photo-overlay">
+            <div class="photo-stop">Stop 5 / 5 · Master bedroom</div>
+            <div class="photo-name">Schlafzimmer</div>
+            <div class="photo-meta">16 m² · Altbau · 3.1 m ceilings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outro -->
+      <div class="outro" id="outro">
+        <div class="outro-eyebrow">Munich Schwabing 1 BR</div>
+        <div class="outro-title">5 rooms · <span>50 m²</span><br>tour in 30 seconds</div>
+        <div class="outro-stat">
+          <div class="outro-stat-card">
+            <div class="outro-stat-num">35/35</div>
+            <div class="outro-stat-label">IFC checks</div>
+          </div>
+          <div class="outro-stat-card">
+            <div class="outro-stat-num">9.4s</div>
+            <div class="outro-stat-label">Generation</div>
+          </div>
+          <div class="outro-stat-card">
+            <div class="outro-stat-num">500</div>
+            <div class="outro-stat-label">Templates</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+
+      // ── Tour stops (broker-mode: numbered route through the floor plan) ──
+      // x/y are %-of-canvas coordinates derived from BIM room centroids.
+      const STOPS = [
+        { id: "flur",         x: 10, y: 80, photoId: "photo-flur",         roomId: "rm-flur" },
+        { id: "wohnzimmer",   x: 45, y: 70, photoId: "photo-wohnzimmer",   roomId: "rm-wohnzimmer" },
+        { id: "kueche",       x: 85, y: 70, photoId: "photo-kueche",       roomId: "rm-kueche" },
+        { id: "bad",          x: 10, y: 30, photoId: "photo-bad",          roomId: "rm-bad" },
+        { id: "schlafzimmer", x: 60, y: 20, photoId: "photo-schlafzimmer", roomId: "rm-schlafzimmer" },
+      ];
+
+      const INTRO = 2.5;          // intro / overview phase
+      const STOP_LEN = 8.0;       // longer per-room dwell — gives time for the
+                                  // 360-style look-around pan to read
+      const OUTRO_AT = INTRO + STOPS.length * STOP_LEN;  // 42.5s
+      const OUTRO_LEN = 4.5;
+      const TOTAL = OUTRO_AT + OUTRO_LEN;                // 47s
+
+      // ── Inject numbered stop badges (1..N) at each room's TOP-LEFT corner ──
+      // Broker-mode: ALL badges are visible from the start so the viewer can see
+      // the tour route at a glance. We position at the room's top-left + 22px
+      // inset so the badge doesn't cover the room name (which is centered).
+      const planCanvas = document.querySelector(".plan-canvas");
+      STOPS.forEach((stop, i) => {
+        const badge = document.createElement("div");
+        badge.className = "stop-badge";
+        badge.id = `badge-${stop.id}`;
+        badge.textContent = String(i + 1);
+        const room = document.getElementById(stop.roomId);
+        const roomLeft = parseFloat(room.style.left);
+        const roomTop  = parseFloat(room.style.top);
+        badge.style.left = `calc(${roomLeft}% + 28px)`;
+        badge.style.top  = `calc(${roomTop}% + 28px)`;
+        planCanvas.appendChild(badge);
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      // ── Intro (0 → 2.5s) ──
+      tl.from(".topbar", { opacity: 0, y: -40, duration: 0.5, ease: "power2.out" }, 0);
+      tl.from("#hdr", { opacity: 0, y: 24, duration: 0.6, ease: "power2.out" }, 0.2);
+      tl.from(".plan-stage", { opacity: 0, y: 40, duration: 0.7, ease: "power3.out" }, 0.4);
+      tl.from(".room", {
+        opacity: 0, scale: 0.9, stagger: 0.08, duration: 0.4, ease: "power2.out",
+      }, 0.7);
+      tl.from(".photo-stage", { opacity: 0, y: 60, duration: 0.7, ease: "power3.out" }, 0.9);
+
+      // ── Intro continued: compass + entry marker + ALL badges pop in (broker
+      // mode shows the full tour route up front, then highlights one room at
+      // a time as the narration moves through them). ──
+      tl.to(".compass",      { opacity: 1, duration: 0.4, ease: "power2.out" }, 0.7);
+      tl.to("#entry-marker", { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.85);
+      // Pop all 5 badges with a slight stagger so they land like dominoes.
+      tl.to(".stop-badge", {
+        scale: 1, duration: 0.45, ease: "back.out(2.2)",
+        stagger: 0.08,
+      }, 1.0);
+
+      // Helper: aim the link-beam (yellow funnel) from the active stop on the
+      // plan down to the photo. The beam SVG's viewBox is 0 0 1080 50
+      // (preserveAspectRatio="none"). plan-canvas spans page x in [92, 988]
+      // (plan-stage at x=64, padding=28); photo spans page x in [64, 1016].
+      const beamPath = document.getElementById("beam-path");
+      function setBeamForStop(stop) {
+        const wx = 92 + 8.96 * stop.x;
+        const d = `M ${wx} 0 L 1016 50 L 64 50 Z`;
+        beamPath.setAttribute("d", d);
+      }
+
+      // ── Per-stop highlight (broker-mode) ──
+      // No walker, no trail. Each stop just:
+      //   1) marks the previous badge "visited" (dimmer) and demotes its room
+      //   2) lights up the current room with .hot
+      //   3) marks the current badge .active (halo + invert colors)
+      //   4) re-aims and fires the link beam from current room to photo
+      //   5) crossfades the photo in with a dolly push
+      STOPS.forEach((stop, i) => {
+        const tStart = INTRO + i * STOP_LEN;
+
+        // Demote previous stop's highlight + badge
+        if (i > 0) {
+          const prev = STOPS[i - 1];
+          tl.call(() => {
+            document.getElementById(prev.roomId).classList.remove("hot");
+            document.getElementById(prev.roomId).classList.add("visited");
+            document.getElementById(`badge-${prev.id}`).classList.remove("active");
+          }, null, tStart - 0.2);
+        }
+
+        // Highlight CURRENT room + activate its badge
+        tl.call(() => {
+          document.getElementById(stop.roomId).classList.add("hot");
+          document.getElementById(stop.roomId).classList.remove("visited");
+          document.getElementById(`badge-${stop.id}`).classList.add("active");
+        }, null, tStart);
+
+        // Re-aim + fire the link beam from this stop's badge down to the photo
+        tl.call(() => setBeamForStop(stop), null, tStart - 0.05);
+        tl.fromTo("#link-beam",
+          { opacity: 0 },
+          { opacity: 0.9, duration: 0.45, ease: "power2.out" },
+          tStart);
+
+        // Crossfade photo IN
+        tl.to(`#${stop.photoId}`, {
+          opacity: 1, duration: 0.55, ease: "power2.out",
+        }, tStart + 0.05);
+
+        // 360° look-around: image is enlarged (scale 1.45) so only ~70% is
+        // visible at any time, then we PAN it across a wide horizontal range
+        // to simulate turning your head left→right (or right→left, alternating
+        // per stop so consecutive rooms don't feel identical). A small Y drift
+        // adds a "look up at ceiling, down to floor" sense.
+        const sweepRight = (i % 2 === 0);   // even stops sweep L→R, odd R→L
+        const xFromPct = sweepRight ? -22 : 22;
+        const xToPct   = sweepRight ?  22 : -22;
+        tl.fromTo(`#${stop.photoId} img`,
+          { scale: 1.45, xPercent: xFromPct, yPercent:  3 },
+          { scale: 1.45, xPercent: xToPct,   yPercent: -3,
+            duration: STOP_LEN, ease: "sine.inOut" },
+          tStart);
+
+        // Subtle "360° look" pill pulse so it's clearly an active indicator
+        tl.fromTo(`#${stop.photoId} .look360-pill`,
+          { scale: 0.85, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" },
+          tStart + 0.2);
+
+        // Crossfade previous photo OUT + hide beam at the very end of stop
+        if (i < STOPS.length - 1) {
+          tl.to(`#${stop.photoId}`, {
+            opacity: 0, duration: 0.45, ease: "power2.in",
+          }, tStart + STOP_LEN - 0.45);
+          tl.to("#link-beam", {
+            opacity: 0, duration: 0.3, ease: "power2.in",
+          }, tStart + STOP_LEN - 0.3);
+        }
+      });
+
+      // ── Outro (OUTRO_AT → TOTAL) ──
+      tl.to("#outro", {
+        opacity: 1, duration: 0.6, ease: "power2.out",
+      }, OUTRO_AT);
+      tl.from("#outro .outro-eyebrow", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, OUTRO_AT + 0.1);
+      tl.from("#outro .outro-title", { y: 36, opacity: 0, duration: 0.6, ease: "power3.out" }, OUTRO_AT + 0.3);
+      tl.from("#outro .outro-stat-card", {
+        y: 30, opacity: 0, stagger: 0.18, duration: 0.5, ease: "power2.out",
+      }, OUTRO_AT + 0.7);
+
+      // Inject CSS for hot/visited highlight states (since ::after opacity tweening
+      // cross-browser is finicky, we use class toggles + CSS transitions).
+      const style = document.createElement("style");
+      style.textContent = `
+        .room.hot::after { opacity: 1; transition: opacity 0.4s ease; }
+        .room.visited::after { opacity: 0.18; transition: opacity 0.5s ease; }
+      `;
+      document.head.appendChild(style);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
